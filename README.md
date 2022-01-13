@@ -2,9 +2,13 @@
 
 This repository is for issues to shape the direction of development containers and the dev container CLI.
 
+## Contributing
+
+The goal of this repository is to shape the properties and future of development containers. If you are interested in contributing, please check out the [How to Contribute](contributing.md) document.
+
 ## Providing Feedback
 
-The goal of this repository is to shape the properties and future of development containers. If you run into an issue using the [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension, please use the [vscode-remote-release](https://github.com/microsoft/vscode-remote-release) repository. Issues related to dev container definitions can be reported in the [vscode-dev-containers repository](https://aka.ms/vscode-dev-containers).
+If you run into an issue using the [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension, please use the [vscode-remote-release](https://github.com/microsoft/vscode-remote-release) repository. Issues related to dev container definitions can be reported in the [vscode-dev-containers repository](https://aka.ms/vscode-dev-containers).
 
 If you have a question, connect with the community using any of these social platforms:
 

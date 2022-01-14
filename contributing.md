@@ -19,11 +19,9 @@ Once there is discussion on your proposal, please also open and link a PR to upd
 
 ## Review process
 
-The labeling and review process is similar to the [VS Code repo](https://github.com/microsoft/vscode/labels).
-
 We use the following [labels](https://github.com/microsoft/dev-container-spec/labels):
 
 - `proposal`: Issues under discussion, still collecting feedback.
 - `finalization`: Proposals we intend to make part of the spec.
 
-[Milestones](https://github.com/microsoft/dev-container-spec/milestones) also follow the same pattern as the VS Code repo, with a "month year" pattern (i.e. January 2022). If a finalized proposal is added to a milestone, it is intended to be merged during that milestone.
+[Milestones](https://github.com/microsoft/dev-container-spec/milestones) use a "month year" pattern (i.e. January 2022). If a finalized proposal is added to a milestone, it is intended to be merged during that milestone.

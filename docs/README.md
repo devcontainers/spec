@@ -1,3 +1,3 @@
-# Images
+# Documentation
 
-These images are used in extension READMEs.
+Documentation and reference material about development containers and the dev container CLI.

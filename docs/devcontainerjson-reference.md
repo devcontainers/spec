@@ -84,7 +84,7 @@ If one of the lifecycle scripts fails, any subsequent scripts will not be execut
 
 ## Minimum host requirements
 
-While `devcontainer.json` does not focus on hardware or VM provisioning, it can be useful to know your container's minimum RAM, CPU, and storage requirements. This is what the `hostRequirements` properties allow you to do. Cloud services like GitHub Codespaces use these properties to automatically default to the best compute option available, while in other cases, you will be presented with a warning if the requirements are not met.
+While `devcontainer.json` does not focus on hardware or VM provisioning, it can be useful to know your container's minimum RAM, CPU, and storage requirements. This is what the `hostRequirements` properties allow you to do. Cloud services can use these properties to automatically default to the best compute option available, while in other cases, you will be presented with a warning if the requirements are not met.
 
 | Property | Type | Description |
 |----------|------|-------------|
@@ -146,28 +146,3 @@ Variables can be referenced in certain string values in `devcontainer.json` in t
 | `${containerWorkspaceFolder}` | Any | The path that the workspaces files can be found in the container. |
 | `${localWorkspaceFolderBasename}` | Any | Name of the local folder that was opened in the `devcontainer.json` supporting service / tool (that contains `.devcontainer/devcontainer.json`).<br /><br />⚠️ Not yet supported when using Clone Repository in Container Volume. |
 | `${containerWorkspaceFolderBasename}` | Any | Name of the folder where the workspace files can be found in the container. |
-
-## Attached container configuration reference
-
-[Attached container configuration files](https://code.visualstudio.com/docs/remote/attach-container#_attached-container-configuration-files) are similar to `devcontainer.json` and supports a subset of its properties.
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `workspaceFolder` | string | Sets the default path that `devcontainer.json` supporting services / tools should open when connecting to the container (which is often the path to a volume mount where the source code can be found in the container). Not set by default (an empty window is opened). |
-| `extensions` | array | An array of extension IDs that specify the extensions that should be installed inside the container when it is created. Defaults to `[]`. |
-| `settings` | object | Adds default `settings.json` values into a container/machine specific settings file.  |
-| `forwardPorts` | array | A list of ports that should be forwarded from inside the container to the local machine. |
-| `portsAttributes` | object | Object that maps a port number, `"host:port"` value, range, or regular expression to a set of default options. See [port attributes](#port-attributes) for available options. For example: <br />`"portsAttributes": {"3000": {"label": "Application port"}}` |
-| `otherPortsAttributes` | object | Default options for ports, port ranges, and hosts that aren't configured using `portsAttributes`. See [port attributes](#port-attributes) for available options. For example: <br /> `"otherPortsAttributes": {"onAutoForward": "silent"}` |
-| `remoteEnv` | object | A set of name-value pairs that sets or overrides environment variables for `devcontainer.json` supporting services / tools (or sub-processes like terminals) but not the container as a whole. Environment and [pre-defined variables](#variables-in-attached-container-configuration-files) may be referenced in the values.<br>For example: `"remoteEnv": { "PATH": "${containerEnv:PATH}:/some/other/path" }` |
-| `remoteUser` | string | Overrides the user that the `devcontainer.json` supporting service / tool runs as in the container (along with sub-processes like terminals, tasks, or debugging). Defaults to the user the container as a whole is running as (often `root`). |
-| `userEnvProbe` | enum | Indicates the type of shell to use to "probe" for user environment variables to include in the connected tool's processes: `none`, `interactiveShell`, `loginShell`, or `loginInteractiveShell` (default). The specific shell used is based on the default shell for the user (typically bash). For example, bash interactive shells will typically include variables set in `/etc/bash.bashrc` and `~/.bashrc` while login shells usually include variables from `/etc/profile` and `~/.profile`. Setting this property to `loginInteractiveShell` will get variables from all four files. |
-| `postAttachCommand` | string,<br>array | A command string or list of command arguments to run after the `devcontainer.json` supporting service / tool attaches to the container. Use `&&` in a string to execute multiple commands. For example, `"yarn install"` or `"apt-get update && apt-get install -y curl"`. The array syntax `["yarn", "install"]` will invoke the command (in this case `yarn`) directly without using a shell. Not set by default. |
-
-### Variables in attached container configuration files
-
-Variables can be referenced in certain string values in attached configuration files in the following format: **${variableName}**. The following table is a list of available variables you can use.
-
-| Variable | Properties | Description |
-|----------|---------|----------------------|
-| `${containerEnv:VAR_NAME}` | `remoteEnv` | Value of an existing environment variable inside the container (in this case, `VAR_NAME`) once it is up and running. For example: `"remoteEnv": { "PATH": "${containerEnv:PATH}:/some/other/path" }` |

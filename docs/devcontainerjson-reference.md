@@ -1,6 +1,6 @@
 # devcontainer.json reference
 
-A `devcontainer.json` file in your project tells Visual Studio Code (and other services and tools that support the format) how to access (or create) a **development container** with a well-defined tool and runtime stack. It's currently supported by the [Remote - Containers](https://aka.ms/vscode-remote/download/containers) extension and [GitHub Codespaces](https://github.com/features/codespaces).
+A `devcontainer.json` file in your project tells `devcontainer.json` supporting services / tools how to access (or create) a **development container** with a well-defined tool and runtime stack. It's currently supported by the [Remote - Containers](https://aka.ms/vscode-remote/download/containers) extension and [GitHub Codespaces](https://github.com/features/codespaces).
 
 [Set up a folder to run in a container](https://code.visualstudio.com/docs/remote/create-dev-container#_set-up-a-folder-to-run-in-a-container) has more information on configuring a dev container or you can use the **Remote-Containers: Add Development Container Configuration Files...** or **Codespaces: Add Development Container Configuration Files...** commands from the Command Palette (`kbstyle(F1)`) to add a wide variety of base configurations from the [vscode-dev-containers repository](https://github.com/microsoft/vscode-dev-containers/tree/main/containers).
 

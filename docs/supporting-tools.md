@@ -38,3 +38,12 @@ While most properties apply to any `devcontainer.json` supporting tool or servic
 
 Certain properties work differently in Codespaces than other tools.
 
+| Property or variable | Type | Description |
+|----------|---------|----------------------|
+| `mounts` | array | Codespaces ignores "bind" mounts with the exception of the Docker socket. Volume mounts are still allowed.|
+| `workspaceMount` | string | Not yet supported in Codespaces. |
+| `workspaceFolder` | string | Not yet supported in Codespaces. |
+| `forwardPorts` | array | Codespaces does not yet support the `"host:port"` variation of this property. |
+| `portsAttributes` | object | Codespaces does not yet support the `"host:port"` variation of this property.|
+| `shutdownAction` | enum | Does not apply to Codespaces. |
+| `${localEnv:VARIABLE_NAME}` | Any | For Codespaces, the host is in the cloud rather than your local machine.|

@@ -53,14 +53,9 @@ Docker has the concept of "publishing" ports when the container is created. Publ
 | `features` (currently in preview) | object | An object of dev container features and related options to be added into your primary container. The specific options  that are available varies by feature, so see its documentation for additional details. For example: <br />`"features": {"github-cli": "latest"}` <br /><br /> ⚠️ Currently in preview. |
 | `shutdownAction` | enum | Indicates whether `devcontainer.json` supporting tools should stop the containers when the related tool window is closed / shut down.<br>Values are  `none`, `stopContainer` (default for image or Dockerfile), and `stopCompose` (default for Docker Compose).<br /><br /> ⚠️ Does not apply to Codespaces. |
 
-## VS Code specific properties
+## Tool-specific properties
 
-While most properties apply to any `devcontainer.json` supporting tool or service, a few are specific to VS Code.
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `extensions` | array | An array of extension IDs that specify the extensions that should be installed inside the container when it is created. Defaults to `[]`. |
-| `settings` | object | Adds default `settings.json` values into a container/machine specific settings file. Defaults to `{}`. |
+While most properties apply to any `devcontainer.json` supporting tool or service, a few are specific to certain tools. You may explore this in the [supporting tools and services document](/docs/supporting-tools.md/#tool-specific-properties).
 
 ## Lifecycle scripts
 

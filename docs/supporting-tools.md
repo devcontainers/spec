@@ -4,7 +4,7 @@ A `devcontainer.json` file in your project tells tools and services that support
 
 This document outlines tools and services that currently support this format.
 
-## Remote - Containers
+## Visual Studio Code Remote - Containers
 
 The [**Visual Studio Code Remote - Containers** extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) lets you use a [Docker container](https://docker.com) as a full-featured development environment. It allows you to open any folder inside (or mounted into) a container and take advantage of Visual Studio Code's full feature set.
 
@@ -23,3 +23,13 @@ Given the growing number of use cases for dev containers, there is a companion [
 ## Schema
 
 You can see the VS Code implementation of the dev container schema [here](https://github.com/microsoft/vscode/blob/main/extensions/configuration-editing/schemas/devContainer.schema.src.json).
+
+## Tool-specific properties
+While most properties apply to any `devcontainer.json` supporting tool or service, a few are specific to certain tools.
+
+### VS Code specific properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `extensions` | array | An array of extension IDs that specify the extensions that should be installed inside the container when it is created. Defaults to `[]`. |
+| `settings` | object | Adds default `settings.json` values into a container/machine specific settings file. Defaults to `{}`. |

@@ -12,7 +12,7 @@ If you run into an issue using the [Remote - Containers](https://marketplace.vis
 
 If you have a question, connect with the community using any of these social platforms:
 
-[![Twitter](docs/Twitter_Social_Icon_24x24.png)](https://twitter.com/code) [![Stack Overflow](docs/so-image-24x24.png)](https://stackoverflow.com/questions/tagged/vscode) [![VS Code Dev Community Slack](docs/Slack_Mark-24x24.png)](https://aka.ms/vscode-dev-community) [![VS CodeGitter](docs/gitter-icon-24x24.png)](https://gitter.im/Microsoft/vscode)
+[![Twitter](docs/images/Twitter_Social_Icon_24x24.png)](https://twitter.com/code) [![Stack Overflow](docs/images/so-image-24x24.png)](https://stackoverflow.com/questions/tagged/vscode) [![VS Code Dev Community Slack](docs/images/Slack_Mark-24x24.png)](https://aka.ms/vscode-dev-community) [![VS CodeGitter](docs/images/gitter-icon-24x24.png)](https://gitter.im/Microsoft/vscode)
 
 # License
 

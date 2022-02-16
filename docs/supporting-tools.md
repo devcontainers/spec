@@ -27,9 +27,14 @@ You can see the VS Code implementation of the dev container schema [here](https:
 ## Tool-specific properties
 While most properties apply to any `devcontainer.json` supporting tool or service, a few are specific to certain tools.
 
-### VS Code specific properties
+### VS Code
 
 | Property | Type | Description |
 |----------|------|-------------|
 | `extensions` | array | An array of extension IDs that specify the extensions that should be installed inside the container when it is created. Defaults to `[]`. |
 | `settings` | object | Adds default `settings.json` values into a container/machine specific settings file. Defaults to `{}`. |
+
+### GitHub Codespaces
+
+Certain properties work differently in Codespaces than other tools.
+

@@ -45,6 +45,17 @@ Some properties are specific to VS Code. Please note that Codespaces supports th
 | `extensions` | array | An array of extension IDs that specify the extensions that should be installed inside the container when it is created. Defaults to `[]`. |
 | `settings` | object | Adds default `settings.json` values into a container/machine specific settings file. Defaults to `{}`. |
 
+### Product specific limitations
+
+Some properties may also have certain limitations in the Remote - Containers extension.
+
+| Property or variable | Type | Description |
+|----------|------|-------------|
+| `workspaceMount` | string | Not yet supported when using Clone Repository in Container Volume. |
+| `workspaceFolder` | string | Not yet supported when using Clone Repository in Container Volume. |
+| `${localWorkspaceFolder}`  | Any | Not yet supported when using Clone Repository in Container Volume. |
+| `${localWorkspaceFolderBasename}` | Any | Not yet supported when using Clone Repository in Container Volume. |
+
 ## Schema
 
 You can see the VS Code implementation of the dev container schema [here](https://github.com/microsoft/vscode/blob/main/extensions/configuration-editing/schemas/devContainer.schema.src.json).

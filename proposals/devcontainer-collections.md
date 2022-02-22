@@ -39,7 +39,7 @@ The same way creating the definitions/feature file would also be part of the rel
 - Signatures.
 - Date.
 
-## Definitions/features (devcontaienr-feature.json/devcontainer-definition.json)
+## Definitions/features (devcontainer-feature.json/devcontainer-definition.json)
 
 ### Common Properties
 

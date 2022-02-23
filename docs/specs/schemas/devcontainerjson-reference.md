@@ -1,6 +1,6 @@
 # devcontainer.json reference
 
-A `devcontainer.json` file in your project tells [tools and services that support the dev container spec](/docs/supporting-tools.md) how to access (or create) a **development container** with a well-defined tool and runtime stack.
+A `devcontainer.json` file in your project tells [tools and services that support the dev container spec](supporting-tools.md) how to access (or create) a **development container** with a well-defined tool and runtime stack.
 
 ## Scenario specific properties
 
@@ -55,7 +55,7 @@ Docker has the concept of "publishing" ports when the container is created. Publ
 
 ## Tool-specific properties
 
-While most properties apply to any `devcontainer.json` supporting tool or service, a few are specific to certain tools. You may explore this in the [supporting tools and services document](/docs/supporting-tools.md/#tool-specific-properties).
+While most properties apply to any `devcontainer.json` supporting tool or service, a few are specific to certain tools. You may explore this in the [supporting tools and services document](supporting-tools.md).
 
 ## Lifecycle scripts
 

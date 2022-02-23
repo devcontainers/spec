@@ -49,6 +49,7 @@ The same way creating the definitions/feature file would also be part of the rel
 | displayName | string | Name of the feature/definition |
 | shortDescription | string | Optional one sentence description |
 | description | string | Description of the feature/definition |
+| metadata | any | Freeform data added by users for their own purposes. |
 | repositoryPath | string | Path to the repository and folder that contains the root of the code for the feature/definition. |
 | keywords | array | List of keywords relevant to a user that would search for this definition/feature. |
 | version | string | Versioning information for the feature/definition. |
@@ -59,17 +60,18 @@ The same way creating the definitions/feature file would also be part of the rel
 | Property | Type | Description |
 | :--- | :--- | :--- |
 | type | string | singleContainer/orchestrated |
-| categories | string | The categories where it belongs |
-| architectures | string | Supported architectures |
-| baseOs | string | The operating system in which the definition is based |
 | options | array | List of user selected options at the moment the user selects them in a client application. |
-| styles | array | Variations of the generated definition that contain different information. (e.g. with example code or data.) |
+| variants | array | Variations of the generated definition that contain different information. (e.g. with example code or data.) |
+
+Variants:
+| Property | Type | Description |
+| :--- | :--- | :--- |
+| name | string | Name of the variant |
+| description | string | Short description of the variant |
 
 ### Features
 
-| Property | Type | Description |
-|:--- |:--- |:--- |
-| requires | array | List of features that are required for this feature to work. |
+TODO: Add properties related to references/dependencies.
 
 # IDs
 
@@ -86,7 +88,9 @@ Search would be implemented by client applications but the definitions themselve
 - Dependencies. Bare metal, Azure, AWS, etc.
 - Organization. 
 
-This keywords would allow users to add search information easily like versions or more details to refine searches. (e.g. Python2 vs Python3)
+This keywords would allow users to add search information easily like versions or more details to refine searches. (e.g. Python2 vs Python3).
+
+A list of well known keywords could be maintained, including suggested keywords and keywords defined by clients to add the search.
 
 # Example
 

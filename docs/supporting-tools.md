@@ -4,9 +4,9 @@ This page outlines tools and services that currently support the development con
 
 While most [dev container properties](devcontainerjson-reference.md) apply to any supporting tool or service, a few are specific to certain tools, which are outlined below.
 
-## devcontainer CLI
+## Dev container CLI
 
-Given the growing number of use cases for dev containers, there is a companion [devcontainer command line interface](https://code.visualstudio.com/docs/remote/devcontainer-cli) (CLI) that can be used independent of the Remote - Containers extension or GitHub Codespaces.
+Given the growing number of use cases for dev containers, there is a companion dev container command line interface (CLI) that can be used independent of specific tools or editors. The publishing of this CLI is being discussed in an [issue](https://github.com/microsoft/dev-container-spec/issues/9).
 
 ## GitHub Codespaces
 
@@ -53,6 +53,10 @@ Some properties may also have certain limitations in the Remote - Containers ext
 | `workspaceFolder` | string | Not yet supported when using Clone Repository in Container Volume. |
 | `${localWorkspaceFolder}`  | Any | Not yet supported when using Clone Repository in Container Volume. |
 | `${localWorkspaceFolderBasename}` | Any | Not yet supported when using Clone Repository in Container Volume. |
+
+## Remote - Containers CLI
+
+There is a Remote - Containers [`devcontainer` CLI](https://code.visualstudio.com/docs/remote/devcontainer-cli) which may be installed within Remote - Containers or through the command line.
 
 ## Schema
 

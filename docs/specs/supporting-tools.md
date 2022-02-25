@@ -6,7 +6,9 @@ While most [dev container properties](devcontainerjson-reference.md) apply to an
 
 ## Dev container CLI
 
-Given the growing number of use cases for dev containers, there is a companion dev container command line interface (CLI) that can be used independent of specific tools or editors. The publishing of this CLI is being discussed in an [issue](https://github.com/microsoft/dev-container-spec/issues/9).
+There will be a dev container command line interface (CLI) that can take a `devcontainer.json` and create and configure a dev container from it.
+
+The publishing of this CLI is being discussed in an [issue](https://github.com/microsoft/dev-container-spec/issues/9).
 
 ## GitHub Codespaces
 

@@ -16,9 +16,12 @@ A [codespace](https://docs.github.com/en/codespaces/overview) is a development e
 
 > **Tip:** If you've already built a codespace and connected to it, be sure to run **Codespaces: Rebuild Container** from the Command Palette (`kbstyle(F1)`) to pick up any changes you make.
 
+### Product specific properties
+GitHub Codespaces works with a growing number of tools and, where applicable, their `devcontainer.json` properties. For example, connecting the Codespaces web editor or VS Code enables the use of [VS Code properties](#visual-studio-code-remote---containers).
+
 ### Product specific limitations
 
-Some properties may apply differently to Codespaces. Please note that Codespaces, both through the Codespaces web editor and VS Code client, and supports [VS Code properties](#visual-studio-code-remote---containers).
+Some properties may apply differently to Codespaces.
 
 | Property or variable | Type | Description |
 |----------|---------|----------------------|

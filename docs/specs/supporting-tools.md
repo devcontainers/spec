@@ -18,7 +18,7 @@ A [codespace](https://docs.github.com/en/codespaces/overview) is a development e
 
 ### Product specific limitations
 
-Some properties may apply differently to Codespaces. Please note that Codespaces supports [VS Code properties](#visual-studio-code-remote---containers).
+Some properties may apply differently to Codespaces. Please note that Codespaces, both through the Codespaces web editor and VS Code client, and supports [VS Code properties](#visual-studio-code-remote---containers).
 
 | Property or variable | Type | Description |
 |----------|---------|----------------------|

@@ -1,6 +1,6 @@
 # Development Containers
 
-This repository is for issues to shape the direction of development containers and the development container CLI.
+This repository is for the Development Container Specification.
 
 A development container allows you to use a Docker container as a full-featured development environment. It can be used to run an application, to separate tools, libraries, or runtimes needed for working with a codebase, and to aid in continuous integration and testing.
 

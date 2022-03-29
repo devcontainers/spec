@@ -5,7 +5,7 @@ We're excited for your contributions to the dev container specification! This do
 ## Contribution approaches
 
 - Propose the change via an [issue](https://github.com/microsoft/dev-container-spec/issues) in this repository. Try to get early feedback before spending too much effort formalizing it.
-- More formally document the proposed change in terms of properties and their semantics. Look to format your proposal like our [devcontainer.json reference](https://aka.ms/devcontainer.json).
+- More formally document the proposed change in terms of properties and their semantics. Look to format your proposal like our [devcontainer.json reference](https://aka.ms/devcontainer.json), which is a JSON with Comments (jsonc) format.
 
 Here is a sample:
 

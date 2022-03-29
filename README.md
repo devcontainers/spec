@@ -10,8 +10,6 @@ The first format in the specification, devcontainer.json, was born out of necess
 
 Beyond repeatable setup, these same development containers provide consistency to avoid environment specific problems across developers and centralized build and test automation services. You will be able to use the [upcoming open-source CLI reference implementation](https://github.com/microsoft/dev-container-spec/issues/9) either directly or integrated into product experience to use the structured metadata to deliver these benefits. It currently supports integrating with Docker Compose and a simplified, un-orchestrated single container option – so that they can be used as coding environments or for continuous integration and testing.
 
-You may also review the [Development Containers Specification site](https://aka.ms/dev-container-site).
-
 ## Contributing and Feedback
 
 If you are interested in contributing, please check out the [How to Contribute](contributing.md) document.

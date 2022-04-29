@@ -45,6 +45,8 @@ The properties of the file are as follows:
 | id | string | Id of the feature/definition. The id should be unique in the context of the repository/published package where they exist. |
 | name | string | Name of the feature/definition |
 | description | string | Description of the feature/definition |
+| documentationURL | string | Url that targets the documentation of the feature. |
+| licenseURL | string | Url that points to the license of the feature. |
 | version | string | Version of the feature. |
 | metadata | any | Freeform data added by users for their own purposes. |
 | keywords | array | List of keywords relevant to a user that would search for this definition/feature. |

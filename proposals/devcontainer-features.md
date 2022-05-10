@@ -4,7 +4,7 @@ Dev container features provide a smooth path for customizing your container defi
 
 From a practical point of view, features are folders that contain units of code with different entrypoints for different lifecycle events.
 
-Features can be defined by a `feature.json` file in the root folder of the feature. The file is optional for backwards compatibility but it is required for any new features being authored.
+Features can be defined by a `devcontainer-feature.json` file in the root folder of the feature. The file is optional for backwards compatibility but it is required for any new features being authored.
 
 Features are to be executed in sequence as defined in `devcontainer.json`.
 
@@ -14,17 +14,16 @@ A feature is a self contained entity in a folder. A feature release would be a t
 
 +-- feature
 |    +-- feature.json
-|    +-- validate.sh (default)
 |    +-- aquire.sh (default)
 |    +-- install.sh (default)
 |    +-- (other files)
 
-In case `feature.json`  does not include a reference for the lifecycle scripts the application will look for the default script names and will execute them if available.
+In case `devcontainer-feature.json`  does not include a reference for the lifecycle scripts the application will look for the default script names and will execute them if available.
 
 In case there is intent to create a set of features that share code, it is possible to create a feature collection in the following way:
 
 collectionFolder
-+-- feature-collection.json
++-- devcontainer.collection.json
 +-- common (or similar)
 |    +-- (library files)
 +-- feature1
@@ -36,7 +35,7 @@ collectionFolder
 
 ## feature.json properties
 
-the `feature.json` file defines information about the feature to be used by any tool that helps a user utilize them, and the way the feature will be executed.
+the `devcontainer-feature.json` file defines information about the feature to be used by any tool that helps a user utilize them, and the way the feature will be executed.
 
 The properties of the file are as follows:
 
@@ -50,8 +49,8 @@ The properties of the file are as follows:
 | version | string | Version of the feature. |
 | metadata | any | Freeform data added by users for their own purposes. |
 | keywords | array | List of keywords relevant to a user that would search for this definition/feature. |
-| install.app | string | App to execute.ll (Optional, defaults to /bin/sh) |
-| install.file | string | Parameters/script to execute. (Defaults to validate.sh) |
+| install.app | string | App to execute.|
+| install.file | string | Parameters/script to execute |
 | options | object | Possible options to be passed as environment variables to the execution of the scripts |
 | containerEnv | object | A set of name value pairs that sets or overrides environment variables. |
 | privileged | boolean | If preveleged mode is required by the feature. |
@@ -70,11 +69,11 @@ Options
 | id.default | string | default value for the option |
 | id.description | string | Description for the option |
 
-## feature-collection.json properties.
+## devcontainer-collection.json properties.
 
-A feature collection file is a compilation of the `feature.json` files for each individual feature.
+A feature collection file is a compilation of the `devcontainer-feature.json` files for each individual feature. It inlines all the information in each `devcontainer-feature.json` for each feature.
 
-If the application finds a `feature-collection.json` file in the root of a downloaded tar file then it uses that file as to find the particular feature that will be executed.
+If the application finds a `devcontainer-collection.json` file in the root of a downloaded tar file then it uses that file as to find the particular feature that will be executed.
 
 In addition to the list of features included, the file includes the following properties.
 
@@ -84,7 +83,7 @@ In addition to the list of features included, the file includes the following pr
 | reference | string | Reference information of the repository and path where the code is stored. |
 | version | string | Version of the code. |
 
-In most cases the `feature-collection.json` file can be generated automatically at the moment of creating a release.
+In most cases the `devcontainer-collection.json` file can be generated automatically at the moment of creating a release.
 
 ## devcontainer.json properties
 
@@ -109,7 +108,7 @@ The `id` is the main reference point for how to find and download a particular f
 
 Features can be authored in a number of languages, the most straight forward being bash scripts. If a feature is authored in a different language information about it should be included in the metadata so that users can make an informed choice about it.
 
-Reference information about the application required to execute the feature should be included in `feature.json` in the metadata section.
+Reference information about the application required to execute the feature should be included in `devcontainer-feature.json` in the metadata section.
 
 Applications should default to `/bin/sh` for features that do not include this information.
 
@@ -122,7 +121,7 @@ A release is created when the objective is to have other users use a feature.
 A release consists of the following:
 
 1.- Tar file with all the included files for the feature or feature collection.
-2.- A copy of the `feature.json` or `feature-collection.json` file that defines the contents of the tar file with additional information added to validate it:
+2.- A copy of the `devcontainer-feature.json` or `devcontainer-collection.json` file that defines the contents of the tar file with additional information added to validate it:
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
@@ -138,6 +137,6 @@ The application that implements features should:
 - Features are used to create an image that can be used to create a container or not.
 - Parameters like `privileged`, ``init` are included if just 1 feature requires them.
 - Parameters like `capAdd`, `securityOp`  are concatenated.
-- ContainerEnv is added before the feature is executed and persisted.
-
-TODO
+- ContainerEnv is added before the feature is executed as `ENV` commands in the docker file.
+- Features are added to an image in two passes. One for `aquire` scripts and another for `install` scripts.
+- Each script executes as its own layer to aid in caching and rebuilding.

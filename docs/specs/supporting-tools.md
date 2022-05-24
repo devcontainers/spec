@@ -18,7 +18,6 @@ Visual studio code specific properties go under `vscode` inside `customizations`
 			// Set *default* container specific settings.json values on container create.
 			"settings": {},
 			"extensions": [],
-			]
 		}
 }
 ```

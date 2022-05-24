@@ -1,14 +1,14 @@
 # Dev container specification
 
-The purpose of the **development container** specification is to provide a way to enrich containers with the needed content and metadata necessary to enable development inside them. This container **environments** should be easy to use, create and easy to recreate. 
+The purpose of the **development container** specification is to provide a way to enrich containers with the content and metadata necessary to enable development inside them. These container **environments** should be easy to use, create, and recreate. 
 
-A **development container** is a container that a user can use to develop an application inside of.  Additionally, tools that want to implement this specification should provide a set of features/commands that give more flexibility to users and allow **development containers** to scale to large development groups.
+A **development container** is a container in which a user can develop an application.  Tools that want to implement this specification should provide a set of features/commands that give more flexibility to users and allow **development containers** to scale to large development groups.
 
-An **environment** is defined as a logical instance of one or more **development containers** along with any needed side-car containers based on one set of metadata that can be managed as a single unit. Users can create multiple **environments** from the same configuration metadata for different purposes.
+An **environment** is defined as a logical instance of one or more **development containers**, along with any needed side-car containers. An environment is based on one set of metadata that can be managed as a single unit. Users can create multiple **environments** from the same configuration metadata for different purposes.
 
-Historically dev containers have been used to enable a development workflow used either locally or on the cloud and have been focused on using **Docker** or **docker-compose**. The intent of this specification and related tools is to expand the reach of **development containers**, allow the usage of containers by themselves or different orchestration technologies, and allow any tool to manage and create them.
+Historically, dev containers have been used to enable a development workflow used either locally or in the cloud, and they've been focused on using **Docker** or **Docker Compose**. The intent of this specification and related tools is to expand the reach of **development containers**, allow the usage of containers by themselves or different orchestration technologies, and allow any tool to manage and create them.
 
-The focus of the dev container specification is to describe how to enrich a container for the purposes of development rather than acting as a multi-container orchestrator format.  Container orchestrator formats can be referenced, when needed, to manage multiple containers and the **Development container** lifecycle. Today, `devcontainer.json` includes scenario specific properties for working without a container orchestrator (by directly referencing an image or Dockerfile) and for using Docker Compose as a simple multi-container orchestrator.
+The focus of the dev container specification is to describe how to enrich a container for the purposes of development, rather than acting as a multi-container orchestrator format.  Container orchestrator formats can be referenced, when needed, to manage multiple containers and the **development container** lifecycle. Today, `devcontainer.json` includes scenario-specific properties for working without a container orchestrator (by directly referencing an image or Dockerfile) and for using Docker Compose as a simple multi-container orchestrator.
 
 # Metadata
 

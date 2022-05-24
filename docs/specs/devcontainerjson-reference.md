@@ -21,6 +21,7 @@ The default locations of `devcontainer.json` file are relative to the `workspace
 | `overrideCommand` | boolean | Tells `devcontainer.json` supporting services / tools whether they should run `/bin/sh -c "while sleep 1000; do :; done"` when starting the container instead of the container's default command (since the container can shut down if the default command fails). Set to `false` if the default command must run for the container to function properly. Defaults to `true` for when using an image Dockerfile and `false` when referencing a Docker Compose file. |
 | `features` (currently in preview) | object | An object of dev container features and related options to be added into your primary container. The specific options  that are available varies by feature, so see its documentation for additional details. For example: <br />`"features": {"github-cli": "latest"}` <br /><br /> ⚠️ Currently in preview. |
 | `shutdownAction` | enum | Indicates whether `devcontainer.json` supporting tools should stop the containers when the related tool window is closed / shut down.<br>Values are  `none`, `stopContainer` (default for image or Dockerfile), and `stopCompose` (default for Docker Compose). |
+| `customizations` | object | Product specific properties, defined in [supporting tools](supporting-tools.md) |
 
 ## Image or Dockerfile specific properties
 

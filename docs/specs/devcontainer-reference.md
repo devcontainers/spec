@@ -22,6 +22,14 @@ The current metadata schema for **development containers** is contained in a `de
 
 The `devcontainer.json` specification contains different configuration options related to the underlying orchestrator format. At the same time, this specification leaves space for further development and implementation of other orchestrator mechanisms and file formats.
 
+While this metadata may be provided in different ways, when searching for a devcontainer.json file, products should expect to find a devcontainer.json file in one or more of the following locations (in order of precedence):
+
+.devcontainer/devcontainer.json
+.devcontainer.json
+.devcontainer/**/devcontainer.json (where ** is a sub-folder)
+
+It is valid that these files may exist in more than one location, so consider providing a mechanism for users to select one when appropriate.
+
 
 # Configuration options
 
@@ -103,6 +111,7 @@ The tasks executed when validating the configuration are:
 
 ## Environment Creation
 
+The creation process goes through the steps necesarry to go from the user configuration to a working **environment** that is ready to be used.
 
 ### Initialization
 

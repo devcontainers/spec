@@ -15,6 +15,18 @@ Visual studio code specific properties go under `vscode` inside `customizations`
 | `extensions` | array | An array of extension IDs that specify the extensions that should be installed inside the container when it is created. Defaults to `[]`. |
 | `settings` | object | Adds default `settings.json` values into a container/machine specific settings file. Defaults to `{}`. |
 
+```
+"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Set *default* container specific settings.json values on container create.
+			"settings": { },
+            "extensions": {},
+			]
+		}
+}
+```
+
 Please note that [Remote - Containers](#visual-studio-code-remote---containers) and [GitHub Codespaces](#github-codespaces) support the VS Code properties.
 
 ## Tools

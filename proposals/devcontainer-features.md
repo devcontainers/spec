@@ -12,26 +12,30 @@ Features are to be executed in sequence as defined in `devcontainer.json`.
 
 A feature is a self contained entity in a folder. A feature release would be a tar file that contains all files part of the feature.
 
+```
 +-- feature
 |    +-- devcontainer-feature.json
-|    +-- aquire.sh (default)
 |    +-- install.sh (default)
 |    +-- (other files)
+```
 
 In case `devcontainer-feature.json`  does not include a reference for the lifecycle scripts the application will look for the default script names and will execute them if available.
 
 In case there is intent to create a set of features that share code, it is possible to create a feature collection in the following way:
 
+```
 collectionFolder
 +-- devcontainer-collection.json
 +-- common (or similar)
 |    +-- (library files)
 +-- feature1
 |    +-- devcontainer-feature.json
-|    +-- install.sh (or others)
+|    +-- install.sh
 |    +-- (other files)
 +-- feature2
 (etc)
+```
+
 
 ## devcontainer-feature.json properties
 

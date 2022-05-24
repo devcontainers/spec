@@ -17,6 +17,25 @@ Here is a sample:
 
 Once there is discussion on your proposal, please also open and link a PR to update the [devcontainer.json reference doc](https://github.com/microsoft/vscode-docs/blob/main/docs/remote/devcontainerjson-reference.md). When your proposal is merged, the docs will be kept up-to-date with the latest spec.
 
+### Contributing tool-specific support
+
+Tool-specific properties are contained in namespaces in the `"customizations"` property. For instance, VS Code specific properties are formated as:
+
+```bash
+// Configure tool-specific properties.
+"customizations": {
+     // Configure properties specific to VS Code.
+     "vscode": {
+          // Set *default* container specific settings.json values on container create.
+          "settings": {},
+			
+          // Additional VS Code specific properties...
+     }
+},
+```
+
+You may propose adding a new namespace for a specific tool, and any properties specific to that tool.
+
 ## Review process
 
 We use the following [labels](https://github.com/microsoft/dev-container-spec/labels):

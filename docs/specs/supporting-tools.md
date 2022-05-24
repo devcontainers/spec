@@ -33,7 +33,7 @@ Please note that [Remote - Containers](#visual-studio-code-remote---containers) 
 
 ### Dev container CLI
 
-A dev container command line interface (CLI) that implements this specification is in development [here](https://github.com/devcontainers/cli).
+A dev container command line interface (CLI) that implements this specification. It is in development in the [devcontainers/cli](https://github.com/devcontainers/cli) repo.
 
 ### Remote - Containers CLI
 

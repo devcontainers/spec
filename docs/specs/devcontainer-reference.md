@@ -20,23 +20,22 @@ A **development container** is composed of a definition (e.g. contained in a `de
 
 The current metadata schema for **development containers** is contained in a `devcontainer.json` file.
 
-The `devcontainer.json` specification contains different configuration options related to the underlying orchestrator format. At the same time this specification leaves space for further development and implementation of other orchestrator mechanisms and file formats.
+The `devcontainer.json` specification contains different configuration options related to the underlying orchestrator format. At the same time, this specification leaves space for further development and implementation of other orchestrator mechanisms and file formats.
 
 
 # Configuration options
 
-**Development containers** currently supports multiple ways to specify the containers that create an environment. The following section describes the differences between them.
+**Development containers** currently support multiple ways to specify the containers that create an environment. The following section describes the differences between them.
 
 ## Image based
 
-Image based configurations only reference an image that should be reachable and downloadable through `docker pull` commands. Logins and tokens required for these operations are execution environment specific.. The only required parameter is `image` . The details are [here](devcontainerjson-reference.md#image-or-dockerfile-specific-properties).
-
+Image based configurations only reference an image that should be reachable and downloadable through `docker pull` commands. Logins and tokens required for these operations are execution environment specific. The only required parameter is `image`. The details are [here](devcontainerjson-reference.md#image-or-dockerfile-specific-properties).
 
 ## Dockerfile based
 
-These configurations are defined as using a `Dockerfile` to define the starting point of the **development containers**. As with image based configurations, it is assumed that any base images are already reachable by **docker** when performing a `docker build` command. The only required parameter in this case is the relative reference to the `Dockerfile` in `build.dockerfile`. The details are [here](devcontainerjson-reference.md#image-or-dockerfile-specific-properties).
+These configurations are defined as using a `Dockerfile` to define the starting point of the **development containers**. As with image based configurations, it is assumed that any base images are already reachable by **Docker** when performing a `docker build` command. The only required parameter in this case is the relative reference to the `Dockerfile` in `build.dockerfile`. The details are [here](devcontainerjson-reference.md#image-or-dockerfile-specific-properties).
 
-There are multiple properties that allow users to control `docker build` works:
+There are multiple properties that allow users to control how `docker build` works:
 
 - `build.context` 
 - `build.args`
@@ -45,41 +44,41 @@ There are multiple properties that allow users to control `docker build` works:
 
 ## Docker Compose based
 
-Docker compose configurations utilize `docker-compose`  to create and manage a set of containers required for an application. As with the other configurations, any images required for this operation are assumed to be reachable. The required parameters are:
+Docker Compose configurations use `docker-compose` to create and manage a set of containers required for an application. As with the other configurations, any images required for this operation are assumed to be reachable. The required parameters are:
 
-- `build.dockerComposeFile`  the reference to the docker-compose file(s) to be used.
-- `service`  this tag declares the **main** container that will be used for all other operations. Tools are assumed to also use this parameter to connect to the **development container** although they can provide facilities to connect to the other containers as required by the user.
+- `build.dockerComposeFile`: the reference to the Docker Compose file(s) to be used.
+- `service`: declares the **main** container that will be used for all other operations. Tools are assumed to also use this parameter to connect to the **development container**, although they can provide facilities to connect to the other containers as required by the user.
 
 It is important to remark that due to how `docker-compose` works a lot of the properties that apply to **image** and **dockerfile** configurations can’t be set by the application and thus must be set up manually by the user using the `docker-compose` format itself.
 
--`runServices` are the set of services in the `docker-compose` configuration that should be started or stopped with the environment.
+-`runServices`: the set of services in the `docker-compose` configuration that should be started or stopped with the environment.
 
 # Other options
 
-In addition to the configuration options explained above there are other settings that apply when creating the **development containers** to facilitate their use by developers. These properties mostly apply to **image** and **dockerfile** based configurations.
+In addition to the configuration options explained above, there are other settings that apply when creating **development containers** to facilitate their use by developers. These properties mostly apply to **image** and **Dockerfile** based configurations.
 
-The main ones are:
+We describe the main ones below.
 
 ## Environment Variables
 
 Environment variables can be set in containers at creation time, to override existing ones, or just to be used when a supporting tool connects to the environment.
 
 There are two kinds of environment variables:
-Container. These variables are part of the container when it is created and are available at all points in its lifecycle.
-Remote. This variables are to be set by a **development container** supporting tool as part of its environment when it runs. This variables can change during the lifetime of the container.
+* Container: These variables are part of the container when it is created and are available at all points in its lifecycle.
+* Remote: This variables are to be set by a **development container** supporting tool as part of its environment when it runs. These variables can change during the lifetime of the container.
 
 ## Mounts
 
 Mounts allow containers to have access to the underlying machine, share data between containers and to persist information between **development containers**. 
 
-It is important to note that these mounts are from the underlying compute environment and thus in cloud environments might not have access to the same data as a local machine.
+It is important to note that these mounts are from the underlying compute environment and thus cloud environments might not have access to the same data as a local machine.
 
 ## Users
 
-Users control the permissions of applications executed in the containers, allowing the developer to control them. The specification takes into account two types of user definuitions:
+Users control the permissions of applications executed in the containers, allowing the developer to control them. The specification takes into account two types of user definitions:
 
-Container User. The user that will be used for all operations that run inside a container. It is used to run lifecycle commands among others.
-Remote User. In case the developer wants to use different users for different purposes, the remote user is the user that connecting tools should use to execute operations inside the container.
+* Container User: The user that will be used for all operations that run inside a container. It is used to run lifecycle commands among others.
+* Remote User: In case the developer wants to use different users for different purposes, the remote user is the user that connecting tools should use to execute operations inside the container.
 
 
 # Lifecycle
@@ -107,13 +106,13 @@ The tasks executed when validating the configuration are:
 
 ### Initialization
 
-During this step the following is executed:
+During this step, the following is executed:
 - Validate access to the container orchestrator specified by the configuration.
 - Execution of `initializeCommand`.
 
 ### Image creation
 
-The first part of an environment creation is generating the final image(s) that the **development containers** are going to use. This step is orchestrator dependent and can consist of just pulling a docker image, running docker build, or docker-compose build. Additionally this step is useful on its own since it permits the creation of intermediate images that can be uploaded and used by other users and thus cut down on creation time. It is encouraged that tools implementing this specification give access to a command that just executes this step.
+The first part of environment creation is generating the final image(s) that the **development containers** are going to use. This step is orchestrator dependent and can consist of just pulling a Docker image, running Docker build, or docker-compose build. Additionally, this step is useful on its own since it permits the creation of intermediate images that can be uploaded and used by other users, thus cutting down on creation time. It is encouraged that tools implementing this specification give access to a command that just executes this step.
 
 This step executes the following:
 
@@ -123,7 +122,7 @@ This step executes the following:
 
 ### Container Creation
 
-After image creation containers are created based on that image and setup.
+After image creation, containers are created based on that image and setup.
 
 This step executes the following:
 
@@ -132,8 +131,8 @@ This step executes the following:
 
 ### Post Container Creation
 
-- At the end of the container creation step, a set of commands are executed inside the **main** container `on-create-command`, `update-content-command` and `post-create-command`. This set of commands are executed in sequence on a container the first time its created and depending on the creation parameters received, [see Devcontainer.json Reference - Lifecycle Scripts](devcontainerjson-reference.md#lifecycle-scripts) to learn more. By default `post-create-command` is executed in the background after reporting the successful creation of the development environment.
-- If the `wait-for` property is defined then execution should stop at the specified property.
+- At the end of the container creation step, a set of commands are executed inside the **main** container: `on-create-command`, `update-content-command` and `post-create-command`. This set of commands is executed in sequence on a container the first time it's created and depending on the creation parameters received. You can learn more in the [documentation on lifecycle scripts](devcontainerjson-reference.md#lifecycle-scripts). By default, `post-create-command` is executed in the background after reporting the successful creation of the development environment.
+- If the `wait-for` property is defined, then execution should stop at the specified property.
 
 ## Environment Stop
 
@@ -141,4 +140,4 @@ Stops all containers in the environment. The intention of this step is to ensure
 
 ## Environment Restart
 
-After an environment has been stopped the containers are restarted according to the orchestrator defined. Additionally `post-start-command` is executed in the **main** container.
+After an environment has been stopped, the containers are restarted according to the orchestrator defined. Additionally, `post-start-command` is executed in the **main** container.

@@ -11,7 +11,7 @@ While most [dev container properties](devcontainerjson-reference.md) apply to an
 Visual studio code specific properties go under `vscode` inside `customizations`.
 
 
-```json
+```jsonc
 "customizations": {
 		// Configure properties specific to VS Code.
 		"vscode": {
@@ -72,7 +72,7 @@ GitHub Codespaces works with a growing number of tools and, where applicable, th
 
 If your Codespaces project needs additional permissions for other repositories, you can configure this through the `repositories` and `permissions` properties. You may learn more about this in the [Codespaces documentation](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-repository-access-for-your-codespaces). As with other tools, Codespaces specific properties are placed within a `codespaces` namespace inside the `customizations` property.
 
-```json
+```jsonc
 "customizations": {
 		// Configure properties specific to Codespaces.
 		"codespaces": {

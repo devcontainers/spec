@@ -79,7 +79,8 @@ If your Codespaces project needs additional permissions for other repositories, 
 			"repositories": {
 				"my_org/my_repo": {
 					"permissions": {
-						"issues": "write"
+						"issues": "write",
+						"contents": "read"
 					}
 				}
 			}

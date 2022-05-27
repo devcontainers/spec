@@ -79,6 +79,7 @@ While `devcontainer.json` does not focus on hardware or VM provisioning, it can 
 | Property | Type | Description |
 |----------|------|-------------|
 | `hostRequirements.cpus` | integer | Indicates the minimum required number of CPUs / virtual CPUs / cores. For example: `"hostRequirements": {"cpus": 2}` |
+| `hostRequirements.gpus` | integer | Indicates the minimum required number of GPU cores. For example: `"hostRequirements": {"cpus": 2}` |
 | `hostRequirements.memory` | string |  A string indicating minimum memory requirements with a `tb`, `gb`, `mb`, or `kb` suffix. For example, `"hostRequirements": {"memory": "4gb"}` |
 | `hostRequirements.storage` | string | A string indicating minimum storage requirements with a `tb`, `gb`, `mb`, or `kb` suffix. For example, `"hostRequirements": {"storage": "32gb"}` |
 

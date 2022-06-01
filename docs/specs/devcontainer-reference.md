@@ -24,9 +24,9 @@ The `devcontainer.json` specification contains different configuration options r
 
 While this metadata may be provided in different ways, when searching for a devcontainer.json file, products should expect to find a devcontainer.json file in one or more of the following locations (in order of precedence):
 
-.devcontainer/devcontainer.json
-.devcontainer.json
-.devcontainer/**/devcontainer.json (where ** is a sub-folder)
+- .devcontainer/devcontainer.json
+- .devcontainer.json
+- .devcontainer/**/devcontainer.json (where ** is a sub-folder)
 
 It is valid that these files may exist in more than one location, so consider providing a mechanism for users to select one when appropriate.
 
@@ -81,13 +81,19 @@ Mounts allow containers to have access to the underlying machine, share data bet
 
 It is important to note that these mounts are from the underlying compute environment and thus cloud environments might not have access to the same data as a local machine.
 
+## Workspace folder
+
+The `workspace-folder` is used for the purpose of identifying the path where the configuration files are found. This path is also automatically included in the mounted folders for the container. This mount is by default created pointing to `/workspace` but can be modified with the [`workspaceMount` and `workspaceFolder`](devcontainerjson-reference.md#image-or-dockerfile-specific-properties) properties.
+
+> [!NOTE]
+> Its important that this is not considered in the case of [Docker compose](#docker-compose-based).
+
 ## Users
 
 Users control the permissions of applications executed in the containers, allowing the developer to control them. The specification takes into account two types of user definitions:
 
-* Container User: The user that will be used for all operations that run inside a container. It is used to run lifecycle commands among others.
-* Remote User: In case the developer wants to use different users for different purposes, the remote user is the user that connecting tools should use to execute operations inside the container.
-
+* Container User: The user that will be used for all operations that run inside a container. This allows the ENTRYPOINT for the image to execute with different permissions than the developer.
+* Remote User: Is used to run the [lifecycle](#lifecycle) scripts insde the container. Also this is the user that tools and editors that connect to the container should use to run their processes.
 
 # Lifecycle
 
@@ -140,8 +146,9 @@ This step executes the following:
 
 ### Post Container Creation
 
-- At the end of the container creation step, a set of commands are executed inside the **main** container: `on-create-command`, `update-content-command` and `post-create-command`. This set of commands is executed in sequence on a container the first time it's created and depending on the creation parameters received. You can learn more in the [documentation on lifecycle scripts](devcontainerjson-reference.md#lifecycle-scripts). By default, `post-create-command` is executed in the background after reporting the successful creation of the development environment.
-- If the `wait-for` property is defined, then execution should stop at the specified property.
+- At the end of the container creation step, a set of commands are executed inside the **main** container: `onCreateCommand`, `updateContentCommand` and `postCreateCommand`. This set of commands is executed in sequence on a container the first time it's created and depending on the creation parameters received. You can learn more in the [documentation on lifecycle scripts](devcontainerjson-reference.md#lifecycle-scripts). By default, `postCreateCommand` is executed in the background after reporting the successful creation of the development environment.
+- If the `waitFor` property is defined, then execution should stop at the specified property.
+- `userEnvProbe` is used to define the way environment variables are read from the container before executing the lifecycle hooks.
 
 ## Environment Stop
 
@@ -149,4 +156,4 @@ Stops all containers in the environment. The intention of this step is to ensure
 
 ## Environment Restart
 
-After an environment has been stopped, the containers are restarted according to the orchestrator defined. Additionally, `post-start-command` is executed in the **main** container.
+After an environment has been stopped, the containers are restarted according to the orchestrator defined. Additionally, `postStartCommand` is executed in the **main** container.

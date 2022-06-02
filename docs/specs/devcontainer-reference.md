@@ -85,15 +85,14 @@ It is important to note that these mounts are from the underlying compute enviro
 
 The `workspace-folder` is used for the purpose of identifying the path where the configuration files are found. This path is also automatically included in the mounted folders for the container. This mount is by default created pointing to `/workspace` but can be modified with the [`workspaceMount` and `workspaceFolder`](devcontainerjson-reference.md#image-or-dockerfile-specific-properties) properties.
 
-> [!NOTE]
-> Its important that this is not considered in the case of [Docker compose](#docker-compose-based).
+> **Note**: It's important that this is not considered in the case of [Docker Compose](#docker-compose-based).
 
 ## Users
 
 Users control the permissions of applications executed in the containers, allowing the developer to control them. The specification takes into account two types of user definitions:
 
 * Container User: The user that will be used for all operations that run inside a container. This allows the ENTRYPOINT for the image to execute with different permissions than the developer.
-* Remote User: Is used to run the [lifecycle](#lifecycle) scripts insde the container. Also this is the user that tools and editors that connect to the container should use to run their processes.
+* Remote User: Used to run the [lifecycle](#lifecycle) scripts inside the container. This is also the user tools and editors that connect to the container should use to run their processes.
 
 # Lifecycle
 

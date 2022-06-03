@@ -39,10 +39,7 @@ Features and/or templates can be distributed both as a single unit or as a **col
 It's important to note the following about collections:
 
 - It is recomended that they are created automatically as part of the release process.
-- Ids would get the collection repository added to them. (e.g. for 'https://github.com/community/features' then 'community/features' to 'myfeature1' for a feature with that id)
-- The links to the release files would be added.
-- Date.
-- Version.
+- When a **devcontainer-collection.json** file is created, the Id's of the features/templates should get the name of the collection added to them to aid in the search for the source. For example, in repository 'https://github.com/community/features' for a collection called 'collection', the resulting id would be 'community/features/collection/myFeature'.
 
 ## Templates specifics
 
@@ -68,4 +65,4 @@ The **devcontainer.lock** contains an array of:
 | options | string | The same options object passed to the feature in `devcontainer.json`.|
 | checksum | string | The checksum of the downloaded compressed release file.|
 
-It is important to note that, like in `devcontainer.json`  features can appear more than one time and are assumed to be in the same order.
+The specification supports executing features multiple times with different options. This can be useful when a user wants to install multiple versions of sdk's, or simply execute whatever changes the feature makes to the operating system multiple times.

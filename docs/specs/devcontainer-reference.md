@@ -81,11 +81,17 @@ Mounts allow containers to have access to the underlying machine, share data bet
 
 It is important to note that these mounts are from the underlying compute environment and thus cloud environments might not have access to the same data as a local machine.
 
-## Workspace folder
+A default mount is included so that the source code is accessible from inside the container. Inside the container this mount defaults to `/workspace`.
+`
+## worspaceFolder and worspaceMount
 
-The `workspace-folder` is used for the purpose of identifying the path where the configuration files are found. This path is also automatically included in the mounted folders for the container. This mount is by default created pointing to `/workspace` but can be modified with the [`workspaceMount` and `workspaceFolder`](devcontainerjson-reference.md#image-or-dockerfile-specific-properties) properties.
+The default mount point for the source code can be set with the `workspaceMount` property. This folder should point to the root of a repository (where the `.git` folder is found) so that source control operations work correctly inside the container. By default this value mirrors `workspaceFolder`. 
 
 > **Note**: It's important that this is not considered in the case of [Docker Compose](#docker-compose-based).
+
+The `workspaceFolder` can then be set to a subfolder if it is desired that IDEs should open this folder by default. This value should be taken into account in all scenarios.
+
+See [`workspaceMount` and `workspaceFolder`](devcontainerjson-reference.md#image-or-dockerfile-specific-properties) for reference.
 
 ## Users
 
@@ -146,8 +152,8 @@ This step executes the following:
 ### Post Container Creation
 
 - At the end of the container creation step, a set of commands are executed inside the **main** container: `onCreateCommand`, `updateContentCommand` and `postCreateCommand`. This set of commands is executed in sequence on a container the first time it's created and depending on the creation parameters received. You can learn more in the [documentation on lifecycle scripts](devcontainerjson-reference.md#lifecycle-scripts). By default, `postCreateCommand` is executed in the background after reporting the successful creation of the development environment.
-- If the `waitFor` property is defined, then execution should stop at the specified property.
-- `userEnvProbe` is used to define the way environment variables are read from the container before executing the lifecycle hooks.
+- If the `waitFor` property is defined, then execution should stop at the specified property. This property defaults to `updateContentCommand`.
+- The `userEnvProbe` setting dictates whether environment variables present in a particular shell type (login, interactive, login and interactive, or an empty shell) should be passed into all post create or implementation specific commands that are executed. This allows implementors to emulate developer expected behaviors around values added to their profile and rc files. In addition, any remoteEnv values should also be applied to any of these commands.
 
 ## Environment Stop
 
@@ -156,3 +162,12 @@ Stops all containers in the environment. The intention of this step is to ensure
 ## Environment Restart
 
 After an environment has been stopped, the containers are restarted according to the orchestrator defined. Additionally, `postStartCommand` is executed in the **main** container.
+
+
+# Implementation specific steps
+
+## Post creation
+
+After the all the steps executed in a succesful creation or restart, any implementation specific commands can safely execute. This specific implementations should take into account the `userEnvProbe` and `remoteEnv` properties.
+
+For example, in the CLI reference implementation, this is the point in which anything executed with `devcontainer exec` would run.

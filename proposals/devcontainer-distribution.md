@@ -38,8 +38,10 @@ Features and/or templates can be distributed both as a single unit or as a **col
 
 It's important to note the following about collections:
 
-- It is recomended that they are created automatically as part of the release process.
-- When a **devcontainer-collection.json** file is created, the Id's of the features/templates should get the name of the collection added to them to aid in the search for the source. For example, in repository 'https://github.com/community/features' for a collection called 'collection', the resulting id would be 'community/features/collection/myFeature'.
+- It is recomended that the **devcontainer-collection.json** file is created automatically as part of the release process.
+- The compressed release file should contain all the folders of the features/templates included in it.
+- The names of the folders should coincide with the id of the feature/template itself.
+- When a **devcontainer-collection.json** file is created, the Id's of the features/templatescontained in it should get the name of the collection added to them to aid in the search for the source. For example, in repository 'https://github.com/community/features' for a collection called 'collection', the resulting id would be 'community/features/collection/myFeature'.
 
 ## Templates specifics
 

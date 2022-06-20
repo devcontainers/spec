@@ -83,7 +83,7 @@ It is important to note that these mounts are from the underlying compute enviro
 
 A default mount is included so that the source code is accessible from inside the container. Inside the container this mount defaults to `/workspace`.
 `
-## worspaceFolder and worspaceMount
+## workspaceFolder and workspaceMount
 
 The default mount point for the source code can be set with the `workspaceMount` property. This folder should point to the root of a repository (where the `.git` folder is found) so that source control operations work correctly inside the container. By default this value mirrors `workspaceFolder`. 
 

@@ -56,8 +56,8 @@ The properties of the file are as follows:
 | install.file | string | Parameters/script to execute (defaults to install.sh).|
 | options | object | Possible options to be passed as environment variables to the execution of the scripts |
 | containerEnv | object | A set of name value pairs that sets or overrides environment variables. |
-| privileged | boolean | If priveleged mode is required by the feature. |
-| init | boolean | If it's necesarry to run `init`. |
+| privileged | boolean | If privileged mode is required by the feature. |
+| init | boolean | If it's necessary to run `init`. |
 | capAdd | array | Additional capabilities needed by the feature. |
 | securityOpt | array | Security options needed by the feature. |
 | entrypoint | string | Set if the feature requires an entrypoint. |

@@ -116,8 +116,8 @@ This section consists of actions required to validate the `devcontainer.json` co
 
 The tasks executed when validating the configuration are:
 
-- `workspace-folder` is required since it defines where the `devcontainer.json` file is located and identifies the configuration to be used for the environment.
-- Validate access to the `workspace-folder`. 
+- `workspaceFolder` is required since it defines where the `devcontainer.json` file is located and identifies the configuration to be used for the environment.
+- Validate access to the `workspaceFolder`. 
 - Validate that the metadata (for example `devcontainer.json`) contains all parameters required for the selected configuration type.
 
 ## Environment Creation

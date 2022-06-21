@@ -18,6 +18,8 @@ You may review the specification in the [specs folder](https://github.com/devcon
 
 You may also review proposed references in the [proposals folder](https://github.com/devcontainers/spec/tree/main/proposals).
 
+Images used in this repo will be contained in the [images folder](/images). The icon for the [devcontainers org](https://github.com/devcontainers) is from the [Fluent icon library](https://github.com/microsoft/fluentui-system-icons/blob/master/assets/Cube/SVG/ic_fluent_cube_32_filled.svg).
+
 ## Contributing and Feedback
 
 If you are interested in contributing, please check out the [How to Contribute](contributing.md) document.

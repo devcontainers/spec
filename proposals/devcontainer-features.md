@@ -6,14 +6,20 @@ From a practical point of view, features are folders that contain units of code 
 
 Features can be defined by a `devcontainer-feature.json` file in the root folder of the feature. The file is optional for backwards compatibility but it is required for any new features being authored.
 
-By default features are executed by an order selected by the tool that implements the spec based in the following:
+By default, features are installed in an order selected by the implementing tool. 
+
+If any of the following properties in the feature's `devcontainer-feature.json, or the user's `devcontainer.json` are provided, the ordered indicated by the propert(ies) are respected.
 
 - `runsAfter` property defined as part of `devcontainer-feature.json`.
 - id.
 
 The tool uses the `runsAfter` propery to intelligently manage this order and ensure that if there are relationships betwen the features they are respected.
 
-In case an end user needs to control the order of execution we are adding the `overrideFeatureInstallOrder` to `devcontainer.json`
+An end-user can explicitly provide an installation order for features given the  `overrideFeatureInstallOrder` property of `devcontainer.json`. 
+
+All feature `id` provided in `overrideFeatureInstallOrder` must also exist in the `features` property of a user's `devcontainer.json`.
+
+The provided features, indicated by `id`, will be installed in the specified order. Any remaining features in the features object that are not mentioned in the array will be installed in an undefined/implicit order, as determined as optimal by the tooling.
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
@@ -102,12 +108,12 @@ In most cases, the `devcontainer-collection.json` file can be generated automati
 
 ## devcontainer.json properties
 
-Features are referenced in `devcontainer.json` , where the `features` tag consists of an object tag starting with the id of the feature. and including the values of the options to pass to the feature itself.
+Features are referenced in `devcontainer.json` , where the `features` tag consists of an object tag starting with the id of the feature and including the values of the options to pass to the feature itself.
 
 The properties are:
 | Property | Type | Description |
 | :--- | :--- | :--- |
-| options | object | Type of the option .|
+| options | object | Type of the option. |
 
 The `id` is the main reference point for how to find and download a particular feature. `id` can be defined in any of the following ways:
 

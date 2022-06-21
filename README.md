@@ -12,6 +12,8 @@ The first format in the specification, devcontainer.json, was born out of necess
 
 Beyond repeatable setup, these same development containers provide consistency to avoid environment specific problems across developers and centralized build and test automation services. You can use the [open-source CLI reference implementation](https://github.com/devcontainers/cli) either directly or integrated into product experiences to use the structured metadata to deliver these benefits. It currently supports integrating with Docker Compose and a simplified, un-orchestrated single container option – so that they can be used as coding environments or for continuous integration and testing.
 
+A GitHub Action and an Azure DevOps Task are available in [devcontainers/ci](https://github.com/devcontainers/ci) for running a repository's dev container in continuous integration (CI) builds. This allows you to reuse the same setup that you are using for local development to also build and test your code in CI.
+
 ### Spec content
 
 You may review the specification in the [specs folder](https://github.com/devcontainers/spec/tree/main/docs/specs) of this repo.

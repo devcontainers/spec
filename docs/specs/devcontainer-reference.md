@@ -181,7 +181,7 @@ While it is not a strict requirement to keep a **development container** after i
 To resume the environment from a stopped state:
 
 1. Restart all related containers.
-2. Follow the approporpiate [implementation specific steps](#implementation-specific-steps).
+2. Follow the appropriate [implementation specific steps](#implementation-specific-steps).
 3. Additionally, execute the `postStartCommand` and `postArrachCommand` are executed in the container.
 
 Like during the create process, remote [environment variables](#environment-variables) and [user](#users) configuration should be applied to all created processes in the container (inclusive of `userEnvProbe`).

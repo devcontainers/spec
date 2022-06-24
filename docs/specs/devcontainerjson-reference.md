@@ -1,6 +1,6 @@
 # devcontainer.json reference
 
-The `devcontainer.json` file contains any needed metadata and settings required to configurate a **development container** for a given well-defined tool and runtime stack. It can be used by [tools and services that support the dev container spec](supporting-tools.md) to create a **development environment** that contains one ore more **development containers**.
+The `devcontainer.json` file contains any needed metadata and settings required to configurate a **development container** for a given well-defined tool and runtime stack. It can be used by [tools and services that support the dev container spec](supporting-tools.md) to create a **development environment** that contains one or more **development containers**.
 
 ## General devcontainer.json properties
 

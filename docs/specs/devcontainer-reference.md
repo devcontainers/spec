@@ -14,15 +14,13 @@ The focus of the dev container specification is to describe how to enrich a cont
 
 **Development containers** allow one to define a repeatable development environment for a user or team of developers that includes the execution environment the application needs. A development container defines an environment in which you develop your application before you are ready to deploy. While deployment and development containers may resemble one another, you may not want to include tools in a deployment image that you use during development.
 
-A **development container** is composed of a definition (e.g. contained in a `devcontainer.json` file) that deterministically creates containers under the control of the user.
+A **development container** is composed of a definition that deterministically creates containers under the control of the user. Its metadata schema is easiest to discuss in the context of a `devcontainer.json` file, though it is important to note that the **structure of the data** is what the specification focuses on.
 
-## `devcontainer.json`
+The development container metadata contains configuration options related to the underlying orchestrator format. At the same time, this specification leaves space for further development and implementation of other orchestrator mechanisms and file formats.
 
-The current metadata schema for **development containers** is contained in a `devcontainer.json` file.
+## devcontainer.json
 
-The `devcontainer.json` specification contains different configuration options related to the underlying orchestrator format. At the same time, this specification leaves space for further development and implementation of other orchestrator mechanisms and file formats.
-
-While this metadata may be provided in different ways, when searching for a devcontainer.json file, products should expect to find a devcontainer.json file in one or more of the following locations (in order of precedence):
+While this metadata may be provided in different ways over time, `devcontainer.json` represents its current primary form. Products using it should expect to find a devcontainer.json file in one or more of the following locations (in order of precedence):
 
 - .devcontainer/devcontainer.json
 - .devcontainer.json
@@ -47,49 +45,52 @@ There are multiple properties that allow users to control how `docker build` wor
 
 - `build.context` 
 - `build.args`
-- `build.target`,
+- `build.target`
 - `build.cacheFrom`
 
 ## Docker Compose based
 
-Docker Compose configurations use `docker-compose` to create and manage a set of containers required for an application. As with the other configurations, any images required for this operation are assumed to be reachable. The required parameters are:
+Docker Compose configurations use `docker-compose` (which may be Docker Compose V1 or aliased Docker Compose V2) to create and manage a set of containers required for an application. As with the other configurations, any images required for this operation are assumed to be reachable. The required parameters are:
 
-- `build.dockerComposeFile`: the reference to the Docker Compose file(s) to be used.
+- `dockerComposeFile`: the reference to the Docker Compose file(s) to be used.
 - `service`: declares the **main** container that will be used for all other operations. Tools are assumed to also use this parameter to connect to the **development container**, although they can provide facilities to connect to the other containers as required by the user.
+- `runServices`: an optional property that indicates the set of services in the `docker-compose` configuration that should be started or stopped with the environment.
 
-It is important to remark that due to how `docker-compose` works a lot of the properties that apply to **image** and **dockerfile** configurations can’t be set by the application and thus must be set up manually by the user using the `docker-compose` format itself.
-
--`runServices`: the set of services in the `docker-compose` configuration that should be started or stopped with the environment.
+It is important to note that **image** and **dockerfile** properties are not needed since Docker Compose supports them natively in the format. 
 
 # Other options
 
-In addition to the configuration options explained above, there are other settings that apply when creating **development containers** to facilitate their use by developers. These properties mostly apply to **image** and **Dockerfile** based configurations.
+In addition to the configuration options explained above, there are other settings that apply when creating **development containers** to facilitate their use by developers. 
 
 We describe the main ones below.
 
 ## Environment Variables
 
-Environment variables can be set in containers at creation time, to override existing ones, or just to be used when a supporting tool connects to the environment.
+Environment variables can be set at different points in the dev container lifecycle. With this in mind, **development containers** support two classes of environment variables:
 
-There are two kinds of environment variables:
-* Container: These variables are part of the container when it is created and are available at all points in its lifecycle.
-* Remote: This variables are to be set by a **development container** supporting tool as part of its environment when it runs. These variables can change during the lifetime of the container.
+* **Container**: These variables are part of the container when it is created and are available at all points in its lifecycle. This concept is native to containers and can be set in the container image itself, using `containerEnv` for **image** and **Dockerfile** scenarios or using orchestrator specific properties like `env` in **Docker Compose** files.
+* **Remote**: These variables should to be set by a **development container** supporting tool as part of configuring its runtime environment. Users can set these using the `remoteEnv` property and implementing tools or services may add their own for specific sceanrios (e.g., secrets). These variables can change during the lifetime of the container, and are added after the container's `ENTRYPOINT` has fired.
+
+The reason for this separation is it allows for the use of information not available at image build time and simplifies updating the environment for project/repository specific needs without modifying an image. With this in in mind, it's importat to note that implementing tools should also support the [dynamic variable syntax](devcontainerjson-reference.md#variables-in-devcontainerjson) described in the metadata reference document.
+
+
+Another notable and important environment variable related property is **`userEnvProbe`**. Implementing tools should use this property to "probe" for expected environment variables using the specified type of shell. However, it does not specify that this type of shell needs to be used for all sub-processes (given the performance impact). Instead, "probed" environment variables should be merged with Remote environment variables for any processes the implementer injects after the container is created.  This allows implementors to emulate developer expected behaviors around values added to their profile and rc files. 
 
 ## Mounts
 
 Mounts allow containers to have access to the underlying machine, share data between containers and to persist information between **development containers**. 
 
-It is important to note that these mounts are from the underlying compute environment and thus cloud environments might not have access to the same data as a local machine.
+A default mount should be included so that the source code is accessible from inside the container. Source code is stored outside of the container so that a developer's in-flight edits can be extracted, or a new container created in the event a container no longer starts.
 
-A default mount is included so that the source code is accessible from inside the container. Inside the container this mount defaults to `/workspace`.
-`
+While this is "workspace mount" is often a "bind" mount, this is not a requirement of this specification. It is also important to note that these mounts may be "bind" mounts that connect to the underlying filesystem and thus cloud environments might not have access to the same data as a local machine.
+
+Inside the container this mount defaults to `/workspace`.
+
 ## workspaceFolder and workspaceMount
 
-The default mount point for the source code can be set with the `workspaceMount` property. This folder should point to the root of a repository (where the `.git` folder is found) so that source control operations work correctly inside the container. By default this value mirrors `workspaceFolder`. 
+The default mount point for the source code can be set with the `workspaceMount` property for **image** and **dockerfile** scenarios or using the built in `mounts` property in **Docker Compose** files. This folder should point to the root of a repository (where the `.git` folder is found) so that source control operations work correctly inside the container.
 
-> **Note**: It's important that this is not considered in the case of [Docker Compose](#docker-compose-based).
-
-The `workspaceFolder` can then be set to a subfolder if it is desired that IDEs should open this folder by default. This value should be taken into account in all scenarios.
+The `workspaceFolder` can then be set to the default folder inside the container that should used in the container. Typically this is either the mount point in the container, or a sub-folder under it. Allowing a sub-folder to be used is particularly important for monorepos given you need the `.git` folder to interact with source control but developers are typically are interacting with a specific sub-project within the overall repository. 
 
 See [`workspaceMount` and `workspaceFolder`](devcontainerjson-reference.md#image-or-dockerfile-specific-properties) for reference.
 
@@ -97,28 +98,28 @@ See [`workspaceMount` and `workspaceFolder`](devcontainerjson-reference.md#image
 
 Users control the permissions of applications executed in the containers, allowing the developer to control them. The specification takes into account two types of user definitions:
 
-* Container User: The user that will be used for all operations that run inside a container. This allows the ENTRYPOINT for the image to execute with different permissions than the developer.
-* Remote User: Used to run the [lifecycle](#lifecycle) scripts inside the container. This is also the user tools and editors that connect to the container should use to run their processes.
+* **Container User**: The user that will be used for all operations that run inside a container. This concept is native to containers. It may be set in the container image, using the `continerUser` property for  **image** and **dockerfile** scenarios, or using an orchestratric specific property like `user` property in Docker Compose files.
+* **Remote User**: Used to run the [lifecycle](#lifecycle) scripts inside the container. This is also the user tools and editors that connect to the container should use to run their processes. This concept is not native to containers. Set using the `remoteEnv` property in all cases and defaults to the container user.
+
+This separation allows the ENTRYPOINT for the image to execute with different permissions than the developer and allows for developers to switch users without recreating their containers.
 
 # Lifecycle
 
 A development environment goes through different lifecycle events during its use in the outer and inner loop of development.
 
-- Configuration Validation.
-- Environment Creation.
-- Environment Stop.
-- Environment Resume.
-- Environment Connection.
+- Configuration Validation
+- Environment Creation
+- Environment Stop
+- Environment Resume
 
 ## Configuration Validation
 
-This section consists of actions required to validate the `devcontainer.json` configuration and does not contain values that conflict with each other.
+The exact steps required to validate configuration can vary based on exactly where the **development container** metadata is persisted. However, when considering a `devcontainer.json` file, the following validation should occur:
 
-The tasks executed when validating the configuration are:
-
-- `workspaceFolder` is required since it defines where the `devcontainer.json` file is located and identifies the configuration to be used for the environment.
-- Validate access to the `workspaceFolder`. 
-- Validate that the metadata (for example `devcontainer.json`) contains all parameters required for the selected configuration type.
+1. Validate that a workspace source folder has been provided. It is up to the implementing tool to determine what to do if no source folder is provided.
+2. Search for a `devcontainer.json` file in one of the locations [above](#devcontainerjson) in the workspace source folder. 
+3. If no `devcontainer.json` is found, it is up to the implementing tool or service to determine what to do. This specification does not dictate this behavior.
+4. Validate that the metadata (for example `devcontainer.json`) contains all parameters required for the selected configuration type.
 
 ## Environment Creation
 
@@ -149,25 +150,39 @@ This step executes the following:
 - Create the container with the specified properties.
 - Validate the container(s) were created successfully.
 
+Note that container [mounts](#mounts), [environment variables](#environment-variables), and [user](#users) configuration should be applied at this point. However, remote user and environment variable configuration should not be.
+
 ### Post Container Creation
 
-- At the end of the container creation step, a set of commands are executed inside the **main** container: `onCreateCommand`, `updateContentCommand` and `postCreateCommand`. This set of commands is executed in sequence on a container the first time it's created and depending on the creation parameters received. You can learn more in the [documentation on lifecycle scripts](devcontainerjson-reference.md#lifecycle-scripts). By default, `postCreateCommand` is executed in the background after reporting the successful creation of the development environment.
+At the end of the container creation step, a set of commands are executed inside the **main** container: 
+- `onCreateCommand`, `updateContentCommand` and `postCreateCommand`. This set of commands is executed in sequence on a container the first time it's created and depending on the creation parameters received. You can learn more in the [documentation on lifecycle scripts](devcontainerjson-reference.md#lifecycle-scripts). By default, `postCreateCommand` is executed in the background after reporting the successful creation of the development environment.
 - If the `waitFor` property is defined, then execution should stop at the specified property. This property defaults to `updateContentCommand`.
-- The `userEnvProbe` setting dictates whether environment variables present in a particular shell type (login, interactive, login and interactive, or an empty shell) should be passed into all post create or implementation specific commands that are executed. This allows implementors to emulate developer expected behaviors around values added to their profile and rc files. In addition, any remoteEnv values should also be applied to any of these commands.
+
+Remote [environment variables](#environment-variables) and [user](#users) configuration should be applied to all created processes in the container (inclusive of `userEnvProbe`).
+
+### Implementation specific steps
+
+After the all the steps executed in a succesful creation or restart, any implementation specific commands can safely execute. Specifically, any processes required by the implementation to support other properties in this specification should be started at this point.
+
+Any user facing processes should have remote [environment variables](#environment-variables) and [user](#users) configuration applied (inclusive of `userEnvProbe`).
+
+For example, in the CLI reference implementation, this is the point in which anything executed with `devcontainer exec` would run. 
+
+Once these final steps have occurred, implementing tools or services may connect to the environment as they see fit.
 
 ## Environment Stop
 
-Stops all containers in the environment. The intention of this step is to ensure all containers are stopped correctly to ensure no data is lost.
+The intention of this step is to ensure all containers are stopped correctly based on the appropriate orchestrator specific steps to ensure no data is lost. It is up to the implementing tool or service to determine when this event should happen.
 
-## Environment Restart
+## Environment Resume
 
-After an environment has been stopped, the containers are restarted according to the orchestrator defined. Additionally, `postStartCommand` is executed in the **main** container.
+While it is not a strict requirement to keep a **development container** after it has been stopped, this is the most common scenario.
 
+To resume the environment from a stopped state:
 
-# Implementation specific steps
+1. Restart all related containers.
+2. Follow the approporpiate [implementation specific steps](#implementation-specific-steps).
+3. Additionally, execute the `postStartCommand` and `postArrachCommand` are executed in the container.
 
-## Post creation
+Like during the create process, remote [environment variables](#environment-variables) and [user](#users) configuration should be applied to all created processes in the container (inclusive of `userEnvProbe`).
 
-After the all the steps executed in a succesful creation or restart, any implementation specific commands can safely execute. This specific implementations should take into account the `userEnvProbe` and `remoteEnv` properties.
-
-For example, in the CLI reference implementation, this is the point in which anything executed with `devcontainer exec` would run.

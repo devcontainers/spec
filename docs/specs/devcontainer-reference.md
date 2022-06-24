@@ -24,7 +24,7 @@ It is valid that these files may exist in more than one location, so consider pr
 
 # Orchestration options
 
-Given the development container specifications does not seek to use its metadata format replace container orchestrator formats, the metadata schema includes optional properties for iteroprerating with different orchestrators. Today, the specification includes scenario-specific properties for working without a container orchestrator (by directly referencing an image or Dockerfile) and for using Docker Compose as a simple multi-container orchestrator. At the same time, this specification leaves space for further development and implementation of other orchestrator mechanisms and file formats. 
+A core principle of this specification is to seek to enrich existing container orchestrator formats with development container metadata where appropriate rather than replacing them. As a result, the metadata schema includes a set of optional properties for iteroprerating with different orchestrators. Today, the specification includes scenario-specific properties for working without a container orchestrator (by directly referencing an image or Dockerfile) and for using Docker Compose as a simple multi-container orchestrator. At the same time, this specification leaves space for further development and implementation of other orchestrator mechanisms and file formats. 
 
 The following section describes the differences between those that are supported now. 
 

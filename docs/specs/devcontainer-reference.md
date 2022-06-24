@@ -82,7 +82,7 @@ Mounts allow containers to have access to the underlying machine, share data bet
 
 A default mount should be included so that the source code is accessible from inside the container. Source code is stored outside of the container so that a developer's in-flight edits can be extracted, or a new container created in the event a container no longer starts.
 
-While this is "workspace mount" is often a "bind" mount, this is not a requirement of this specification. It is also important to note that these mounts may be "bind" mounts that connect to the underlying filesystem and thus cloud environments might not have access to the same data as a local machine.
+While this "workspace mount" is often a "bind" mount, this is not a requirement of this specification. It is also important to note that these mounts may be "bind" mounts that connect to the underlying filesystem and thus cloud environments might not have access to the same data as a local machine.
 
 Inside the container this mount defaults to `/workspace`.
 

@@ -57,7 +57,7 @@ It is important to note that **image** and **dockerfile** properties are not nee
 
 In addition to the configuration options explained above, there are other settings that apply when creating **development containers** to facilitate their use by developers. 
 
-We describe the main ones below.
+A complete list of available metadata properties and their purposes can be found in the [`devcontainer.json` reference](evcontainerjson-reference.md). However, we will describe the critical ones below in more detail.
 
 ## Environment Variables
 
@@ -130,22 +130,25 @@ During this step, the following is executed:
 
 The first part of environment creation is generating the final image(s) that the **development containers** are going to use. This step is orchestrator dependent and can consist of just pulling a Docker image, running Docker build, or docker-compose build. Additionally, this step is useful on its own since it permits the creation of intermediate images that can be uploaded and used by other users, thus cutting down on creation time. It is encouraged that tools implementing this specification give access to a command that just executes this step.
 
-This step executes the following:
+This step executes the following tasks:
 
-- [Configuration Validation](#configuration-validation) 
-- Pull/build/execute of the defined container orchestration format to create images.
-- Validate the result of these operations.
+1. [Configuration Validation](#configuration-validation) 
+2. Pull/build/execute of the defined container orchestration format to create images.
+3. Validate the result of these operations.
 
 ### Container Creation
 
 After image creation, containers are created based on that image and setup.
 
-This step executes the following:
+This step executes the following tasks:
 
-- Create the container with the specified properties.
-- Validate the container(s) were created successfully.
+1. [Optional] Perform any required user UID/GID sync'ing (more next)
+2. Create the container(s) based on the properties specified above.
+3. Validate the container(s) were created successfully.
 
-Note that container [mounts](#mounts), [environment variables](#environment-variables), and [user](#users) configuration should be applied at this point. However, remote user and environment variable configuration should not be.
+Note that container [mounts](#mounts), [environment variables](#environment-variables), and [user](#users) configuration should be applied at this point. However, remote user and environment variable configuration should **not** be.
+
+UID/GID sync'ing is an optional task for Linux (only) and that executes if the `updateRemoteUserUID` property is set to true and a `containerUser` or `remoteUser` is specified. In this case, an image should be made made prior to creating the container to update the specified user's UID and GID to match the current local user’s UID/GID to avoid permission problems with bind mounts. Implementations **may** skip this task if they do not use bind mounts on Linux, or use a container engine that does this translation automatically.
 
 ### Post Container Creation
 

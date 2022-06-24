@@ -14,7 +14,7 @@ Furthermore, working inside a development container can require additional **met
 
 ## devcontainer.json
 
-While the structure of this metadata is the primary focus of this specification, it is also important to call out how this data should be represented on disk where appropriate. While other representations may be added over time, metadata can be stored in a JSON with Comments file called `devcontainer.json` today. Products using it should expect to find a devcontainer.json file in one or more of the following locations (in order of precedence):
+While the structure of this metadata is critical, it is also important to call out how this data can be represented on disk where appropriate. While other representations may be added over time, metadata can be stored in a JSON with Comments file called `devcontainer.json` today. Products using it should expect to find a devcontainer.json file in one or more of the following locations (in order of precedence):
 
 - .devcontainer/devcontainer.json
 - .devcontainer.json

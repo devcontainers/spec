@@ -6,21 +6,15 @@ A **development container** is a container in which a user can develop an applic
 
 An **environment** is defined as a logical instance of one or more **development containers**, along with any needed side-car containers. An environment is based on one set of metadata that can be managed as a single unit. Users can create multiple **environments** from the same configuration metadata for different purposes.
 
-Historically, dev containers have been used to enable a development workflow used either locally or in the cloud, and they've been focused on using **Docker** or **Docker Compose**. The intent of this specification and related tools is to expand the reach of **development containers**, allow the usage of containers by themselves or different orchestration technologies, and allow any tool to manage and create them.
-
-The focus of the dev container specification is to describe how to enrich a container for the purposes of development, rather than acting as a multi-container orchestrator format.  Container orchestrator formats can be referenced, when needed, to manage multiple containers and the **development container** lifecycle. Today, `devcontainer.json` includes scenario-specific properties for working without a container orchestrator (by directly referencing an image or Dockerfile) and for using Docker Compose as a simple multi-container orchestrator.
-
 # Metadata
 
-**Development containers** allow one to define a repeatable development environment for a user or team of developers that includes the execution environment the application needs. A development container defines an environment in which you develop your application before you are ready to deploy. While deployment and development containers may resemble one another, you may not want to include tools in a deployment image that you use during development.
+**Development containers** allow one to define a repeatable development environment for a user or team of developers that includes the execution environment the application needs. A development container defines an environment in which you develop your application before you are ready to deploy. While deployment and development containers may resemble one another, you may not want to include tools in a deployment image that you use during development and you may need to use different secrets or other settings. 
 
-A **development container** is composed of a definition that deterministically creates containers under the control of the user. Its metadata schema is easiest to discuss in the context of a `devcontainer.json` file, though it is important to note that the **structure of the data** is what the specification focuses on.
-
-The development container metadata contains configuration options related to the underlying orchestrator format. At the same time, this specification leaves space for further development and implementation of other orchestrator mechanisms and file formats.
+Furthermore, working inside a development container can require additional **metadata** to drive tooling or service experiences than you would normally need with a production container. Providing a structured and consistent form for this metadata is a core part of this specification.
 
 ## devcontainer.json
 
-While this metadata may be provided in different ways over time, `devcontainer.json` represents its current primary form. Products using it should expect to find a devcontainer.json file in one or more of the following locations (in order of precedence):
+While the structure of this metadata is the primary focus of this specification, it is also important to call out how this data should be represented on disk where appropriate. While other representations may be added over time, metadata can be stored in a JSON with Comments file called `devcontainer.json` today. Products using it should expect to find a devcontainer.json file in one or more of the following locations (in order of precedence):
 
 - .devcontainer/devcontainer.json
 - .devcontainer.json
@@ -28,10 +22,11 @@ While this metadata may be provided in different ways over time, `devcontainer.j
 
 It is valid that these files may exist in more than one location, so consider providing a mechanism for users to select one when appropriate.
 
+# Orchestration options
 
-# Configuration options
+Given the development container specifications does not seek to use its metadata format replace container orchestrator formats, the metadata schema includes optional properties for iteroprerating with different orchestrators. Today, the specification includes scenario-specific properties for working without a container orchestrator (by directly referencing an image or Dockerfile) and for using Docker Compose as a simple multi-container orchestrator. At the same time, this specification leaves space for further development and implementation of other orchestrator mechanisms and file formats. 
 
-**Development containers** currently support multiple ways to specify the containers that create an environment. The following section describes the differences between them.
+The following section describes the differences between those that are supported now. 
 
 ## Image based
 

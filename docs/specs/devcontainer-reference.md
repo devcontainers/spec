@@ -154,17 +154,19 @@ UID/GID sync'ing is an optional task for Linux (only) and that executes if the `
 
 At the end of the container creation step, a set of commands are executed inside the **main** container: 
 - `onCreateCommand`, `updateContentCommand` and `postCreateCommand`. This set of commands is executed in sequence on a container the first time it's created and depending on the creation parameters received. You can learn more in the [documentation on lifecycle scripts](devcontainerjson-reference.md#lifecycle-scripts). By default, `postCreateCommand` is executed in the background after reporting the successful creation of the development environment.
-- If the `waitFor` property is defined, then execution should stop at the specified property. This property defaults to `updateContentCommand`.
+- If the `waitFor` property is defined, then execution should block until all commands in the sequence up to the specified property have executed. This property defaults to `updateContentCommand`.
 
 Remote [environment variables](#environment-variables) and [user](#users) configuration should be applied to all created processes in the container (inclusive of `userEnvProbe`).
 
 ### Implementation specific steps
 
-After the all the steps executed in a succesful creation or restart, any implementation specific commands can safely execute. Specifically, any processes required by the implementation to support other properties in this specification should be started at this point.
+After these steps have been executed, any implementation specific commands can safely execute. Specifically, any processes required by the implementation to support other properties in this specification should be started at this point. These may occur in parrallel to any non-blocking, background post-container creation commands (as dictated by the `waitFor` property).
 
 Any user facing processes should have remote [environment variables](#environment-variables) and [user](#users) configuration applied (inclusive of `userEnvProbe`).
 
-For example, in the CLI reference implementation, this is the point in which anything executed with `devcontainer exec` would run. 
+For example, in the [CLI reference implementation](https://github.com/devcontainers/cli), this is the point in which anything executed with `devcontainer exec` would run.
+
+Typically, this is also the step where implementors would apply config or settings from the `customizations` section of the dev container metadata (e.g., VS Code installs extensions based on the `customizations.vscode.extensions` property). Examples of these can be found in the [supporting tools section](supporting-tools.md) reference. However, applying these at this point is not strictly required or mandated by this specification.
 
 Once these final steps have occurred, implementing tools or services may connect to the environment as they see fit.
 

@@ -8,12 +8,12 @@ Features can be defined by a `devcontainer-feature.json` file in the root folder
 
 By default, features are installed in an order selected by the implementing tool. 
 
-If any of the following properties in the feature's `devcontainer-feature.json, or the user's `devcontainer.json` are provided, the ordered indicated by the propert(ies) are respected.
+If any of the following properties are provided in the feature's `devcontainer-feature.json`, or the user's `devcontainer.json`, the order indicated by the propert(ies) are respected.
 
 - `runsAfter` property defined as part of `devcontainer-feature.json`.
-- id.
+- `id`.
 
-The tool uses the `runsAfter` propery to intelligently manage this order and ensure that if there are relationships betwen the features they are respected.
+The tool uses the `runsAfter` property to intelligently manage this order and ensure that if there are relationships between the features, they are respected.
 
 An end-user can explicitly provide an installation order for features given the  `overrideFeatureInstallOrder` property of `devcontainer.json`. 
 
@@ -152,9 +152,9 @@ A release consists of the following:
 
 There are several things to keep in mind for an application that implements features:
 
-- The order of execution of features is determined by the application based on the `installAfter` property by feature authors and can be overriden by users if necesarry with the `overrideFeatureInstallOrder` in `devcontainer.json`.
+- The order of execution of features is determined by the application, based on the `installAfter` property used by feature authors. It can be overridden by users if necessary with the `overrideFeatureInstallOrder` in `devcontainer.json`.
 - Features are used to create an image that can be used to create a container or not.
-- Parameters like `privileged`, `init` are included if just 1 feature requires them.
-- Parameters like `capAdd`, `securityOp`  are concatenated.
-- ContainerEnv is added before the feature is executed as `ENV` commands in the docker file.
+- Parameters like `privileged` and `init` are included if just 1 feature requires them.
+- Parameters like `capAdd` and `securityOp`  are concatenated.
+- `containerEnv` is added before the feature is executed as `ENV` commands in the Dockerfile.
 - Each feature script executes as its own layer to aid in caching and rebuilding.

@@ -160,7 +160,7 @@ Remote [environment variables](#environment-variables) and [user](#users) config
 
 ### Implementation specific steps
 
-After these steps have been executed, any implementation specific commands can safely execute. Specifically, any processes required by the implementation to support other properties in this specification should be started at this point. These may occur in parrallel to any non-blocking, background post-container creation commands (as dictated by the `waitFor` property).
+After these steps have been executed, any implementation specific commands can safely execute. Specifically, any processes required by the implementation to support other properties in this specification should be started at this point. These may occur in parallel to any non-blocking, background post-container creation commands (as dictated by the `waitFor` property).
 
 Any user facing processes should have remote [environment variables](#environment-variables) and [user](#users) configuration applied (inclusive of `userEnvProbe`).
 

@@ -57,7 +57,7 @@ It is important to note that **image** and **dockerfile** properties are not nee
 
 In addition to the configuration options explained above, there are other settings that apply when creating **development containers** to facilitate their use by developers. 
 
-We describe the main ones below.
+A complete list of available metadata properties and their purposes can be found in the [`devcontainer.json` reference](devcontainerjson-reference.md). However, we will describe the critical ones below in more detail.
 
 ## Environment Variables
 
@@ -130,38 +130,43 @@ During this step, the following is executed:
 
 The first part of environment creation is generating the final image(s) that the **development containers** are going to use. This step is orchestrator dependent and can consist of just pulling a Docker image, running Docker build, or docker-compose build. Additionally, this step is useful on its own since it permits the creation of intermediate images that can be uploaded and used by other users, thus cutting down on creation time. It is encouraged that tools implementing this specification give access to a command that just executes this step.
 
-This step executes the following:
+This step executes the following tasks:
 
-- [Configuration Validation](#configuration-validation) 
-- Pull/build/execute of the defined container orchestration format to create images.
-- Validate the result of these operations.
+1. [Configuration Validation](#configuration-validation) 
+2. Pull/build/execute of the defined container orchestration format to create images.
+3. Validate the result of these operations.
 
 ### Container Creation
 
 After image creation, containers are created based on that image and setup.
 
-This step executes the following:
+This step executes the following tasks:
 
-- Create the container with the specified properties.
-- Validate the container(s) were created successfully.
+1. [Optional] Perform any required user UID/GID sync'ing (more next)
+2. Create the container(s) based on the properties specified above.
+3. Validate the container(s) were created successfully.
 
-Note that container [mounts](#mounts), [environment variables](#environment-variables), and [user](#users) configuration should be applied at this point. However, remote user and environment variable configuration should not be.
+Note that container [mounts](#mounts), [environment variables](#environment-variables), and [user](#users) configuration should be applied at this point. However, remote user and environment variable configuration should **not** be.
+
+UID/GID sync'ing is an optional task for Linux (only) and that executes if the `updateRemoteUserUID` property is set to true and a `containerUser` or `remoteUser` is specified. In this case, an image update should be made prior to creating the container to set the specified user's UID and GID to match the current local user’s UID/GID to avoid permission problems with bind mounts. Implementations **may** skip this task if they do not use bind mounts on Linux, or use a container engine that does this translation automatically.
 
 ### Post Container Creation
 
 At the end of the container creation step, a set of commands are executed inside the **main** container: 
 - `onCreateCommand`, `updateContentCommand` and `postCreateCommand`. This set of commands is executed in sequence on a container the first time it's created and depending on the creation parameters received. You can learn more in the [documentation on lifecycle scripts](devcontainerjson-reference.md#lifecycle-scripts). By default, `postCreateCommand` is executed in the background after reporting the successful creation of the development environment.
-- If the `waitFor` property is defined, then execution should stop at the specified property. This property defaults to `updateContentCommand`.
+- If the `waitFor` property is defined, then execution should block until all commands in the sequence up to the specified property have executed. This property defaults to `updateContentCommand`.
 
 Remote [environment variables](#environment-variables) and [user](#users) configuration should be applied to all created processes in the container (inclusive of `userEnvProbe`).
 
 ### Implementation specific steps
 
-After the all the steps executed in a succesful creation or restart, any implementation specific commands can safely execute. Specifically, any processes required by the implementation to support other properties in this specification should be started at this point.
+After these steps have been executed, any implementation specific commands can safely execute. Specifically, any processes required by the implementation to support other properties in this specification should be started at this point. These may occur in parallel to any non-blocking, background post-container creation commands (as dictated by the `waitFor` property).
 
 Any user facing processes should have remote [environment variables](#environment-variables) and [user](#users) configuration applied (inclusive of `userEnvProbe`).
 
-For example, in the CLI reference implementation, this is the point in which anything executed with `devcontainer exec` would run. 
+For example, in the [CLI reference implementation](https://github.com/devcontainers/cli), this is the point in which anything executed with `devcontainer exec` would run.
+
+Typically, this is also the step where implementors would apply config or settings from the `customizations` section of the dev container metadata (e.g., VS Code installs extensions based on the `customizations.vscode.extensions` property). Examples of these can be found in the [supporting tools section](supporting-tools.md) reference. However, applying these at this point is not strictly required or mandated by this specification.
 
 Once these final steps have occurred, implementing tools or services may connect to the environment as they see fit.
 

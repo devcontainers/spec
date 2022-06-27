@@ -57,7 +57,7 @@ It is important to note that **image** and **dockerfile** properties are not nee
 
 In addition to the configuration options explained above, there are other settings that apply when creating **development containers** to facilitate their use by developers. 
 
-A complete list of available metadata properties and their purposes can be found in the [`devcontainer.json` reference](evcontainerjson-reference.md). However, we will describe the critical ones below in more detail.
+A complete list of available metadata properties and their purposes can be found in the [`devcontainer.json` reference](devcontainerjson-reference.md). However, we will describe the critical ones below in more detail.
 
 ## Environment Variables
 

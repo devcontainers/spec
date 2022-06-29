@@ -6,7 +6,26 @@ From a practical point of view, features are folders that contain units of code 
 
 Features can be defined by a `devcontainer-feature.json` file in the root folder of the feature. The file is optional for backwards compatibility but it is required for any new features being authored.
 
-Features are to be executed in sequence as defined in `devcontainer.json`.
+By default, features are installed in an order selected by the implementing tool. 
+
+If any of the following properties are provided in the feature's `devcontainer-feature.json`, or the user's `devcontainer.json`, the order indicated by the propert(ies) are respected.
+
+- `installsAfter` property defined as part of `devcontainer-feature.json`.
+- `id`.
+- `overrideFeatureInstallOrder` in `devcontainer.json`. Allows users to control the order of execution of their features.
+
+The tool uses the `runsAfter` property to intelligently manage this order and ensure that if there are relationships between the features, they are respected.
+
+An end-user can explicitly provide an installation order for features given the  `overrideFeatureInstallOrder` property of `devcontainer.json`. 
+
+All feature `id` provided in `overrideFeatureInstallOrder` must also exist in the `features` property of a user's `devcontainer.json`.
+
+The provided features, indicated by `id`, will be installed in the specified order. Any remaining features in the features object that are not mentioned in the array will be installed in an undefined/implicit order, as determined as optimal by the tooling.
+
+| Property | Type | Description |
+| :--- | :--- | :--- |
+| overrideFeatureInstallOrder | array | Array made of the Id's of the features in the order the user wants them to be installed. |
+
 
 ## Folder Structure 
 
@@ -52,8 +71,6 @@ The properties of the file are as follows:
 | licenseURL | string | Url that points to the license of the feature. |
 | version | string | Version of the feature. |
 | keywords | array | List of keywords relevant to a user that would search for this definition/feature. |
-| install.app | string | App to execute.|
-| install.file | string | Parameters/script to execute (defaults to install.sh).|
 | options | object | Possible options to be passed as environment variables to the execution of the scripts |
 | containerEnv | object | A set of name value pairs that sets or overrides environment variables. |
 | privileged | boolean | If privileged mode is required by the feature. |
@@ -61,6 +78,8 @@ The properties of the file are as follows:
 | capAdd | array | Additional capabilities needed by the feature. |
 | securityOpt | array | Security options needed by the feature. |
 | entrypoint | string | Set if the feature requires an entrypoint. |
+| customizations | object | Product specific properties, each namespace under `customizations` is treated as a separate set of properties. For each of this sets the object is parsed, values are replaced while arrays are set as a union. |
+| installsAfter | array | Array of Id's of features that should execute before this one. Allows control for feature authors on soft dependencies between different features. |
 
 Options
 
@@ -90,13 +109,8 @@ In most cases, the `devcontainer-collection.json` file can be generated automati
 
 ## devcontainer.json properties
 
-Features are referenced in `devcontainer.json` , where the `features` tag consists of an array with the ordered list of features to be included in the container image.
+Features are referenced in `devcontainer.json` , where the `features` tag consists of an object tag starting with the id of the feature and including the values of the options to pass to the feature itself.
 
-The properties are:
-| Property | Type | Description |
-| :--- | :--- | :--- |
-| id | string | Reference to the particular feature to be included. |
-| options | object | Type of the option .|
 
 The `id` is the main reference point for how to find and download a particular feature. `id` can be defined in any of the following ways:
 
@@ -135,11 +149,9 @@ A release consists of the following:
 
 There are several things to keep in mind for an application that implements features:
 
-- Features are executed in the order defined in devcontainer.json
-- It should be possible to execute a feature multiple times with different parameters.
+- The order of execution of features is determined by the application, based on the `installAfter` property used by feature authors. It can be overridden by users if necessary with the `overrideFeatureInstallOrder` in `devcontainer.json`.
 - Features are used to create an image that can be used to create a container or not.
 - Parameters like `privileged`, `init` are included if just 1 feature requires them.
 - Parameters like `capAdd`, `securityOp`  are concatenated.
-- ContainerEnv is added before the feature is executed as `ENV` commands in the docker file.
-- Features are added to an image in two passes. One for `aquire` scripts and another for `install` scripts.
-- Each script executes as its own layer to aid in caching and rebuilding.
+- `containerEnv` is added before the feature is executed as `ENV` commands in the Dockerfile.
+- Each feature script executes as its own layer to aid in caching and rebuilding.

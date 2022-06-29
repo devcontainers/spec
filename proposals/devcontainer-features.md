@@ -70,8 +70,6 @@ The properties of the file are as follows:
 | licenseURL | string | Url that points to the license of the feature. |
 | version | string | Version of the feature. |
 | keywords | array | List of keywords relevant to a user that would search for this definition/feature. |
-| install.app | string | App to execute.|
-| install.file | string | Parameters/script to execute (defaults to install.sh).|
 | options | object | Possible options to be passed as environment variables to the execution of the scripts |
 | containerEnv | object | A set of name value pairs that sets or overrides environment variables. |
 | privileged | boolean | If privileged mode is required by the feature. |

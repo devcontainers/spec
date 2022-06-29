@@ -74,8 +74,8 @@ The properties of the file are as follows:
 | install.file | string | Parameters/script to execute (defaults to install.sh).|
 | options | object | Possible options to be passed as environment variables to the execution of the scripts |
 | containerEnv | object | A set of name value pairs that sets or overrides environment variables. |
-| privileged | boolean | If priveleged mode is required by the feature. |
-| init | boolean | If it's necesarry to run `init`. |
+| privileged | boolean | If privileged mode is required by the feature. |
+| init | boolean | If it's necessary to run `init`. |
 | capAdd | array | Additional capabilities needed by the feature. |
 | securityOpt | array | Security options needed by the feature. |
 | entrypoint | string | Set if the feature requires an entrypoint. |
@@ -154,7 +154,7 @@ There are several things to keep in mind for an application that implements feat
 
 - The order of execution of features is determined by the application, based on the `installAfter` property used by feature authors. It can be overridden by users if necessary with the `overrideFeatureInstallOrder` in `devcontainer.json`.
 - Features are used to create an image that can be used to create a container or not.
-- Parameters like `privileged` and `init` are included if just 1 feature requires them.
-- Parameters like `capAdd` and `securityOp`  are concatenated.
+- Parameters like `privileged`, `init` are included if just 1 feature requires them.
+- Parameters like `capAdd`, `securityOp`  are concatenated.
 - `containerEnv` is added before the feature is executed as `ENV` commands in the Dockerfile.
 - Each feature script executes as its own layer to aid in caching and rebuilding.

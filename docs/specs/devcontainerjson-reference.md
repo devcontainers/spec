@@ -1,10 +1,6 @@
 # devcontainer.json reference
 
-The `devcontainer.json` file contains the definition of the **development environment**. This file in your project tells [tools and services that support the dev container spec](supporting-tools.md) how to access (or create) a **development environment** with a well-defined tool and runtime stack.
-
-The default locations of `devcontainer.json` file are relative to the `workspace-folder` and are as follows:
-- under `./.devcontainer` folder
-- Directly under the `workspace-folder` as `.devcontainer.json`
+The `devcontainer.json` file contains any needed metadata and settings required to configurate a **development container** for a given well-defined tool and runtime stack. It can be used by [tools and services that support the dev container spec](supporting-tools.md) to create a **development environment** that contains one or more **development containers**.
 
 ## General devcontainer.json properties
 

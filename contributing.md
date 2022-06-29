@@ -4,6 +4,7 @@ We're excited for your contributions to the dev container specification! This do
 
 ## Contribution approaches
 
+If you'd like to contribute a change or addition to the spec, you may follow the guidance below:
 - Propose the change via an [issue](https://github.com/microsoft/dev-container-spec/issues) in this repository. Try to get early feedback before spending too much effort formalizing it.
 - More formally document the proposed change in terms of properties and their semantics. Look to format your proposal like our [devcontainer.json reference](https://aka.ms/devcontainer.json), which is a JSON with Comments (jsonc) format.
 
@@ -35,6 +36,9 @@ Tool-specific properties are contained in namespaces in the `"customizations"` p
 ```
 
 You may propose adding a new namespace for a specific tool, and any properties specific to that tool.
+
+### GitHub Discussions
+If you'd like to discuss the spec, such as asking questions, providing feedback, or engaging on how your team may use or contribute to dev containers, please check out the [GitHub Discussions](https://github.com/devcontainers/spec/discussions) in this repo. This is a great opportunity to connect with the community and maintainers of this project, without the requirement of contributing a change to the actual spec (which we see more in issues and PRs).
 
 ## Review process
 

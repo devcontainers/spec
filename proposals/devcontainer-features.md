@@ -10,7 +10,7 @@ By default, features are installed in an order selected by the implementing tool
 
 If any of the following properties are provided in the feature's `devcontainer-feature.json`, or the user's `devcontainer.json`, the order indicated by the propert(ies) are respected.
 
-- `runsAfter` property defined as part of `devcontainer-feature.json`.
+- `installsAfter` property defined as part of `devcontainer-feature.json`.
 - `id`.
 
 The tool uses the `runsAfter` property to intelligently manage this order and ensure that if there are relationships between the features, they are respected.
@@ -79,6 +79,8 @@ The properties of the file are as follows:
 | capAdd | array | Additional capabilities needed by the feature. |
 | securityOpt | array | Security options needed by the feature. |
 | entrypoint | string | Set if the feature requires an entrypoint. |
+| customizations | object | Product specific properties, each namespace under `customizations` is treated as a separate set of properties. For each of this sets the object is parsed, values are replaced while arrays are set as a union. |
+| installsAfter | array | Array of Id's of features that should execute before this one. Allows control for feature authors on soft dependencies between different features. |
 
 Options
 
@@ -110,10 +112,6 @@ In most cases, the `devcontainer-collection.json` file can be generated automati
 
 Features are referenced in `devcontainer.json` , where the `features` tag consists of an object tag starting with the id of the feature and including the values of the options to pass to the feature itself.
 
-The properties are:
-| Property | Type | Description |
-| :--- | :--- | :--- |
-| options | object | Type of the option. |
 
 The `id` is the main reference point for how to find and download a particular feature. `id` can be defined in any of the following ways:
 

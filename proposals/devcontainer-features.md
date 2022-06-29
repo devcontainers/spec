@@ -12,6 +12,7 @@ If any of the following properties are provided in the feature's `devcontainer-f
 
 - `installsAfter` property defined as part of `devcontainer-feature.json`.
 - `id`.
+- `overrideFeatureInstallOrder` in `devcontainer.json`. Allows users to control the order of execution of their features.
 
 The tool uses the `runsAfter` property to intelligently manage this order and ensure that if there are relationships between the features, they are respected.
 

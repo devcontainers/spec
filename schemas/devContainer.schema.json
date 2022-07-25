@@ -1,0 +1,13 @@
+{
+    "allOf": [
+        {
+            "$ref": "./devContainer.base.schema.json"
+        },
+        {
+            "$ref": "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/configuration-editing/schemas/devContainer.codespaces.schema.json"
+        },
+        {
+            "$ref": "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/configuration-editing/schemas/devContainer.vscode.schema.json"
+        }
+    ]
+}

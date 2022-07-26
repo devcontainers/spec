@@ -1,31 +1,9 @@
 # Dev container features reference
 
-Dev container features provide a smooth path for customizing your container definitions. Features are self contained units of code meant to facilitate creation of custom images for application or development containers.
+Dev container 'features' are self-contained units of installation code and development container configuration. Features are designed to install atop a wide-range of base container images. 
+Features are generally designed to be installed on top of a subset of base container images (eg: debian-based images).
 
-From a practical point of view, features are folders that contain units of code with different entrypoints for different lifecycle events.
-
-Features can be defined by a `devcontainer-feature.json` file in the root folder of the feature. The file is optional for backwards compatibility but it is required for any new features being authored.
-
-By default, features are installed in an order selected by the implementing tool. 
-
-If any of the following properties are provided in the feature's `devcontainer-feature.json`, or the user's `devcontainer.json`, the order indicated by the propert(ies) are respected.
-
-- `installsAfter` property defined as part of `devcontainer-feature.json`.
-- `id`.
-- `overrideFeatureInstallOrder` in `devcontainer.json`. Allows users to control the order of execution of their features.
-
-The tool uses the `runsAfter` property to intelligently manage this order and ensure that if there are relationships between the features, they are respected.
-
-An end-user can explicitly provide an installation order for features given the  `overrideFeatureInstallOrder` property of `devcontainer.json`. 
-
-All feature `id` provided in `overrideFeatureInstallOrder` must also exist in the `features` property of a user's `devcontainer.json`.
-
-The provided features, indicated by `id`, will be installed in the specified order. Any remaining features in the features object that are not mentioned in the array will be installed in an undefined/implicit order, as determined as optimal by the tooling.
-
-| Property | Type | Description |
-| :--- | :--- | :--- |
-| overrideFeatureInstallOrder | array | Array made of the Id's of the features in the order the user wants them to be installed. |
-
+Feature metadata is captured by a `devcontainer-feature.json` file in the root folder of the feature.
 
 ## Folder Structure 
 
@@ -65,6 +43,7 @@ The properties of the file are as follows:
 | Property | Type | Description |
 | :--- | :--- | :--- |
 | id | string | Id of the feature/definition. The id should be unique in the context of the repository/published package where the feature exists. |
+| version | string | The semantic version of the feature. |
 | name | string | Name of the feature/definition. |
 | description | string | Description of the feature/definition. |
 | documentationURL | string | Url that points to the documentation of the feature. |
@@ -91,35 +70,34 @@ Options
 | id.default | string | Default value for the option. |
 | id.description | string | Description for the option. |
 
-## devcontainer-collection.json properties
-
-A feature collection file is a compilation of the `devcontainer-feature.json` files for each individual feature. It inlines all the information in each `devcontainer-feature.json` for each feature.
-
-If the application finds a `devcontainer-collection.json` file in the root of a downloaded tar file, then it uses that file to find the particular feature that will be executed.
-
-In addition to the list of features included, the file includes the following properties.
-
-| Property | Type | Description |
-| :--- | :--- | :--- |
-| name | string | Name of the collection. |
-| reference | string | Reference information of the repository and path where the code is stored. |
-| version | string | Version of the code. |
-
-In most cases, the `devcontainer-collection.json` file can be generated automatically at the moment of creating a release.
-
 ## devcontainer.json properties
 
-Features are referenced in `devcontainer.json` , where the `features` tag consists of an object tag starting with the id of the feature and including the values of the options to pass to the feature itself.
 
+Features are referenced in `devcontainer.json` under the top level `features` object. 
+
+The properties are:
+| Property | Type | Description |
+| :--- | :--- | :--- |
+| id | string | Reference to the particular feature to be included. |
+| options | object | Type of the option .|
 
 The `id` is the main reference point for how to find and download a particular feature. `id` can be defined in any of the following ways:
 
-| Type | Description |
-| :--- | :--- |
-| feature  | A simple name referencing a feature; it's included with the application used to execute `devcontainer.json`.|
-| organization/repository/{feature or collectionl/feature}/@version | Reference to a particular release in a repository. |
-| https://<../URI/..>/devcontainer-features.tgz#{optional feature} | Direct reference to a file download. |
-| ./{local-path}  -or-  ../{local-path} | A path relative to devcontainer.json where a feature or feature collection can be found. |
+| Type | Description | Example |
+| :--- | :--- | :--- |
+| \<oci-registry\>/\<namespace\>/\<feature\>[:\<semantic-version\>] | Reference to feature in OCI registry(*) | ghcr.io/user/repo/go:1 |
+| https://<..URI..>/myFeatures.tgz#{feature} | Direct HTTPS URI to a tarball. | https:github.com/user/repo/releases/myFeatures.tgz#go|
+| ./{local-path}  -or-  | A relative to directory with a devcontainer-feature.json. | ./myGoFeature |
+
+`
+(*) OCI registry must implement the [OCI Artifact Distribution Specification](https://github.com/opencontainers/distribution-spec).  Some implementors can be [found here](https://oras.land/implementors/).
+
+
+## Versioning
+
+Each feature is individually [versioned according to the semver specification](https://semver.org/).  The `version` property in the respective `devcontainer-feature.json` file is updated to increment the feature's version.  
+
+Tooling that handles releasing features will not republish features if that exact version has already been published; however, tooling must republish major and minor versions in accordance with the semver specification.
 
 ## Authoring
 
@@ -133,19 +111,44 @@ If the feature is included in a folder as part of the repository that contains `
 
 ## Release
 
-A release is created when the objective is to have other users use a feature.
+_For information on distribution features, see [devcontainer-features-distribution.md](./devcontainer-features-distribution.md)._
 
-A release consists of the following:
 
-1.- Tar file with all the included files for the feature or feature collection.
-2.- A copy of the `devcontainer-feature.json` or `devcontainer-collection.json` file that defines the contents of the tar file, with additional information added to validate it.
+## Execution
+
+### Installation Order
+
+By default, features are installed on top of a base image in an order determined as optimal by the implementing tool.
+
+If any of the following properties are provided in the feature's `devcontainer-feature.json`, or the user's `devcontainer.json`, the order indicated by these propert(ies) are respected (with decreasing precedence).
+
+1. The `overrideFeatureInstallOrder` property in user's `devcontainer.json`. Allows users to control the order of execution of their features.
+2. The `installsAfter` property defined as part of a feature's `devcontainer-feature.json`.
+
+#### (1) overrideFeatureInstallOrder
+
+This property is declared by the user in their `devcontainer.json` file.
+
+Any feature IDs listed in this array will be installed before all other features, in the provided order. Any omitted features will be installed in an order selected by the implementing tool, or ordered via the `installsAfter` property _after_  any features listed in the `overrideFeatureInstallOrder` array, if applicable. 
+
+All feature `id` provided in `overrideFeatureInstallOrder` must also exist in the `features` property of a user's `devcontainer.json`.
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
-| version | string | SemVer version of the release. |
-| checksum | string | Checksum of the tar file. |
+| overrideFeatureInstallOrder | array | Array consisting of the feature `id` of features in the order the user wants them to be installed.   |
 
-## Execution
+#### (2) installsAfter
+
+This propertry is defined in an individual feature's `devcontainer-feature.json` file by the feature author.  `installsAfter` allows an author to provide the tooling hints on loose dependencies between features.
+
+After `overrideFeatureInstallOrder` is resolved, any remaining features that declare an `installsAfter` must be installed after the features declared in the property, provided that the features have also been declared in the `features` property.
+
+| Property | Type | Description |
+| :--- | :--- | :--- |
+| installsAfter | array | Array consisting of the feature `id` that should be installed before the given feature   |
+
+
+### Implementation Notes
 
 There are several things to keep in mind for an application that implements features:
 

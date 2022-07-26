@@ -502,7 +502,7 @@
 				},
 				"service": {
 					"type": "string",
-					"description": "The service you want to work on."
+					"description": "The service you want to work on. This is considered the primary container for your dev environment which your editor will connect to."
 				},
 				"runServices": {
 					"type": "array",

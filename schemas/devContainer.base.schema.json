@@ -9,7 +9,7 @@
 			"properties": {
 				"name": {
 					"type": "string",
-					"description": "A name for the dev container displayed in the UI."
+					"description": "A name for the dev container which can be displayed to the user."
 				},
 				"extensions": {
 					"type": "array",

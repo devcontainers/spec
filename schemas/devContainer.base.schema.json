@@ -185,7 +185,7 @@
 							"null"
 						]
 					},
-					"description": "Remote environment variables. If these are used in the Integrated Terminal, make sure the 'Terminal > Integrated: Inherit Env' setting is enabled."
+					"description": "Remote environment variables to set for processes spawned in the container including lifecycle scripts and any remote editor/IDE server process."
 				},
 				"remoteUser": {
 					"type": "string",

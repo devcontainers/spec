@@ -14,7 +14,7 @@ Goals include:
 
 Features source code is stored in a git repository.
 
-For ease of authorship and maintenance, [1..n] features can share a single git repository.  This set of features is referred to as feature collections, and will share the same [`devcontainer-collection.json`](#devcontainer-collection.json) file and namespace.
+For ease of authorship and maintenance, [1..n] features can share a single git repository.  This set of features is referred to as a collection, and will share the same [`devcontainer-collection.json`](#devcontainer-collection.json) file and 'namespace' (eg. `owner/repo`).
 
 Source code for the set follows the example file structure below:
 
@@ -78,7 +78,9 @@ Each features's `devcontainer-feature.json` metadata file is appended into the `
 
 ## Distribution
 
-There are several supported ways to distribute features.  With appropriate authentication a user references a distributed feature in a `devcontainer.json` as defined in ['referencing a feature'](./devcontainer-features.md#Referencing-a-feature).
+There are several supported ways to distribute features.  Distribution is handled by the implementing packaging tool.
+
+A user references a distributed feature in a `devcontainer.json` as defined in ['referencing a feature'](./devcontainer-features.md#Referencing-a-feature).
 
 ### OCI Registry
 
@@ -88,7 +90,10 @@ Each packaged feature is pushed to the registry following the naming convention 
 
 A custom media type `application/vnd.devcontainers` and `application/vnd.devcontainers.layer.v1+tar` are used as demonstrated below.
 
-For example, the `go` feature in the `devcontainers/features` namespace at version `1.2.3` would be pushed to the ghcr.io OCI registry.
+
+For example, the `go` feature in the `devcontainers/features` namespace at version `1.2.3` would be pushed to the ghcr.io OCI registry.  
+
+_NOTE: The example below uses [`oras`](https://oras.land/) for demonstration purposes.  A supporting tool should directly implement the required functionality from the aforementioned OCI artifact distribution specification._
 ```bash
 # ghcr.io/devcontainers/features/go:1 
 REGISTRY=ghcr.io
@@ -101,7 +106,7 @@ for VERSION in 1  1.2  1.2.3  latest
 do
     oras push ${REGISTRY}/${NAMESPACE}/${FEATURE}:${VERSION} \
             --manifest-config /dev/null:application/vnd.devcontainers \
-                             ./${ARTIFACT_PATH}:application/vnd.devcontainers.layer.v1+tar`;
+                             ./${ARTIFACT_PATH}:application/vnd.devcontainers.layer.v1+tar
 done
 
 ```
@@ -117,69 +122,10 @@ NAMESPACE=devcontainers/features
 
 oras push ${REGISTRY}/${NAMESPACE}:latest \
         --manifest-config /dev/null:application/vnd.devcontainers \
-                            ./devcontainer-collection.json.:application/vnd.devcontainers.layer.v1+json`;
+                            ./devcontainer-collection.json.:application/vnd.devcontainers.layer.v1+json
 ```
 
-### Directly reference tarball
+### Directly Reference Tarball
 
 A feature can be referenced directly in a `devcontainer.json` file by an HTTP URI that points to the tarball from the [package step](#packaging).
 
-<!-- 
-## Github Topics
-
-A set of discoverable dev container-related repos can be achieved with the use of [GitHub Topics](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/classifying-your-repository-with-topics). You may explore repos that GitHub has automatically considered part of the [devcontainers](https://github.com/topics/devcontainers) topic. If you'd like your template or feature repo to be easily discoverable to the community, you may add the **devcontainers-templates** and/or **devcontainers-features** topic. You may read more on how to do this in the [topics guide](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/classifying-your-repository-with-topics).
-
-Any UI application can leverage this search to provide a list of repositories that contain features or templates and present them to their users. The application would query the latest release of repos within the list and obtain their details to show them to the users.
-
-An implementation of the spec can also use other mechanisms to speed up or improve the user experience while searching.
-
-At the same time, it should include a way for users to directly reference a repository containing the features or templates they want to use.
-
-## Releases
-
-As a distribution and storage mechanism, we propose using GitHub releases. The releases would contain compressed files with the source code of the feature or template. Included with the release the corresponding metadata file would be either **devcontainer-feature.json**, **devcontainer-template.json** or **devcontainer-collection.json**.
-
-## Collections
-
-Features and/or templates can be distributed both as a single unit or as a **collection** of them. In case they are released as a collection, the release should include a **devcontainer-collection.json** file that groups the information of each feature or template contained.
-
-| Property | Type | Description |
-| :--- | :--- | :--- |
-| publisher | string | The organization/user that publishes this group of templates/features. Must match with the repository user in GitHub.|
-| repository | string | The repository where this collection is contained.|
-| version | string | Version information of this collection list.|
-| features | array | The list of features that are contained in this collection. Same information as the metadata file for the feature.|
-| templates | array | The list of templates contained in this collection. Same information as the metadata file for the definition.|
-
-It's important to note the following about collections:
-
-- It is recomended that the **devcontainer-collection.json** file is created automatically as part of the release process.
-- The compressed release file should contain all the folders of the features/templates included in it.
-- The names of the folders should coincide with the id of the feature/template itself.
-- When a **devcontainer-collection.json** file is created, the Id's of the features/templatescontained in it should get the name of the collection added to them to aid in the search for the source. For example, in repository 'https://github.com/community/features' for a collection called 'collection', the resulting id would be 'community/features/collection/myFeature'.
-
-## Templates specifics
-
-By their nature, templates are single use since they are just a group of files that are copied over to an end user's repository and used to kickstart a **dev container** configuration.
-
-Because of this, the implementing application needs to ensure that the user is able to inspect all files included in the template and that no code is executed automatically until a specific action by a user demands it. 
-
-## Features specifics
-
-Since features contain code that can be executed multiple times by different users, the security of the contents is important, and for this we propose:
-
-- Any application that implements the [Dev container spec](../docs/specs/devcontainer-reference.md) must provide a way for the user to add a feature to their `devcontainer.json` file in a way that the code can be inspected before it executes the first time.
-- This action should create a **devcontainer.lock** file next to the main `devcontainer.json` file that contains the checksums of the particular release referenced.
-- Users can commit this file to their repository so that the application can berify the checksum each time it rebuilds the container, throwing an error if they do not match.
-- If users want to update to a newer version, they can either delete the **devcontainer.lock** file, delete the particular entry, or reference a different version of it in their `devcontainer.json` file. If the version stored in both files doesn't match, the application should update the entry on the next build.
-- If during a first build the **devcontainer.lock** file does not exist, it should be created as part of the build process if and when it succeeds.
-
-The **devcontainer.lock** contains an array of:
-
-| Property | Type | Description |
-| :--- | :--- | :--- |
-| id | string | The fully qualified id of the feature as defined [here](./devcontainer-features.md#devcontainerjson-properties).|
-| options | string | The same options object passed to the feature in `devcontainer.json`.|
-| checksum | string | The checksum of the downloaded compressed release file.|
-
-The specification supports executing features multiple times with different options. This can be useful when a user wants to install multiple versions of sdk's, or simply execute whatever changes the feature makes to the operating system multiple times. -->

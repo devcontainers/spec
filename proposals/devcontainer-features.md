@@ -7,32 +7,14 @@ Feature metadata is captured by a `devcontainer-feature.json` file in the root f
 
 ## Folder Structure 
 
-A feature is a self contained entity in a folder. A feature release would be a tar file that contains all files part of the feature.
+A feature is a self contained entity in a folder with at least a `devcontainer-feature.json` and `install.sh` entrypoint script.  Additional files are permitted and are packaged along side the required files.
 
 ```
 +-- feature
 |    +-- devcontainer-feature.json
-|    +-- install.sh (default)
-|    +-- (other files)
-```
-
-In case `devcontainer-feature.json`  does not include a reference for the lifecycle scripts the application will look for the default script names and will execute them if available.
-
-In case there is intent to create a set of features that share code, it is possible to create a feature collection in the following way:
-
-```
-collectionFolder
-+-- devcontainer-collection.json
-+-- common (or similar)
-|    +-- (library files)
-+-- feature1
-|    +-- devcontainer-feature.json
 |    +-- install.sh
 |    +-- (other files)
-+-- feature2
-(etc)
 ```
-
 
 ## devcontainer-feature.json properties
 
@@ -70,8 +52,7 @@ Options
 | id.default | string | Default value for the option. |
 | id.description | string | Description for the option. |
 
-## devcontainer.json properties
-
+## devcontainer.json properties (feature related)
 
 Features are referenced in `devcontainer.json` under the top level `features` object. 
 
@@ -84,13 +65,13 @@ The properties are:
 
 ### Referencing a feature 
 
-The `id` is the main reference point for how to find and download a particular feature. `id` can be defined in any of the following ways:
+The `id` format specified dicates how a supporting tool will locate and download a given feature. `id` is one of the following:
 
 | Type | Description | Example |
 | :--- | :--- | :--- |
-| \<oci-registry\>/\<namespace\>/\<feature\>[:\<semantic-version\>] | Reference to feature in OCI registry(*) | ghcr.io/user/repo/go:1 |
-| https://<..URI..>/myFeatures.tgz#{feature} | Direct HTTPS URI to a tarball. | https:github.com/user/repo/releases/myFeatures.tgz#go|
-| ./{local-path}  -or-  | A relative to directory with a devcontainer-feature.json. | ./myGoFeature |
+| `<oci-registry>/<namespace>/<feature>[:<semantic-version>]` | Reference to feature in OCI registry(*) | ghcr.io/user/repo/go:1 |
+| `https://<uri-to-feature-tgz>` | Direct HTTPS URI to a tarball. | https://github.com/user/repo/releases/devcontainer-feature-go.tgz |
+| `./<path-to-feature-dir>`| A relative directory to folder containing a devcontainer-feature.json. | ./myGoFeature |
 
 `
 (*) OCI registry must implement the [OCI Artifact Distribution Specification](https://github.com/opencontainers/distribution-spec).  Some implementors can be [found here](https://oras.land/implementors/).
@@ -98,7 +79,7 @@ The `id` is the main reference point for how to find and download a particular f
 
 ## Versioning
 
-Each feature is individually [versioned according to the semver specification](https://semver.org/).  The `version` property in the respective `devcontainer-feature.json` file is updated to increment the feature's version.  
+Each feature is individually [versioned according to the semver specification](https://semver.org/).  The `version` property in the respective `devcontainer-feature.json` file is updated to increment the feature's version.
 
 Tooling that handles releasing features will not republish features if that exact version has already been published; however, tooling must republish major and minor versions in accordance with the semver specification.
 

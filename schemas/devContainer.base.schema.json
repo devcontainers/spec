@@ -365,7 +365,7 @@
 						"none",
 						"stopContainer"
 					],
-					"description": "Action to take when the VS Code window is closed. The default is to stop the container."
+					"description": "Action to take when the user disconnects from the container in their editor. The default is to stop the container."
 				},
 				"overrideCommand": {
 					"type": "boolean",

@@ -81,6 +81,9 @@ The properties are:
 | id | string | Reference to the particular feature to be included. |
 | options | object | Type of the option .|
 
+
+### Referencing a feature 
+
 The `id` is the main reference point for how to find and download a particular feature. `id` can be defined in any of the following ways:
 
 | Type | Description | Example |

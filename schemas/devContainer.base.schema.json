@@ -189,7 +189,7 @@
 				},
 				"remoteUser": {
 					"type": "string",
-					"description": "The user VS Code Server will be started with. The default is the same user as the container."
+					"description": "The username to use for spawning processes in the container including lifecycle scripts and any remote editor/IDE server process. The default is the same user as the container."
 				},
 				"initializeCommand": {
 					"type": [

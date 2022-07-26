@@ -521,7 +521,7 @@
 						"none",
 						"stopCompose"
 					],
-					"description": "Action to take when the VS Code window is closed. The default is to stop the containers."
+					"description": "Action to take when the user disconnects from the primary container in their editor. The default is to stop all of the compose containers."
 				},
 				"overrideCommand": {
 					"type": "boolean",

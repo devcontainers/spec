@@ -216,7 +216,6 @@ The user's `devcontainer.json` declared the python feature like so
     }
 }
 ```
-
 The emitted environment variables will be:
 
 ```env
@@ -236,7 +235,7 @@ echo "Pip? $PIP"
 echo "Optimize? $OPTIMIZE"
 ```
 
-...output the following
+...output the following:
 ```
 3.10
 false

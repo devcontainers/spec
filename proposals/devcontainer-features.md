@@ -225,12 +225,8 @@ PIP="false"
 OPTIMIZE="true"
 ```
 
-These will be sourced and visible to the `install.sh` entrypoint script.  The following `install.sh` would print
-```
-3.10
-false
-true
-```
+These will be sourced and visible to the `install.sh` entrypoint script.  The following `install.sh`...
+
 
 ```bash
 #!/usr/bin/env bash
@@ -240,7 +236,12 @@ echo "Pip? $PIP"
 echo "Optimize? $OPTIMIZE"
 ```
 
-
+...output the following
+```
+3.10
+false
+true
+```
 
 ### Implementation Notes
 

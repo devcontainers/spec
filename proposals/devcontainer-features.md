@@ -1,7 +1,10 @@
 # Dev container features reference
 
-Dev container 'features' are self-contained units of installation code and development container configuration. Features are designed to install atop a wide-range of base container images. 
-Features are generally designed to be installed on top of a subset of base container images (eg: debian-based images).
+Dev container 'features' are self-contained, shareable units of installation code and development container configuration.
+
+> While 'features' may be installed on top of any base image, the implementation of a feature might restrict it to a subset of possible base images.  
+> 
+> For example, some features may be authored to work with a certain linux distro (e.g. debian-based images that use the `apt` package manager).
 
 Feature metadata is captured by a `devcontainer-feature.json` file in the root folder of the feature.
 

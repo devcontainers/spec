@@ -5,7 +5,7 @@ This specification defines a pattern where community members and organizations c
 Goals include:
 
 - For community authors, a "self-served" mechanism for dev container feature publishing.
-- For community members, a largely self-served mechanism for marking features as "discoverable" by [supporting tools](../docs/specs/supporting-tools.md).
+- For community members, the ability to publish will allow  [supporting tools](../docs/specs/supporting-tools.md) to implement their own discovery mechanisms.
 - For users, ease of discoverability of features via [supporting tools](../docs/specs/supporting-tools.md).
 - For users, the abilty to validate the origin of the asset and its integrity when compared to previous pulls. 
 - For users, the ability for a user to pin to a particular version (absolute, or semantic version) of a feature to allow consistent, repeatable environments.
@@ -14,7 +14,7 @@ Goals include:
 
 Features source code is stored in a git repository.
 
-For ease of authorship and maintenance, [1..n] features can share a single git repository.  This set of features is referred to as a collection, and will share the same [`devcontainer-collection.json`](#devcontainer-collection.json) file and 'namespace' (eg. `owner/repo`).
+For ease of authorship and maintenance, [1..n] features can share a single git repository.  This set of features is referred to as a collection, and will share the same [`devcontainer-collection.json`](#devcontainer-collection.json) file and 'namespace' (eg. `<owner>/<repo>`).
 
 Source code for the set follows the example file structure below:
 
@@ -44,7 +44,7 @@ Source code for the set follows the example file structure below:
 ├── ...
 ```
 
-Where `src` is a directory containing a sub-folder with the name of the feature (e.g. `dotnet` or `go`) with at least a file named `devcontainer-feature.json` that contains the feature metadata. Each feature sub-directory also contains an `install.sh` script that implementing tools will use to install the feature.  Each sub-directory should be named such that it matches the `id` field of the `devcontainer-feature.json`.  Other files can also be included in the sub-directory, and will be packaged along side the two required files.
+Where `src` is a directory containing a sub-folder with the name of the feature (e.g. `src/dotnet` or `src/go`) with at least a file named `devcontainer-feature.json` that contains the feature metadata, and an `install.sh` script that implementing tools will use as the entrypoint to install the feature.  Each sub-directory should be named such that it matches the `id` field of the `devcontainer-feature.json`.  Other files can also be included in the feature's sub-directory, and will be packaged along side the two required files.  Any files that are not part of the feature's sub-directory (e.g. outside of `src/dotnet`) will not be packaged.
 
 Optionally, a mirrored `test` directory can be included with an accompanying `test.sh` script.  Implementing tools may use this to run tests against the given feature.
 
@@ -127,5 +127,5 @@ oras push ${REGISTRY}/${NAMESPACE}:latest \
 
 ### Directly Reference Tarball
 
-A feature can be referenced directly in a `devcontainer.json` file by an HTTP URI that points to the tarball from the [package step](#packaging).
+A feature can be referenced directly in a user's [`devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) file by an HTTP URI that points to the tarball from the [package step](#packaging).
 

@@ -30,7 +30,6 @@ The properties of the file are as follows:
 | description | string | Description of the feature/definition. |
 | documentationURL | string | Url that points to the documentation of the feature. |
 | licenseURL | string | Url that points to the license of the feature. |
-| version | string | Version of the feature. |
 | keywords | array | List of keywords relevant to a user that would search for this definition/feature. |
 | options | object | Possible options to be passed as environment variables to the execution of the scripts |
 | containerEnv | object | A set of name value pairs that sets or overrides environment variables. |

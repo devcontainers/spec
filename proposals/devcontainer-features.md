@@ -24,7 +24,7 @@ The properties of the file are as follows:
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
-| id | string | Id of the feature/definition. The id should be unique in the context of the repository/published package where the feature exists. |
+| id | string | Id of the feature/definition. The id should be unique in the context of the repository/published package where the feature exists and must match the name of the directory where the `devcontainer-feature.json` resides. |
 | version | string | The semantic version of the feature. |
 | name | string | Name of the feature/definition. |
 | description | string | Description of the feature/definition. |
@@ -152,7 +152,7 @@ All feature `id` provided in `overrideFeatureInstallOrder` must also exist in th
 
 #### (2) installsAfter
 
-This propertry is defined in an individual feature's `devcontainer-feature.json` file by the feature author.  `installsAfter` allows an author to provide the tooling hints on loose dependencies between features.
+This property is defined in an individual feature's `devcontainer-feature.json` file by the feature author.  `installsAfter` allows an author to provide the tooling hints on loose dependencies between features.
 
 After `overrideFeatureInstallOrder` is resolved, any remaining features that declare an `installsAfter` must be installed after the features declared in the property, provided that the features have also been declared in the `features` property.
 
@@ -237,9 +237,9 @@ echo "Optimize? $OPTIMIZE"
 
 ...output the following:
 ```
-3.10
-false
-true
+Version is 3.10
+Pip? false
+Optimize? true
 ```
 
 ### Implementation Notes

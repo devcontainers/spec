@@ -11,19 +11,6 @@
 					"type": "string",
 					"description": "A name for the dev container which can be displayed to the user."
 				},
-				"extensions": {
-					"type": "array",
-					"description": "An array of extensions that should be installed into the container.",
-					"items": {
-						"type": "string",
-						"pattern": "^([a-z0-9A-Z][a-z0-9A-Z-]*)\\.([a-z0-9A-Z][a-z0-9A-Z-]*)((@(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?)|@prerelease)?$",
-						"errorMessage": "Expected format: '${publisher}.${name}' or '${publisher}.${name}@${version}'. Example: 'ms-dotnettools.csharp'."
-					}
-				},
-				"settings": {
-					"$ref": "vscode://schemas/settings/machine",
-					"description": "Machine specific settings that should be copied into the container. These are only copied when connecting to the container for the first time, rebuilding the container then triggers it again."
-				},
 				"features": {
 					"type": "object",
 					"description": "Features to add to the dev container.",
@@ -262,10 +249,6 @@
 					],
 					"description": "The user command to wait for before continuing execution in the background while the UI is starting up. The default is \"updateContentCommand\"."
 				},
-				"devPort": {
-					"type": "integer",
-					"description": "The port VS Code can use to connect to its backend."
-				},
 				"userEnvProbe": {
 					"type": "string",
 					"enum": [
@@ -275,11 +258,6 @@
 						"interactiveShell"
 					],
 					"description": "User environment probe to run. The default is \"loginInteractiveShell\"."
-				},
-				"codespaces": {
-					"type": "object",
-					"additionalProperties": true,
-					"description": "Codespaces-specific configuration."
 				},
 				"hostRequirements": {
 					"type": "object",

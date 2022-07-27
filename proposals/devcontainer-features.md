@@ -1,60 +1,23 @@
 # Dev container features reference
 
-Dev container features provide a smooth path for customizing your container definitions. Features are self contained units of code meant to facilitate creation of custom images for application or development containers.
+Dev container 'features' are self-contained, shareable units of installation code and development container configuration.
 
-From a practical point of view, features are folders that contain units of code with different entrypoints for different lifecycle events.
+> While 'features' may be installed on top of any base image, the implementation of a feature might restrict it to a subset of possible base images.  
+> 
+> For example, some features may be authored to work with a certain linux distro (e.g. debian-based images that use the `apt` package manager).
 
-Features can be defined by a `devcontainer-feature.json` file in the root folder of the feature. The file is optional for backwards compatibility but it is required for any new features being authored.
-
-By default, features are installed in an order selected by the implementing tool. 
-
-If any of the following properties are provided in the feature's `devcontainer-feature.json`, or the user's `devcontainer.json`, the order indicated by the propert(ies) are respected.
-
-- `installsAfter` property defined as part of `devcontainer-feature.json`.
-- `id`.
-- `overrideFeatureInstallOrder` in `devcontainer.json`. Allows users to control the order of execution of their features.
-
-The tool uses the `runsAfter` property to intelligently manage this order and ensure that if there are relationships between the features, they are respected.
-
-An end-user can explicitly provide an installation order for features given the  `overrideFeatureInstallOrder` property of `devcontainer.json`. 
-
-All feature `id` provided in `overrideFeatureInstallOrder` must also exist in the `features` property of a user's `devcontainer.json`.
-
-The provided features, indicated by `id`, will be installed in the specified order. Any remaining features in the features object that are not mentioned in the array will be installed in an undefined/implicit order, as determined as optimal by the tooling.
-
-| Property | Type | Description |
-| :--- | :--- | :--- |
-| overrideFeatureInstallOrder | array | Array made of the Id's of the features in the order the user wants them to be installed. |
-
+Feature metadata is captured by a `devcontainer-feature.json` file in the root folder of the feature.
 
 ## Folder Structure 
 
-A feature is a self contained entity in a folder. A feature release would be a tar file that contains all files part of the feature.
+A feature is a self contained entity in a folder with at least a `devcontainer-feature.json` and `install.sh` entrypoint script.  Additional files are permitted and are packaged along side the required files.
 
 ```
 +-- feature
 |    +-- devcontainer-feature.json
-|    +-- install.sh (default)
-|    +-- (other files)
-```
-
-In case `devcontainer-feature.json`  does not include a reference for the lifecycle scripts the application will look for the default script names and will execute them if available.
-
-In case there is intent to create a set of features that share code, it is possible to create a feature collection in the following way:
-
-```
-collectionFolder
-+-- devcontainer-collection.json
-+-- common (or similar)
-|    +-- (library files)
-+-- feature1
-|    +-- devcontainer-feature.json
 |    +-- install.sh
 |    +-- (other files)
-+-- feature2
-(etc)
 ```
-
 
 ## devcontainer-feature.json properties
 
@@ -64,12 +27,12 @@ The properties of the file are as follows:
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
-| id | string | Id of the feature/definition. The id should be unique in the context of the repository/published package where the feature exists. |
+| id | string | Id of the feature/definition. The id should be unique in the context of the repository/published package where the feature exists and must match the name of the directory where the `devcontainer-feature.json` resides. |
+| version | string | The semantic version of the feature. |
 | name | string | Name of the feature/definition. |
 | description | string | Description of the feature/definition. |
 | documentationURL | string | Url that points to the documentation of the feature. |
 | licenseURL | string | Url that points to the license of the feature. |
-| version | string | Version of the feature. |
 | keywords | array | List of keywords relevant to a user that would search for this definition/feature. |
 | options | object | Possible options to be passed as environment variables to the execution of the scripts |
 | containerEnv | object | A set of name value pairs that sets or overrides environment variables. |
@@ -91,35 +54,67 @@ Options
 | id.default | string | Default value for the option. |
 | id.description | string | Description for the option. |
 
-## devcontainer-collection.json properties
-
-A feature collection file is a compilation of the `devcontainer-feature.json` files for each individual feature. It inlines all the information in each `devcontainer-feature.json` for each feature.
-
-If the application finds a `devcontainer-collection.json` file in the root of a downloaded tar file, then it uses that file to find the particular feature that will be executed.
-
-In addition to the list of features included, the file includes the following properties.
-
-| Property | Type | Description |
-| :--- | :--- | :--- |
-| name | string | Name of the collection. |
-| reference | string | Reference information of the repository and path where the code is stored. |
-| version | string | Version of the code. |
-
-In most cases, the `devcontainer-collection.json` file can be generated automatically at the moment of creating a release.
-
 ## devcontainer.json properties
 
-Features are referenced in `devcontainer.json` , where the `features` tag consists of an object tag starting with the id of the feature and including the values of the options to pass to the feature itself.
+Features are referenced in a user's [`devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) under the top level `features` object. 
+
+A user can specify an arbitrary number of features.  At build time, these features will be installed in an order defined by a combination of the [installation order rules and implementation](#Installation-Order). 
+
+A single feature is provided as a key/value pair, where the key is the feature identifier, and the value is an object containing "options" (or empty for "default").  Each key in the feature object must be unique.
+
+These options are sourced as environment variables at build-time, as specified in [Option Resolution](#Option-Resolution).
 
 
-The `id` is the main reference point for how to find and download a particular feature. `id` can be defined in any of the following ways:
+Below is a valid `features` object provided as an example.
+```jsonc
+"features": {
+  "ghcr.io/user/repo/go:1": {},
+  "https://github.com/user/repo/releases/devcontainer-feature-go.tgz": { 
+        "optionA": "value" 
+  },
+  "./myGoFeature": { 
+        "optionA": true,
+        "optionB": "hello",
+        "version" : "1.0.0"
+  }
+}
+```
 
-| Type | Description |
-| :--- | :--- |
-| feature  | A simple name referencing a feature; it's included with the application used to execute `devcontainer.json`.|
-| organization/repository/{feature or collectionl/feature}/@version | Reference to a particular release in a repository. |
-| https://<../URI/..>/devcontainer-features.tgz#{optional feature} | Direct reference to a file download. |
-| ./{local-path}  -or-  ../{local-path} | A path relative to devcontainer.json where a feature or feature collection can be found. |
+An option's value can be provided as either a `string` or `boolean`, and should match what is expected by the feature in the `devcontainer-feature.json` file.
+
+As a shorthand, the value of a `feature` can be provided as a single string. This string is mapped to an option called `version`.  In the example below, both examples are equivalent. 
+
+```jsonc
+"features": {
+  "ghcr.io/owner/repo/go": "1.18"
+}
+```
+```jsonc
+"features": {
+  "ghcr.io/owner/repo/go": {
+    "version": "1.18"
+  }
+}
+```
+
+### Referencing a feature 
+
+The `id` format specified dicates how a supporting tool will locate and download a given feature. `id` is one of the following:
+
+| Type | Description | Example |
+| :--- | :--- | :--- |
+| `<oci-registry>/<namespace>/<feature>[:<semantic-version>]` | Reference to feature in OCI registry(*) | ghcr.io/user/repo/go:1 |
+| `https://<uri-to-feature-tgz>` | Direct HTTPS URI to a tarball. | https://github.com/user/repo/releases/devcontainer-feature-go.tgz |
+| `./<path-to-feature-dir>`| A relative directory to folder containing a devcontainer-feature.json. | ./myGoFeature |
+
+`
+(*) OCI registry must implement the [OCI Artifact Distribution Specification](https://github.com/opencontainers/distribution-spec).  Some implementors can be [found here](https://oras.land/implementors/).
+
+## Versioning
+
+Each feature is individually [versioned according to the semver specification](https://semver.org/).  The `version` property in the respective `devcontainer-feature.json` file is updated to increment the feature's version.
+
+Tooling that handles releasing features will not republish features if that exact version has already been published; however, tooling must republish major and minor versions in accordance with the semver specification.
 
 ## Authoring
 
@@ -133,19 +128,124 @@ If the feature is included in a folder as part of the repository that contains `
 
 ## Release
 
-A release is created when the objective is to have other users use a feature.
+_For information on distribution features, see [devcontainer-features-distribution.md](./devcontainer-features-distribution.md)._
 
-A release consists of the following:
+## Execution
 
-1.- Tar file with all the included files for the feature or feature collection.
-2.- A copy of the `devcontainer-feature.json` or `devcontainer-collection.json` file that defines the contents of the tar file, with additional information added to validate it.
+### Installation Order
+
+By default, features are installed on top of a base image in an order determined as optimal by the implementing tool.
+
+If any of the following properties are provided in the feature's `devcontainer-feature.json`, or the user's `devcontainer.json`, the order indicated by these propert(ies) are respected (with decreasing precedence).
+
+1. The `overrideFeatureInstallOrder` property in user's `devcontainer.json`. Allows users to control the order of execution of their features.
+2. The `installsAfter` property defined as part of a feature's `devcontainer-feature.json`.
+
+#### (1) overrideFeatureInstallOrder
+
+This property is declared by the user in their `devcontainer.json` file.
+
+Any feature IDs listed in this array will be installed before all other features, in the provided order. Any omitted features will be installed in an order selected by the implementing tool, or ordered via the `installsAfter` property _after_  any features listed in the `overrideFeatureInstallOrder` array, if applicable. 
+
+All feature `id` provided in `overrideFeatureInstallOrder` must also exist in the `features` property of a user's `devcontainer.json`.
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
-| version | string | SemVer version of the release. |
-| checksum | string | Checksum of the tar file. |
+| overrideFeatureInstallOrder | array | Array consisting of the feature `id` of features in the order the user wants them to be installed.   |
 
-## Execution
+#### (2) installsAfter
+
+This property is defined in an individual feature's `devcontainer-feature.json` file by the feature author.  `installsAfter` allows an author to provide the tooling hints on loose dependencies between features.
+
+After `overrideFeatureInstallOrder` is resolved, any remaining features that declare an `installsAfter` must be installed after the features declared in the property, provided that the features have also been declared in the `features` property.
+
+| Property | Type | Description |
+| :--- | :--- | :--- |
+| installsAfter | array | Array consisting of the feature `id` that should be installed before the given feature   |
+
+### Option Resolution
+
+A feature's 'options' - specified as the value of a single feature key/value pair in the user's `devcontainer.json` - are passed to the feature as environment variables.
+
+A supporting tool will parse the `options` object provided by the user.  If a value is provided for a feature, it will be emitted to a file named `devcontainer-features.env` following the format `<OPTION_NAME>=<value>`.  
+
+To ensure a option that is valid as an environment variable, the follow substitutions are performed.
+
+```javascript
+(str: string) => str
+	.replace(/[^\w_]/g, '_')
+	.replace(/^[\d_]+/g, '_')
+	.toUpperCase();
+```
+
+This file is sourced at build-time for the feature `install.sh` entrypoint script to handle.
+
+Any options defined by a feature's `devcontainer-feature.json` that are omitted in the user's `devcontainer.json` will be implicitly exported as its default value.
+
+### Option Resolution Example
+
+Suppose a `python` feature has the following `options` parameters declared in the `devcontainer-feature.json` file:
+
+```jsonc
+// ...
+"options": {
+    "version": {
+        "type": "string",
+        "enum": ["latest", "3.10", "3.9", "3.8", "3.7", "3.6"],
+        "default": "latest",
+        "description": "Select a Python version to install."
+    },
+    "pip": {
+        "type": "boolean",
+        "default": true,
+        "description": "Installs pip"
+    },
+    "optimize": {
+        "type": "boolean",
+        "default": true,
+        "description": "Optimize python installation"
+    }
+}
+```
+
+The user's `devcontainer.json` declared the python feature like so
+
+```jsonc
+
+"features": {
+    "python": {
+        "version": "3.10",
+        "pip": false
+    }
+}
+```
+The emitted environment variables will be:
+
+```env
+VERSION="3.10"
+PIP="false"
+OPTIMIZE="true"
+```
+
+These will be sourced and visible to the `install.sh` entrypoint script.  The following `install.sh`...
+
+
+```bash
+#!/usr/bin/env bash
+
+echo "Version is $VERSION"
+echo "Pip? $PIP"
+echo "Optimize? $OPTIMIZE"
+```
+
+...output the following:
+```
+Version is 3.10
+Pip? false
+Optimize? true
+```
+
+### Implementation Notes
 
 There are several things to keep in mind for an application that implements features:
 

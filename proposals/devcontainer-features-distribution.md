@@ -4,10 +4,10 @@ This specification defines a pattern where community members and organizations c
 
 Goals include:
 
-- For community authors, a "self-served" mechanism for dev container feature publishing.
-- For community members, the ability to publish features, thus allowing  [supporting tools](../docs/specs/supporting-tools.md) to implement their own discovery mechanisms.
+- For community authors, a "self-served" mechanism for dev container feature publishing, either publicly or privately.
 - For users, the ability to validate the integrity of previously fetched assets. 
-- For users, the ability for a user to pin to a particular version (absolute, or semantic version) of a feature to allow consistent, repeatable environments.
+- For users, the ability for a user to pin to a particular version (absolute, or semantic version) of a feature to allow for consistent, repeatable environments.
+- The ability to standardize publishing such that [supporting tools](../docs/specs/supporting-tools.md) may implement mechanisms for feature discoverability.
 
 ## Source Code
 

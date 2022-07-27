@@ -51,16 +51,48 @@ Options
 | id.default | string | Default value for the option. |
 | id.description | string | Description for the option. |
 
-## devcontainer.json properties (feature related)
+## devcontainer.json properties
 
-Features are referenced in `devcontainer.json` under the top level `features` object. 
+Features are referenced in a user's [`devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) under the top level `features` object. 
 
-The properties are:
-| Property | Type | Description |
-| :--- | :--- | :--- |
-| id | string | Reference to the particular feature to be included. |
-| options | object | Type of the option .|
+A user can specify an arbitrary number of features.  At build time, these features will be installed in an order defined by a combination of the [installation order rules and implementation](#Installation-Order). 
 
+A single feature is provided as a key/value pair, where the key is the feature identifier, and the value is an object containing "options" (or empty for "default").  Each key in the feature object must be unique.
+
+These options are sourced as environment variables at build-time, as specified in [Option Resolution](#Option-Resolution).
+
+
+Below is a valid `features` object provided as an example.
+```jsonc
+"features": {
+  "ghcr.io/user/repo/go:1": {},
+  "https://github.com/user/repo/releases/devcontainer-feature-go.tgz": { 
+        "optionA": "value" 
+  },
+  "./myGoFeature": { 
+        "optionA": true,
+        "optionB": "hello",
+        "version" : "1.0.0"
+  }
+}
+```
+
+An option's value can be provided as either a `string` or `boolean`, and should match what is expected by the feature in the `devcontainer-feature.json` file.
+
+As a shorthand, the value of a `feature` can be provided as a single string. This string is mapped to an option called `version`.  In the example below, both examples are equivalent. 
+
+```jsonc
+"features": {
+  "ghcr.io/owner/repo/go": "1.18"
+}
+```
+```jsonc
+"features": {
+  "ghcr.io/owner/repo/go": {
+    "version": "1.18"
+  }
+}
+```
 
 ### Referencing a feature 
 
@@ -74,7 +106,6 @@ The `id` format specified dicates how a supporting tool will locate and download
 
 `
 (*) OCI registry must implement the [OCI Artifact Distribution Specification](https://github.com/opencontainers/distribution-spec).  Some implementors can be [found here](https://oras.land/implementors/).
-
 
 ## Versioning
 
@@ -95,7 +126,6 @@ If the feature is included in a folder as part of the repository that contains `
 ## Release
 
 _For information on distribution features, see [devcontainer-features-distribution.md](./devcontainer-features-distribution.md)._
-
 
 ## Execution
 
@@ -129,6 +159,87 @@ After `overrideFeatureInstallOrder` is resolved, any remaining features that dec
 | Property | Type | Description |
 | :--- | :--- | :--- |
 | installsAfter | array | Array consisting of the feature `id` that should be installed before the given feature   |
+
+### Option Resolution
+
+A feature's 'options' - specified as the value of a single feature key/value pair in the user's `devcontainer.json` - are passed to the feature as environment variables.
+
+A supporting tool will parse the `options` object provided by the user.  If a value is provided for a feature, it will be emitted to a file named `devcontainer-features.env` following the format `<OPTION_NAME>=<value>`.  
+
+To ensure a option that is valid as an environment variable, the follow substitutions are performed.
+
+```javascript
+(str: string) => str
+	.replace(/[^\w_]/g, '_')
+	.replace(/^[\d_]+/g, '_')
+	.toUpperCase();
+```
+
+This file is sourced at build-time for the feature `install.sh` entrypoint script to handle.
+
+Any options defined by a feature's `devcontainer-feature.json` that are omitted in the user's `devcontainer.json` will be implicitly exported as its default value.
+
+### Option Resolution Example
+
+Suppose a `python` feature has the following `options` parameters declared in the `devcontainer-feature.json` file:
+
+```jsonc
+// ...
+"options": {
+    "version": {
+        "type": "string",
+        "enum": ["latest", "3.10", "3.9", "3.8", "3.7", "3.6"],
+        "default": "latest",
+        "description": "Select a Python version to install."
+    },
+    "pip": {
+        "type": "boolean",
+        "default": true,
+        "description": "Installs pip"
+    },
+    "optimize": {
+        "type": "boolean",
+        "default": true,
+        "description": "Optimize python installation"
+    }
+}
+```
+
+The user's `devcontainer.json` declared the python feature like so
+
+```jsonc
+
+"features": {
+    "python": {
+        "version": "3.10",
+        "pip": false
+    }
+}
+```
+
+The emitted environment variables will be:
+
+```env
+VERSION="3.10"
+PIP="false"
+OPTIMIZE="true"
+```
+
+These will be sourced and visible to the `install.sh` entrypoint script.  The following `install.sh` would print
+```
+3.10
+false
+true
+```
+
+```bash
+#!/usr/bin/env bash
+
+echo "Version is $VERSION"
+echo "Pip? $PIP"
+echo "Optimize? $OPTIMIZE"
+```
+
 
 
 ### Implementation Notes

@@ -43,7 +43,7 @@ Source code for the set follows the example file structure below:
 ├── ...
 ```
 
-Where `src` is a directory containing a sub-folder with the name of the feature (e.g. `src/dotnet` or `src/go`) with at least a file named `devcontainer-feature.json` that contains the feature metadata, and an `install.sh` script that implementing tools will use as the entrypoint to install the feature.  Each sub-directory should be named such that it matches the `id` field of the `devcontainer-feature.json`.  Other files can also be included in the feature's sub-directory, and will be packaged along side the two required files.  Any files that are not part of the feature's sub-directory (e.g. outside of `src/dotnet`) will not be packaged.
+Where `src` is a directory containing a sub-folder with the name of the feature (e.g. `src/dotnet` or `src/go`) with at least a file named `devcontainer-feature.json` that contains the feature metadata, and an `install.sh` script that implementing tools will use as the entrypoint to install the feature.  Each sub-directory should be named such that it matches the `id` field of the `devcontainer-feature.json`.  Other files can also be included in the feature's sub-directory, and will be included during the [packaging step](#packaging) along side the two required files.  Any files that are not part of the feature's sub-directory (e.g. outside of `src/dotnet`) will not included in the [packaging step](#packaging).
 
 Optionally, a mirrored `test` directory can be included with an accompanying `test.sh` script.  Implementing tools may use this to run tests against the given feature.
 
@@ -70,8 +70,6 @@ The `devcontainer-collection.json` is an auto-generated metadata file.
 | :--- | :--- | :--- |
 | sourceInformation | object | Metadata from the implementing packaging tool. |
 | features | array | The list of features that are contained in this collection.|
-<!-- | templates | array | The list of templates contained in this collection. Same information as the metadata file for the definition.| -->
-
 
 Each features's `devcontainer-feature.json` metadata file is appended into the `features` top-level array.
 
@@ -87,8 +85,9 @@ An OCI registry that implements the [OCI Artifact Distribution Specification](ht
 
 Each packaged feature is pushed to the registry following the naming convention `<registry>/<namespace>/<id>[:version]`, where version is the major, minor, and patch version of the feature, according to the semver specification.
 
-A custom media type `application/vnd.devcontainers` and `application/vnd.devcontainers.layer.v1+tar` are used as demonstrated below.
+> The `namespace` is a unique indentifier for the collection of features.  There are no strict rules for the `namespace`; however, one pattern is to set `namespace` equal to source repository's `<owner>/<repo>`. 
 
+A custom media type `application/vnd.devcontainers` and `application/vnd.devcontainers.layer.v1+tar` are used as demonstrated below.
 
 For example, the `go` feature in the `devcontainers/features` namespace at version `1.2.3` would be pushed to the ghcr.io OCI registry.  
 
@@ -128,3 +127,10 @@ oras push ${REGISTRY}/${NAMESPACE}:latest \
 
 A feature can be referenced directly in a user's [`devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) file by an HTTP URI that points to the tarball from the [package step](#packaging).
 
+### Addendum: Locally Referenced
+
+To aid in feature authorship, or in instances where a feature should not be published externally, individual features can be referenced locally from the project's file tree.
+
+A feature can be referenced directly in a user's [`devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) by relative path _inside_ the project directory.  A local feature may not be referenced outside of the project directory (`../` is not allowed), nor is an absolute path allowed.  
+
+The provided relative path is a path to the folder containing the feature's `devcontainer-feature.json` and `install.sh` file.

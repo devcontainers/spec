@@ -68,7 +68,9 @@ These options are sourced as environment variables at build-time, as specified i
 Below is a valid `features` object provided as an example.
 ```jsonc
 "features": {
-  "ghcr.io/user/repo/go:1": {},
+  "ghcr.io/user/repo/go": {},
+  "ghcr.io/user/repo1/go:1": {},
+  "ghcr.io/user/repo2/go:latest": {},
   "https://github.com/user/repo/releases/devcontainer-feature-go.tgz": { 
         "optionA": "value" 
   },
@@ -79,6 +81,8 @@ Below is a valid `features` object provided as an example.
   }
 }
 ```
+
+> Note: The `:latest` version annotation is added implicitly if omitted. To pin to a specific package version ([example](https://github.com/devcontainers/features/pkgs/container/features/go/versions)), append it to the end of the feature.
 
 An option's value can be provided as either a `string` or `boolean`, and should match what is expected by the feature in the `devcontainer-feature.json` file.
 
@@ -103,7 +107,7 @@ The `id` format specified dicates how a supporting tool will locate and download
 
 | Type | Description | Example |
 | :--- | :--- | :--- |
-| `<oci-registry>/<namespace>/<feature>[:<semantic-version>]` | Reference to feature in OCI registry(*) | ghcr.io/user/repo/go:1 |
+| `<oci-registry>/<namespace>/<feature>[:<semantic-version>]` | Reference to feature in OCI registry(*) | ghcr.io/user/repo/go <br> ghcr.io/user/repo/go:1 <br> ghcr.io/user/repo/go:latest|
 | `https://<uri-to-feature-tgz>` | Direct HTTPS URI to a tarball. | https://github.com/user/repo/releases/devcontainer-feature-go.tgz |
 | `./<path-to-feature-dir>`| A relative directory to folder containing a devcontainer-feature.json. | ./myGoFeature |
 

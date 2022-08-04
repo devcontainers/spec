@@ -131,6 +131,8 @@ A feature can be referenced directly in a user's [`devcontainer.json`](/docs/spe
 
 To aid in feature authorship, or in instances where a feature should not be published externally, individual features can be referenced locally from the project's file tree.
 
-A feature can be referenced directly in a user's [`devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) by relative path _inside_ the project directory.  A local feature may not be referenced outside of the project directory (`../` is not allowed), nor is an absolute path allowed.  
+A feature can be referenced directly in a user's [`devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) by relative path _inside_ the project root directory, or a subdirectory of the project root. Note that the project root directory is indicated by the required `--workspace-folder <...>` parameter.  
+
+A local feature may not be referenced outside of the project directory (`../` is not allowed), nor is an absolute path allowed.
 
 The provided relative path is a path to the folder containing the feature's `devcontainer-feature.json` and `install.sh` file.

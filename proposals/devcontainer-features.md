@@ -1,6 +1,6 @@
 # Dev container features reference
 
-Dev container 'features' are self-contained, shareable units of installation code and development container configuration.
+Development container "Features" are self-contained, shareable units of installation code and development container configuration. The name comes from the idea that referencing one of them allows you to quickly and easily add more tooling, runtime, or library "features" into your development container for you or your collaborators to use.
 
 > While 'features' may be installed on top of any base image, the implementation of a feature might restrict it to a subset of possible base images.  
 > 

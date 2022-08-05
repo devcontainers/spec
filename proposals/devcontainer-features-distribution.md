@@ -127,6 +127,8 @@ oras push ${REGISTRY}/${NAMESPACE}:latest \
 
 A feature can be referenced directly in a user's [`devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) file by HTTPS URI that points to the tarball from the [package step](#packaging).
 
+The `.tgz` archive file must be named `devcontainer-feature-<featureId>.tgz`.
+
 ### Addendum: Locally Referenced
 
 To aid in feature authorship, or in instances where a feature should not be published externally, individual features can be referenced locally from the project's file tree.

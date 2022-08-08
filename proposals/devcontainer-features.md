@@ -114,7 +114,7 @@ The `id` format specified dicates how a supporting tool will locate and download
 
 (*) OCI registry must implement the [OCI Artifact Distribution Specification](https://github.com/opencontainers/distribution-spec).  Some implementors can be [found here](https://oras.land/implementors/).
 
-(**) The provided path is relative to the workspace folder root (the `--workspace-folder` ).
+(**) The provided path is always relative to the project's root directory.
 
 ## Versioning
 

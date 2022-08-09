@@ -149,13 +149,24 @@ If any of the following properties are provided in the feature's `devcontainer-f
 
 This property is declared by the user in their `devcontainer.json` file.
 
-Any feature IDs listed in this array will be installed before all other features, in the provided order. Any omitted features will be installed in an order selected by the implementing tool, or ordered via the `installsAfter` property _after_  any features listed in the `overrideFeatureInstallOrder` array, if applicable. 
+Any unversioned feature IDs listed in this array will be installed before all other features, in the provided order. Any omitted features will be installed in an order selected by the implementing tool, or ordered via the `installsAfter` property _after_  any features listed in the `overrideFeatureInstallOrder` array, if applicable. 
 
-All feature `id` provided in `overrideFeatureInstallOrder` must also exist in the `features` property of a user's `devcontainer.json`.
+All unversioned feature `id`s provided in `overrideFeatureInstallOrder` must also exist in the `features` property of a user's `devcontainer.json`. For instance, all the features which follows the OCI registry format would include everything except for the label that contains the version (`<oci-registry>/<namespace>/<feature>` without the `:<semantic-version>`.
+
+Example:
+```
+  "features": {
+      "ghcr.io/devcontainers/features/java:1",
+      "ghcr.io/devcontainers/features/node:1",
+  },
+  "overrideFeatureInstallOrder": [
+    "ghcr.io/devcontainers/features/node"
+  ]
+```
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
-| overrideFeatureInstallOrder | array | Array consisting of the feature `id` of features in the order the user wants them to be installed.   |
+| overrideFeatureInstallOrder | array | Array consisting of the feature `id` (without the semantic version) of features in the order the user wants them to be installed.   |
 
 #### (2) installsAfter
 

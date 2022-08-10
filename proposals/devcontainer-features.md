@@ -103,7 +103,7 @@ As a shorthand, the value of a `feature` can be provided as a single string. Thi
 
 ### Referencing a feature 
 
-The `id` format specified dicates how a supporting tool will locate and download a given feature. `id` is one of the following:
+The `id` format specified dictates how a supporting tool will locate and download a given feature. `id` is one of the following:
 
 | Type | Description | Example |
 | :--- | :--- | :--- |

@@ -125,14 +125,44 @@ oras push ${REGISTRY}/${NAMESPACE}:latest \
 
 ### Directly Reference Tarball
 
-A feature can be referenced directly in a user's [`devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) file by an HTTP or HTTPS URI that points to the tarball from the [package step](#packaging).
+A feature can be referenced directly in a user's [`devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) file by an HTTPS URI that points to the tarball from the [package step](#packaging).
 
 ### Addendum: Locally Referenced
 
 To aid in feature authorship, or in instances where a feature should not be published externally, individual features can be referenced locally from the project's file tree.
 
-A local feature is referenced in a user's [`devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) by relative path. A local feature is always referenced relative to the project root.
+A local feature is placed in a `.devcontainer/` folder at the root of the [**project workspace folder**](/docs/specs/devcontainer-reference.md#project-workspace-folder) and referenced in a user's [`.devcontainer/devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) by relative path.
 
-A local feature may not be referenced outside of the project's root directory (`../` is not allowed), nor is an absolute path allowed.
+The relative path is provided using unix-style path syntax (eg `./<...>`), regardless of the host operating system.
 
-The provided relative path is a path to the folder containing the feature's `devcontainer-feature.json` and `install.sh` file.
+A local feature may **not** be referenced by absolute path, or by a path outside the `.devcontainer/` folder. 
+
+The provided relative path is a path to the folder containing at least a `devcontainer-feature.json` and `install.sh` file, mirroring the structure [previously outlined](#Source-Code).
+
+An example project is illustrated below:
+
+```
+.
+├── .devcontainer/
+│   ├── localFeatureA/
+│   │   ├── devcontainer-feature.json
+│   │   ├── install.sh
+│   │   └── ...
+│   ├── localFeatureB/
+│   │   ├── devcontainer-feature.json
+│   │   ├── install.sh
+│   │   └── ...
+│   ├── devcontainer.json
+```
+
+##### devcontainer.json
+```jsonc
+{
+        // ...
+        "features": {
+                "./localFeatureA": {},
+                "./localFeatureB": {}
+        }
+
+}
+```

@@ -120,12 +120,14 @@ NAMESPACE=devcontainers/features
 
 oras push ${REGISTRY}/${NAMESPACE}:latest \
         --manifest-config /dev/null:application/vnd.devcontainers \
-                            ./devcontainer-collection.json.:application/vnd.devcontainers.layer.v1+json
+                            ./devcontainer-collection.json:application/vnd.devcontainers.collection.layer.v1+json
 ```
 
 ### Directly Reference Tarball
 
-A feature can be referenced directly in a user's [`devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) file by an HTTPS URI that points to the tarball from the [package step](#packaging).
+A feature can be referenced directly in a user's [`devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) file by HTTPS URI that points to the tarball from the [package step](#packaging).
+
+The `.tgz` archive file must be named `devcontainer-feature-<featureId>.tgz`.
 
 ### Addendum: Locally Referenced
 

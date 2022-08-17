@@ -133,6 +133,38 @@ The `.tgz` archive file must be named `devcontainer-feature-<featureId>.tgz`.
 
 To aid in feature authorship, or in instances where a feature should not be published externally, individual features can be referenced locally from the project's file tree.
 
-A feature can be referenced directly in a user's [`devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) by relative path _inside_ the project directory.  A local feature may not be referenced outside of the project directory (`../` is not allowed), nor is an absolute path allowed.  
+A local feature is placed in a `.devcontainer/` folder at the root of the [**project workspace folder**](/docs/specs/devcontainer-reference.md#project-workspace-folder) and referenced in a user's [`.devcontainer/devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) by relative path.
 
-The provided relative path is a path to the folder containing the feature's `devcontainer-feature.json` and `install.sh` file.
+The relative path is provided using unix-style path syntax (eg `./<...>`), regardless of the host operating system.
+
+A local feature may **not** be referenced by absolute path, or by a path outside the `.devcontainer/` folder. 
+
+The provided relative path is a path to the folder containing at least a `devcontainer-feature.json` and `install.sh` file, mirroring the structure [previously outlined](#Source-Code).
+
+An example project is illustrated below:
+
+```
+.
+├── .devcontainer/
+│   ├── localFeatureA/
+│   │   ├── devcontainer-feature.json
+│   │   ├── install.sh
+│   │   └── ...
+│   ├── localFeatureB/
+│   │   ├── devcontainer-feature.json
+│   │   ├── install.sh
+│   │   └── ...
+│   ├── devcontainer.json
+```
+
+##### devcontainer.json
+```jsonc
+{
+        // ...
+        "features": {
+                "./localFeatureA": {},
+                "./localFeatureB": {}
+        }
+
+}
+```

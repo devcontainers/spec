@@ -38,11 +38,11 @@ The properties of the file are as follows:
 | `keywords` | array | List of strings relevant to a user that would search for this definition/feature. |
 | `options` | object | A map of options that will be passed as environment variables to the execution of the script. |
 | `containerEnv` | object | A set of name value pairs that sets or overrides environment variables. |
-| `privileged` | boolean | If privileged mode is required by the feature. |
-| `init` | boolean | If it's necessary to add the `--init` flag. |
-| `capAdd` | array | Additional capabilities needed by the feature. |
-| `securityOpt` | array | Security options needed by the feature. |
-| `entrypoint` | string | Set if the feature requires an entrypoint. |
+| `privileged` | boolean | Sets [privileged mode](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) for the container (required by things like docker-in-docker) when the feature is used. |
+| `init` | boolean | Adds the [tiny init](https://github.com/RKrahl/tiny-init) process to the container (`--init`) when the feature is used. |
+| `capAdd` | array | Adds container [capabilities](https://docs.docker.com/engine/security/#linux-kernel-capabilities) when the Feature is used. |
+| `securityOpt` | array | Sets container security options like updating the [seccomp profile](https://docs.docker.com/engine/security/seccomp/) when the feature is used. |
+| `entrypoint` | string | Set if the feature requires an "entrypoint" script that should fire at container start up. |
 | `customizations` | object | Product specific properties, each namespace under `customizations` is treated as a separate set of properties. For each of this sets the object is parsed, values are replaced while arrays are set as a union. |
 | `installsAfter` | array | Array of ID's of Features that should execute before this one. Allows control for feature authors on soft dependencies between different Features. |
 

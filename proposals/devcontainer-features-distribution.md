@@ -4,7 +4,7 @@ This specification defines a pattern where community members and organizations c
 
 Goals include:
 
-- For Feature authors, create a "self-service" way to publish a Feature, either publicly or privately, that does not centrally controlled.
+- For Feature authors, create a "self-service" way to publish a Feature, either publicly or privately, that is not centrally controlled.
 - For users, provide the ability to validate the integrity of fetched Feature assets. 
 - For users, provide the ability to pin to a particular version (absolute, or semantic version) of a Feature to allow for consistent, repeatable environments.
 - Provide the ability to standardize publishing such that [supporting tools](../docs/specs/supporting-tools.md) may implement whatever their own mechanism to aid Feature discoverability as they see fit.

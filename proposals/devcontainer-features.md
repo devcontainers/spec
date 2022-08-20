@@ -187,7 +187,7 @@ Example:
 | :--- | :--- | :--- |
 | `overrideFeatureInstallOrder` | array | Array consisting of the feature `id` (without the semantic version) of Features in the order the user wants them to be installed.   |
 
-#### (2) The `installsAfter` feature property
+#### (2) The `installsAfter` Feature property
 
 This property is defined in an individual feature's `devcontainer-feature.json` file by the feature author.  `installsAfter` allows an author to provide the tooling hints on loose dependencies between Features.
 

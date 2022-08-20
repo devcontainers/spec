@@ -164,7 +164,7 @@ If any of the following properties are provided in the feature's `devcontainer-f
 1. The `overrideFeatureInstallOrder` property in user's `devcontainer.json`. Allows users to control the order of execution of their Features.
 2. The `installsAfter` property defined as part of a feature's `devcontainer-feature.json`.
 
-#### (1) The `overrideFeatureInstallOrder` devcontainer.json property
+#### (1) The `overrideFeatureInstallOrder` property
 
 This property is declared by the user in their `devcontainer.json` file.
 

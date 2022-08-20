@@ -134,7 +134,7 @@ A Feature can be referenced directly in a user's [`devcontainer.json`](/docs/spe
 
 The `.tgz` archive file must be named `devcontainer-feature-<featureId>.tgz`.
 
-### Locally referenced features
+### Locally referenced Features
 
 To aid in feature authorship, or in instances where a feature should not be published externally, individual features can be referenced locally from the project's file tree.
 

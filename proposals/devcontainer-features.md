@@ -170,7 +170,7 @@ This property is declared by the user in their `devcontainer.json` file.
 
 Any un-versioned feature IDs listed in this array will be installed before all other Features, in the provided order. Any omitted Features will be installed in an order selected by the implementing tool, or ordered via the `installsAfter` property _after_  any Features listed in the `overrideFeatureInstallOrder` array, if applicable. 
 
-All un-versioned feature `id`s provided in `overrideFeatureInstallOrder` must also exist in the `features` property of a user's `devcontainer.json`. For instance, all the Features which follows the OCI registry format would include everything except for the label that contains the version (`<oci-registry>/<namespace>/<feature>` without the `:<semantic-version>`.
+All un-versioned Feature `id`s provided in `overrideFeatureInstallOrder` must also exist in the `features` property of a user's `devcontainer.json`. For instance, all the Features which follows the OCI registry format would include everything except for the label that contains the version (`<oci-registry>/<namespace>/<feature>` without the `:<semantic-version>`.
 
 Example:
 ```

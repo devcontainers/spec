@@ -195,7 +195,7 @@ After `overrideFeatureInstallOrder` is resolved, any remaining Features that dec
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
-| `installsAfter` | array | Array consisting of the feature `id` that should be installed before the given feature   |
+| `installsAfter` | array | Array consisting of the feature `id` that should be installed before the given Feature |
 
 ### Option Resolution
 

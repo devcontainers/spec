@@ -170,7 +170,7 @@ This property is declared by the user in their `devcontainer.json` file.
 
 Any un-versioned feature IDs listed in this array will be installed before all other Features, in the provided order. Any omitted Features will be installed in an order selected by the implementing tool, or ordered via the `installsAfter` property _after_  any Features listed in the `overrideFeatureInstallOrder` array, if applicable. 
 
-All un-versioned Feature `id`s provided in `overrideFeatureInstallOrder` must also exist in the `features` property of a user's `devcontainer.json`. For instance, all the Features which follows the OCI registry format would include everything except for the label that contains the version (`<oci-registry>/<namespace>/<feature>` without the `:<semantic-version>`.
+All un-versioned Feature `id`s provided in `overrideFeatureInstallOrder` must also exist in the `features` property of a user's `devcontainer.json`. For instance, all the Features which follows the OCI registry format would include everything except for the label that contains the version (`<oci-registry>/<namespace>/<feature>` without the `:<semantic-version>`).
 
 Example:
 ```
@@ -185,7 +185,7 @@ Example:
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
-| `overrideFeatureInstallOrder` | array | Array consisting of the feature `id` (without the semantic version) of Features in the order the user wants them to be installed.   |
+| `overrideFeatureInstallOrder` | array | Array consisting of the feature `id` (without the semantic version) of Features in the order the user wants them to be installed. |
 
 #### (2) The `installsAfter` Feature property
 
@@ -272,7 +272,7 @@ echo "Pip? $PIP"
 echo "Optimize? $OPTIMIZE"
 ```
 
-...outputs the following:
+... outputs the following:
 ```
 Version is 3.10
 Pip? false
@@ -289,4 +289,4 @@ There are several things to keep in mind for an application that implements Feat
 - Parameters like `capAdd`, `securityOp`  are concatenated.
 - `containerEnv` is added before the feature is executed as `ENV` commands in the Dockerfile.
 - Each feature script executes as its own layer to aid in caching and rebuilding.
-- There is also a proposal to move properties like `privileged` to `devcontainer.json` for consistency and to reduce reliance on the `runArgs` property. See https://github.com/devcontainers/spec/issues/2
+- There is also a proposal to move properties like `privileged` to `devcontainer.json` for consistency and to reduce reliance on the `runArgs` property. See https://github.com/devcontainers/spec/issues/2.

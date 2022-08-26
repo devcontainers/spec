@@ -169,7 +169,7 @@ An example project is illustrated below:
 │   │   ├── install.sh
 │   │   └── ...
 │   ├── devcontainer.json
-```x
+```
 
 ##### devcontainer.json
 ```jsonc

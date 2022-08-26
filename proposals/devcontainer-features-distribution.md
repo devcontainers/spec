@@ -136,7 +136,7 @@ The `.tgz` archive file must be named `devcontainer-feature-<featureId>.tgz`.
 
 ### Locally referenced Features
 
-Instead of publishing a feature to an OCI registry, a feature's source code may be referenced from a local folder.  Locally referencing a feature may be useful when first authoring a feature.
+Instead of publishing a feature to an OCI registry, a feature's source code may be referenced from a local folder. Locally referencing a feature may be useful when first authoring a feature.
 
 A local feature is referenced in the devcontainer's `feature` object **relative to the folder containing the project's `devcontainer.json`**.
 

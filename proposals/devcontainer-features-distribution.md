@@ -136,15 +136,24 @@ The `.tgz` archive file must be named `devcontainer-feature-<featureId>.tgz`.
 
 ### Locally referenced Features
 
-To aid in feature authorship, or in instances where a feature should not be published externally, individual features can be referenced locally from the project's file tree.
+Instead of publishing a feature to an OCI registry, a feature's source code may be referenced from a local folder.  Locally referencing a feature may be useful when first authoring a feature.
 
-A local feature is placed in a `.devcontainer/` folder at the root of the [**project workspace folder**](/docs/specs/devcontainer-reference.md#project-workspace-folder) and referenced in a user's [`.devcontainer/devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) by relative path.
+A local feature is referenced in the devcontainer's `feature` object **relative to the folder containing the project's `devcontainer.json`**.
 
-The relative path is provided using unix-style path syntax (eg `./<...>`), regardless of the host operating system.
+Additional constraints exists when including local features in a project:
 
-A local feature may **not** be referenced by absolute path, or by a path outside the `.devcontainer/` folder. 
+* The project must have a `.devcontainer/` folder at the root of the [**project workspace folder**](/docs/specs/devcontainer-reference.md#project-workspace-folder).
 
-The provided relative path is a path to the folder containing at least a `devcontainer-feature.json` and `install.sh` file, mirroring the structure [previously outlined](#Source-Code).
+* A local feature's source code **must** be contained within a sub-folder of the `.devcontainer/ folder`.
+
+* The sub-folder name **must** match the feature's `id` field.
+
+* A local feature may **not** be referenced by absolute path.
+
+* The local feature's sub-folder **must** contain at least a `devcontainer-feature.json` file and `install.sh` entrypoint script, mirroring the [previously outlined file structure](#Source-code).
+
+
+The relative path is provided using unix-style path syntax (eg `./myFeature`) regardless of the host operating system.
 
 An example project is illustrated below:
 
@@ -160,7 +169,7 @@ An example project is illustrated below:
 │   │   ├── install.sh
 │   │   └── ...
 │   ├── devcontainer.json
-```
+```x
 
 ##### devcontainer.json
 ```jsonc

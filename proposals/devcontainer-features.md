@@ -131,7 +131,7 @@ The `id` format specified dictates how a supporting tool will locate and downloa
 
 (*) OCI registry must implement the [OCI Artifact Distribution Specification](https://github.com/opencontainers/distribution-spec).  Some implementors can be [found here](https://oras.land/implementors/).
 
-(**) The provided path is always relative to the `.devcontainer/` folder, and is outlined further in the [Locally Referenced Addendum](/proposals/devcontainer-features-distribution.md#Addendum:-Locally-Referenced).
+(**) The provided path is always relative to the folder containing the .devcontainer.json.  More requirements are outlined further in the [Locally Referenced Addendum](/proposals/devcontainer-features-distribution.md#locally-referenced-features).
 
 ## Versioning
 

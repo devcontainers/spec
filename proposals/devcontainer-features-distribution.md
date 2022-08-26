@@ -136,21 +136,21 @@ The `.tgz` archive file must be named `devcontainer-feature-<featureId>.tgz`.
 
 ### Locally referenced Features
 
-Instead of publishing a feature to an OCI registry, a feature's source code may be referenced from a local folder. Locally referencing a feature may be useful when first authoring a feature.
+Instead of publishing a Feature to an OCI registry, a Feature's source code may be referenced from a local folder. Locally referencing a Feature may be useful when first authoring a Feature.
 
-A local feature is referenced in the devcontainer's `feature` object **relative to the folder containing the project's `devcontainer.json`**.
+A local Feature is referenced in the devcontainer's `feature` object **relative to the folder containing the project's `devcontainer.json`**.
 
-Additional constraints exists when including local features in a project:
+Additional constraints exists when including local Features in a project:
 
 * The project must have a `.devcontainer/` folder at the root of the [**project workspace folder**](/docs/specs/devcontainer-reference.md#project-workspace-folder).
 
-* A local feature's source code **must** be contained within a sub-folder of the `.devcontainer/ folder`.
+* A local Feature's source code **must** be contained within a sub-folder of the `.devcontainer/ folder`.
 
-* The sub-folder name **must** match the feature's `id` field.
+* The sub-folder name **must** match the Feature's `id` field.
 
-* A local feature may **not** be referenced by absolute path.
+* A local Feature may **not** be referenced by absolute path.
 
-* The local feature's sub-folder **must** contain at least a `devcontainer-feature.json` file and `install.sh` entrypoint script, mirroring the [previously outlined file structure](#Source-code).
+* The local Feature's sub-folder **must** contain at least a `devcontainer-feature.json` file and `install.sh` entrypoint script, mirroring the [previously outlined file structure](#Source-code).
 
 
 The relative path is provided using unix-style path syntax (eg `./myFeature`) regardless of the host operating system.

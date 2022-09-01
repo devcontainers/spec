@@ -25,7 +25,7 @@ For example, a project may want to open terminals with its server running in one
 ## Spec changes
 
 - `postAttachCommand` will support an `object` form where the key is the unique name of the command and the value is the `string` or `array` command. Duplicate names are unsupport.
-- Implementations will no longer run `postAttachCommand` but instead defer that responsibility to attaching clients.
+- Implementations will no longer run `postAttachCommand` as part of the container lifecycle scripts but instead defer that responsibility to attaching clients.
 - Implementations will provide a `read-post-attach-commands` command which will parse post-attach commands from the config, interpolate variables, and output the final commands. Clients will use this to determine the commands they should run after attaching.
 
 ### Example 1: Single unnamed command

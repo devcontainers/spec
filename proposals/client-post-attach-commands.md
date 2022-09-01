@@ -30,12 +30,14 @@ For example, a project may want to open terminals with its server running in one
 
 ### Example 1: Single unnamed command
 
+**.devcontainer.json**
 ```jsonc
 {
   "postAttachCommand": "echo hello '${containerWorkspaceFolderBasename}'"
 }
 ```
 
+**Command**
 ```
 $ devcontainer read-post-attach-commands --workspace-folder my-project
 "echo hello my-project"
@@ -43,6 +45,7 @@ $ devcontainer read-post-attach-commands --workspace-folder my-project
 
 ### Example 2: Multiple named commands
 
+**.devcontainer.json**
 ```json
 {
   "postAttachCommand": {
@@ -52,7 +55,8 @@ $ devcontainer read-post-attach-commands --workspace-folder my-project
 }
 ```
 
+**Command**
 ```
 $ devcontainer read-post-attach-commands --workspace-folder my-project
-{"server":["npm", "start"],"hello":"echo hello my-project"}
+{"server":["npm","start"],"hello":"echo hello my-project"}
 ```

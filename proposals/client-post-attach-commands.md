@@ -34,7 +34,7 @@ For example, a project may want to open terminals with its server running in one
 **.devcontainer.json**
 ```jsonc
 {
-  "postAttachCommand": "echo hello '${containerWorkspaceFolderBasename}'"
+  "postAttachCommand": "echo hello ${containerWorkspaceFolderBasename}"
 }
 ```
 
@@ -51,7 +51,7 @@ $ devcontainer read-post-attach-command --workspace-folder my-project
 {
   "postAttachCommand": {
     "server": ["npm", "start"],
-    "hello": "echo hello '${containerWorkspaceFolderBasename}'"
+    "hello": "echo hello ${containerWorkspaceFolderBasename}"
   }
 }
 ```

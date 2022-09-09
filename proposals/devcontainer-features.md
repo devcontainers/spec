@@ -155,6 +155,16 @@ _For information on distribution features, see [devcontainer-features-distributi
 
 ## Execution
 
+### Invoking `install.sh`
+
+The `install.sh` script for each Feature should be executed as `root` during a container image build. This allows the script to add needed OS dependencies or settings that could not otherwise be modified. This also allows the script to switch into another user's context using the `su` command (e.g., `su ${USERNAME} -c "command-goes-here"`). In combination, this allows both root and non-root image modifications to occur even if `sudo` is not present in the base image for security reasons.
+
+To ensure that the appropriate shell is used, the execute bit should be set on `install.sh` and the file invoked directly (e.g. `chmod +x install.sh && ./install.sh`). 
+
+> **Note:** It is recommended that Feature authors write `install.sh` using a shell available by default in their supported distributions (e.g., `bash` in Debian/Ubuntu or Fedora, `sh` in Alpine). In the event a different shell is required (e.g., `fish`), `install.sh` can be used to boostrap by checking for the presence of the desired shell, installing it if needed, and then invoking a secondary script using the shell.
+>
+> The `install.sh` file can similarly be used to bootstrap something written in a compiled language like Go. Given the increasing likelihood that a Feature needs to work on both x86_64 and arm64-based devices (e.g., Apple Silicon Macs), `install.sh` can detect the current architecture (e.g., using something like `uname -m` or `dpkg --print-architecture`), and then invoke the right executable for that architecture.
+
 ### Installation order
 
 By default, Features are installed on top of a base image in an order determined as optimal by the implementing tool.

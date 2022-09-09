@@ -163,7 +163,7 @@ To ensure that the appropriate shell is used, the execute bit should be set on `
 
 > **Note:** It is recommended that Feature authors write `install.sh` using a shell available by default in their supported distributions (e.g., `bash` in Debian/Ubuntu or Fedora, `sh` in Alpine). In the event a different shell is required (e.g., `fish`), `install.sh` can be used to boostrap by checking for the presence of the desired shell, installing it if needed, and then invoking a secondary script using the shell.
 >
-> The `install.sh` file can similarly be used to bootstrap something written in a compiled language like Go. Given the increasing liklihood that a Features need to work on both x86_64 and arm64-based devices (e.g., Apple Silicon Macs), `install.sh` can detect the current architecture (e.g., using something like `uname -m` or `dpkg --print-architecture`), and then invoke the right executable.
+> The `install.sh` file can similarly be used to bootstrap something written in a compiled language like Go. Given the increasing liklihood that a Feature needs to work on both x86_64 and arm64-based devices (e.g., Apple Silicon Macs), `install.sh` can detect the current architecture (e.g., using something like `uname -m` or `dpkg --print-architecture`), and then invoke the right executable for that architecture.
 
 ### Installation order
 

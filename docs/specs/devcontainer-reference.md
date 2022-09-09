@@ -153,7 +153,7 @@ UID/GID sync'ing is an optional task for Linux (only) and that executes if the `
 ### Post Container Creation
 
 At the end of the container creation step, a set of commands are executed inside the **main** container: 
-- `onCreateCommand`, `updateContentCommand` and `postCreateCommand`. This set of commands is executed in sequence on a container the first time it's created and depending on the creation parameters received. You can learn more in the [documentation on lifecycle scripts](devcontainerjson-reference.md#lifecycle-scripts). By default, `postCreateCommand` is executed in the background after reporting the successful creation of the development environment.
+- `onCreateCommand`, `updateContentCommand` and `postCreateCommand`. This set of commands is executed on a container the first time it's created and depending on the creation parameters received. You can learn more in the [documentation on lifecycle scripts](devcontainerjson-reference.md#lifecycle-scripts). By default, `postCreateCommand` is executed in the background after reporting the successful creation of the development environment.
 - If the `waitFor` property is defined, then execution should block until all commands in the sequence up to the specified property have executed. This property defaults to `updateContentCommand`.
 
 Remote [environment variables](#environment-variables) and [user](#users) configuration should be applied to all created processes in the container (inclusive of `userEnvProbe`).

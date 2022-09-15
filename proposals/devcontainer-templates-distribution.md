@@ -23,9 +23,7 @@ Source code for the set follows the example file structure below:
 ├── src
 │   ├── dotnet
 │   │   ├── devcontainer-template.json
-│   │   ├── .devcontainer
-│   │       ├── devcontainer.json
-│   │       └── ...
+│   │   ├── .devcontainer.json
 │   │   ├── ...
 |   ├
 │   ├── docker-from-docker
@@ -46,19 +44,17 @@ Source code for the set follows the example file structure below:
 │   │   ├── ...
 ```
 
-...where `src` is a directory containing a sub-folder with the name of the Template (e.g. `src/dotnet` or `src/docker-from-docker`) with at least a file named `devcontainer-template.json` that contains the Template metadata, and a `.devcontainer` that the supporting tools will drop into an existing project or folder.
+...where `src` is a directory containing a sub-folder with the name of the Template (e.g. `src/dotnet` or `src/docker-from-docker`) with at least a file named `devcontainer-template.json` that contains the Template metadata, and a `.devcontainer.json` (or `.devcontainer/devcontainer.json`) that the supporting tools will drop into an existing project or folder.
 
 Each sub-directory should be named such that it matches the `id` field of the `devcontainer-template.json`.  Other files can also be included in the Templates's sub-directory, and will be included during the [packaging step](#packaging) alongside the two required files.  Any files that are not part of the Templates's sub-directory (e.g. outside of `src/dotnet`) will not included in the [packaging step](#packaging).
 
 ## Versioning
 
-Each Template is individually [versioned according to the semver specification](https://semver.org/).  The `version` property in the respective `devcontainer-template.json` file is parsed to determine if the Template should be republished.
-
-Tooling that handles publishing Templates will not republish Templates if that exact version has already been published; however, tooling must republish major and minor versions in accordance with the semver specification.
+Each Template is published with only the `latest` tag. Tooling that handles releasing Templates will republish the `latest` tag every time a new release is created.
 
 ## Packaging
 
-Templates are distributed as tarballs. The tarball contains the entire contents of the Template sub-directory, including the `devcontainer-template.json`, `.devcontainer`, and any other files in the directory.
+Templates are distributed as tarballs. The tarball contains the entire contents of the Template sub-directory, including the `devcontainer-template.json`, `.devcontainer.json` (or `.devcontainer/devcontainer.json`), and any other files in the directory.
 
 The tarball is named `devcontainer-template-<id>.tgz`, where `<id>` is the Templates's `id` field.
 
@@ -85,30 +81,27 @@ A user can add the Templates in to their projects as defined by the [Templates S
 
 An OCI registry that implements the [OCI Artifact Distribution Specification](https://github.com/opencontainers/distribution-spec) serves as the primary distribution mechanism for Templates.
 
-Each packaged Template is pushed to the registry following the naming convention `<registry>/<namespace>/<id>[:version]`, where version is the major, minor, and patch version of the feature, according to the semver specification.
+Each packaged Template is pushed to the registry following the naming convention `<registry>/<namespace>/<id>[:latest]`.
 
 > **Note:** The `namespace` is a unique indentifier for the collection of templates and must be different than the collection of [Features](./devcontainer-features.md). There are no strict rules for the `namespace`; however, one pattern is to set `namespace` equal to source repository's `<owner>/<repo>`. 
 
 A custom media type `application/vnd.devcontainers` and `application/vnd.devcontainers.layer.v1+tar` are used as demonstrated below.
 
-For example, the `go` Template in the `devcontainers/templates` namespace at version `1.2.3` would be pushed to the ghcr.io OCI registry.  
+For example, the `go` Template in the `devcontainers/templates` namespace would be pushed to the ghcr.io OCI registry with the `latest` tag. 
 
 > **Note:** The example below uses [`oras`](https://oras.land/) for demonstration purposes.  A supporting tool should directly implement the required functionality from the aforementioned OCI artifact distribution specification.
 
 ```bash
-# ghcr.io/devcontainers/templates/go:1 
+# ghcr.io/devcontainers/templates/go:latest
 REGISTRY=ghcr.io
 NAMESPACE=devcontainers/templates
 TEMPLATE=go
 
 ARTIFACT_PATH=devcontainer-template-go.tgz
 
-for VERSION in 1  1.2  1.2.3  latest
-do
-    oras push ${REGISTRY}/${NAMESPACE}/${TEMPLATE}:${VERSION} \
-            --manifest-config /dev/null:application/vnd.devcontainers \
-                             ./${ARTIFACT_PATH}:application/vnd.devcontainers.layer.v1+tar
-done
+oras push ${REGISTRY}/${NAMESPACE}/${TEMPLATE}:latest \
+        --manifest-config /dev/null:application/vnd.devcontainers \
+                ./${ARTIFACT_PATH}:application/vnd.devcontainers.layer.v1+tar
 
 ```
 

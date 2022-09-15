@@ -1,6 +1,6 @@
 # Dev Container Templates reference
 
-Development container "Templates" are self-contained, shareable units of development container configuration. The name comes from the idea that adding a Template to your project helps it get up and running with a containerized environment. The Templates describe the appropriate container image, [Features](https://github.com/devcontainers/spec/blob/main/proposals/devcontainer-features.md), runtime arguments for starting the container, and VS Code extensions that should be installed. Each provides a container configuration file ([`devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson)) and other needed files that you can drop into any existing folder as a starting point for containerizing your project.
+Development container "Templates" are self-contained, shareable units of development container configuration. The name comes from the idea that adding a Template to your project helps it get up and running with a containerized environment. The Templates describe the appropriate container image, [Features](https://github.com/devcontainers/spec/blob/main/proposals/devcontainer-features.md), runtime arguments for starting the container, and VS Code extensions that should be installed. Each provides a container configuration file ([`.devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson)) and other needed files that you can drop into any existing folder as a starting point for containerizing your project.
 
 Template metadata is captured by a `devcontainer-template.json` file in the root folder of the Template.
 
@@ -11,11 +11,7 @@ A Template is a self contained entity in a folder with at least a `devcontainer-
 ```
 +-- template
 |    +-- devcontainer-template.json
-|    +-- .devcontainer
-|        +-- devcontainer.json 
-|        +-- Dockerfile (optional)
-|        +-- docker-compose.yml (optional)
-|        +-- (other files)
+|    +-- .devcontainer.json
 |    +-- (other files)
 ```
 
@@ -34,24 +30,23 @@ The properties of the file are as follows:
 | `documentationURL` | string | Url that points to the documentation of the Template. |
 | `licenseURL` | string | Url that points to the license of the Template. |
 | `type` | string | Type of the dev container (image, dockerfile, dockerCompose) created by the Template. |
-| `image` | string | Name of an image in a container registry ([DockerHub](https://hub.docker.com/), [GitHub Container Registry](https://docs.github.com/en/packages/learn-github-packages/introduction-to-github-packages), [Azure Container Registry](https://azure.microsoft.com/en-us/products/container-registry/)) that the [Template supporting services / tools](#template-supporting-tools-and-services) should use to populate list of image variants. |
-| `features` | object | List of [Feature id](devcontainer-features.md/#referencing-a-feature) that the [Template supporting services / tools](#template-supporting-tools-and-services) should use to populate different configuration options. |
-| `options` | object | A map of options that will be passed as `build.args` when building a dockerfile. |
+| `options` | object | A map of options that the supporting tools should use to populate different configuration options for the Template. |
 | `platforms` | object | Languages and platforms supported by the Template. |
 | `keywords` | array | List of strings relevant to a user that would search for this Template. |
 
 ### The `options` property
 
-The options property contains a map of option IDs and their related configuration settings. The ID becomes the name of the build arguments in all caps and snake case which is passed while building a dockerfile. See [option resolution](#option-resolution) for more details. For example:
+The `options` property contains a map of option IDs and their related configuration settings. These `options` are used by the supporting tools to prompt the user to choose from different Template configuration options. The tools replaces the option ID with the selected value in the specified `replaceIn` files. See [option resolution](#option-resolution) for more details. For example:
 
 ```json
 {
   "options": {
-    "optionIdGoesHere": {
+    "optionId": {
       "type": "string",
       "description": "Description of the option",
       "proposals": ["value1", "value2"],
-      "default": "value1"
+      "default": "value1",
+      "replaceIn": [".devcontainer.json"],
     }
   }
 }
@@ -59,14 +54,13 @@ The options property contains a map of option IDs and their related configuratio
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
-| `optionId` | string | ID of the option that is converted into an all-caps and snake case build argument with the selected value in it. |
+| `optionId` | string | ID of the option used by the supporting tools to replace the selected value in the specified `replaceIn` files. |
 | `optionId.type` | string | Type of the option. Valid types are currently: `boolean`, `string` |
+| `optionId.description` | string | Description for the option. |
 | `optionId.proposals` | array | A list of suggested string values. Free-form values **are** allowed. Omit when using `optionId.enum`. |
 | `optionId.enum` | array | A strict list of allowed string values. Free-form values are **not** allowed. Omit when using `optionId.proposals`. |
-| `optionId.default` | string or boolean | Default value for the option. |
-| `optionId.description` | string | Description for the option. |
-
-> **Note:** Options are helpful only when the dev container is built using a `dockerfile`.
+| `optionId.default` | string | Default value for the option. |
+| `optionId.replaceIn` | array | List of file paths which the supporting tool should use to perform the string replacement of `optionId` with the selected value. The provided path is always relative to the root folder of the Template. |
 
 ### Template Supporting Tools and Services
 
@@ -80,22 +74,16 @@ Outlines tools and services that currently support adding Templates to a project
   1. Either [create a codespace for your repository](https://aka.ms/ghcs-open-codespace) or [set up your local machine](https://aka.ms/vscode-remote/containers/getting-started) for use with the Remote - Containers extension, start VS Code, and open your project folder.
   2. Press <kbd>F1</kbd>, and select the **Add Development Container Configuration Files...** command for **Remote-Containers** or **Codespaces**.
   3. Pick one of the recommended Templates from the list or select **Show All Templates...** to see all of them. You may need to choose the **From a predefined container configuration Template...** option if your project has an existing Dockerfile or Docker Compose file. Answer any questions that appear.
-  4. See the Template's `README` for configuration options. A link is available in the `.devcontainer/devcontainer.json` file added to your folder.
+  4. See the Template's `README` for configuration options.
   5. Run **Remote-Containers: Reopen in Container** to use it locally, or **Codespaces: Rebuild Container** from within a codespace.
 
 ### Referencing a Template 
 
-The `id` format (`<oci-registry>/<namespace>/<template>[:<semantic-version>]`) dictates how a [supporting tool](#template-supporting-tools-and-services) will locate and download a given Template from an OCI registry. The registry must implement the [OCI Artifact Distribution Specification](https://github.com/opencontainers/distribution-spec). Some implementors can be [found here](https://oras.land/implementors/). For example.
-
-- `ghcr.io/user/repo/go`
-- `ghcr.io/user/repo/go:1`
-- `ghcr.io/user/repo/go:latest`
+The `id` format (`<oci-registry>/<namespace>/<template>[:latest]`) dictates how a [supporting tool](#template-supporting-tools-and-services) will locate and download a given Template from an OCI registry (For example - `ghcr.io/user/repo/go:latest`). The registry must implement the [OCI Artifact Distribution Specification](https://github.com/opencontainers/distribution-spec). Some implementors can be [found here](https://oras.land/implementors/). 
 
 ## Versioning
 
-Each Template is individually [versioned according to the semver specification](https://semver.org/).  The `version` property in the respective `devcontainer-template.json` file is updated to increment the Template's version.
-
-Tooling that handles releasing Templates will not republish Templates if that exact version has already been published; however, tooling must republish major and minor versions in accordance with the semver specification.
+Each Template is published with only the `latest` tag. Tooling that handles releasing Templates will republish the `latest` tag every time a new release is created.
 
 ## Release
 
@@ -103,42 +91,79 @@ _For information on distribution Templates, see [devcontainer-templates-distribu
 
 ### Option Resolution
 
-A templates's 'options' is used by a supporting tool to prompt for different configuration options - are passed as build arguments while building a dockerfile.
-
-A supporting tool will parse the `options` object provided by the user. If a value is selected for a Template, it will be emitted to the `devcontainer.json` (or `docker-compose.yml`) in `build.args` object.
-
-The `options` specified in `devcontainer-template.json` are in camel case, however, they are emitted as `build.args` after converting to all caps and snake case.
+A templates's `options` is used by a supporting tool to prompt for different configuration options. A supporting tool will parse the `options` object provided by the user. If a value is selected for a Template, it will be replaced in the provided `replaceIn` files.
 
 ### Option resolution example
 
-Suppose a `go-postgres` Template has the following `options` parameters declared in the `devcontainer-template.json` file:
+Suppose a `java` Template has the following `options` parameters declared in the `devcontainer-template.json` file:
 
 ```jsonc
 // ...
 "options": {
-    "nodeVersion": {
+    "IMAGE_VARIANT": {
+        "type": "string",
+        "description": "Specify version of java.",
+        "proposals": [
+          "17-bullseye",
+          "17-buster",
+          "11-bullseye",
+          "11-buster",
+          "17",
+          "11"
+        ],
+			  "default": "17-bullseye",
+        "replaceIn": [".devcontainer.json"]
+    },
+    "NODE_VERSION": {
         "type": "string", 
         "proposals": [
-          "lts",
+          "latest",
           "16",
           "14",
           "10",
           "none"
         ],
-        "default": "16",
-        "description": "Specify version of node, or 'none' to skip node installation."
-    }
+        "default": "latest",
+        "description": "Specify version of node, or 'none' to skip node installation.",
+        "replaceIn": [".devcontainer.json"]
+    },
+    "INSTALL_MAVEN": {
+        "type": "boolean", 
+        "description": "Install Maven, a management tool for Java.",
+        "default": "false",
+        "replaceIn": [".devcontainer.json"]
+    },
 }
 ```
 
-A user tries to add the `go-postgres` Template to their project and selects `14` when prompted to `"Specify version of node, or 'none' to skip node installation."`, then the emitted `build.args` variables in `devcontainer.json` (or `docker-compose.yml`) will be:
+and it has the following `.devcontainer.json` file:
 
 ```
-  "build": {
-		"args": { 
-			"NODE_VERSION": "14"
+{
+	"name": "Java",
+	"image": "mcr.microsoft.com/devcontainers/java:0-IMAGE_VARIANT",
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "NODE_VERSION",
+      "installMaven": "INSTALL_MAVEN"
 		}
-	}
+	},
+	...
+}
 ```
 
-> **Note:** `build.args` are emitted to `devcontainer.json` when Templates's `type` is `dockerfile` and are added to `docker-compose.yml` when `type` is `dockerCompose`.
+A user tries to add the `java` Template to their project and selects `17-bullseye` when prompted for `"Specify version of Go."` and uses the `default` values for `"Specify version of node, or 'none' to skip node installation."` and `"Install Maven, a management tool for Java."`, then the modified `.devcontainer.json` (according to the `replaceIn` property) will be as follows:
+
+```
+{
+	"name": "Go",
+	"image": "mcr.microsoft.com/devcontainers/go:0-17-bullseye",
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "latest",
+      "installMaven": "false"
+		}
+	},
+	...
+}
+```

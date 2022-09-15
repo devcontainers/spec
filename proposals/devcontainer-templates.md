@@ -42,7 +42,7 @@ The properties of the file are as follows:
 
 ### The `options` property
 
-The options property contains a map of option IDs and their related configuration settings. The ID becomes the name of the build arguments in all caps and snake case which is passed while building a dockerfile. For example:
+The options property contains a map of option IDs and their related configuration settings. The ID becomes the name of the build arguments in all caps and snake case which is passed while building a dockerfile. See [option resolution](#option-resolution) for more details. For example:
 
 ```json
 {
@@ -100,3 +100,45 @@ Tooling that handles releasing Templates will not republish Templates if that ex
 ## Release
 
 _For information on distribution Templates, see [devcontainer-templates-distribution.md](./devcontainer-templates-distribution.md)._
+
+### Option Resolution
+
+A templates's 'options' is used by a supporting tool to prompt for different configuration options - are passed as build arguments while building a dockerfile.
+
+A supporting tool will parse the `options` object provided by the user. If a value is selected for a Template, it will be emitted to the `devcontainer.json` (or `docker-compose.yml`) in `build.args` object.
+
+The `options` specified in `devcontainer-template.json` are in camel case, however, they are emitted as `build.args` after converting to all caps and snake case.
+
+### Option resolution example
+
+Suppose a `go-postgres` Template has the following `options` parameters declared in the `devcontainer-template.json` file:
+
+```jsonc
+// ...
+"options": {
+    "nodeVersion": {
+        "type": "string", 
+        "proposals": [
+          "lts",
+          "16",
+          "14",
+          "10",
+          "none"
+        ],
+        "default": "16",
+        "description": "Specify version of node, or 'none' to skip node installation."
+    }
+}
+```
+
+A user tries to add the `go-postgres` Template to their project and selects `14` when prompted to `"Specify version of node, or 'none' to skip node installation."`, then the emitted `build.args` variables in `devcontainer.json` (or `docker-compose.yml`) will be:
+
+```
+  "build": {
+		"args": { 
+			"NODE_VERSION": "14"
+		}
+	}
+```
+
+> **Note:** `build.args` are emitted to `devcontainer.json` when Templates's `type` is `dockerfile` and are added to `docker-compose.yml` when `type` is `dockerCompose`.

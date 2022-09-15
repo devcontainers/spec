@@ -34,8 +34,8 @@ The properties of the file are as follows:
 | `documentationURL` | string | Url that points to the documentation of the Template. |
 | `licenseURL` | string | Url that points to the license of the Template. |
 | `type` | string | Type of the dev container (image, dockerfile, dockerCompose) created by the Template. |
-| `image` | string | Name of an image in a container registry ([DockerHub](https://hub.docker.com/), [GitHub Container Registry](https://docs.github.com/en/packages/learn-github-packages/introduction-to-github-packages), [Azure Container Registry](https://azure.microsoft.com/en-us/products/container-registry/)) that the [Template supporting services / tools](#template-supporting-tools-and-services) should use to find the image variants. |
-| `features` | object | List of [Feature id](devcontainer-features.md/#referencing-a-feature) that the [Template supporting services / tools](#template-supporting-tools-and-services) should use to populate different options. |
+| `image` | string | Name of an image in a container registry ([DockerHub](https://hub.docker.com/), [GitHub Container Registry](https://docs.github.com/en/packages/learn-github-packages/introduction-to-github-packages), [Azure Container Registry](https://azure.microsoft.com/en-us/products/container-registry/)) that the [Template supporting services / tools](#template-supporting-tools-and-services) should use to populate list of image variants. |
+| `features` | object | List of [Feature id](devcontainer-features.md/#referencing-a-feature) that the [Template supporting services / tools](#template-supporting-tools-and-services) should use to populate different configuration options. |
 | `options` | object | A map of options that will be passed as `build.args` when building a dockerfile. |
 | `platforms` | object | Languages and platforms supported by the Template. |
 | `keywords` | array | List of strings relevant to a user that would search for this Template. |

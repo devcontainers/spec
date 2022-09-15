@@ -24,7 +24,6 @@ The properties of the file are as follows:
 | Property | Type | Description |
 | :--- | :--- | :--- |
 | `id` | string | ID of the Template. The `id` should be unique in the context of the repository/published package where the Template exists and must match the name of the directory where the `devcontainer-template.json` resides. |
-| `version` | string | The semantic version of the Template. |
 | `name` | string | Name of the Template. |
 | `description` | string | Description of the Template. |
 | `documentationURL` | string | Url that points to the documentation of the Template. |
@@ -36,7 +35,7 @@ The properties of the file are as follows:
 
 ### The `options` property
 
-The `options` property contains a map of option IDs and their related configuration settings. These `options` are used by the supporting tools to prompt the user to choose from different Template configuration options. The tools replaces the option ID with the selected value in the specified `replaceIn` files. See [option resolution](#option-resolution) for more details. For example:
+The `options` property contains a map of option IDs and their related configuration settings. These `options` are used by the supporting tools to prompt the user to choose from different Template configuration options. The tools would replace the option ID with the selected value in the specified `replaceIn` files. This replacement would happen before dropping the `.devcontainer.json` (or `.devcontainer/devcontainer.json`) and other files (within the sub-directory of the Template) required to containerize your project. See [option resolution](#option-resolution) for more details. For example:
 
 ```json
 {
@@ -60,7 +59,7 @@ The `options` property contains a map of option IDs and their related configurat
 | `optionId.proposals` | array | A list of suggested string values. Free-form values **are** allowed. Omit when using `optionId.enum`. |
 | `optionId.enum` | array | A strict list of allowed string values. Free-form values are **not** allowed. Omit when using `optionId.proposals`. |
 | `optionId.default` | string | Default value for the option. |
-| `optionId.replaceIn` | array | List of file paths which the supporting tool should use to perform the string replacement of `optionId` with the selected value. The provided path is always relative to the root folder of the Template. |
+| `optionId.replaceIn` | array | List of file paths which the supporting tool should use to perform the string replacement of `optionId` with the selected value. The provided path is always relative to the sub-directory of the Template. |
 
 > `Note`: The `options` must be unique for every `devcontainer-template.json`
 
@@ -97,7 +96,13 @@ A templates's `options` is used by a supporting tool to prompt for different con
 
 ### Option resolution example
 
-Suppose a `java` Template has the following `options` parameters declared in the `devcontainer-template.json` file:
+Consider a `java` template with the following folder structure:
+
++-- java
+|    +-- devcontainer-template.json
+|    +-- .devcontainer.json
+
+Suppose the `java` Template has the following `options` parameters declared in the `devcontainer-template.json` file:
 
 ```json
 // ...
@@ -169,3 +174,5 @@ A user tries to add the `java` Template to their project using the [supporting t
 	...
 }
 ```
+
+The modified `.devcontainer.json` would be dropped into any existing folder as a starting point for containerizing your project.

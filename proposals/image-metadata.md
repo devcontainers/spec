@@ -4,7 +4,7 @@
 
 Record dev container config and feature metadata in prebuilt images, such that, the image and the built-in features can be used with a devcontainer.json (image-, Dockerfile- or Docker Compose-based) that does not repeat the dev container config or feature metadata. Other tools should be able to record the same metadata without necessarily using features themselves.
 
-Current dev container config that can be recorded in the image: ``
+Current dev container config that can be recorded in the image: `mounts`, `onCreateCommand`, `updateContentCommand`, `postCreateCommand`, `postStartCommand`, `postAttachCommand`, `customizations`, `remoteUser`, `userEnvProbe`, `remoteEnv`, `containerEnv`, `overrideCommand`, `portsAttributes`, `otherPortsAttributes`, `forwardPorts`, `shutdownAction`, `updateRemoteUserUID` and `hostRequirements`.
 
 Current feature metadata relevant for using the feature when it is already part of the image: `mounts`, `init`, `privileged`, `capAdd`, `securityOpt`, `entrypoint` and `customizations`.
 

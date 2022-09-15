@@ -62,6 +62,8 @@ The `options` property contains a map of option IDs and their related configurat
 | `optionId.default` | string | Default value for the option. |
 | `optionId.replaceIn` | array | List of file paths which the supporting tool should use to perform the string replacement of `optionId` with the selected value. The provided path is always relative to the root folder of the Template. |
 
+> `Note`: The `options` must be unique for every `devcontainer-template.json`
+
 ### Template Supporting Tools and Services
 
 Outlines tools and services that currently support adding Templates to a project.
@@ -97,10 +99,10 @@ A templates's `options` is used by a supporting tool to prompt for different con
 
 Suppose a `java` Template has the following `options` parameters declared in the `devcontainer-template.json` file:
 
-```jsonc
+```json
 // ...
 "options": {
-    "IMAGE_VARIANT": {
+    "imageVariant": {
         "type": "string",
         "description": "Specify version of java.",
         "proposals": [
@@ -114,7 +116,7 @@ Suppose a `java` Template has the following `options` parameters declared in the
 			  "default": "17-bullseye",
         "replaceIn": [".devcontainer.json"]
     },
-    "NODE_VERSION": {
+    "nodeVersion": {
         "type": "string", 
         "proposals": [
           "latest",
@@ -127,7 +129,7 @@ Suppose a `java` Template has the following `options` parameters declared in the
         "description": "Specify version of node, or 'none' to skip node installation.",
         "replaceIn": [".devcontainer.json"]
     },
-    "INSTALL_MAVEN": {
+    "installMaven": {
         "type": "boolean", 
         "description": "Install Maven, a management tool for Java.",
         "default": "false",
@@ -138,23 +140,23 @@ Suppose a `java` Template has the following `options` parameters declared in the
 
 and it has the following `.devcontainer.json` file:
 
-```
+```json
 {
 	"name": "Java",
-	"image": "mcr.microsoft.com/devcontainers/java:0-IMAGE_VARIANT",
+	"image": "mcr.microsoft.com/devcontainers/java:0-${imageVariant}",
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {
-			"version": "NODE_VERSION",
-      "installMaven": "INSTALL_MAVEN"
+			"version": "${nodeVersion}",
+      "installMaven": "${installMaven}"
 		}
 	},
-	...
+//	...
 }
 ```
 
-A user tries to add the `java` Template to their project and selects `17-bullseye` when prompted for `"Specify version of Go."` and uses the `default` values for `"Specify version of node, or 'none' to skip node installation."` and `"Install Maven, a management tool for Java."`, then the modified `.devcontainer.json` (according to the `replaceIn` property) will be as follows:
+A user tries to add the `java` Template to their project using the [supporting tools](#template-supporting-tools-and-services) and selects `17-bullseye` when prompted for `"Specify version of Go."` and uses the `default` values for `"Specify version of node, or 'none' to skip node installation."` and `"Install Maven, a management tool for Java."`, then the modified `.devcontainer.json` (according to the `replaceIn` property) will be as follows:
 
-```
+```json
 {
 	"name": "Go",
 	"image": "mcr.microsoft.com/devcontainers/go:0-17-bullseye",

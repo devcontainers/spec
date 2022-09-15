@@ -83,7 +83,7 @@ An OCI registry that implements the [OCI Artifact Distribution Specification](ht
 
 Each packaged Template is pushed to the registry following the naming convention `<registry>/<namespace>/<id>[:latest]`.
 
-> **Note:** The `namespace` is a unique indentifier for the collection of templates and must be different than the collection of [Features](./devcontainer-features.md). There are no strict rules for the `namespace`; however, one pattern is to set `namespace` equal to source repository's `<owner>/<repo>`. 
+> **Note:** The `namespace` is a unique identifier for the collection of templates and must be different than the collection of [Features](./devcontainer-features.md). There are no strict rules for the `namespace`; however, one pattern is to set `namespace` equal to source repository's `<owner>/<repo>`. 
 
 A custom media type `application/vnd.devcontainers` and `application/vnd.devcontainers.layer.v1+tar` are used as demonstrated below.
 

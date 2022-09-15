@@ -1,12 +1,14 @@
 # Dev Container Templates reference
 
-Development container "Templates" are self-contained, shareable units of development container configuration. The name comes from the idea that adding a Template to your project helps it get up and running with a containerized environment. The Templates describe the appropriate container image, [Features](https://github.com/devcontainers/spec/blob/main/proposals/devcontainer-features.md), runtime arguments for starting the container, and VS Code extensions that should be installed. Each provides a container configuration file ([`.devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson)) and other needed files that you can drop into any existing folder as a starting point for containerizing your project.
+Development container "Templates" are source files packaged together that encode configuration for a complete development environment. A Template can be used in a new or existing project and a [supporting tool](https://containers.dev/supporting) will use the configuration from the template to build a development container.
+
+Configuration is placed in a [`.devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson). Alternatively, `.devcontainer/devcontainer.json` can also be used if the container needs to reference other files within the template, such as a `Dockerfile` or `docker-compose.yml`. A template can also provide additional source files (eg: boilerplate code or a [lifecycle script](https://containers.dev/implementors/json_reference/#lifecycle-scripts).
 
 Template metadata is captured by a `devcontainer-template.json` file in the root folder of the Template.
 
 ## Folder structure 
 
-A Template is a self contained entity in a folder with at least a `devcontainer-template.json` and [`devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson).  Additional files are permitted and are packaged along side the required files.
+A single Template is a folder with at least a `devcontainer-template.json` and [`devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson).  Additional files are permitted and are packaged along side the required files.
 
 ```
 +-- template

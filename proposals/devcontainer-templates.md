@@ -150,18 +150,30 @@ and it has the following `.devcontainer.json` file:
 ```json
 {
 	"name": "Java",
-	"image": "mcr.microsoft.com/devcontainers/java:0-${imageVariant}",
+	"image": "mcr.microsoft.com/devcontainers/java:0-{{imageVariant}}",
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {
-			"version": "${nodeVersion}",
-      "installMaven": "${installMaven}"
+			"version": "{{nodeVersion}}",
+      "installMaven": "{{installMaven}}"
 		}
 	},
 //	...
 }
 ```
 
-A user tries to add the `java` Template to their project using the [supporting tools](#template-supporting-tools-and-services) and selects `17-bullseye` when prompted for `"Specify version of Go."` and uses the `default` values for `"Specify version of node, or 'none' to skip node installation."` and `"Install Maven, a management tool for Java."`, then the modified `.devcontainer.json` (according to the `replaceIn` property) will be as follows:
+A user tries to add the `java` Template to their project using the [supporting tools](#template-supporting-tools-and-services) and selects `17-bullseye` when prompted for `"Specify version of Go."` and uses the `default` values for `"Specify version of node, or 'none' to skip node installation."` and `"Install Maven, a management tool for Java."`.
+
+The supporting tool could then use a string replacer (eg. [handlebars](https://handlebarsjs.com/)) for the files mentioned by `replaceIn` property. In this example, `.devcontainer.json` needs to be modified and hence, the inputs can provided to it as follows:
+
+```
+{
+  imageVariant:"17-bullseye",
+  nodeVersion: "latest",
+  installMaven: "false"
+}
+```
+
+The modified `.devcontainer.json` will be as follows:
 
 ```json
 {

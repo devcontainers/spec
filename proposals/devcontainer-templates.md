@@ -2,7 +2,7 @@
 
 Development container "Templates" are source files packaged together that encode configuration for a complete development environment. A Template can be used in a new or existing project and a [supporting tool](https://containers.dev/supporting) will use the configuration from the template to build a development container.
 
-Configuration is placed in a [`.devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson). Alternatively, `.devcontainer/devcontainer.json` can also be used if the container needs to reference other files within the template, such as a `Dockerfile` or `docker-compose.yml`. A template can also provide additional source files (eg: boilerplate code or a [lifecycle script](https://containers.dev/implementors/json_reference/#lifecycle-scripts).
+The configuration is placed in a [`.devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) which can also reference other files within the Template. Alternatively, `.devcontainer/devcontainer.json` can also be used if the container needs to reference other files, such as a `Dockerfile` or `docker-compose.yml`. A template can also provide additional source files (eg: boilerplate code or a [lifecycle script](https://containers.dev/implementors/json_reference/#lifecycle-scripts).
 
 Template metadata is captured by a `devcontainer-template.json` file in the root folder of the Template.
 
@@ -19,7 +19,7 @@ A single Template is a folder with at least a `devcontainer-template.json` and [
 
 ## devcontainer-template.json properties
 
-The `devcontainer-template.json` file defines information about the Template to be used by any [supporting tools](#template-supporting-tools-and-services).
+The `devcontainer-template.json` file defines information about the Template to be used by any [supporting tools](../docs/specs/supporting-tools.md#supporting-tools-and-services).
 
 The properties of the file are as follows:
 
@@ -30,9 +30,9 @@ The properties of the file are as follows:
 | `description` | string | Description of the Template. |
 | `documentationURL` | string | Url that points to the documentation of the Template. |
 | `licenseURL` | string | Url that points to the license of the Template. |
-| `type` | string | Type of the dev container (image, dockerfile, dockerCompose) created by the Template. |
 | `options` | object | A map of options that the supporting tools should use to populate different configuration options for the Template. |
 | `platforms` | object | Languages and platforms supported by the Template. |
+| `publisher` | object | Name of the publisher/maintainer of the Template. |
 | `keywords` | array | List of strings relevant to a user that would search for this Template. |
 
 ### The `options` property
@@ -65,24 +65,9 @@ The `options` property contains a map of option IDs and their related configurat
 
 > `Note`: The `options` must be unique for every `devcontainer-template.json`
 
-### Template Supporting Tools and Services
-
-Outlines tools and services that currently support adding Templates to a project.
-
-- [Visual Studio Code Remote - Containers](../docs/specs/supporting-tools.md/#visual-studio-code-remote---containers)
-- [GitHub Codespaces](../docs/specs/supporting-tools.md/#github-codespaces)
-
-## Adding a Template to a project or codespace
-  
-  1. Either [create a codespace for your repository](https://aka.ms/ghcs-open-codespace) or [set up your local machine](https://aka.ms/vscode-remote/containers/getting-started) for use with the Remote - Containers extension, start VS Code, and open your project folder.
-  2. Press <kbd>F1</kbd>, and select the **Add Development Container Configuration Files...** command for **Remote-Containers** or **Codespaces**.
-  3. Pick one of the recommended Templates from the list or select **Show All Templates...** to see all of them. You may need to choose the **From a predefined container configuration Template...** option if your project has an existing Dockerfile or Docker Compose file. Answer any questions that appear.
-  4. See the Template's `README` for configuration options.
-  5. Run **Remote-Containers: Reopen in Container** to use it locally, or **Codespaces: Rebuild Container** from within a codespace.
-
 ### Referencing a Template 
 
-The `id` format (`<oci-registry>/<namespace>/<template>[:latest]`) dictates how a [supporting tool](#template-supporting-tools-and-services) will locate and download a given Template from an OCI registry (For example - `ghcr.io/user/repo/go:latest`). The registry must implement the [OCI Artifact Distribution Specification](https://github.com/opencontainers/distribution-spec). Some implementors can be [found here](https://oras.land/implementors/). 
+The `id` format (`<oci-registry>/<namespace>/<template>[:latest]`) dictates how a [supporting tool](../docs/specs/supporting-tools.md#supporting-tools-and-services) will locate and download a given Template from an OCI registry (For example - `ghcr.io/user/repo/go:latest`). The registry must implement the [OCI Artifact Distribution Specification](https://github.com/opencontainers/distribution-spec). Some implementors can be [found here](https://oras.land/implementors/). 
 
 ## Versioning
 
@@ -150,18 +135,18 @@ and it has the following `.devcontainer.json` file:
 ```json
 {
 	"name": "Java",
-	"image": "mcr.microsoft.com/devcontainers/java:0-{{imageVariant}}",
+	"image": "mcr.microsoft.com/devcontainers/java:0-${templateOption:imageVariant}",
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {
-			"version": "{{nodeVersion}}",
-      "installMaven": "{{installMaven}}"
+			"version": "${templateOption:nodeVersion}",
+      "installMaven": "${templateOption:installMaven}"
 		}
 	},
 //	...
 }
 ```
 
-A user tries to add the `java` Template to their project using the [supporting tools](#template-supporting-tools-and-services) and selects `17-bullseye` when prompted for `"Specify version of Go."` and uses the `default` values for `"Specify version of node, or 'none' to skip node installation."` and `"Install Maven, a management tool for Java."`.
+A user tries to add the `java` Template to their project using the [supporting tools](../docs/specs/supporting-tools.md#supporting-tools-and-services) and selects `17-bullseye` when prompted for `"Specify version of Go."` and uses the `default` values for `"Specify version of node, or 'none' to skip node installation."` and `"Install Maven, a management tool for Java."`.
 
 The supporting tool could then use a string replacer (eg. [handlebars](https://handlebarsjs.com/)) for the files mentioned by `replaceIn` property. In this example, `.devcontainer.json` needs to be modified and hence, the inputs can provided to it as follows:
 

@@ -9,13 +9,13 @@ Goals include:
 
 ## Source code
 
-Templates source code is stored in a git repository.
+A Template's source code is stored in a git repository.
 
 For ease of authorship and maintenance, [1..n] Templates can share a single git repository. This set of Templates is referred to as a "collection," and will share the same [`devcontainer-collection.json`](#devcontainer-collection.json) file and "namespace" (eg. `<owner>/<repo>`).
 
 > **Note:** Templates and [Features](./devcontainer-features.md) should be placed in different git repositories. 
 
-Source code for the set follows the example file structure below:
+Source code for a set of Templates follows the example file structure below:
 
 ```
 .
@@ -69,13 +69,13 @@ The `devcontainer-collection.json` is an auto-generated metadata file.
 | `sourceInformation` | object | Metadata from the implementing packaging tool. |
 | `templates` | array | The list of Templates that are contained in this collection.|
 
-Each templates's `devcontainer-template.json` metadata file is appended into the `templates` top-level array.
+Each Template's `devcontainer-template.json` metadata file is appended into the `templates` top-level array.
 
 ## Distribution
 
-There are several supported ways to distribute templates.  Distribution is handled by the implementing packaging tool.
+There are several supported ways to distribute Templates.  Distribution is handled by the implementing packaging tool.
 
-A user can add the Templates in to their projects as defined by the [Templates Supporting Tools](./devcontainer-templates.md/#adding-a-template-to-a-project-or-codespace).
+A user can add a Template in to their projects as defined by the [supporting Tools](../docs/specs/supporting-tools.md#supporting-tools-and-services).
 
 ### OCI Registry
 
@@ -83,7 +83,7 @@ An OCI registry that implements the [OCI Artifact Distribution Specification](ht
 
 Each packaged Template is pushed to the registry following the naming convention `<registry>/<namespace>/<id>[:latest]`.
 
-> **Note:** The `namespace` is a unique identifier for the collection of templates and must be different than the collection of [Features](./devcontainer-features.md). There are no strict rules for the `namespace`; however, one pattern is to set `namespace` equal to source repository's `<owner>/<repo>`. 
+> **Note:** The `namespace` is a unique identifier for the collection of Templates and must be different than the collection of [Features](./devcontainer-features.md). There are no strict rules for the `namespace`; however, one pattern is to set `namespace` equal to source repository's `<owner>/<repo>`. 
 
 A custom media type `application/vnd.devcontainers` and `application/vnd.devcontainers.layer.v1+tar` are used as demonstrated below.
 
@@ -105,7 +105,7 @@ oras push ${REGISTRY}/${NAMESPACE}/${TEMPLATE}:latest \
 
 ```
 
-The "namespace" is the globally identifiable name for the collection of templates. (eg: `owner/repo` for the source code's git repository).
+The "namespace" is the globally identifiable name for the collection of Templates. (eg: `owner/repo` for the source code's git repository).
 
 The auto-generated `devcontainer-collection.json` is pushed to the registry with the same `namespace` as above and no accompanying `template` name. The collection file is always tagged as `latest`.
 

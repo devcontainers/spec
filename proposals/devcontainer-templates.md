@@ -1,8 +1,8 @@
 # Dev Container Templates reference
 
-Development container "Templates" are source files packaged together that encode configuration for a complete development environment. A Template can be used in a new or existing project and a [supporting tool](https://containers.dev/supporting) will use the configuration from the template to build a development container.
+Development container "Templates" are source files packaged together that encode configuration for a complete development environment. A Template can be used in a new or existing project, and a [supporting tool](https://containers.dev/supporting) will use the configuration from the Template to build a development container.
 
-The configuration is placed in a [`.devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) which can also reference other files within the Template. Alternatively, `.devcontainer/devcontainer.json` can also be used if the container needs to reference other files, such as a `Dockerfile` or `docker-compose.yml`. A template can also provide additional source files (eg: boilerplate code or a [lifecycle script](https://containers.dev/implementors/json_reference/#lifecycle-scripts).
+The configuration is placed in a [`.devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) which can also reference other files within the Template. Alternatively, `.devcontainer/devcontainer.json` can also be used if the container needs to reference other files, such as a `Dockerfile` or `docker-compose.yml`. A Template can also provide additional source files (eg: boilerplate code or a [lifecycle script](https://containers.dev/implementors/json_reference/#lifecycle-scripts).
 
 Template metadata is captured by a `devcontainer-template.json` file in the root folder of the Template.
 
@@ -75,15 +75,15 @@ Each Template is published with only the `latest` tag. Tooling that handles rele
 
 ## Release
 
-_For information on distribution Templates, see [devcontainer-templates-distribution.md](./devcontainer-templates-distribution.md)._
+_For information on distributing Templates, see [devcontainer-templates-distribution.md](./devcontainer-templates-distribution.md)._
 
 ### Option Resolution
 
-A templates's `options` is used by a supporting tool to prompt for different configuration options. A supporting tool will parse the `options` object provided by the user. If a value is selected for a Template, it will be replaced in the provided `replaceIn` files.
+A Template's `options` property is used by a supporting tool to prompt for different configuration options. A supporting tool will parse the `options` object provided by the user. If a value is selected for a Template, it will be replaced in the provided `replaceIn` files.
 
 ### Option resolution example
 
-Consider a `java` template with the following folder structure:
+Consider a `java` Template with the following folder structure:
 
 +-- java
 |    +-- devcontainer-template.json
@@ -146,7 +146,7 @@ and it has the following `.devcontainer.json` file:
 }
 ```
 
-A user tries to add the `java` Template to their project using the [supporting tools](../docs/specs/supporting-tools.md#supporting-tools-and-services) and selects `17-bullseye` when prompted for `"Specify version of Go."` and uses the `default` values for `"Specify version of node, or 'none' to skip node installation."` and `"Install Maven, a management tool for Java."`.
+A user tries to add the `java` Template to their project using the [supporting tools](../docs/specs/supporting-tools.md#supporting-tools-and-services) and selects `17-bullseye` when prompted for `"Specify version of Go"` and the `default` values when prompted for `"Specify version of node, or 'none' to skip node installation"` and `"Install Maven, a management tool for Java"`.
 
 The supporting tool could then use a string replacer (eg. [handlebars](https://handlebarsjs.com/)) for the files mentioned by `replaceIn` property. In this example, `.devcontainer.json` needs to be modified and hence, the inputs can provided to it as follows:
 

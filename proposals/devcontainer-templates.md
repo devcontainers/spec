@@ -68,11 +68,19 @@ The `options` property contains a map of option IDs and their related configurat
 
 ### Referencing a Template 
 
-The `id` format (`<oci-registry>/<namespace>/<template>[:latest]`) dictates how a [supporting tool](../docs/specs/supporting-tools.md#supporting-tools-and-services) will locate and download a given Template from an OCI registry (For example - `ghcr.io/user/repo/go:latest`). The registry must implement the [OCI Artifact Distribution Specification](https://github.com/opencontainers/distribution-spec). Some implementors can be [found here](https://oras.land/implementors/). 
+The `id` format (`<oci-registry>/<namespace>/<template>[:<semantic-version>]`) dictates how a [supporting tool](https://containers.dev/supporting) will locate and download a given Template from an OCI registry. For example:
+
+- `ghcr.io/user/repo/go`
+- `ghcr.io/user/repo/go:1`
+- `ghcr.io/user/repo/go:latest`
+
+The registry must implement the [OCI Artifact Distribution Specification](https://github.com/opencontainers/distribution-spec). Some implementors can be [found here](https://oras.land/implementors/).
 
 ## Versioning
 
-Each Template is published with only the `latest` tag. Tooling that handles releasing Templates will republish the `latest` tag every time a new release is created.
+Each Template is individually [versioned according to the semver specification](https://semver.org/).  The `version` property in the respective `devcontainer-template.json` file is updated to increment the Template's version.
+
+Tooling that handles releasing Templates will not republish Templates if that exact version has already been published; however, tooling must republish major and minor versions in accordance with the semver specification.
 
 ## Release
 

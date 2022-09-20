@@ -30,6 +30,7 @@ The properties of the file are as follows:
 | `description` | string | Description of the Template. |
 | `documentationURL` | string | Url that points to the documentation of the Template. |
 | `licenseURL` | string | Url that points to the license of the Template. |
+| `type` | string | Type of the dev container (image, dockerfile, dockerCompose) created by the Template. |
 | `options` | object | A map of options that the supporting tools should use to populate different configuration options for the Template. |
 | `platforms` | object | Languages and platforms supported by the Template. |
 | `publisher` | object | Name of the publisher/maintainer of the Template. |

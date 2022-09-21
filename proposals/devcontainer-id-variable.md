@@ -16,7 +16,7 @@ The following assumes that a dev container can be identified among other dev con
 
 The identifier is derived from the set of container labels uniquely identifying the dev container. It is up to the implementation to choose these labels. E.g., if the dev container is based on a local folder the label could be named `devcontainer.local_folder` and have the local folder's path as its value.
 
-E.g., the `docker-in-docker` feature could use the dev container id with:
+E.g., the [`ghcr.io/devcontainers/features/docker-in-docker` feature](https://github.com/devcontainers/features/blob/main/src/docker-in-docker/devcontainer-feature.json) could use the dev container id with:
 
 ```jsonc
 {

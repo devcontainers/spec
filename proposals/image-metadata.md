@@ -55,7 +55,9 @@ To apply the metadata together with a user's devcontainer.json at runtime the fo
 | `postCreateCommand` | `string \| string[]` | Collected list of all postCreateCommands. | x |   |
 | `postStartCommand` | `string \| string[]` | Collected list of all postStartCommands. | x |   |
 | `postAttachCommand` | `string \| string[]` | Collected list of all postAttachCommands. | x |   |
+| `waitFor` | enum | Last value wins. | x |   |
 | `customizations` | Object of tool-specific customizations. | Merging is left to the tools. | x | x |
+| `containerUser` | `string` | Last value wins. | x |   |
 | `remoteUser` | `string` | Last value wins. | x |   |
 | `userEnvProbe` | `string` (enum) | Last value wins. | x |   |
 | `remoteEnv` | Object of strings. | Per variable, last value wins. | x |   |
@@ -68,7 +70,7 @@ To apply the metadata together with a user's devcontainer.json at runtime the fo
 | `updateRemoteUserUID` | `boolean` | Last value wins. | x |   |
 | `hostRequirements` | `cpus`, `memory`, `storage` | Max value wins. | x |   |
 
-Variables in string values will be substituted at the time the value is applied.
+Variables in string values will be substituted at the time the value is applied. When the order matters, the devcontainer.json is considered last.
 
 ## Notes
 

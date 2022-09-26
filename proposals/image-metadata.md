@@ -44,10 +44,10 @@ To apply the metadata together with a user's devcontainer.json at runtime the fo
 | Property | Type/Format | Merge Logic | devcontainer.json | Feature Metadata |
 | -------- | ----------- | ----------- | :---------------: | :--------------: |
 | `id` | E.g., `ghcr.io/devcontainers/features/node:1` | Not merged. |   | x |
-| `init` | `boolean` | `true` if at least one is `true`, `false` otherwise. |   | x |
-| `privileged` | `boolean` | `true` if at least one is `true`, `false` otherwise. |   | x |
-| `capAdd` | `string[]` | Union of all `capAdd` arrays without duplicates. |   | x |
-| `securityOpt` | `string[]` | Union of all `securityOpt` arrays without duplicates. |   | x |
+| `init` | `boolean` | `true` if at least one is `true`, `false` otherwise. | x | x |
+| `privileged` | `boolean` | `true` if at least one is `true`, `false` otherwise. | x | x |
+| `capAdd` | `string[]` | Union of all `capAdd` arrays without duplicates. | x | x |
+| `securityOpt` | `string[]` | Union of all `securityOpt` arrays without duplicates. | x | x |
 | `entrypoint` | `string` | Collected list of all entrypoints. |   | x |
 | `mounts` | `(string \| { type, src, dst })[]` | Collected list of all mountpoints. Conflicts: Last source wins. | x | x |
 | `onCreateCommand` | `string \| string[]` | Collected list of all onCreateCommands. | x |   |
@@ -71,6 +71,10 @@ To apply the metadata together with a user's devcontainer.json at runtime the fo
 | `hostRequirements` | `cpus`, `memory`, `storage` | Max value wins. | x |   |
 
 Variables in string values will be substituted at the time the value is applied. When the order matters, the devcontainer.json is considered last.
+
+## Additional devcontainer.json Properties
+
+We are adding support for `mounts`, `containerEnv`, `containerUser`, `init`, `privileged`, `capAdd`, and `securityOpt` to the devcontainer.json (also with Docker Compose) the same way these properties are already supported in the feature metadata.
 
 ## Notes
 

@@ -42,9 +42,9 @@ You may learn more in the [announcement blog post](https://devblogs.microsoft.co
 
 A dev container command line interface (CLI) that implements this specification. It is in development in the [devcontainers/cli](https://github.com/devcontainers/cli) repo.
 
-### Dev Containers extension CLI
+### VS Code extension CLI
 
-There is a Dev Containers extension [`devcontainer` CLI](https://code.visualstudio.com/docs/remote/devcontainer-cli) which may be installed within the Dev Containers extension or through the command line.
+VS Code has a [CLI](https://code.visualstudio.com/docs/remote/devcontainer-cli) which may be installed within the Dev Containers extension or through the command line.
 
 ### Visual Studio Code Dev Containers
 

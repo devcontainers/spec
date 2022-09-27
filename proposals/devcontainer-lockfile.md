@@ -13,7 +13,7 @@ This will allow for:
 
 Each feature is recorded with the identifier and version it is referred to in the devcontainer.json as its key and the following properties as its values:
 - `resolved`:
-    - OCI feature: Using `oci:` as the prefix followed by the qualified named a colon and the full version number that was used (not only the semver version).
+    - OCI feature: A qualified feature id with the sha256 hash (not the version number).
     - tarball feature: The `https:` URL used to download the feature.
 - `version`: The full version number.
 - `integrity`: `sha256:` followed by the hex encoded SHA-256 checksum of the download artifact.
@@ -29,7 +29,7 @@ Example:
     "features": {
         "ghcr.io/devcontainers/features/node:1": {
             "version": "1.0.4",
-            "resolved": "oci:ghcr.io/devcontainers/features/node@sha256:567d704b3f4d3eca3acee51ded7c460a8395436d135d53d1175fb565daff42b8",
+            "resolved": "ghcr.io/devcontainers/features/node@sha256:567d704b3f4d3eca3acee51ded7c460a8395436d135d53d1175fb565daff42b8",
             "integrity": "sha256:567d704b3f4d3eca3acee51ded7c460a8395436d135d53d1175fb565daff42b8"
         },
         "https://mycustomdomain.com/myscript-1.2.3.tgz": {

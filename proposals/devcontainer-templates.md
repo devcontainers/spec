@@ -26,14 +26,15 @@ The properties of the file are as follows:
 | Property | Type | Description |
 | :--- | :--- | :--- |
 | `id` | string | ID of the Template. The `id` should be unique in the context of the repository/published package where the Template exists and must match the name of the directory where the `devcontainer-template.json` resides. |
+| `version` | string | The semantic version of the Template. |
 | `name` | string | Name of the Template. |
 | `description` | string | Description of the Template. |
 | `documentationURL` | string | Url that points to the documentation of the Template. |
 | `licenseURL` | string | Url that points to the license of the Template. |
 | `type` | string | Type of the dev container (image, dockerfile, dockerCompose) created by the Template. |
 | `options` | object | A map of options that the supporting tools should use to populate different configuration options for the Template. |
-| `platforms` | object | Languages and platforms supported by the Template. |
-| `publisher` | object | Name of the publisher/maintainer of the Template. |
+| `platforms` | array | Languages and platforms supported by the Template. |
+| `publisher` | string | Name of the publisher/maintainer of the Template. |
 | `keywords` | array | List of strings relevant to a user that would search for this Template. |
 
 ### The `options` property

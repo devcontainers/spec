@@ -30,15 +30,21 @@ Visual studio code specific properties go under `vscode` inside `customizations`
 
 Please note that [Dev Containers](#visual-studio-code-remote---containers) and [GitHub Codespaces](#github-codespaces) support the VS Code properties.
 
+### Visual Studio
+
+Visual Studio added Dev Container support in Visual Studio 2022 17.4 for C++ projects using CMake Presets. It is part of the Linux and embedded development with C++ workload, so make sure it is selected in your VS installation. Visual Studio manages the lifecycle of Dev Containers it uses as you work, but it treats them as remote targets in a similar way to other Linux or WSL targets.
+
+You may learn more in the [announcement blog post](https://devblogs.microsoft.com/cppblog/dev-containers-for-c-in-visual-studio/).
+
 ## Tools
 
 ### Dev container CLI
 
 A dev container command line interface (CLI) that implements this specification. It is in development in the [devcontainers/cli](https://github.com/devcontainers/cli) repo.
 
-### Dev Containers extension CLI
+### VS Code extension CLI
 
-There is a Dev Containers extension [`devcontainer` CLI](https://code.visualstudio.com/docs/remote/devcontainer-cli) which may be installed within the Dev Containers extension or through the command line.
+VS Code has a [CLI](https://code.visualstudio.com/docs/remote/devcontainer-cli) which may be installed within the Dev Containers extension or through the command line.
 
 ### Visual Studio Code Dev Containers
 

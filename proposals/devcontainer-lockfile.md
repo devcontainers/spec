@@ -32,9 +32,9 @@ Example:
             "resolved": "ghcr.io/devcontainers/features/node@sha256:567d704b3f4d3eca3acee51ded7c460a8395436d135d53d1175fb565daff42b8",
             "integrity": "sha256:567d704b3f4d3eca3acee51ded7c460a8395436d135d53d1175fb565daff42b8"
         },
-        "https://mycustomdomain.com/myscript-1.2.3.tgz": {
+        "https://mycustomdomain.com/devcontainer-feature-myfeature.tgz": {
             "version": "1.2.3",
-            "resolved": "https://mycustomdomain.com/myscript-1.2.3.tgz",
+            "resolved": "https://mycustomdomain.com/devcontainer-feature-myfeature.tgz",
             "integrity": "sha256:567d704b3f4d3eca3acee51ded7c460a8395436d135d53d1175fb565daff42b8"
         }
     }

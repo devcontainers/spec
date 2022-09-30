@@ -31,7 +31,6 @@ The properties of the file are as follows:
 | `description` | string | Description of the Template. |
 | `documentationURL` | string | Url that points to the documentation of the Template. |
 | `licenseURL` | string | Url that points to the license of the Template. |
-| `type` | string | Type of the dev container (image, dockerfile, dockerCompose) created by the Template. |
 | `options` | object | A map of options that the supporting tools should use to populate different configuration options for the Template. |
 | `platforms` | array | Languages and platforms supported by the Template. |
 | `publisher` | string | Name of the publisher/maintainer of the Template. |
@@ -39,7 +38,7 @@ The properties of the file are as follows:
 
 ### The `options` property
 
-The `options` property contains a map of option IDs and their related configuration settings. These `options` are used by the supporting tools to prompt the user to choose from different Template configuration options. The tools would replace the option ID with the selected value in the specified `replaceIn` files. This replacement would happen before dropping the `.devcontainer.json` (or `.devcontainer/devcontainer.json`) and other files (within the sub-directory of the Template) required to containerize your project. See [option resolution](#option-resolution) for more details. For example:
+The `options` property contains a map of option IDs and their related configuration settings. These `options` are used by the supporting tools to prompt the user to choose from different Template configuration options. The tools would replace the option ID with the selected value in all the files (within the sub-directory of the Template). This replacement would happen before dropping the `.devcontainer.json` (or `.devcontainer/devcontainer.json`) and other files (within the sub-directory of the Template) required to containerize your project. See [option resolution](#option-resolution) for more details. For example:
 
 ```json
 {
@@ -48,8 +47,7 @@ The `options` property contains a map of option IDs and their related configurat
       "type": "string",
       "description": "Description of the option",
       "proposals": ["value1", "value2"],
-      "default": "value1",
-      "replaceIn": [".devcontainer.json"],
+      "default": "value1"
     }
   }
 }
@@ -57,13 +55,12 @@ The `options` property contains a map of option IDs and their related configurat
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
-| `optionId` | string | ID of the option used by the supporting tools to replace the selected value in the specified `replaceIn` files. |
+| `optionId` | string | ID of the option used by the supporting tools to replace the selected value in the files within the sub-directory of the Template. |
 | `optionId.type` | string | Type of the option. Valid types are currently: `boolean`, `string` |
 | `optionId.description` | string | Description for the option. |
 | `optionId.proposals` | array | A list of suggested string values. Free-form values **are** allowed. Omit when using `optionId.enum`. |
 | `optionId.enum` | array | A strict list of allowed string values. Free-form values are **not** allowed. Omit when using `optionId.proposals`. |
 | `optionId.default` | string | Default value for the option. |
-| `optionId.replaceIn` | array | List of file paths which the supporting tool should use to perform the string replacement of `optionId` with the selected value. The provided path is always relative to the sub-directory of the Template. |
 
 > `Note`: The `options` must be unique for every `devcontainer-template.json`
 
@@ -89,7 +86,7 @@ _For information on distributing Templates, see [devcontainer-templates-distribu
 
 ### Option Resolution
 
-A Template's `options` property is used by a supporting tool to prompt for different configuration options. A supporting tool will parse the `options` object provided by the user. If a value is selected for a Template, it will be replaced in the provided `replaceIn` files.
+A Template's `options` property is used by a supporting tool to prompt for different configuration options. A supporting tool will parse the `options` object provided by the user. If a value is selected for a Template, it will be replaced in the files (within the sub-directory of the Template).
 
 ### Option resolution example
 
@@ -115,8 +112,7 @@ Suppose the `java` Template has the following `options` parameters declared in t
           "17",
           "11"
         ],
-			  "default": "17-bullseye",
-        "replaceIn": [".devcontainer.json"]
+			  "default": "17-bullseye"
     },
     "nodeVersion": {
         "type": "string", 
@@ -128,14 +124,12 @@ Suppose the `java` Template has the following `options` parameters declared in t
           "none"
         ],
         "default": "latest",
-        "description": "Specify version of node, or 'none' to skip node installation.",
-        "replaceIn": [".devcontainer.json"]
+        "description": "Specify version of node, or 'none' to skip node installation."
     },
     "installMaven": {
         "type": "boolean", 
         "description": "Install Maven, a management tool for Java.",
-        "default": "false",
-        "replaceIn": [".devcontainer.json"]
+        "default": "false"
     },
 }
 ```
@@ -158,7 +152,7 @@ and it has the following `.devcontainer.json` file:
 
 A user tries to add the `java` Template to their project using the [supporting tools](../docs/specs/supporting-tools.md#supporting-tools-and-services) and selects `17-bullseye` when prompted for `"Specify version of Go"` and the `default` values when prompted for `"Specify version of node, or 'none' to skip node installation"` and `"Install Maven, a management tool for Java"`.
 
-The supporting tool could then use a string replacer (eg. [handlebars](https://handlebarsjs.com/)) for the files mentioned by `replaceIn` property. In this example, `.devcontainer.json` needs to be modified and hence, the inputs can provided to it as follows:
+The supporting tool could then use a string replacer for all the files within the sub-directory of the Template. In this example, `.devcontainer.json` needs to be modified and hence, the inputs can provided to it as follows:
 
 ```
 {

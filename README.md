@@ -31,7 +31,7 @@ If you are interested in contributing, please check out the [How to Contribute](
 Please report issues in the following repositories:
 
 - Reference implementation Features and templates: [devcontainers/features](https://github.com/devcontainers/features), [devcontainers/templates](https://github.com/devcontainers/templates)
-- CLI and non-spec related feature requests: [devcontainers/cli](https://github.com/devcontainers/cli)
+- CLI reference implementation and non-spec related feature requests: [devcontainers/cli](https://github.com/devcontainers/cli)
 - GitHub Action and Azure DevOps Task: [devcontainers/ci](https://github.com/devcontainers/ci)
 
 # License

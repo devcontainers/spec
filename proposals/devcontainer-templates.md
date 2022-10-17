@@ -2,19 +2,21 @@
 
 Development container "Templates" are source files packaged together that encode configuration for a complete development environment. A Template can be used in a new or existing project, and a [supporting tool](https://containers.dev/supporting) will use the configuration from the Template to build a development container.
 
-The configuration is placed in a [`.devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) which can also reference other files within the Template. Alternatively, `.devcontainer/devcontainer.json` can also be used if the container needs to reference other files, such as a `Dockerfile` or `docker-compose.yml`. A Template can also provide additional source files (eg: boilerplate code or a [lifecycle script](https://containers.dev/implementors/json_reference/#lifecycle-scripts).
+The configuration is placed in a [`.devcontainer/devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) which can also reference other files within the Template. A Template can also provide additional source files (eg: boilerplate code or a [lifecycle script](https://containers.dev/implementors/json_reference/#lifecycle-scripts).
 
 Template metadata is captured by a `devcontainer-template.json` file in the root folder of the Template.
 
 ## Folder structure 
 
-A single Template is a folder with at least a `devcontainer-template.json` and [`devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson).  Additional files are permitted and are packaged along side the required files.
+A single Template is a folder with at least a `devcontainer-template.json` and [`.devcontainer/devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson).  Additional files are permitted and are packaged along side the required files.
 
 ```
 +-- template
-|    +-- devcontainer-template.json
-|    +-- .devcontainer.json
-|    +-- (other files)
+|   +-- devcontainer-template.json
+|   +-- .devcontainer
+|       +-- devcontainer.json
+|       +-- (other files)
+|   +-- (other files)
 ```
 
 ## devcontainer-template.json properties
@@ -38,7 +40,7 @@ The properties of the file are as follows:
 
 ### The `options` property
 
-The `options` property contains a map of option IDs and their related configuration settings. These `options` are used by the supporting tools to prompt the user to choose from different Template configuration options. The tools would replace the option ID with the selected value in all the files (within the sub-directory of the Template). This replacement would happen before dropping the `.devcontainer.json` (or `.devcontainer/devcontainer.json`) and other files (within the sub-directory of the Template) required to containerize your project. See [option resolution](#option-resolution) for more details. For example:
+The `options` property contains a map of option IDs and their related configuration settings. These `options` are used by the supporting tools to prompt the user to choose from different Template configuration options. The tools would replace the option ID with the selected value in all the files (within the sub-directory of the Template). This replacement would happen before dropping the `.devcontainer/devcontainer.json` and other files (within the sub-directory of the Template) required to containerize your project. See [option resolution](#option-resolution) for more details. For example:
 
 ```json
 {
@@ -93,8 +95,9 @@ A Template's `options` property is used by a supporting tool to prompt for diffe
 Consider a `java` Template with the following folder structure:
 
 +-- java
-|    +-- devcontainer-template.json
-|    +-- .devcontainer.json
+|   +-- devcontainer-template.json
+|   +-- .devcontainer
+|       +-- devcontainer.json
 
 Suppose the `java` Template has the following `options` parameters declared in the `devcontainer-template.json` file:
 
@@ -134,7 +137,7 @@ Suppose the `java` Template has the following `options` parameters declared in t
 }
 ```
 
-and it has the following `.devcontainer.json` file:
+and it has the following `.devcontainer/devcontainer.json` file:
 
 ```json
 {
@@ -152,7 +155,7 @@ and it has the following `.devcontainer.json` file:
 
 A user tries to add the `java` Template to their project using the [supporting tools](../docs/specs/supporting-tools.md#supporting-tools-and-services) and selects `17-bullseye` when prompted for `"Specify version of Go"` and the `default` values when prompted for `"Specify version of node, or 'none' to skip node installation"` and `"Install Maven, a management tool for Java"`.
 
-The supporting tool could then use a string replacer for all the files within the sub-directory of the Template. In this example, `.devcontainer.json` needs to be modified and hence, the inputs can provided to it as follows:
+The supporting tool could then use a string replacer for all the files within the sub-directory of the Template. In this example, `.devcontainer/devcontainer.json` needs to be modified and hence, the inputs can provided to it as follows:
 
 ```
 {
@@ -162,7 +165,7 @@ The supporting tool could then use a string replacer for all the files within th
 }
 ```
 
-The modified `.devcontainer.json` will be as follows:
+The modified `.devcontainer/devcontainer.json` will be as follows:
 
 ```json
 {
@@ -178,4 +181,4 @@ The modified `.devcontainer.json` will be as follows:
 }
 ```
 
-The modified `.devcontainer.json` would be dropped into any existing folder as a starting point for containerizing your project.
+The modified `.devcontainer/devcontainer.json` would be dropped into any existing folder as a starting point for containerizing your project.

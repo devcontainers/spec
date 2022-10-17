@@ -23,7 +23,9 @@ Source code for a set of Templates follows the example file structure below:
 ├── src
 │   ├── dotnet
 │   │   ├── devcontainer-template.json
-│   │   ├── .devcontainer.json
+│   │   ├── .devcontainer
+│   │       ├── devcontainer.json
+│   │       └── ...
 │   │   ├── ...
 |   ├
 │   ├── docker-from-docker
@@ -44,7 +46,7 @@ Source code for a set of Templates follows the example file structure below:
 │   │   ├── ...
 ```
 
-...where `src` is a directory containing a sub-folder with the name of the Template (e.g. `src/dotnet` or `src/docker-from-docker`) with at least a file named `devcontainer-template.json` that contains the Template metadata, and a `.devcontainer.json` (or `.devcontainer/devcontainer.json`) that the supporting tools will drop into an existing project or folder.
+...where `src` is a directory containing a sub-folder with the name of the Template (e.g. `src/dotnet` or `src/docker-from-docker`) with at least a file named `devcontainer-template.json` that contains the Template metadata, and a `.devcontainer/devcontainer.json` that the supporting tools will drop into an existing project or folder.
 
 Each sub-directory should be named such that it matches the `id` field of the `devcontainer-template.json`.  Other files can also be included in the Templates's sub-directory, and will be included during the [packaging step](#packaging) alongside the two required files.  Any files that are not part of the Templates's sub-directory (e.g. outside of `src/dotnet`) will not included in the [packaging step](#packaging).
 
@@ -56,7 +58,7 @@ Tooling that handles publishing Templates will not republish Templates if that e
 
 ## Packaging
 
-Templates are distributed as tarballs. The tarball contains the entire contents of the Template sub-directory, including the `devcontainer-template.json`, `.devcontainer.json` (or `.devcontainer/devcontainer.json`), and any other files in the directory.
+Templates are distributed as tarballs. The tarball contains the entire contents of the Template sub-directory, including the `devcontainer-template.json`, `.devcontainer/devcontainer.json`, and any other files in the directory.
 
 The tarball is named `devcontainer-template-<id>.tgz`, where `<id>` is the Templates's `id` field.
 

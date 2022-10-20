@@ -2,7 +2,7 @@
 
 The `devcontainer.json` file contains any needed metadata and settings required to configurate a **development container** for a given well-defined tool and runtime stack. It can be used by [tools and services that support the dev container spec](supporting-tools.md) to create a **development environment** that contains one or more **development containers**.
 
-Metadata properties marked with a 🏷 can also be added to an **image label** in addition to devcontainer.json file. The `devcontainer.metadata` image label can contain an array of json snippets that will be automatically merged with devcontainer.json contents (if any) when a container is created.
+Metadata properties marked with a 🏷 can be stored in the `devcontainer.metadata` **container image label** in addition to `devcontainer.json`. This label can contain an array of json snippets that will be automatically merged with `devcontainer.json` contents (if any) when a container is created.
 
 ## General devcontainer.json properties
 

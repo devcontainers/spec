@@ -29,7 +29,11 @@ Metadata properties marked with a 🏷 can be stored in the `devcontainer.metada
 | `overrideFeatureInstallOrder` (currently in preview) | array | By default, features will attempt to automatically set the order they are installed based on a `installsAfter` property within each of them. This property allows you to override the feature install order when needed. For example: <br />`"overrideFeatureInstallorder": [ "ghcr.io/devcontainers/features/common-utils", "ghcr.io/devcontainers/features/github-cli" ]` <br /><br /> ⚠️  Support is currently in preview as the spec is not yet final. |
 | `customizations` 🏷| object | Product specific properties, defined in [supporting tools](supporting-tools.md) |
 
-## Image or Dockerfile specific properties
+## Scenario specific properties
+
+The focus of `devcontainer.json` is to describe how to enrich a container for the purposes of development rather than acting as a multi-container orchestrator format. Instead, container orchestrator formats can be referenced when needed to manage multiple containers and their lifecycles. Today, `devcontainer.json` includes scenario specific properties for working without a container orchestrator (by directly referencing an image or Dockerfile) and for using Docker Compose as a simple multi-container orchestrator.
+
+### Image or Dockerfile specific properties
 
 | Property | Type | Description |
 |----------|------|-------------|

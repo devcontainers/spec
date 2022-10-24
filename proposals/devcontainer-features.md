@@ -72,6 +72,16 @@ The options property is contains a map of option IDs and their related configura
 | `optionId.default` | string or boolean | Default value for the option. |
 | `optionId.description` | string | Description for the option. |
 
+### User environment variables
+
+Feature scripts run as the `root` user and sometimes need to know which user account the dev container will be used with.
+
+`_REMOTE_USER` and `_CONTAINER_USER` environment variables are passsed to the Features scripts with `_CONTAINER_USER` being the container's user and `_REMOTE_USER` being the configured `remoteUser`. If no `remoteUser` is configured, `_REMOTE_USER` is set to the same value as `_CONTAINER_USER`.
+
+Additionally, the home folders of the two users are passed to the Feature scripts as `_REMOTE_USER_HOME` and `_CONTAINER_USER_HOME` environment variables.
+
+The container user can be set with `containerUser` in the devcontainer.json and image metadata, `user` in the docker-compose.yml, `USER` in the Dockerfile, and can be passed down from the base image.
+
 ## devcontainer.json properties
 
 Features are referenced in a user's [`devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) under the top level `features` object. 

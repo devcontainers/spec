@@ -67,12 +67,12 @@ When creating or working with a dev container, you may need different commands t
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `initializeCommand` | string,<br>array | A command string or list of command arguments to run on the **host machine** before the container is created. .<br /><br /> ⚠️ The command is run wherever the source code is located on the host. For cloud services, this is in the cloud.<br>Note that the array syntax will execute the command without a shell. You can [learn more](#formatting-string-vs-array-properties) about formatting string vs array properties. |
-| `onCreateCommand` 🏷 | string,<br>array | This command is the first of three (along with `updateContentCommand` and `postCreateCommand`) that finalizes container setup when a dev container is created. It and subsequent commands execute **inside** the container immediately after it has started for the first time.<br /><br> Cloud services can use this command when caching or prebuilding a container. This means that it will not typically have access to user-scoped assets or secrets.<br>Note that the array syntax will execute the command without a shell. You can [learn more](#formatting-string-vs-array-properties) about formatting string vs array properties. |
-| `updateContentCommand` 🏷  | string,<br>array  | This command is the second of three that finalizes container setup when a dev container is created. It executes inside the container after `onCreateCommand` whenever new content is available in the source tree during the creation process.<br><br />It will execute at least once, but cloud services will also periodically execute the command to refresh cached or prebuilt containers. Like cloud services using `onCreateCommand`, it can only take advantage of repository and org scoped secrets or permissions.<br>Note that the array syntax will execute the command without a shell. You can [learn more](#formatting-string-vs-array-properties) about formatting string vs array properties. |
-| `postCreateCommand` 🏷 | string,<br>array | This command is the last of three that finalizes container setup when a dev container is created. It happens after `updateContentCommand` and once the dev container has been assigned to a user for the first time.<br><br />Cloud services can use this command to take advantage of user specific secrets and permissions.<br>Note that the array syntax will execute the command without a shell. You can [learn more](#formatting-string-vs-array-properties) about formatting string vs array properties. |
-| `postStartCommand` 🏷 | string,<br>array | A command to run each time the container is successfully started.<br>Note that the array syntax will execute the command without a shell. You can [learn more](#formatting-string-vs-array-properties) about formatting string vs array properties. |
-| `postAttachCommand` 🏷 | string,<br>array | A command to run each time a tool has successfully attached to the container.<br>Note that the array syntax will execute the command without a shell. You can [learn more](#formatting-string-vs-array-properties) about formatting string vs array properties. |
+| `initializeCommand` | string,<br>array,<br>object | A command string or list of command arguments to run on the **host machine** before the container is created. .<br /><br /> ⚠️ The command is run wherever the source code is located on the host. For cloud services, this is in the cloud.<br>Note that the array syntax will execute the command without a shell. You can [learn more](#formatting-string-vs-array-properties) about formatting string vs array vs object properties. |
+| `onCreateCommand` 🏷 | string,<br>array,<br>object | This command is the first of three (along with `updateContentCommand` and `postCreateCommand`) that finalizes container setup when a dev container is created. It and subsequent commands execute **inside** the container immediately after it has started for the first time.<br /><br> Cloud services can use this command when caching or prebuilding a container. This means that it will not typically have access to user-scoped assets or secrets.<br>Note that the array syntax will execute the command without a shell. You can [learn more](#formatting-string-vs-array-properties) about formatting string vs array vs object properties. |
+| `updateContentCommand` 🏷  | string,<br>array,<br>object  | This command is the second of three that finalizes container setup when a dev container is created. It executes inside the container after `onCreateCommand` whenever new content is available in the source tree during the creation process.<br><br />It will execute at least once, but cloud services will also periodically execute the command to refresh cached or prebuilt containers. Like cloud services using `onCreateCommand`, it can only take advantage of repository and org scoped secrets or permissions.<br>Note that the array syntax will execute the command without a shell. You can [learn more](#formatting-string-vs-array-properties) about formatting string vs array vs object properties. |
+| `postCreateCommand` 🏷 | string,<br>array,<br>object | This command is the last of three that finalizes container setup when a dev container is created. It happens after `updateContentCommand` and once the dev container has been assigned to a user for the first time.<br><br />Cloud services can use this command to take advantage of user specific secrets and permissions.<br>Note that the array syntax will execute the command without a shell. You can [learn more](#formatting-string-vs-array-properties) about formatting string vs array vs object properties. |
+| `postStartCommand` 🏷 | string,<br>array,<br>object | A command to run each time the container is successfully started.<br>Note that the array syntax will execute the command without a shell. You can [learn more](#formatting-string-vs-array-properties) about formatting string vs array vs object properties. |
+| `postAttachCommand` 🏷 | string,<br>array,<br>object | A command to run each time a tool has successfully attached to the container.<br>Note that the array syntax will execute the command without a shell. You can [learn more](#formatting-string-vs-array-properties) about formatting string vs array vs object properties. |
 | `waitFor` 🏷 | enum | An enum that specifies the command any tool should wait for before connecting. Defaults to `updateContentCommand`. This allows you to use `onCreateCommand` or `updateContentCommand` for steps that must happen before `devcontainer.json` supporting tools connect while still using `postCreateCommand` for steps that can happen behind the scenes afterwards. |
 
 For each command property, if the value is a single string, it will be run in `/bin/sh`. Use `&&` in a string to execute multiple commands. For example, `"yarn install"` or `"apt-get update && apt-get install -y curl"`. The array syntax `["yarn", "install"]` will invoke the command (in this case `yarn`) directly without using a shell. Each fires after your source code has been mounted, so you can also run shell scripts from your source tree. For example: `bash scripts/install-dev-tools.sh`
@@ -105,9 +105,12 @@ The `portsAttributes` and `otherPortsAttributes` properties allow you to map def
 
 The format of certain properties will vary depending on the involvement of a shell.
 
-`postCreateCommand`, `postStartCommand`, `postAttachCommand`, and `initializeCommand` all have an array and a string type, while `runArgs` only has the array type. An array is passed to the OS for execution without going through a shell, whereas a string goes through a shell (it needs to be parsed into command and arguments).
+`postCreateCommand`, `postStartCommand`, `postAttachCommand`, and `initializeCommand` all have 3 types: 
+* Array: Passed to the OS for execution without going through a shell
+* String: Goes through a shell (it needs to be parsed into command and arguments)
+* Object: All lifecycle scripts have been extended to support `object` types to allow for [parallel execution](../specs/devcontainer-reference.md/#parallel-lifecycle-script-execution)
 
-Using `runArgs` via a typical command line, you'll need single quotes if the shell runs into parameters with spaces. However, these single quotes aren't passed on to the executable. Thus, in your `devcontainer.json`, you'd follow the array format and leave out the single quotes:
+`runArgs` only has the array type. Using `runArgs` via a typical command line, you'll need single quotes if the shell runs into parameters with spaces. However, these single quotes aren't passed on to the executable. Thus, in your `devcontainer.json`, you'd follow the array format and leave out the single quotes:
 
 ```json
 "runArgs": ["--device-cgroup-rule=my rule here"]
@@ -119,7 +122,7 @@ Rather than:
 "runArgs": ["--device-cgroup-rule='my rule here'"]
 ```
 
-We can compare the string and the array versions of `postAttachCommand` as well. You can use the following string format, which will remove the single quotes as part of the shell's parsing:
+We can compare the string, array, and object versions of `postAttachCommand` as well. You can use the following string format, which will remove the single quotes as part of the shell's parsing:
 
 ```json
 "postAttachCommand": "echo foo='bar'"
@@ -129,6 +132,17 @@ By contrast, the array format will keep the single quotes and write them to stan
 
 ```json
 "postAttachCommand": ["echo", "foo='bar'"]
+```
+
+Finally, you may use an object format:
+
+```json
+{
+  "postAttachCommand": {
+    "server": "npm start",
+    "db": ["mysql", "-u", "root", "-p", "my database"]
+  }
+}
 ```
 
 ## Variables in devcontainer.json

@@ -157,6 +157,7 @@ Variables can be referenced in certain string values in `devcontainer.json` in t
 | `${containerWorkspaceFolder}` | Any | The path that the workspaces files can be found in the container. |
 | `${localWorkspaceFolderBasename}` | Any | Name of the local folder that was opened in the `devcontainer.json` supporting service / tool (that contains `.devcontainer/devcontainer.json`). |
 | `${containerWorkspaceFolderBasename}` | Any | Name of the folder where the workspace files can be found in the container. |
+| `${devcontainerId}` | Any | Allow features to refer to an identifier that is unique to the dev container they are installed into and that is stable across rebuilds. |
 
 ## Schema
 

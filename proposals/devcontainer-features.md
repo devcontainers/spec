@@ -362,4 +362,3 @@ There are several things to keep in mind for an application that implements Feat
 - Parameters like `capAdd`, `securityOp`  are concatenated.
 - `containerEnv` is added before the Feature is executed as `ENV` commands in the Dockerfile.
 - Each Feature script executes as its own layer to aid in caching and rebuilding.
-- There is also a proposal to move properties like `privileged` to `devcontainer.json` for consistency and to reduce reliance on the `runArgs` property. See https://github.com/devcontainers/spec/issues/2.

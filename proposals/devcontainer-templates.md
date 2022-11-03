@@ -94,10 +94,12 @@ A Template's `options` property is used by a supporting tool to prompt for diffe
 
 Consider a `java` Template with the following folder structure:
 
+```
 +-- java
 |   +-- devcontainer-template.json
 |   +-- .devcontainer
 |       +-- devcontainer.json
+```
 
 Suppose the `java` Template has the following `options` parameters declared in the `devcontainer-template.json` file:
 

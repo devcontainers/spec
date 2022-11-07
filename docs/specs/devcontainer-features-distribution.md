@@ -1,5 +1,7 @@
 # Distribution and Discovery of Dev Container Features
 
+**TL;DR Check out the [quick start repository](https://github.com/devcontainers/feature-template) to get started on distributing your own Dev Container Features.**
+
 This specification defines a pattern where community members and organizations can author and self-publish [Dev Container Features](./devcontainer-features.md). 
 
 Goals include:
@@ -79,7 +81,7 @@ Each features's `devcontainer-feature.json` metadata file is appended into the `
 
 ## Distribution
 
-There are several supported ways to distribute features.  Distribution is handled by the implementing packaging tool.
+There are several supported ways to distribute Features. Distribution is handled by the implementing packaging tool such as the [Dev Container CLI](https://github.com/devcontainers/cli) or [Dev Container Publish GitHub Action](https://github.com/marketplace/actions/dev-container-publish). See the [quick start repository](https://github.com/devcontainers/feature-template) for a full working example.
 
 A user references a distributed feature in a `devcontainer.json` as defined in ['referencing a feature'](./devcontainer-features.md#Referencing-a-feature).
 

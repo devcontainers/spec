@@ -1,5 +1,7 @@
 # Distribution and Discovery of Dev Container Templates
 
+**TL;DR Check out the [quick start repository](https://github.com/devcontainers/template-starter) to get started on distributing your own Dev Container Templates.**
+
 This specification defines a pattern where community members and organizations can author and self-publish [Dev Container Templates](./devcontainer-templates.md). 
 
 Goals include:
@@ -77,7 +79,7 @@ Each Template's `devcontainer-template.json` metadata file is appended into the 
 
 ## Distribution
 
-There are several supported ways to distribute Templates.  Distribution is handled by the implementing packaging tool.
+There are several supported ways to distribute Templates. Distribution is handled by the implementing packaging tool such as the **[Dev Container CLI](https://github.com/devcontainers/cli)** or **[Dev Container Publish GitHub Action](https://github.com/marketplace/actions/dev-container-publish)**.
 
 A user can add a Template in to their projects as defined by the [supporting Tools](../docs/specs/supporting-tools.md#supporting-tools-and-services).
 

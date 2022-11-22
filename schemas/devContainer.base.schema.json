@@ -248,14 +248,14 @@
 						"type": "string"
 					},
 					"additionalProperties": {
-                    	"type": [
-                    		"string",
-                			"array"
-                    	],
-                    	"items": {
-                    		"type": "string"
-                    	}
-                    }
+						"type": [
+							"string",
+							"array"
+						],
+						"items": {
+							"type": "string"
+						}
+					}
 				},
 				"updateContentCommand": {
 					"type": [
@@ -268,14 +268,14 @@
 						"type": "string"
 					},
 					"additionalProperties": {
-                    	"type": [
-                    		"string",
-                			"array"
-                    	],
-                    	"items": {
-                    		"type": "string"
-                    	}
-                    }
+						"type": [
+							"string",
+							"array"
+						],
+						"items": {
+							"type": "string"
+						}
+					}
 				},
 				"postCreateCommand": {
 					"type": [
@@ -288,14 +288,14 @@
 						"type": "string"
 					},
 					"additionalProperties": {
-                    	"type": [
-                    		"string",
-                			"array"
-                    	],
-                    	"items": {
-                    		"type": "string"
-                    	}
-                    }
+						"type": [
+							"string",
+							"array"
+						],
+						"items": {
+							"type": "string"
+						}
+					}
 				},
 				"postStartCommand": {
 					"type": [
@@ -308,14 +308,14 @@
 						"type": "string"
 					},
 					"additionalProperties": {
-                    	"type": [
-                    		"string",
-                			"array"
-                    	],
-                    	"items": {
-                    		"type": "string"
-                    	}
-                    }
+						"type": [
+							"string",
+							"array"
+						],
+						"items": {
+							"type": "string"
+						}
+					}
 				},
 				"postAttachCommand": {
 					"type": [
@@ -328,14 +328,14 @@
 						"type": "string"
 					},
 					"additionalProperties": {
-                    	"type": [
-                    		"string",
-                			"array"
-                    	],
-                    	"items": {
-                    		"type": "string"
-                    	}
-                    }
+						"type": [
+							"string",
+							"array"
+						],
+						"items": {
+							"type": "string"
+						}
+					}
 				},
 				"waitFor": {
 					"type": "string",

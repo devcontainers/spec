@@ -65,11 +65,11 @@ To apply the metadata together with a user's devcontainer.json at runtime the fo
 | `securityOpt` | `string[]` | Union of all `securityOpt` arrays without duplicates. | x | x |
 | `entrypoint` | `string` | Collected list of all entrypoints. |   | x |
 | `mounts` | `(string \| { type, src, dst })[]` | Collected list of all mountpoints. Conflicts: Last source wins. | x | x |
-| `onCreateCommand` | `string \| string[]` | Collected list of all onCreateCommands. | x |   |
-| `updateContentCommand` | `string \| string[]` | Collected list of all updateContentCommands. | x |   |
-| `postCreateCommand` | `string \| string[]` | Collected list of all postCreateCommands. | x |   |
-| `postStartCommand` | `string \| string[]` | Collected list of all postStartCommands. | x |   |
-| `postAttachCommand` | `string \| string[]` | Collected list of all postAttachCommands. | x |   |
+| `onCreateCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all onCreateCommands. | x |   |
+| `updateContentCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all updateContentCommands. | x |   |
+| `postCreateCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all postCreateCommands. | x |   |
+| `postStartCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all postStartCommands. | x |   |
+| `postAttachCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all postAttachCommands. | x |   |
 | `waitFor` | enum | Last value wins. | x |   |
 | `customizations` | Object of tool-specific customizations. | Merging is left to the tools. | x | x |
 | `containerUser` | `string` | Last value wins. | x |   |
@@ -168,7 +168,7 @@ See [`workspaceMount` and `workspaceFolder`](devcontainerjson-reference.md#image
 
 Users control the permissions of applications executed in the containers, allowing the developer to control them. The specification takes into account two types of user definitions:
 
-* **Container User**: The user that will be used for all operations that run inside a container. This concept is native to containers. It may be set in the container image, using the `continerUser` property for  **image** and **dockerfile** scenarios, or using an orchestratric specific property like `user` property in Docker Compose files.
+* **Container User**: The user that will be used for all operations that run inside a container. This concept is native to containers. It may be set in the container image, using the `containerUser` property for  **image** and **dockerfile** scenarios, or using an orchestratric specific property like `user` property in Docker Compose files.
 * **Remote User**: Used to run the [lifecycle](#lifecycle) scripts inside the container. This is also the user tools and editors that connect to the container should use to run their processes. This concept is not native to containers. Set using the `remoteEnv` property in all cases and defaults to the container user.
 
 This separation allows the ENTRYPOINT for the image to execute with different permissions than the developer and allows for developers to switch users without recreating their containers.
@@ -260,6 +260,25 @@ To resume the environment from a stopped state:
 3. Additionally, execute the `postStartCommand` and `postAttachCommand` in the container.
 
 Like during the create process, remote [environment variables](#environment-variables) and [user](#users) configuration should be applied to all created processes in the container (inclusive of `userEnvProbe`).
+
+## Parallel lifecycle script execution </a>
+
+Dev containers support a single command for each of its lifecycle scripts. While serial execution of multiple commands can be achieved with `;`, `&&`, etc., parallel execution deserves first-class support.
+
+All lifecycle scripts have been extended to support `object` types. The key of the `object` will be a unique name for the command and the value will be the `string` or `array` command. Each command must exit successfully for the stage to be considered successful.
+
+Each entry in the `object` will be run in parallel during that lifecycle step.
+
+### Example
+
+```json
+{
+  "postCreateCommand": {
+    "server": "npm start",
+    "db": ["mysql", "-u", "root", "-p", "my database"]
+  }
+}
+```
 
 # Definitions
 

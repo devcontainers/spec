@@ -65,11 +65,11 @@ To apply the metadata together with a user's devcontainer.json at runtime the fo
 | `securityOpt` | `string[]` | Union of all `securityOpt` arrays without duplicates. | x | x |
 | `entrypoint` | `string` | Collected list of all entrypoints. |   | x |
 | `mounts` | `(string \| { type, src, dst })[]` | Collected list of all mountpoints. Conflicts: Last source wins. | x | x |
-| `onCreateCommand` | `string \| string[]` | Collected list of all onCreateCommands. | x |   |
-| `updateContentCommand` | `string \| string[]` | Collected list of all updateContentCommands. | x |   |
-| `postCreateCommand` | `string \| string[]` | Collected list of all postCreateCommands. | x |   |
-| `postStartCommand` | `string \| string[]` | Collected list of all postStartCommands. | x |   |
-| `postAttachCommand` | `string \| string[]` | Collected list of all postAttachCommands. | x |   |
+| `onCreateCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all onCreateCommands. | x |   |
+| `updateContentCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all updateContentCommands. | x |   |
+| `postCreateCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all postCreateCommands. | x |   |
+| `postStartCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all postStartCommands. | x |   |
+| `postAttachCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all postAttachCommands. | x |   |
 | `waitFor` | enum | Last value wins. | x |   |
 | `customizations` | Object of tool-specific customizations. | Merging is left to the tools. | x | x |
 | `containerUser` | `string` | Last value wins. | x |   |

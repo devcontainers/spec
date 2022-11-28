@@ -2,7 +2,7 @@
 
 ## Goal
 
-This proposal adds support for GPU to the existing support for host requirements.
+This proposal adds GPU support to the existing host requirements properties.
 - Issue: https://github.com/devcontainers/spec/issues/82
 - Community PR: https://github.com/devcontainers/cli/pull/173
 

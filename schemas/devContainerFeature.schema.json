@@ -1,0 +1,185 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Defines a dev container Feature",
+  "allowComments": true,
+  "allowTrailingCommas": false,
+  "definitions": {
+    "Feature": {
+      "additionalProperties": false,
+      "properties": {
+        "capAdd": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "consecutiveId": {
+          "type": "string"
+        },
+        "containerEnv": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "customizations": {},
+        "description": {
+          "type": "string"
+        },
+        "documentationURL": {
+          "type": "string"
+        },
+        "entrypoint": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "init": {
+          "type": "boolean"
+        },
+        "installsAfter": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "licenseURL": {
+          "type": "string"
+        },
+        "mounts": {
+          "items": {
+            "$ref": "#/definitions/Mount"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string"
+        },
+        "options": {
+          "additionalProperties": {
+            "$ref": "#/definitions/FeatureOption"
+          },
+          "type": "object"
+        },
+        "privileged": {
+          "type": "boolean"
+        },
+        "securityOpt": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ],
+      "type": "object"
+    },
+    "FeatureOption": {
+      "anyOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "default": {
+              "type": "boolean"
+            },
+            "description": {
+              "type": "string"
+            },
+            "type": {
+              "const": "boolean",
+              "type": "string"
+            }
+          },
+          "required": [
+            "type"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "default": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "enum": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "type": {
+              "const": "string",
+              "type": "string"
+            }
+          },
+          "required": [
+            "type"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "default": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "proposals": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "type": {
+              "const": "string",
+              "type": "string"
+            }
+          },
+          "required": [
+            "type"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "Mount": {
+      "additionalProperties": false,
+      "properties": {
+        "external": {
+          "type": "boolean"
+        },
+        "source": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "bind",
+            "volume"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "source",
+        "target"
+      ],
+      "type": "object"
+    }
+  }
+}

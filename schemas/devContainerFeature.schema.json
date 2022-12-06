@@ -22,7 +22,10 @@
           },
           "type": "object"
         },
-        "customizations": {},
+        "customizations": {
+          "additionalProperties": false,
+          "type": "object"
+        },
         "description": {
           "type": "string"
         },

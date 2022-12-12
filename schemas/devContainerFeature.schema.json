@@ -1,8 +1,5 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "description": "Defines a dev container Feature",
-  "allowComments": true,
-  "allowTrailingCommas": false,
   "definitions": {
     "Feature": {
       "additionalProperties": false,
@@ -23,7 +20,7 @@
           "type": "object"
         },
         "customizations": {
-          "additionalProperties": false,
+          "additionalProperties": true,
           "type": "object"
         },
         "description": {
@@ -85,8 +82,10 @@
       "type": "object"
     },
     "FeatureOption": {
+      "additionalItems": false,
       "anyOf": [
         {
+          "description": "Option value is represented with a boolean value.",
           "additionalProperties": false,
           "properties": {
             "default": {
@@ -101,12 +100,14 @@
             }
           },
           "required": [
-            "type"
+            "type",
+            "default"
           ],
           "type": "object"
         },
         {
           "additionalProperties": false,
+          "description": "Option value is strictly as a member of the 'enum' array.  User cannot provide their own value.",
           "properties": {
             "default": {
               "type": "string"
@@ -126,12 +127,14 @@
             }
           },
           "required": [
-            "type"
+            "type",
+            "enum"
           ],
           "type": "object"
         },
         {
           "additionalProperties": false,
+          "description": "Option value is either a member of the 'proposals' array, or a custom, user-provided value.",
           "properties": {
             "default": {
               "type": "string"
@@ -151,7 +154,8 @@
             }
           },
           "required": [
-            "type"
+            "type",
+            "proposals"
           ],
           "type": "object"
         }
@@ -184,5 +188,12 @@
       ],
       "type": "object"
     }
-  }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "$ref": "#/definitions/Feature",
+      "additionalProperties": false
+    }
+  ]
 }

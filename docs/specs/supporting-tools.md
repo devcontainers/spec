@@ -38,13 +38,21 @@ You may learn more in the [announcement blog post](https://devblogs.microsoft.co
 
 ## Tools
 
-### Dev container CLI
+### Dev Container CLI
 
 A dev container command line interface (CLI) that implements this specification. It is in development in the [devcontainers/cli](https://github.com/devcontainers/cli) repo.
 
 ### VS Code extension CLI
 
 VS Code has a [CLI](https://code.visualstudio.com/docs/remote/devcontainer-cli) which may be installed within the Dev Containers extension or through the command line.
+
+### Cachix devenv
+
+Cachix's [devenv](https://devenv.sh/) supports automatically generating a `.devcontainer.json` file so you can use it with any Dev Container spec supporting tool. See [devenv documentation](https://devenv.sh/integrations/codespaces-devcontainer/) for detais. 
+
+### Jetpack.io Devbox
+
+[Jetpack.io's VS Code extension](https://marketplace.visualstudio.com/items?itemName=jetpack-io.devbox) supports a **Generate Dev Container files** command so you can use Jetpack.io from Dev Container spec supporting tools.
 
 ### Visual Studio Code Dev Containers
 
@@ -96,6 +104,8 @@ If your Codespaces project needs additional permissions for other repositories, 
 }
 ```
 
+Note that currently Codespaces reads these properties from devcontainer.json, not image metadata.
+
 #### Product specific limitations
 
 Some properties may apply differently to Codespaces.
@@ -107,3 +117,5 @@ Some properties may apply differently to Codespaces.
 | `portsAttributes` | object | Codespaces does not yet support the `"host:port"` variation of this property.|
 | `shutdownAction` | enum | Does not apply to Codespaces. |
 | `${localEnv:VARIABLE_NAME}` | Any | For Codespaces, the host is in the cloud rather than your local machine.|
+| `customizations.codespaces` | object | Codespaces reads this property from devcontainer.json, not image metadata. |
+| `hostRequirements` | object | Codespaces reads this property from devcontainer.json, not image metadata. |

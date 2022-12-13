@@ -184,3 +184,7 @@ An example project is illustrated below:
 
 }
 ```
+
+### Deprecating a Feature
+
+Move the Feature's [source code](#source-code) out of the `src` folder or delete the source code. This will ensure that the Feature's metadata is not added to the [devcontainer-collection.json](#devcontainer-collectionjson). The Dev Container index used by the [supporting tools](./supporting-tools.md) is built daily, hence, the deprecated Feature will vanish from the list.

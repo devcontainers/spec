@@ -47,7 +47,7 @@
           "type": "boolean"
         },
         "installsAfter": {
-          "description": "Array of ID’s of Features that should execute before this one. Allows control for feature authors on soft dependencies between different Features.",
+          "description": "Array of ID's of Features that should execute before this one. Allows control for feature authors on soft dependencies between different Features.",
           "items": {
             "type": "string"
           },
@@ -58,6 +58,7 @@
           "type": "string"
         },
         "mounts": {
+          "description": "Mounts a volume or bind mount into the container.",
           "items": {
             "$ref": "#/definitions/Mount"
           },
@@ -108,9 +109,11 @@
               "type": "boolean"
             },
             "description": {
+              "description": "A description of the option displayed to the user by a supporting tool.",
               "type": "string"
             },
             "type": {
+              "description": "The type of the option. Can be 'boolean' or 'string'.  Options of type 'string' should use the 'enum' or 'proposals' property to provide a list of allowed values.",
               "const": "boolean",
               "type": "string"
             }
@@ -129,6 +132,7 @@
               "type": "string"
             },
             "description": {
+              "description": "A description of the option displayed to the user by a supporting tool.",
               "type": "string"
             },
             "enum": {
@@ -139,6 +143,7 @@
               "type": "array"
             },
             "type": {
+              "description": "The type of the option. Can be 'boolean' or 'string'.  Options of type 'string' should use the 'enum' or 'proposals' property to provide a list of allowed values.",
               "const": "string",
               "type": "string"
             }
@@ -158,6 +163,7 @@
               "type": "string"
             },
             "description": {
+              "description": "A description of the option displayed to the user by a supporting tool.",
               "type": "string"
             },
             "proposals": {
@@ -168,6 +174,7 @@
               "type": "array"
             },
             "type": {
+              "description": "The type of the option. Can be 'boolean' or 'string'.  Options of type 'string' should use the 'enum' or 'proposals' property to provide a list of allowed values.",
               "const": "string",
               "type": "string"
             }
@@ -185,16 +192,16 @@
       "description": "Mounts a volume or bind mount into the container.",
       "additionalProperties": false,
       "properties": {
-        "external": {
-          "type": "boolean"
-        },
         "source": {
+          "description": "Mount source.",
           "type": "string"
         },
         "target": {
+          "description": "Mount target.",
           "type": "string"
         },
         "type": {
+          "description": "Type of mount. Can be 'bind' or 'volume'.",
           "enum": [
             "bind",
             "volume"

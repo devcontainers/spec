@@ -39,6 +39,9 @@ We'd want to rename this Feature to `docker-outside-of-docker`. The source code 
     "version": "2.0.2",
     "name": "Docker (Docker-outside-of-Docker)",
     "documentationURL": "https://github.com/devcontainers/features/tree/main/src/docker-outside-of-docker",
+    "legacyIds": [
+        "docker-from-docker"
+    ]
     ....
 }
 ```
@@ -66,10 +69,10 @@ This property can be used by the supporting tools to indicate Feature rename in 
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
-| `deprecated` | boolean | Defaults to `false`. Indicates that the Feature is deprecated, and will not receive any further updates/support. |
+| `deprecated` | boolean | Defaults to `false`. Indicates that the Feature is deprecated, and will not receive any further updates/support. This property is intended to be used by the supporting tools to highlight Feature deprecation. |
 
 - If this property is set to `true`, then it indicates that the Feature is deprecated and won't be receiving any further updates/support. The OCI artifacts would exist, hence, the current dev configs will continue to work.
-- `devcontainer features publish` command, or equivalent tool that implements the [Features distribution specification](../docs/specs/features-distribution/#distribution) will be modified to skip publishing the Features with `deprecated:true`.
+- In case of security or other ciritical updates, the Feature author could still publish a new version of the deprecated Feature by bumping the semantic version of the Feature.
 - This property could be used by the supporting tools to indicate Feature deprecation in few ways -
     - [Dev Container Publish GitHub Action](https://github.com/devcontainers/action) which auto-generates the README files can be updated to add a top-level header mentioning it's deprecation.
     - The [containers.dev/features](https://containers.dev/features) website, and [supporting tools](https://containers.dev/supporting) like [VS Code Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) and [GitHub Codespaces](https://github.com/features/codespaces) wouldn't list the deprecated Features.

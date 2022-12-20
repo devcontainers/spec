@@ -98,7 +98,6 @@
       "type": "object"
     },
     "FeatureOption": {
-      "additionalItems": false,
       "anyOf": [
         {
           "description": "Option value is represented with a boolean value.",

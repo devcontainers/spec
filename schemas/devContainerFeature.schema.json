@@ -2,13 +2,15 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Development Container Feature Metadata",
   "description": "Development Container Features Metadata (devcontainer-feature.json). See https://containers.dev/implementors/features/ for more information.",
-    "definitions": {
+  "definitions": {
     "Feature": {
       "additionalProperties": false,
       "properties": {
         "capAdd": {
-					"description": "Passes docker capabilities to include when creating the dev container.",
-					"examples": [ "SYS_PTRACE" ],
+          "description": "Passes docker capabilities to include when creating the dev container.",
+          "examples": [
+            "SYS_PTRACE"
+          ],
           "items": {
             "type": "string"
           },
@@ -219,8 +221,7 @@
   "oneOf": [
     {
       "type": "object",
-      "$ref": "#/definitions/Feature",
-      "additionalProperties": false
+      "$ref": "#/definitions/Feature"
     }
   ]
 }

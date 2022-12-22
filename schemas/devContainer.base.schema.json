@@ -1,5 +1,5 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2019-09/schema",
 	"description": "Defines a dev container",
 	"allowComments": true,
 	"allowTrailingCommas": false,
@@ -207,7 +207,9 @@
 				"capAdd": {
 					"type": "array",
 					"description": "Passes docker capabilities to include when creating the dev container.",
-					"examples": [ "SYS_PTRACE" ],
+					"examples": [
+						"SYS_PTRACE"
+					],
 					"items": {
 						"type": "string"
 					}
@@ -215,7 +217,9 @@
 				"securityOpt": {
 					"type": "array",
 					"description": "Passes docker security options to include when creating the dev container.",
-					"examples": [ "seccomp=unconfined" ],
+					"examples": [
+						"seccomp=unconfined"
+					],
 					"items": {
 						"type": "string"
 					}
@@ -368,61 +372,57 @@
 				"hostRequirements": {
 					"type": "object",
 					"description": "Host hardware requirements.",
-					"allOf": [
-						{
-							"type": "object",
-							"properties": {
-								"cpus": {
-									"type": "integer",
-									"minimum": 1,
-									"description": "Number of required CPUs."
+					"properties": {
+						"cpus": {
+							"type": "integer",
+							"minimum": 1,
+							"description": "Number of required CPUs."
+						},
+						"memory": {
+							"type": "string",
+							"pattern": "^\\d+([tgmk]b)?$",
+							"description": "Amount of required RAM in bytes. Supports units tb, gb, mb and kb."
+						},
+						"storage": {
+							"type": "string",
+							"pattern": "^\\d+([tgmk]b)?$",
+							"description": "Amount of required disk space in bytes. Supports units tb, gb, mb and kb."
+						},
+						"gpu": {
+							"oneOf": [
+								{
+									"type": [
+										"boolean",
+										"string"
+									],
+									"enum": [
+										true,
+										false,
+										"optional"
+									],
+									"description": "Indicates whether a GPU is required. The string \"optional\" indicates that a GPU is optional. An object value can be used to configure more detailed requirements."
 								},
-								"memory": {
-									"type": "string",
-									"pattern": "^\\d+([tgmk]b)?$",
-									"description": "Amount of required RAM in bytes. Supports units tb, gb, mb and kb."
-								},
-								"storage": {
-									"type": "string",
-									"pattern": "^\\d+([tgmk]b)?$",
-									"description": "Amount of required disk space in bytes. Supports units tb, gb, mb and kb."
-								},
-								"gpu": {
-									"oneOf": [
-										{
-											"type": [
-												"boolean",
-												"string"
-											],
-											"enum": [
-												true,
-												false,
-												"optional"
-											],
-											"description": "Indicates whether a GPU is required. The string \"optional\" indicates that a GPU is optional. An object value can be used to configure more detailed requirements."
+								{
+									"type": "object",
+									"properties": {
+										"cores": {
+											"type": "integer",
+											"minimum": 1,
+											"description": "Number of required cores."
 										},
-										{
-											"type": "object",
-											"properties": {
-												"cores": {
-													"type": "integer",
-													"minimum": 1,
-													"description": "Number of required cores."
-												},
-												"memory": {
-													"type": "string",
-													"pattern": "^\\d+([tgmk]b)?$",
-													"description": "Amount of required RAM in bytes. Supports units tb, gb, mb and kb."
-												}
-											},
-											"description": "Indicates whether a GPU is required. The string \"optional\" indicates that a GPU is optional. An object value can be used to configure more detailed requirements.",
-											"additionalProperties": false
+										"memory": {
+											"type": "string",
+											"pattern": "^\\d+([tgmk]b)?$",
+											"description": "Amount of required RAM in bytes. Supports units tb, gb, mb and kb."
 										}
-									]
+									},
+									"description": "Indicates whether a GPU is required. The string \"optional\" indicates that a GPU is optional. An object value can be used to configure more detailed requirements.",
+									"additionalProperties": false
 								}
-							}
+							]
 						}
-					]
+					},
+					"unevaluatedProperties": false
 				},
 				"customizations": {
 					"type": "object",
@@ -508,7 +508,8 @@
 								{
 									"$ref": "#/definitions/buildOptions"
 								}
-							]
+							],
+							"unevaluatedProperties": false
 						}
 					},
 					"required": [
@@ -698,5 +699,6 @@
 			"$ref": "#/definitions/devContainerCommon",
 			"additionalProperties": false
 		}
-	]
+	],
+	"unevaluatedProperties": false
 }

@@ -182,7 +182,6 @@
           },
           "required": [
             "type",
-            "proposals",
             "default"
           ],
           "type": "object"

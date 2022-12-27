@@ -136,29 +136,6 @@
               "description": "A description of the option displayed to the user by a supporting tool.",
               "type": "string"
             },
-            "type": {
-              "description": "The type of the option. Can be 'boolean' or 'string'.  Options of type 'string' should use the 'enum' or 'proposals' property to provide a list of allowed values, or none to provide no hints.",
-              "const": "string",
-              "type": "string"
-            }
-          },
-          "required": [
-            "type",
-            "default"
-          ],
-          "type": "object"
-        },
-        {
-          "additionalProperties": false,
-          "properties": {
-            "default": {
-              "description": "Default value if the user omits this option from their configuration.",
-              "type": "string"
-            },
-            "description": {
-              "description": "A description of the option displayed to the user by a supporting tool.",
-              "type": "string"
-            },
             "enum": {
               "description": "Allowed values for this option.  Unlike 'proposals', the user cannot provide a custom value not included in the 'enum' array.",
               "items": {
@@ -167,7 +144,7 @@
               "type": "array"
             },
             "type": {
-              "description": "The type of the option. Can be 'boolean' or 'string'.  Options of type 'string' should use the 'enum' or 'proposals' property to provide a list of allowed values, or none to provide no hints.",
+              "description": "The type of the option. Can be 'boolean' or 'string'.  Options of type 'string' should use the 'enum' or 'proposals' property to provide a list of allowed values.",
               "const": "string",
               "type": "string"
             }
@@ -198,14 +175,13 @@
               "type": "array"
             },
             "type": {
-              "description": "The type of the option. Can be 'boolean' or 'string'.  Options of type 'string' should use the 'enum' or 'proposals' property to provide a list of allowed values, or none to provide no hints.",
+              "description": "The type of the option. Can be 'boolean' or 'string'.  Options of type 'string' should use the 'enum' or 'proposals' property to provide a list of allowed values.",
               "const": "string",
               "type": "string"
             }
           },
           "required": [
             "type",
-            "proposals",
             "default"
           ],
           "type": "object"

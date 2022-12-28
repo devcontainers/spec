@@ -98,6 +98,10 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "deprecated": {
+          "description": "Indicates that the Feature is deprecated, and will not receive any further updates/support. This property is intended to be used by the supporting tools for highlighting Feature deprecation.",
+          "type": "boolean"
         }
       },
       "required": [
@@ -189,7 +193,6 @@
           },
           "required": [
             "type",
-            "proposals",
             "default"
           ],
           "type": "object"

@@ -91,6 +91,10 @@
         "version": {
           "description": "The version of the Feature. Follows the semanatic versioning (semver) specification.",
           "type": "string"
+        },
+        "deprecated": {
+          "description": "Indicates that the Feature is deprecated, and will not receive any further updates/support. This property is intended to be used by the supporting tools for highlighting Feature deprecation.",
+          "type": "boolean"
         }
       },
       "required": [

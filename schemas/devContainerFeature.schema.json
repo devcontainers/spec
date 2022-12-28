@@ -91,6 +91,13 @@
         "version": {
           "description": "The version of the Feature. Follows the semanatic versioning (semver) specification.",
           "type": "string"
+        },
+        "legacyIds": {
+          "description": "Array of old IDs used to publish this Feature. The property is useful for renaming a currently published Feature within a single namespace.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         }
       },
       "required": [

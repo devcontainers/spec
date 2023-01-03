@@ -90,19 +90,33 @@ If your Codespaces project needs additional permissions for other repositories, 
 
 ```jsonc
 "customizations": {
-		// Configure properties specific to Codespaces.
-		"codespaces": {
-			"repositories": {
-				"my_org/my_repo": {
-					"permissions": {
-						"issues": "write",
-						"contents": "read"
-					}
+	// Configure properties specific to Codespaces.
+	"codespaces": {
+		"repositories": {
+			"my_org/my_repo": {
+				"permissions": {
+					"issues": "write"
 				}
 			}
 		}
+	}
 }
 ```
+
+You can customize which files are initially opened when the codespace is created:
+```jsonc
+"customizations": {
+	// Configure properties specific to Codespaces.
+	"codespaces": {
+		"openFiles": [
+			"README"
+			"src/index.js"
+		]
+	}
+}
+```
+
+The paths are relative to the root of the repository. They will be opened in order, with the first file activated.
 
 Note that currently Codespaces reads these properties from devcontainer.json, not image metadata.
 

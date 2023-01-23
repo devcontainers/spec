@@ -173,7 +173,7 @@
 				},
 				"containerEnv": {
 					"type": "object",
-					"additionalProperties": {
+					additionalProperties": {
 						"type": "string"
 					},
 					"description": "Container environment variables."

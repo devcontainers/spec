@@ -18,50 +18,52 @@ Allow Feature authors to provide lifecycle hooks for their Features during a dev
 
 Note that `initializeCommand` is omitted, pending further discussions around a secure design.
 
-Additionally, introduce a `${featureRoot}` environment variable, which is expanded at build time to the root of the expanded Feature the variable is used from.  
+Additionally, introduce a `${featureRoot}` dev container variable, which is expanded at build time to the root of the Feature the variable is referenced from.  
 
-Feature lifecycle hooks will be prepended to the lifecycle hooks (if any) declared by the current `devcontainer.json`. Lifecycle hooks will be prepended in the order that the Feature's installation script was executed.  Commands will be joined in such a way that a failure in any one lifecycle hook, will indicate a failure for that entire lifecycle hook execution.
+As with all lifecycle hooks, commands are executed from the context (cwd) of the [project workspace folder](https://containers.dev/implementors/spec/#project-workspace-folder).
 
-### Parallel Execution
+All other semantic match the existing [Lifecycle Scripts](https://containers.dev/implementors/json_reference/#lifecycle-scripts) behavior exactly.
 
-Any Features that declare lifecycle hooks using the [parallel execution syntax](https://containers.dev/implementors/spec/#parallel-exec) will be executed in parallel with any other Features or user-contributed lifecycle scripts. Any Features that do not use this syntax will continue to be run in sequence, blocking subsequent runs until the script exits successfully.
+###  Execution
 
-Each parallel stage inherited from a Feature will be prefixed with the Feature `id`. Eg: `featureA_migrateDB`.
+Any Features that declare one of the aforementioned lifecycle hook properties will have their command executed _in parallel with any other Features, or user-contributed, lifecycle scripts_ during the target lifecycle point.
+
+> A consequence of executing scripts in parallel requires that operations in one script  do not block another. The execution order of individual lifecycle scripts within a given lifecycle hook is undefined, and any perceived ordering should not be relied upon.
+
+See here for more information on [lifecycle script parallel execution](https://containers.dev/implementors/spec/#parallel-exec).
 
 ## Examples
 
 
 ### Executing a script in the workspace folder
 
-The follow example illustrates executing a `postCreateCommand` script in the [project workspace folder](https://containers.dev/implementors/spec/#project-workspace-folder).  
+The follow example illustrates contributing an `onCreateCommand` and `postCreateCommand` script to `featureA`.  At each lifecycle hook during the build, the provided script will be executed in the [project workspace folder](https://containers.dev/implementors/spec/#project-workspace-folder), following the same semantics as [user-defined lifecycle hooks](https://containers.dev/implementors/json_reference/#lifecycle-scripts).
 
 ```jsonc
 {
    "id": "featureA",
-   "version": "1.0.0"
-   "postCreateCommand": "scriptInWorkspaceFolder.sh"
+   "version": "1.0.0",
+   "onCreateCommand": "myOnCreate.sh && myOnCreate2.sh",
+   "postCreateCommand": "myPostCreate.sh"
 }
 
 ```
 
 ### Executing a script bundled with the Feature
 
-The follow example illustrates executing a `postCreateCommand` script bundled with the Feature by using the `${featureRoot}` variable.
+The following example illustrates executing a `postCreateCommand` script bundled with the Feature utilizing the `${featureRoot}` variable.
 
 ```jsonc
 {
    "id": "featureB",
-   "version": "1.0.0"
-   "postCreateCommand": "${featureRoot}/bundledScript.sh",
-   "installsAfter": [
-        "featureA"
-   ]
+   "version": "1.0.0",
+   "postCreateCommand": "${featureRoot}/bundledScript.sh"
 }
 ```
 
-At build time, the `${featureRoot}` variable will be expanded to the temporary directory that contains all the Feature's assets.  For example, it may be expanded to `/tmp/vsch/container-features/featureB_1`.
+At build time, the `${featureRoot}` variable will be expanded to the temporary directory within the container that contains all the Feature's assets.  For example, it may be expanded to `/tmp/vsch/container-features/featureB_1`.
 
-When authored, `featureB`'s file structure would look something like:
+Given this example, `featureB`'s file structure would look something like:
 
 ```
 .
@@ -72,9 +74,9 @@ When authored, `featureB`'s file structure would look something like:
 │   │   └── install.sh
 ```
 
-### Installation Order (without parallel execution syntax)
+### Installation
 
-Given the following `devcontainer.json` and the two examples Features above.
+Given the following `devcontainer.json` and the two example Features above.
 
 ```jsonc
 {
@@ -83,60 +85,24 @@ Given the following `devcontainer.json` and the two examples Features above.
         "featureA":  {},
         "featureB":  {},
     },
-    "postCreateCommand":  "scriptInWorkspaceFolder.sh"
-}
-```
-
-The three `postCreate` lifecycle events declared or inherited for this dev container would be serially executed (blocking the next script) in the following order:
-
-- featureA
-- featureB
-- the user's dev container
-
-Note that the current working directory during the execution of all three scripts is equal to the  [project workspace folder](https://containers.dev/implementors/spec/#project-workspace-folder).
-
-### Installation Order (parallel execution)
-
-Given a Feature defined as follows:
-
-```jsonc
-{
-    "id": "featureC",
-    "version": "1.0.0",
-    "postCreateCommand": {
+    "postCreateCommand":  "userPostCreate.sh",
+    "postAttachCommand": {
         "server": "npm start",
         "db": ["mysql", "-u", "root", "-p", "my database"]
     },
-    "installsAfter": [
-        "featureA",
-        "featureB"
-    ]
 }
 ```
 
-The following dev container configuration:
+The following timeline of events would occur. 
 
-```jsonc
-{
-    "image": "ubuntu",
-    "features": {
-        "featureA":  {},
-        "featureB":  {},
-        "featureC":  {},
-    },
-    "postCreateCommand": {
-        "git": "git clone https://github.com/devcontainers/cli",
-        "getTool": "wget https://example.com/tool/"
-    }
-}
-```
+> Note that:
+>
+>1. Each bullet point below is _blocking_. No subsequent lifecycle hooks shall proceed until the current hook completes.
+> 2.  If one of the lifecycle scripts fails, any subsequent scripts will not be executed. For instance, if `postCreateCommand` fails, `postStartCommand` and any following hooks will be skipped.
+>
 
-With each bullet point indicating a blocking operation for the following scripts, the execution for the `postCreate` lifecycle hook would behave like:
+- `featureA`'s onCreateCommand
+- `featureA`'s postCreateCommand, `featureB`'s postCreateCommand, and the user's postCreateCommand **(all executed in parallel)**
+-  The user's postCreateCommand **(each command running in parallel)**
 
-- featureA
-- featureB
-- In parallel the execution of 
-    - `featureC_server`
-    - `featureC_db` 
-    - `git`
-    - `getTool`
+Suppose `featureB`'s postCreateCommand exited with a non-zero exit code.  In this case, the `postAttachCommand` will never fire.

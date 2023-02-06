@@ -22,15 +22,11 @@ Additionally, introduce a `${featureRoot}` dev container variable, which is expa
 
 As with all lifecycle hooks, commands are executed from the context (cwd) of the [project workspace folder](https://containers.dev/implementors/spec/#project-workspace-folder).
 
-All other semantic match the existing [Lifecycle Scripts](https://containers.dev/implementors/json_reference/#lifecycle-scripts) behavior exactly.
+All other semantic match the existing [Lifecycle Scripts](https://containers.dev/implementors/json_reference/#lifecycle-scripts) and  [lifecycle script parallel execution](https://containers.dev/implementors/spec/#parallel-exec) behavior exactly.
 
 ###  Execution
 
-Any Features that declare one of the aforementioned lifecycle hook properties will have their command executed _in parallel with any other Features, or user-contributed, lifecycle scripts_ during the target lifecycle point.
-
-> A consequence of executing scripts in parallel requires that operations in one script  do not block another. The execution order of individual lifecycle scripts within a given lifecycle hook is undefined, and any perceived ordering should not be relied upon.
-
-See here for more information on [lifecycle script parallel execution](https://containers.dev/implementors/spec/#parallel-exec).
+When a dev container is brought up, for each lifecycle hook, each Feature that contributes a command to a lifecycle hook shall have the command executed in sequence, following the same execution order as outlined in [Feature installation order](https://containers.dev/implementors/features/#installation-order), and always before any user-provided lifecycle commands.
 
 ## Examples
 
@@ -44,7 +40,11 @@ The follow example illustrates contributing an `onCreateCommand` and `postCreate
    "id": "featureA",
    "version": "1.0.0",
    "onCreateCommand": "myOnCreate.sh && myOnCreate2.sh",
-   "postCreateCommand": "myPostCreate.sh"
+   "postCreateCommand": "myPostCreate.sh",
+    "postAttachCommand": {
+        "command01": "myPostAttach.sh arg01",
+        "command02": "myPostAttach.sh arg02",
+    },
 }
 
 ```
@@ -57,7 +57,10 @@ The following example illustrates executing a `postCreateCommand` script bundled
 {
    "id": "featureB",
    "version": "1.0.0",
-   "postCreateCommand": "${featureRoot}/bundledScript.sh"
+   "postCreateCommand": "${featureRoot}/bundledScript.sh",
+   "installsAfter": [
+        "featureA"
+   ]
 }
 ```
 
@@ -97,12 +100,15 @@ The following timeline of events would occur.
 
 > Note that:
 >
->1. Each bullet point below is _blocking_. No subsequent lifecycle hooks shall proceed until the current hook completes.
-> 2.  If one of the lifecycle scripts fails, any subsequent scripts will not be executed. For instance, if `postCreateCommand` fails, `postStartCommand` and any following hooks will be skipped.
+>1. Each bullet point below is _blocking_. No subsequent lifecycle commands shall proceed until the current command completes.
+> 2.  If one of the lifecycle scripts fails, any subsequent scripts will not be executed. For instance, if a given `postCreate` command fails, the `postStart` hook and any following hooks will be skipped.
 >
 
 - `featureA`'s onCreateCommand
-- `featureA`'s postCreateCommand, `featureB`'s postCreateCommand, and the user's postCreateCommand **(all executed in parallel)**
--  The user's postCreateCommand **(each command running in parallel)**
+- `featureA`'s postCreateCommand 
+- `featureB`'s postCreateCommand
+-  The user's postCreateCommand
+- `featureA`'s postAttachCommand **(parallel syntax, each command running in parallel)**
+-  The user's postAttachCommand **(parallel syntax, each command running in parallel)**
 
-Suppose `featureB`'s postCreateCommand exited with a non-zero exit code.  In this case, the `postAttachCommand` will never fire.
+Suppose `featureB`'s postCreateCommand exited were to exit unsuccessfully (non-zero exit code).  In this case, the `postAttachCommand` will never fire.

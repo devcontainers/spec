@@ -18,7 +18,7 @@ Allow Feature authors to provide lifecycle hooks for their Features during a dev
 
 Note that `initializeCommand` is omitted, pending further discussions around a secure design.
 
-Additionally, introduce a `${featureRoot}` dev container variable, which is expanded at build time to the root of the Feature the variable is referenced from.  
+Additionally, introduce a `${featureRootFolder}` dev container variable, which is expanded at build time to the root of the Feature the variable is referenced from.  
 
 As with all lifecycle hooks, commands are executed from the context (cwd) of the [project workspace folder](https://containers.dev/implementors/spec/#project-workspace-folder).
 
@@ -51,20 +51,20 @@ The follow example illustrates contributing an `onCreateCommand` and `postCreate
 
 ### Executing a script bundled with the Feature
 
-The following example illustrates executing a `postCreateCommand` script bundled with the Feature utilizing the `${featureRoot}` variable.
+The following example illustrates executing a `postCreateCommand` script bundled with the Feature utilizing the `${featureRootFolder}` variable.
 
 ```jsonc
 {
    "id": "featureB",
    "version": "1.0.0",
-   "postCreateCommand": "${featureRoot}/bundledScript.sh",
+   "postCreateCommand": "${featureRootFolder}/bundledScript.sh",
    "installsAfter": [
         "featureA"
    ]
 }
 ```
 
-At build time, the `${featureRoot}` variable will be expanded to the temporary directory within the container that contains all the Feature's assets.  For example, it may be expanded to `/tmp/vsch/container-features/featureB_1`.
+At build time, the `${featureRootFolder}` variable will be expanded to the temporary directory within the container that contains all the Feature's assets.  For example, it may be expanded to `/tmp/vsch/container-features/featureB_1`.
 
 Given this example, `featureB`'s file structure would look something like:
 

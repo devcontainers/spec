@@ -14,6 +14,28 @@
 				"features": {
 					"type": "object",
 					"description": "Features to add to the dev container.",
+					"properties": {
+						"fish": {
+							"deprecated": true,
+							"deprecationMessage": "Legacy feature will be removed in the future. Please check https://containers.dev/features for replacements."
+						},
+						"maven": {
+							"deprecated": true,
+							"deprecationMessage": "Legacy feature will be removed in the future. Please check https://containers.dev/features for replacements. E.g., `ghcr.io/devcontainers/features/java` has an option to install Maven."
+						},
+						"gradle": {
+							"deprecated": true,
+							"deprecationMessage": "Legacy feature will be removed in the future. Please check https://containers.dev/features for replacements. E.g., `ghcr.io/devcontainers/features/java` has an option to install Gradle."
+						},
+						"homebrew": {
+							"deprecated": true,
+							"deprecationMessage": "Legacy feature will be removed in the future. Please check https://containers.dev/features for replacements."
+						},
+						"jupyterlab": {
+							"deprecated": true,
+							"deprecationMessage": "Legacy feature will be removed in the future. Please check https://containers.dev/features for replacements. E.g., `ghcr.io/devcontainers/features/python` has an option to install JupyterLab."
+						}
+					},
 					"additionalProperties": true
 				},
 				"overrideFeatureInstallOrder": {

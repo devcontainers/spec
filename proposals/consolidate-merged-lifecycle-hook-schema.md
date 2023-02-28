@@ -22,10 +22,11 @@ export type LifecycleCommandParallel = { [key: string]: LifecycleCommand };
 interface DevContainerConfig {
     // ...other devcontainer.json properties...
 	onCreateCommand?: LifecycleCommand | LifecycleCommandParallel | LifecycleCommandParallel[]
-    updateContentCommand?: LifecycleCommand | LifecycleCommandParallel | LifecycleCommandParallel[]
+	updateContentCommand?: LifecycleCommand | LifecycleCommandParallel | LifecycleCommandParallel[]
 	postCreateCommand?: LifecycleCommand | LifecycleCommandParallel | LifecycleCommandParallel[]
 	postStartCommand?: LifecycleCommand | LifecycleCommandParallel | LifecycleCommandParallel[]
 	postAttachCommand?: LifecycleCommand | LifecycleCommandParallel | LifecycleCommandParallel[]
+}
 ```
 
 The new addition is the final unioned value `LifecycleCommandParallel[]`.  Every existing lifecycle command and merged command can be represented within that type.  

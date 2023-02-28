@@ -8,7 +8,7 @@ Allow Feature authors to provide lifecycle hooks for their Features during a dev
 
 ## Proposal
 
- Introduce the following properties to [devcontainer-feature.json](https://containers.dev/implementors/features/#devcontainer-feature-json-properties), mirroring the behavior and syntax of the `devcontainer.json` lifecycle hooks.
+Introduce the following properties to [devcontainer-feature.json](https://containers.dev/implementors/features/#devcontainer-feature-json-properties), mirroring the behavior and syntax of the `devcontainer.json` lifecycle hooks.
 
 - "onCreateCommand"
 - "updateContentCommand"
@@ -18,11 +18,11 @@ Allow Feature authors to provide lifecycle hooks for their Features during a dev
 
 Note that `initializeCommand` is omitted, pending further discussions around a secure design.
 
-Additionally, introduce a `${featureRootFolder}` dev container variable, which is expanded at build time to the root of the Feature the variable is referenced from.  
+As with all lifecycle hooks, commands are executed from the context (cwd) of the [project workspace folder](https://containers.dev/implementors/spec/#project-workspace-folder). 
 
-As with all lifecycle hooks, commands are executed from the context (cwd) of the [project workspace folder](https://containers.dev/implementors/spec/#project-workspace-folder).
+> NOTE: To use any assets (a script, etc...) embedded within a Feature in a lifecycle hook property, it is the Feature author's reponsibility to copy that assert to somewhere on the container where it will persist (outside of `/tmp`.) Implementations are not required to persist Feature install scripts beyond the initial build.
 
-All other semantic match the existing [Lifecycle Scripts](https://containers.dev/implementors/json_reference/#lifecycle-scripts) and  [lifecycle script parallel execution](https://containers.dev/implementors/spec/#parallel-exec) behavior exactly.
+All other semantics match the existing [Lifecycle Scripts](https://containers.dev/implementors/json_reference/#lifecycle-scripts) and [lifecycle script parallel execution](https://containers.dev/implementors/spec/#parallel-exec) behavior exactly.
 
 ###  Execution
 
@@ -51,20 +51,28 @@ The follow example illustrates contributing an `onCreateCommand` and `postCreate
 
 ### Executing a script bundled with the Feature
 
-The following example illustrates executing a `postCreateCommand` script bundled with the Feature utilizing the `${featureRootFolder}` variable.
+The following example illustrates executing a `postCreateCommand` script bundled with the Feature.
 
 ```jsonc
 {
    "id": "featureB",
    "version": "1.0.0",
-   "postCreateCommand": "${featureRootFolder}/bundledScript.sh",
+   "postCreateCommand": "/usr/myDir/bundledScript.sh",
    "installsAfter": [
         "featureA"
    ]
 }
 ```
 
-At build time, the `${featureRootFolder}` variable will be expanded to the temporary directory within the container that contains all the Feature's assets.  For example, it may be expanded to `/tmp/vsch/container-features/featureB_1`.
+The `install.sh` will need to move this script to `/usr/myDir`.
+
+```
+#!/bin/sh
+
+cp ./bundleScript /usr/myDir
+...
+...
+```
 
 Given this example, `featureB`'s file structure would look something like:
 

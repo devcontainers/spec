@@ -16,6 +16,11 @@ A non-goal is to require the use or implementation of a full-blown dependency ma
 
 Composing Features should eliminate provide an alternative to existing community solutions, code duplication, and "hacky" means of installing a dependent Feature before another.
 
+## Definitions
+
+- `Standalone Feature` - The existing dev container Feature format, as outlined in the [spec](https://containers.dev/implementors/features/), and defined by a `devcontainer-feature.json` metadata file. A Feature that is self-contained, shareable unit of installation code and development container configuration.
+- `Composite Feature` - A Feature that depends on >= 1 other Features, defined by a `devcontainer-feature.composite.json` metadata file.
+
 ## Existing community solutions
 
 ### @danielBraun89 + '@devcontainers-contrib'
@@ -38,30 +43,30 @@ Introduce a new file type `devcontainer-feature.composite.json` with the followi
 |----------|------|-------------|
 | `id` | `string` | The ID of the Feature.  This follows the same semantics of the `id` property in the `devcontainer-feature.json` file. |
 | `version` | `string` | The version of the Feature.  This follows the same semantics of the `version` property in the `devcontainer-feature.json` file. |
-| `dependsOn` | `array` | An array of objects (in installation order) that define the Features that this Feature depends on. |
-| `dependsOn.id` | `string` | The ID of the Feature that this Feature depends on. |
-| `dependsOn.version` | `string` | The version of the Feature that this Feature depends on. |
-| `dependsOn.detect` | `string` | A command that will be executed to determine if the Feature should be installed.  If the command returns a non-zero exit code, the Feature will be installed.  If the command returns a zero exit code, the remaining install steps will be skipped. |
-| `dependsOn.options` | `object` | An object of key/value pairs that will be passed to the Feature's `install.sh` script. |
+| `features` | `array` | An array of objects (in installation order) that define the Feature(s) that compose this Feature. |
+| `features.id` | `string` | The ID of the Feature that this Feature depends on. |
+| `features.version` | `string` | The version of the Feature that this Feature depends on. |
+| `features.detect` | `string` | A command that will be executed in a shell to determine if the Feature should be installed.  If the command returns a non-zero exit code, the Feature will be installed.  If the command returns a zero exit code, the remaining install steps will be skipped. |
+| `features.options` | `object` | An object of key/value pairs that will be passed to the Feature's `install.sh` script. |
 
 #### Example `devcontainer-feature.composite.json`
 
 ```jsonc
 {
-    "id": "ghcr.io/devcontainers/features/foo",
+    "id": "ghcr.io/devcontainers/features/composite",
     "version": "1.0.0",
-    "dependsOn": [
+    "features": [
         {
-            "id": "ghcr.io/devcontainers/features/a",
-            "version": "sha256:45b23dee08af5e43a7fea6c4cf9c25ccf269ee113168c19722f87876677c5cb2", // SHA of the published artifact is OK
-            "detect": "a --version && cat /etc/a/.markerfile", // Only install this Feature is detect returns non-zero
+            "id": "ghcr.io/devcontainers/features/a", // Must be a standalone Feature. (A composite Feature cannot depend on a composite Feature).
+            "version": "1.2.3",  // An exact version is required.  We do not permit pinning to a major or minor version.
+            "detect": "a --version && cat /etc/a/.markerfile", // Only continue installation of this Feature if detect returns non-zero
             "options": {
                 "bar": true
             }
         },
         {
-            "id": "ghcr.io/devcontainers/features/b",
-            "version": "1.2.3",  // An exact version is required.  We do not permit pinning to a major or minor version.
+            "id": "ghcr.io/microsoft/features/b",
+            "version": "sha256:45b23dee08af5e43a7fea6c4cf9c25ccf269ee113168c19722f87876677c5cb2", // SHA of the published artifact is OK
             "detect": undefined, // Omit or set as 'undefined' to always install this Feature.
             "options": {
                 "zip": "zap"
@@ -69,7 +74,44 @@ Introduce a new file type `devcontainer-feature.composite.json` with the followi
         }
     ]
 }
-
 ```
 
+An optional `finalize.sh` script can be included, and will be fired after all Features have been installed.
 
+A composite Feature will be published following the same process as an [standalone dev container Feature](https://containers.dev/implementors/features) into the same namespace - following the pattern outlined in [the Features distribution spec](https://containers.dev/implementors/features-distribution/). Dependencies of a composite Feature can be published to the same or different namespaces.
+
+An example repository structure for a repo with one composite Feature and an standalone Feature can be found below:
+
+```
+$ tree 
+```
+├── src
+│   ├── composite
+│   │   ├── README.md
+│   │   ├── devcontainer-feature.composite.json
+│   │   ├── finalize.sh
+│   ├── a
+│   │   ├── README.md
+│   │   ├── devcontainer-feature.json
+│   │   └── install.sh
+...
+```
+
+### Notes:
+
+- Composite Features cannot depend on other composite Features. This is to prevent a circular dependencies and deep dependency chains.
+- The `dependsOn` array is in the order that the Features should be installed.  This is important for Features that depend on the existence of a file or directory created by a previous Feature.
+- The `detect` property is optional.  If omitted, the Feature will always be installed.
+- The `options` property is optional.  If omitted, the default options will be passed to the Feature's `install.sh` script, as defined in the Feature's `devcontainer-feature.json` file.
+- A composite Feature can optionally include a `finalize.sh` script.  This script will be executed after all of the dependencies have been installed.  This is useful for Features that need to perform some action after all of the dependencies have been installed.
+
+
+## Advantages
+
+- Composite Features can be used to distribute a single Feature that depends on other Features.
+- Composite Features can pin all of their dependencies to a specific version, ensuring that the Feature can be tested and will work as expected.
+- Composite Features prevent the complexity that arises with deeply nested dependencies or circular dependencies.
+
+## Disadvantages
+
+- Composite features are not as flexible as other possible dependency models.

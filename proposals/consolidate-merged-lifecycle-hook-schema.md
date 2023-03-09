@@ -1,19 +1,18 @@
 # Goal
 
+This proposal aims to raise a concept of the 'mergedConfiguration' into the specification, so that implementing tools can generate, as well as consume, a 'merged' `devcontainer.json` file that is the computed merge after parsing a user 'devcontainer.json'.  [The merging logic is already documented](https://containers.dev/implementors/spec/#merge-logic). This proposal focuses on standarding an output JSON format to represent this merge.
 
-This proposal aims to raise the 'mergedConfiguration' into the specification, so that implementing tools can generate `devcontainer.json`, as well as consume, a spec-compliant 'mergedConfiguration' by parsing a user 'devcontainer.json'.  Properties that can not or should not be represented as `devcontainer.json` properties are prepended with a `$`.  This proposal standardizes how these properies should be outputted, so that supporting tooos can consume them consistently.
+Properties that can not or should not be represented as `devcontainer.json` properties are prepended with a `$`.  This proposal standardizes how these properies should be processed and outputted to file, so that implementing tools can write/consume them consistently.
 
 ## Motivation
 
-The current generated 'mergedConfiguration' returned by the `read-configuration` CLI command does not return a `devcontainer.json` as outlined in this repo's specification. There are several inconsistencies. [(source)](https://github.com/devcontainers/cli/pull/390#issuecomment-1430190326)
-
-By expanding the lifecycle hook `devcontainer.json` schema as outlined below, it is possible to represent a merged configuration within a `devcontainer.json`.  This, for example, will allow a configuration comprised of [Feature contributed lifecycle scripts](./features-contribute-lifecycle-scripts.md) to be represented as a `devcontainer.json` without needing to add non-spec properties (ie: plural `postCreateCommands`).
+The current generated 'mergedConfiguration' returned by the `read-configuration` CLI command does not return a `devcontainer.json`. [(visualization)](https://github.com/devcontainers/cli/pull/390#issuecomment-1430190326).  By standardizing the output format, implementing tools can generate a portable, merged `devcontainer.json` that can be consumed by other tools.
 
 ## Proposal
 
 ### A. Update the devcontainer.json schema
 
-#### A1. Change the Lifecycle Script Interface
+#### A1. Change the lifecycle script interface
 
 Add a value (`LifecycleCommandParallel[]`) to the unioned definition of each lifecycle hook (except 'initializeCommand').
 
@@ -55,7 +54,7 @@ As an example, the following `devcontainer.json` snippet would be valid:
 }
 ```
 
-### B. 'read-configuration' command to generate a merged configuration.
+### B. Generating a merged configuration
 
 The [reference implementation](https://github.com/devcontainers/cli) includes a 'read-configuration' command that can be used to resolve a fully merged configuration from a given `devcontainer.json`.
 

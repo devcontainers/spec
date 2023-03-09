@@ -75,32 +75,32 @@ In the below example, the `vscode` customization has two entries (contributed fr
 "$customizations": {
 	// Customizations for the 'vscode' namespace
 	"vscode": [
-	{
-		"settings": {
-		"settingA": "local",
-		"settingB": "/usr/bin/lldb"
+		{
+			"settings": {
+			"settingA": "local",
+			"settingB": "/usr/bin/lldb"
+			},
+			"extensions": [
+			"GitHub.vscode-pull-request-github"
+			]
 		},
-		"extensions": [
-		"GitHub.vscode-pull-request-github"
-		]
-	},
-	{
-		"settings": {
-		"settingA": "local",
-		"settingC": true
+		{
+			"settings": {
+			"settingA": "local",
+			"settingC": true
+			}
 		}
-	}
 	],
 	// Customizations for the 'foo' namespace
 	"foo": [
-	{
-		"bar": "baz",
-		"b": true
-	},
-	{
-		"bar": "baz",
-		"a": true
-	}
+		{
+			"bar": "baz",
+			"b": true
+		},
+		{
+			"bar": "baz",
+			"a": true
+		}
 	]
 },
 ...

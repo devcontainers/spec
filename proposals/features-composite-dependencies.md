@@ -12,9 +12,9 @@ The solution shall provide a way to publish a Feature that "depends" on >= 1 oth
 
 The solution outlined shall not only execute the installation scripts, but also merge the additional development container config, as outlined in the documented [merging logic.](https://containers.dev/implementors/spec/#merge-logic)
 
-A non-goal is to require the use or implementation of a full-blown dependency management system (such as `npm` or `apt`).  The solution should not encourage authorship of individual Features that do not continue to operate as "self-contained, shareable units of installation code and development container configuration"[(1)][https://containers.dev/implementors/features/].  
+A non-goal is to require the use or implementation of a full-blown dependency management system (such as `npm` or `apt`).  The solution should not encourage authorship of individual Features that do not continue to operate as "self-contained, shareable units of installation code and development container configuration"[(1)](https://containers.dev/implementors/features/).  
 
-Composing Features should eliminate provide an alternative to existing community solutions, code duplication, and "hacky" means of installing a dependent Feature before another.
+Composing Features should provide an alternative to existing community solutions, code duplication, and "hacky" means of installing a dependent Feature before another.
 
 ## Definitions
 
@@ -84,7 +84,7 @@ An example repository structure for a repo with one composite Feature and an sta
 
 ```
 $ tree 
-```
+
 ├── src
 │   ├── composite
 │   │   ├── README.md

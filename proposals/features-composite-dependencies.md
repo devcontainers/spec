@@ -25,7 +25,7 @@ Composing Features should provide an alternative to existing community solutions
 
 ### @danielBraun89 + '@devcontainers-contrib'
 
-This community repository containing 100+ Features provides a custom solution for dependencies, introducing an additional `feature-definition.json` file - superset of the `devcontainer-feature.json` with a [`dependencies` object](https://github.com/devcontainers-contrib/features/blob/db45f607e733f3d560f6527d89b6a9a85b3b806c/feature_definitions/elixir-asdf/feature-definition.json#L29-L50).  Their [custom CLI has a tool named `featmake`](https://github.com/devcontainers-contrib/cli/blob/main/resources/featmake/featmake.sh#L145-L149) that will use the `oras` tool to pull and execute the `install.sh` of the given Feature.  This strategy doesn't appear to merge in the other dev container configuration properties that a Feature may declare.
+This community repository containing 100+ Features provides a custom solution for dependencies, introducing an additional `feature-definition.json` file - superset of the `devcontainer-feature.json` with a [`dependencies` object](https://github.com/devcontainers-contrib/features/blob/db45f607e733f3d560f6527d89b6a9a85b3b806c/feature_definitions/elixir-asdf/feature-definition.json#L29-L50).  Their [custom CLI has command named `install`](https://github.com/devcontainers-contrib/cli/blob/0768a6f9a75934e4915739ad3b43f6feb5ec515e/dcontainer/cli/install/install_feature.py) that will use python to pull and execute the `install.sh` of the given Feature.  This strategy doesn't merge in the other dev container configuration properties that a Feature may declare.
 
 ### Direct curl
 

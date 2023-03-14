@@ -18,7 +18,7 @@ Add an `include` property to the `devcontainer-feature.json`.  This will be hono
 
 Property | Type | Description
 --- | --- | ---
-`include` | `string[]` | An array of relative paths to package with the Feature. Paths are relative to root directory when packaging (often the git root directory).  If the element is a folder, it is copied recursively.
+`include` | `string[]` | An array of relative paths to package with the Feature. Paths are relative to root directory when packaging (often the git root directory).  If the element is a folder, it is copied recursively.  Must be prefixed with `.` or `..` to resolve the relative path.
 
 ## Example
 
@@ -27,7 +27,7 @@ Property | Type | Description
     "name": "my-feature",
     "version": "0.0.1",
     "include": [
-        "utils/",
+        "./utils/",
     ]
 }
 ```

@@ -45,6 +45,9 @@ The properties of the file are as follows:
 | `entrypoint` | string | Set if the Feature requires an "entrypoint" script that should fire at container start up. |
 | `customizations` | object | Product specific properties, each namespace under `customizations` is treated as a separate set of properties. For each of this sets the object is parsed, values are replaced while arrays are set as a union. |
 | `installsAfter` | array | Array of ID's of Features (omitting a version tag) that should execute before this one. Allows control for Feature authors on soft dependencies between different Features. |
+| `legacyIds` | array | Array of old IDs used to publish this Feature. The property is useful for renaming a currently published Feature within a single namespace. |
+| `deprecated` | boolean | Indicates that the Feature is deprecated, and will not receive any further updates/support. This property is intended to be used by the supporting tools for highlighting Feature deprecation. |
+| `mounts` | object | Defaults to unset. Cross-orchestrator way to add additional mounts to a container. Each value is an object that accepts the same values as the [Docker CLI `--mount` flag](https://docs.docker.com/engine/reference/commandline/run/#add-bind-mounts-or-volumes-using-the---mount-flag). The Pre-defined [devcontainerId](./devcontainerjson-reference.md/#variables-in-devcontainerjson) variable may be referenced in the value. For example:<br />`"mounts": [{ "source": "dind-var-lib-docker", "target": "/var/lib/docker", "type": "volume" }]` |
 
 ### The `options` property
 
@@ -354,11 +357,51 @@ Pip? false
 Optimize? true
 ```
 
+### Steps to rename a Feature
+
+1. Update the Feature [source code](./devcontainer-features-distribution.md#source-code) folder and the `id` property in the [devcontainer-feature.json properties](#devcontainer-featurejson-properties) to reflect the new `id`. Other properties (`name`, `documentationUrl`, etc.) can optionally be updated during this step.
+2. Add or update the `legacyIds` property to the Feature, including the previously used `id`.
+3. Bump the semantic version of the Feature.  
+4. Rerun the `devcontainer features publish` command, or equivalent tool that implements the [Features distribution specification](./features-distribution/#distribution).
+
+#### Example: Renaming a Feature
+
+Let's say we currently have a `docker-from-docker` Feature 👇 
+
+Current `devcontainer-feature.json` : 
+
+```jsonc
+{
+    "id": "docker-from-docker",
+    "version": "2.0.1",
+    "name": "Docker (Docker-from-Docker)",
+    "documentationURL": "https://github.com/devcontainers/features/tree/main/src/docker-from-docker",
+    ....
+}
+```
+
+We'd want to rename this Feature to `docker-outside-of-docker`. The source code folder of the Feature will be updated to `docker-outside-of-docker` and the updated `devcontainer-feature.json` will look like 👇 
+
+```jsonc
+{
+    "id": "docker-outside-of-docker",
+    "version": "2.0.2",
+    "name": "Docker (Docker-outside-of-Docker)",
+    "documentationURL": "https://github.com/devcontainers/features/tree/main/src/docker-outside-of-docker",
+    "legacyIds": [
+        "docker-from-docker"
+    ]
+    ....
+}
+```
+
+**Note** - The semantic version of the Feature defined by the `version` property should be **continued** and should not be restarted at `1.0.0`.
+
 ### Implementation notes
 
 There are several things to keep in mind for an application that implements Features:
 
-- The order of execution of Features is determined by the application, based on the `installAfter` property used by feature authors. It can be overridden by users if necessary with the `overrideFeatureInstallOrder` in `devcontainer.json`.
+- The order of execution of Features is determined by the application, based on the `installsAfter` property used by feature authors. It can be overridden by users if necessary with the `overrideFeatureInstallOrder` in `devcontainer.json`.
 - Features are used to create an image that can be used to create a container or not.
 - Parameters like `privileged`, `init` are included if just 1 Feature requires them.
 - Parameters like `capAdd`, `securityOp`  are concatenated.

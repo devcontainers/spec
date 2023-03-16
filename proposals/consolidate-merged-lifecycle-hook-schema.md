@@ -12,7 +12,7 @@ The current generated 'mergedConfiguration' returned by the `read-configuration`
 
 ### A. Update the devcontainer.json schema
 
-#### A1. Change the lifecycle script interface
+#### A1. Extends lifecycle script properties
 
 Add a value (`LifecycleCommandParallel[]`) to the unioned definition of each lifecycle hook (except 'initializeCommand').
 
@@ -54,58 +54,73 @@ As an example, the following `devcontainer.json` snippet would be valid:
 }
 ```
 
-### B. Generating a merged configuration
-
-The [reference implementation](https://github.com/devcontainers/cli) includes a 'read-configuration' command that can be used to resolve a fully merged configuration from a given `devcontainer.json`.
-
-Implementing tools should follow the [documented merging logic](https://containers.dev/implementors/spec/#merge-logic) and output a `devcontainer.json` that represents the resolved configuration.
-
-There are a couple special cases to the merging logic that should be noted:
-
-#### B1. The `customizations` property
+#### A2. Extend `customizations` property
 
 The merging of the `customizations` property is left to the implementing tool, therefore there is no defined merging pattern. 
 
-A property `$customizations` should be added to the merged configuration as an array of customizations within each top-level customization object.  Tooling that reads the mergedConfiguration can process this property as needed.
+Extend the interface of to include another unioned type:
 
-In the below example, the `vscode` customization has two entries (contributed from two different sources), and the `foo` customization has two entries (contributed from two different sources).  The merged `$customizations` property would be an array of two objects, one for each customization namespace.
+```typescript
+interface DevContainerConfig {
+	// ...other devcontainer.json properties...
+	customizations?: Record<string, {}> | Record<string, any[]>
+}
+```
+
+The addition of union type `Record<string, any[]>` (and explicitly typing the existing case to an object) allows for various tools to contribute customizations to the same namespace.  For example, a Feature may contribute a `settings` object, and a user (via `devcontainer.json`) may contribute a `settings` object.  The merged `customizations` property would be an array of two objects.  This allows for the merging algorithm to be defined by the implementing tool.
+
+Similar to above, the `$origin` property may be added by tools to indicate the source of the customization.
+
+In the below example, the `vscode` customization has two entries (contributed from two different sources), and the `foo` customization has two entries (contributed from two different sources).  The merged `customizations` property would be an array of two objects for each customization namespace.
 
 ```json
-"$customizations": {
+"customizations": {
 	// Customizations for the 'vscode' namespace
 	"vscode": [
 		{
 			"settings": {
-			"settingA": "local",
-			"settingB": "/usr/bin/lldb"
+				"settingA": "local",
+				"settingB": "/usr/bin/lldb"
 			},
 			"extensions": [
-			"GitHub.vscode-pull-request-github"
-			]
+				"GitHub.vscode-pull-request-github"
+			],
+			"$origin": "featureA"
 		},
 		{
 			"settings": {
-			"settingA": "local",
-			"settingC": true
-			}
+				"settingA": "local",
+				"settingC": true
+			},
+			"$origin": "devcontainer.json"
 		}
 	],
 	// Customizations for the 'foo' namespace
 	"foo": [
 		{
 			"bar": "baz",
-			"b": true
+			"b": true,
+			"$origin": "featureA"
 		},
 		{
 			"bar": "baz",
-			"a": true
+			"a": true,
+			"$origin": "devcontainer.json"
 		}
 	]
-},
+}
 ...
 ```
 
-### B2. The `entrypoint` property
+### B. Generating a merged configuration
+
+The [reference implementation](https://github.com/devcontainers/cli) includes a 'read-configuration' command that can be used to resolve a fully merged configuration from a given `devcontainer.json`.
+
+Implementing tools should follow the [documented merging logic](https://containers.dev/implementors/spec/#merge-logic) and output a `devcontainer.json` that represents the resolved configuration.
+
+Special cases are detailed below.
+
+### B1. The `entrypoint` property
 
 Dev Container Features are able to contribute an `entrypoint` property. This property is not available in the `devcontainer.json`.
 
@@ -122,5 +137,5 @@ In the below example, the `entrypoint` property is contributed from two differen
 
 ## Summary
 
-With these additions, the 'mergedConfiguration' returned by `read-configuration` can directly return a `devcontainer.json` without needing non-spec properties (ie: plural `postCreateCommands`).  The addition of `$origin` in the `LifecycleCommandParallel` type allows for tooling to indicate the source of a lifecycle hook.  The addition of `$customizations` and `$entrypoints` allows for tooling to indicate the source of a customization or entrypoint without needing to add non-schema properties to the `devcontainer.json`.
+With these additions, the 'mergedConfiguration' returned by `read-configuration` can directly return a `devcontainer.json` without needing non-spec properties (ie: plural `postCreateCommands`).  The addition of `$origin` in the `LifecycleCommandParallel` and `customizations` array variant types allows for tooling to indicate the source of provided functionality.  The addition of `$entrypoints` allows for tooling to output metadata on the contributed entrypoint(s) without needing to add non-schema properties to the `devcontainer.json`.
 

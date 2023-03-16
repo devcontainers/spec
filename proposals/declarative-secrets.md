@@ -2,7 +2,7 @@
 
 ## Motiviation
 
-Various projects exist in the wild that require various secrets for them to run properly. Exmaples include:
+Various projects exist in the wild that require various secrets for them to run properly. Examples include:
 
 - https://github.com/lostintangent/codespaces-langchain
 - https://github.com/openai/openai-quickstart-python

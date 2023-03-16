@@ -16,7 +16,7 @@ The current generated 'mergedConfiguration' returned by the `read-configuration`
 
 Add a value (`LifecycleCommandParallel[]`) to the unioned definition of each lifecycle hook (except 'initializeCommand').
 
-> NOTE: _ This was chosen as every existing lifecycle command (and merged version of each command) can be represented within that type._
+> NOTE: _This was chosen as every existing lifecycle command (and merged version of each command) can be represented within that type._
 
 ```typescript
 

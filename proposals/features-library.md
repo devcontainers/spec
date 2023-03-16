@@ -14,25 +14,53 @@ Provide a generic and efficient way to share code between Features.
 
 # Proposal
 
-Add an `include` property to the `devcontainer-feature.json`.  This will be honored during the Feature [packaging stage](https://containers.dev/implementors/features-distribution/#packaging). The contents of the provided relative path is copied into the packaged Feature archive.
+Add an `include` property to the `devcontainer-feature.json`.  This will be honored during the Feature [packaging stage](https://containers.dev/implementors/features-distribution/#packaging). 
+
+The contents of the provided relative path is copied into the packaged Feature archive.  The packaging stage already has a concept of a "root" directory (likely the git root of the directory, containing a `src` and `test` folder), so the `include` property can be relative to that directory.  The relative path must not escape the root directory - if this is attempted, the packaging stage will fail.
 
 Property | Type | Description
 --- | --- | ---
-`include` | `string[]` | An array of relative paths to package with the Feature. Paths are relative to root directory when packaging (often the git root directory).  If the element is a folder, it is copied recursively.  Must be prefixed with `.` or `..` to resolve the relative path.
+`include` | `string[]` | An array of relative paths to package with the Feature. Paths are relative to root directory when packaging (often the git root directory).  If the element is a folder, it is copied recursively.  Must be prefixed with `.` to indicate the provided string is relative path.
 
 ## Example
 
 ```json
 {
-    "name": "my-feature",
+    "name": "featureA",
     "version": "0.0.1",
     "include": [
         "./utils/",
+        "./company-welcome-message.txt"
     ]
 }
 ```
 
-The preceding example will recursively copy the contents of the `utils` folder into the temporary folder used to package the Feature.  The `utils` folder will be included with the published Features.
+The preceding example will recursively copy the contents of the `utils` folder into the temporary folder used to package the Feature.  Additionally, the `company-welcome-message.txt` file will also be packaged with the Feature.  The `utils` folder will be included with the published Features.
+
+The directory stucture may look like the following:
+
+```
+.
+├── company-welcome-message.txt
+├── utils
+|   ├── common.sh
+│   └── helpers
+│       ├── a.sh
+│       └── ...
+|
+├── src
+│   ├── featureA
+│   │   ├── devcontainer-feature.json
+│   │   ├── install.sh
+│   │   └── ...
+│   ├── featureB
+│   │   ├── devcontainer-feature.json
+│   │   └── install.sh
+|   ├── ...
+│   │   ├── devcontainer-feature.json
+│   │   └── install.sh
+├── ...
+```
 
 This functionality will enable sharing a common set of helper functions between Features.  The following example shows how a Feature could include a `utils` folder that contains a `common.sh` file.
 
@@ -44,7 +72,7 @@ function common_function() {
 ```
 
 ```bash
-# my-feature/install.sh
+# featureA/install.sh
 
 # Include common functions
 source "./utils/common.sh"
@@ -68,7 +96,7 @@ A "library" can be included in a Feature's `include` property as an alternative 
 ```json
 
 {
-    "name": "my-feature",
+    "name": "featureA",
     "version": "0.0.1",
     "include": [
         "ghcr.io/devcontainers/features/utils:0.0.1"

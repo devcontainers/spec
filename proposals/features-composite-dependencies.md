@@ -4,11 +4,11 @@ Related: https://github.com/devcontainers/spec/issues/109
 
 ## Motivation
 
-We've seen significant interest in the ability to "reuse" or "extend" a given Feature with one or more additional Features.  Often in software a given tool depends on another (or several) tool(s)/framework(s).  As the dev container Feature ecosystem has grown, there has been a growing need to reduce redundant code in Features by utilizing first installing a set of dependant Features.
+We've seen significant interest in the ability to "reuse" or "extend" a given Feature with one or more additional Features.  Often in software a given tool depends on another (or several) tool(s)/framework(s).  As the dev container Feature ecosystem has grown, there has been a growing need to reduce redundant code in Features by first installing a set of dependent Features.
 
 ## Goal
 
-The solution shall provide a way to publish a Feature that "depends" on >= 1 other pubished Features. Dependent Features will be installed by the ochestrating tool, with the version and order set by the author if necessary.
+The solution shall provide a way to publish a Feature that "depends" on >= 1 other published Features. Dependent Features will be installed by the orchestrating tool, with the version and order set by the author if necessary.
 
 The solution outlined shall not only execute the installation scripts, but also merge the additional development container config, as outlined in the documented [merging logic.](https://containers.dev/implementors/spec/#merge-logic)
 
@@ -78,9 +78,9 @@ Introduce a new file type `devcontainer-feature.composite.json` with the followi
 
 An optional `finalize.sh` script can be included, and will be fired after all Features have been installed.
 
-A composite Feature will be published following the same process as an [standalone dev container Feature](https://containers.dev/implementors/features) into the same namespace - following the pattern outlined in [the Features distribution spec](https://containers.dev/implementors/features-distribution/). Dependencies of a composite Feature can be published to the same or different namespaces.
+A composite Feature will be published following the same process as a [standalone dev container Feature](https://containers.dev/implementors/features) into the same namespace - following the pattern outlined in [the Features distribution spec](https://containers.dev/implementors/features-distribution/). Dependencies of a composite Feature can be published to the same or different namespaces.
 
-An example repository structure for a repo with one composite Feature and an standalone Feature can be found below:
+An example repository structure for a repo with one composite Feature and a standalone Feature can be found below:
 
 ```
 $ tree 
@@ -99,7 +99,7 @@ $ tree
 
 ### Notes:
 
-- Composite Features cannot depend on other composite Features. This is to prevent a circular dependencies and deep dependency chains.
+- Composite Features cannot depend on other composite Features. This is to prevent circular dependencies and deep dependency chains.
 - The `dependsOn` array is in the order that the Features should be installed.  This is important for Features that depend on the existence of a file or directory created by a previous Feature.
 - The `detect` property is optional.  If omitted, the Feature will always be installed.
 - The `options` property is optional.  If omitted, the default options will be passed to the Feature's `install.sh` script, as defined in the Feature's `devcontainer-feature.json` file.

@@ -16,7 +16,7 @@ Simplify using dev containers for these kinds of projects by supporting secrets 
 
 ## Proposal
 
-Add an optional `secrets` to the `devContainer.base.schema.json`. This will be used to declare the secrets needed within the dev container.
+Add an optional `secrets` property to the `devContainer.base.schema.json`. This will be used to declare the secrets needed within the dev container.
 
 Property | Type | Description
 --- | --- | ---

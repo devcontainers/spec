@@ -8,19 +8,19 @@ Various projects exist in the wild that require various secrets for them to run 
 - https://github.com/openai/openai-quickstart-python
 - https://github.com/openai/openai-quickstart-node
 
-Today these projects have to include specific instructions e.g. in their README telling users where to procure what they need to run and then how to set it up as a secret or add it as an environment variable. This currently acts as an impediment to adoption and promotion of codespaces for these projects.
+Today these projects have to include specific instructions e.g. in their README telling users where to procure what they need to run and then how to set it up as a secret or add it as an environment variable. This currently acts as an impediment to adoption and promotion of dev containers for these projects.
 
 ## Goal
 
-Simplify using codespaces for these kinds of projects by including it as a first-class part of the codespace creation flow.
+Simplify using dev containers for these kinds of projects by supporting secrets as a first-class part of the dev container creation flow.
 
 ## Proposal
 
-Add an optional `secrets` to the `devContainer.base.schema.json`. This will be used to declare the secrets needed within the devcontainer.
+Add an optional `secrets` to the `devContainer.base.schema.json`. This will be used to declare the secrets needed within the dev container.
 
 Property | Type | Description
 --- | --- | ---
-`secrets` | `object` | The keys of this object are the names of the secrets that are in use.
+`secrets` | `object` | The keys of this object are the names of the secrets that are in use. Keys should be [valid Linux environment variable names](https://pubs.opengroup.org/onlinepubs/000095399/basedefs/xbd_chap08.html).
 
 The `secrets` property contains a map of secret names and details about those secrets. These `secrets` are recommended to the user but are not _required_ for creation. All properties are optional.
 
@@ -44,15 +44,13 @@ Property | Type | Description
 }
 ```
 
-This example would declare that this devcontainer wants the user to provide two secrets. The `CHAT_GPT_API_KEY` secret also provides some additional metadata that clients can use in displaying a user experience to provide that secret. The `STABLE_DIFFUSION_API_KEY` skips that metadata.
+This example would declare that this dev container wants the user to provide two secrets. The `CHAT_GPT_API_KEY` secret also provides some additional metadata that clients can use in displaying a user experience to provide that secret. The `STABLE_DIFFUSION_API_KEY` skips that metadata.
 
-These secrets would, by default, be injected into the container as environment variables.
-
-For codespaces specifically we will prompt the user for this information as part of creating their codespace. The `description` and `documentationUrl` are leveraged in the UI to provide context to the user about the secret. As mentioned above the secrets would be _optional_ as part of creating a codespace.
+Implementations _may_ inject these secrets into the container as environment variables.
 
 ## Possible Future Extensions
 
 These are **out of scope** for this proposal but the following has been discussed in relation:
 
-1. Inclusion of a `type` field per secret. The default, which we are assuming and leveraging here, would be `"environmentVariable"`. This would include an option to specify `"reference"` and then reference the provided secrets in other parts of the devcontainer.
-2. Prescriptions of _how_ the secrets are injected into the devcontainer.
+1. Inclusion of a `type` field per secret. The default, which we are assuming and leveraging here, would be `"environmentVariable"`. This would include an option to specify `"reference"` and then reference the provided secrets in other parts of the dev container.
+2. Prescriptions of _how_ the secrets are injected into the dev container.

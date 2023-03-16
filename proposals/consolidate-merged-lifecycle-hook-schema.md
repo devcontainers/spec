@@ -1,8 +1,8 @@
 # Goal
 
-This proposal aims to raise a concept of the 'mergedConfiguration' into the specification, so that implementing tools can generate, as well as consume, a 'merged' `devcontainer.json` file that is the computed merge after parsing a user 'devcontainer.json'.  [The merging logic is already documented](https://containers.dev/implementors/spec/#merge-logic). This proposal focuses on standarding an output JSON format to represent this merge.
+This proposal aims to raise a concept of the 'mergedConfiguration' into the specification, so that implementing tools can generate, as well as consume, a 'merged' `devcontainer.json` file that is the computed merge after parsing a user 'devcontainer.json'.  [The merging logic is already documented](https://containers.dev/implementors/spec/#merge-logic). This proposal focuses on standardizing an output JSON format to represent this merge.
 
-Properties that can not or should not be represented as `devcontainer.json` properties are prepended with a `$`.  This proposal standardizes how these properies should be processed and outputted to file, so that implementing tools can write/consume them consistently.
+Properties that can not or should not be represented as `devcontainer.json` properties are prepended with a `$`.  This proposal standardizes how these properties should be processed and outputted to file, so that implementing tools can write/consume them consistently.
 
 ## Motivation
 
@@ -124,7 +124,7 @@ Special cases are detailed below.
 
 Dev Container Features are able to contribute an `entrypoint` property. This property is not available in the `devcontainer.json`.
 
-A property `$entrypoints` should be added to the merged configuration containing an array of entrypoint strings.  Tooling that reads the mergedConfiguration can process this property as needed.
+A property `$entrypoints` should be added to the merged configuration containing an array of entrypoint strings.  Tooling that reads the 'mergedConfiguration' can process this property as needed.
 
 In the below example, the `entrypoint` property is contributed from two different sources.  The merged `$entrypoints` property would be an array of two strings, one for each entrypoint.
 

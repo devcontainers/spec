@@ -46,7 +46,7 @@ Introduce a new file type `devcontainer-feature.composite.json` with the followi
 | `id` | `string` | The ID of the Feature.  This follows the same semantics of the `id` property in the `devcontainer-feature.json` file. |
 | `version` | `string` | The version of the Feature.  This follows the same semantics of the `version` property in the `devcontainer-feature.json` file. |
 | `features` | `array` | An array of objects (in installation order) that define the Feature(s) that compose this Feature. |
-| `features.id` | `string` | The ID of the Feature that this Feature depends on. |
+| `features.id` | `string` | The ID of the Feature that this Feature depends on.  A Feature here can be from the same, or different namespaces/repos. |
 | `features.version` | `string` | The version of the Feature that this Feature depends on. |
 | `features.detect` | `string` | A command that will be executed in a shell to determine if the Feature should be installed.  If the command returns a non-zero exit code, the Feature will be installed.  If the command returns a zero exit code, the remaining install steps will be skipped. |
 | `features.options` | `object` | An object of key/value pairs that will be passed to the Feature's `install.sh` script. |

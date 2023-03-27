@@ -116,3 +116,7 @@ $ tree
 ## Disadvantages
 
 - Composite features are not as flexible as other possible dependency models.
+    - Eg:
+        - Other models may let composite Features depend on other composite Features (dependency resolution)
+        - Other models may let composite Features depend on a range of versions of a Feature.
+        - Composite Features requires all component 'standalone' Features be published ahead of time.

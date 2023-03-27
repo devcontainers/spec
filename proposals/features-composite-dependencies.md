@@ -1,10 +1,12 @@
 # Composite Features
 
-Related: https://github.com/devcontainers/spec/issues/109
+Reference: https://github.com/devcontainers/spec/issues/109
 
 ## Motivation
 
 We've seen significant interest in the ability to "reuse" or "extend" a given Feature with one or more additional Features.  Often in software a given tool depends on another (or several) tool(s)/framework(s).  As the dev container Feature ecosystem has grown, there has been a growing need to reduce redundant code in Features by first installing a set of dependent Features.
+
+
 
 ## Goal
 
@@ -100,7 +102,6 @@ $ tree
 ### Notes:
 
 - Composite Features cannot depend on other composite Features. This is to prevent circular dependencies and deep dependency chains.
-- The `dependsOn` array is in the order that the Features should be installed.  This is important for Features that depend on the existence of a file or directory created by a previous Feature.
 - The `detect` property is optional.  If omitted, the Feature will always be installed.
 - The `options` property is optional.  If omitted, the default options will be passed to the Feature's `install.sh` script, as defined in the Feature's `devcontainer-feature.json` file.
 - A composite Feature can optionally include a `finalize.sh` script.  This script will be executed after all of the dependencies have been installed.  This is useful for Features that need to perform some action after all of the dependencies have been installed.

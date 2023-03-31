@@ -10,17 +10,21 @@ Additionally, [members of the Feature authoring community have expressed interes
 
 # Goal
 
-Provide a generic and efficient way to share code between Features.
+Provide a generic and simple way to share code between Features.
 
-# Proposal
+# Proposals
+
+## [Proposal A] Add: `include` property to `devcontainer-feature.json`
 
 Add an `include` property to the `devcontainer-feature.json`.  This will be honored during the Feature [packaging stage](https://containers.dev/implementors/features-distribution/#packaging). 
 
-The contents of the provided relative path is copied into the packaged Feature archive.  The packaging stage already has a concept of a "root" directory (likely the git root of the directory, containing a `src` and `test` folder), so the `include` property can be relative to that directory.  The relative path must not escape the root directory - if this is attempted, the packaging stage will fail.
+The contents of the provided relative path is copied into the packaged Feature archive.  Files or directories are recursively copied into the archive following the same directory structure as in the source code.
+
+The relative path must not escape the root directory - if this is attempted, the packaging stage will fail.
 
 Property | Type | Description
 --- | --- | ---
-`include` | `string[]` | An array of relative paths to package with the Feature. Paths are relative to root directory when packaging (often the git root directory).  If the element is a folder, it is copied recursively.  Must be prefixed with `.` to indicate the provided string is relative path.
+`include` | `string[]` | An array of paths relative to the directory containing this `devcontainer-feature.json`. If the element is a folder, it is copied recursively.  Must be prefixed with `.` to indicate the provided string is relative path.
 
 ## Example
 
@@ -35,12 +39,15 @@ Property | Type | Description
 }
 ```
 
-The preceding example will recursively copy the contents of the `utils` folder into the temporary folder used to package the Feature.  Additionally, the `company-welcome-message.txt` file will also be packaged with the Feature.  The `utils` folder will be included with the published Features.
+The preceding example will recursively copy the contents of the `utils` folder when packaged and distributed with the Feature.  Additionally, the `company-welcome-message.txt` file will also be packaged and distributed with the Feature.
 
-The directory stucture may look like the following:
+The source code repository structure for a collection of Features may look like the following:
 
 ```
 .
+├── images
+│   ├── 1.png
+│   ├── 2.png
 ├── company-welcome-message.txt
 ├── utils
 |   ├── common.sh
@@ -56,13 +63,35 @@ The directory stucture may look like the following:
 │   ├── featureB
 │   │   ├── devcontainer-feature.json
 │   │   └── install.sh
+│   │   └── ...
 |   ├── ...
 │   │   ├── devcontainer-feature.json
 │   │   └── install.sh
+│   │   └── ...
 ├── ...
 ```
 
-This functionality will enable sharing a common set of helper functions between Features.  The following example shows how a Feature could include a `utils` folder that contains a `common.sh` file.
+When packaging Feature A, the resulting archive will be structured as follows:
+
+```
+.
+├── company-welcome-message.txt
+├── utils
+|   ├── common.sh
+│   └── helpers
+│       ├── a.sh
+│       └── ...
+|
+├── src
+│   ├── featureA
+│   │   ├── devcontainer-feature.json
+│   │   ├── install.sh
+│   │   └── ...
+```
+
+Note that the `images` folder is not included in the packaged Feature.  This is because the `images` folder is not included in the `include` property of the `devcontainer-feature.json` file.
+
+The following example shows how a Feature could include a `utils` folder that contains a `common.sh` file.
 
 ```bash
 # utils/common.sh
@@ -72,14 +101,54 @@ function common_function() {
 ```
 
 ```bash
-# featureA/install.sh
+# src/featureA/install.sh
 
 # Include common functions
-source "./utils/common.sh"
+source "../../utils/common.sh"
 
 # Use common function
 common_function "devcontainers"
 ```
+
+
+## [Proposal B] Change: Structure of packaged Feature
+
+To simplify the proposed change above and keep the relative paths consistent before and after packaging, the structure of the packaged Feature will change to mirror the directory structure of the source code.
+
+When running the packaging step, the stage is provided a source directory for packaging >1 Feature, or the root of a project when packaging a single Feature.  The Feature contents will be placed into `./src/<FeatureID>`.  Other included directories will be copied into the root of the packaged artifact as indicated in **Proposal A**.
+
+An implementation should resolve the `devcontainer-feature.json` by checking for its presence in the following order of precedence:
+
+ - `./src/<feature-id>/devcontainer-feature.json`
+-  `devcontainer-feature.json`
+
+The following example shows the current structure of a packaged Feature:
+
+
+#### Eg: Current structure of a packaged Feature
+
+```
+.
+├── devcontainer-feature.json
+├── install.sh
+```
+
+The following example shows the structure of a packaged Feature that includes a `utils` folder:
+
+#### Eg; New structure format of a packaged Feature
+
+```
+.
+├── src
+│   ├── featureA
+│       ├── devcontainer-feature.json
+│       ├── install.sh
+│       └── ...
+│   ├── utils
+│       ├── common.sh
+```
+
+From here forward, the proposed format will be used during the packaging step.  For backwards compatibility, the existing format (with a `devcontainer-feature.json` at the top level) will be supported.
 
 -----
 

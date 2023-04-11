@@ -413,16 +413,14 @@
 						"gpu": {
 							"oneOf": [
 								{
-									"type": [
-										"boolean",
-										"string"
-									],
-									"enum": [
-										true,
-										false,
-										"optional"
-									],
-									"description": "Indicates whether a GPU is required. The string \"optional\" indicates that a GPU is optional. An object value can be used to configure more detailed requirements."
+									"type": "boolean",
+									"const" : true,
+									"description": "Indicates a GPU is required."
+								},
+								{
+									"type": "string",
+									"const": "optional",
+									"description": "\"optional\" indicates that a GPU is optional."
 								},
 								{
 									"type": "object",

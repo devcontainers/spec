@@ -39,7 +39,7 @@ In phase 2 the support for secrets can be expanded to additional commands such a
 #### **Input format**
 Best way to pass secrets would be through a json/env file, where in the file path is supplied in a command line argument `--secrets-file`.
 
-Today the devcontaners CLI commands accept remote environment variables of the format name=value. However that format may not work as it is here, since in many cases the secret values may span multiple lines. One value to workaround that problem is by base64 encoding the values.
+Today the devcontaners CLI [commands accept](https://github.com/devcontainers/cli/blob/5c81479f0342947dd3e52a5984b9150e5feb8fd6/src/spec-node/devContainersSpecCLI.ts#L114) remote environment variables of the format name=value. However that format may not work as it is here, since in many cases the secret values may span multiple lines. One way to workaround that problem is by base64 encoding the values.
 
 Example secrets file:
 ```
@@ -66,7 +66,7 @@ Example secrets file in json format:
 ]
 ```
 
-Further simplified json kv pair format:
+Further simplified json kv pair format (Preffered):
 ```json
 {
 	"API_KEY": "adsjhsd6dfwdjfwde7edwfwedfdjedwf7wedfwe",

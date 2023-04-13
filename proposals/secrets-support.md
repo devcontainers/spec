@@ -31,7 +31,7 @@ Secrets should be passed to the following devcontainers CLI commands.
  - up
  - run-user-commands
 
-`up`, `run-user-commands` will use the secrets for usecases like lifecycle hooks (similar to remoteEnv). We do not plan secrets support for `build` command since we do not have a demostrated requirement, as well as to avoid potentially baking in the user secrets into the docker images.
+`up`, `run-user-commands` will use the secrets for usecases like lifecycle hooks (similar to remoteEnv). We do not plan secrets support for `build` command since we do not have a demonstrated requirement, as well as to avoid potentially baking in the user secrets into the docker images.
 
 #### **Phase 2**
 In phase 2 the support for secrets can be expanded to additional commands such as `set-up` and `exec`.

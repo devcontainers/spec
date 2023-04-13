@@ -66,6 +66,15 @@ Example secrets file in json format:
 ]
 ```
 
+Further simplified json kv pair format:
+```json
+{
+	"API_KEY": "adsjhsd6dfwdjfwde7edwfwedfdjedwf7wedfwe",
+	"NUGET_CONFIG": "<config>\n    <add key=\"dependencyVersion\" value=\"Highest\" />\n    <add key=\"http_proxy\" value=\"http://company-squid:3128@contoso.com\" />\n</config>",
+	"PASSWORD": "Simple Passwords"
+}
+```
+
 ### Using secrets in the CLI
 Today Codespaces as a consumer is leveraging `remoteEnv` to pass secrets into the CLI. So it is a basic requirement that secrets should be used and behave the same way as `remoteEnv` do.
 

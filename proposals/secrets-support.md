@@ -5,7 +5,7 @@ Secrets are variables that hold sensitive values and needs to be handled securel
 
 ## Goal
 
-Support Secrets as a first class feature in devcontainers CLI.
+Support secrets as a first class feature in devcontainers CLI.
 
 This feature should comprise of the ability to securely pass in the secrets in CLI commands, make them available for users to consume similar to remoteEnv and containerEnv, and be processed and handled securely at all times.
 This functionality will allow consumers to be able to use secrets more predictably and securely with devcontainers CLI.

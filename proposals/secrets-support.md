@@ -66,7 +66,7 @@ Example secrets file in json format:
 ]
 ```
 
-Further simplified json kv pair format (Preffered):
+Further simplified json kv pair format (Prefered):
 ```json
 {
 	"API_KEY": "adsjhsd6dfwdjfwde7edwfwedfdjedwf7wedfwe",

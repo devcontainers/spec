@@ -23,7 +23,7 @@ A [supporting tool](https://containers.dev/supporting#tools) (ie, the [dev conta
   3. Securely handle secrets
 
 ### Passing secrets to commands
-Secrets are not part of devcontainers specification and we do not expect users to store secrets inside devcontainer.json file.
+Secrets are not part of dev containers specification and we do not expect users to store secrets inside devcontainer.json file.
 
 Secrets should be passed to the following devcontainers CLI commands.
 

@@ -16,7 +16,7 @@ Today Codespaces pass secret variables as `remoteEnv` since there are no other m
 
 ## Proposal
 
-Following are the three main functional changes to the CLI to support this feature.
+A [supporting tool](https://containers.dev/supporting#tools) (ie, the [dev container CLI reference implementation](https://github.com/devcontainers/cli) should behave according to the following properties:
 
   1. Ability to pass secrets to commands
   2. Apply/use secrets similar to `remoteEnv`

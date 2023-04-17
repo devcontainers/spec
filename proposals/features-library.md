@@ -24,24 +24,37 @@ The relative path must not escape the root directory - if this is attempted, the
 
 Property | Type | Description
 --- | --- | ---
-`include` | `string[]` | An array of paths relative to the directory containing this `devcontainer-feature.json`. If the element is a folder, it is copied recursively.  Must be prefixed with `.` to indicate the provided string is relative path.
+`include` | `string[]` | An array of paths relative to the directory containing this `devcontainer-feature.json`. If the element is a folder, it is copied recursively.  Must be prefixed with `.` or `..` to indicate the provided string is relative path.
 
-## Example
+### Example
 
 ```json
 {
     "name": "featureA",
     "version": "0.0.1",
     "include": [
-        "./utils/",
-        "./company-welcome-message.txt"
+        "../../utils/",
+        "../../company-welcome-message.txt"
     ]
 }
 ```
 
-The preceding example will recursively copy the contents of the `utils` folder when packaged and distributed with the Feature.  Additionally, the `company-welcome-message.txt` file will also be packaged and distributed with the Feature.
+## [Proposal B] Change: Structure of packaged Feature
 
-The source code repository structure for a collection of Features may look like the following:
+Change the file structure of the packaged Feature to mirror the directory structure of the source code.  This will simplify the implementation of **Proposal A** and keep the relative paths consistent before and after packaging.
+
+When running the packaging step, each Feature is packaged separately under `./src/<FeatureID>`.  Other included directories will be copied into the root of the packaged artifact as indicated in **Proposal A**.
+
+An implementation should resolve the `devcontainer-feature.json` by checking for its presence in the following order of precedence:
+
+ - `./src/<feature-id>/devcontainer-feature.json`
+-  `devcontainer-feature.json`
+
+From here forward, the proposed format will be used during the packaging step.  For backwards compatibility, the existing format (with a `devcontainer-feature.json` at the top level) will be supported.
+
+### Example
+
+Given this example repository containing a collection of Features.
 
 ```
 .
@@ -71,7 +84,7 @@ The source code repository structure for a collection of Features may look like 
 ├── ...
 ```
 
-When packaging Feature A, the resulting archive will be structured as follows:
+When packaging Feature A (shown above in **Proposal A**), the resulting published archive will be structured as follows:
 
 ```
 .
@@ -89,7 +102,11 @@ When packaging Feature A, the resulting archive will be structured as follows:
 │   │   └── ...
 ```
 
+The packaging step recursively copies the contents of the `utils` folder into the resulting archive.  Additionally, the `company-welcome-message.txt` is packaged and distributed with the Feature.
+
 Note that the `images` folder is not included in the packaged Feature.  This is because the `images` folder is not included in the `include` property of the `devcontainer-feature.json` file.
+
+#### Using an included script in a Feature
 
 The following example shows how a Feature could include a `utils` folder that contains a `common.sh` file.
 
@@ -109,46 +126,6 @@ source "../../utils/common.sh"
 # Use common function
 common_function "devcontainers"
 ```
-
-
-## [Proposal B] Change: Structure of packaged Feature
-
-To simplify the proposed change above and keep the relative paths consistent before and after packaging, the structure of the packaged Feature will change to mirror the directory structure of the source code.
-
-When running the packaging step, the stage is provided a source directory for packaging >1 Feature, or the root of a project when packaging a single Feature.  The Feature contents will be placed into `./src/<FeatureID>`.  Other included directories will be copied into the root of the packaged artifact as indicated in **Proposal A**.
-
-An implementation should resolve the `devcontainer-feature.json` by checking for its presence in the following order of precedence:
-
- - `./src/<feature-id>/devcontainer-feature.json`
--  `devcontainer-feature.json`
-
-The following example shows the current structure of a packaged Feature:
-
-
-#### Eg: Current structure of a packaged Feature
-
-```
-.
-├── devcontainer-feature.json
-├── install.sh
-```
-
-The following example shows the structure of a packaged Feature that includes a `utils` folder:
-
-#### Eg; New structure format of a packaged Feature
-
-```
-.
-├── src
-│   ├── featureA
-│       ├── devcontainer-feature.json
-│       ├── install.sh
-│       └── ...
-│   ├── utils
-│       ├── common.sh
-```
-
-From here forward, the proposed format will be used during the packaging step.  For backwards compatibility, the existing format (with a `devcontainer-feature.json` at the top level) will be supported.
 
 -----
 

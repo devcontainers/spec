@@ -36,30 +36,3 @@ Using a file to pass in the secrets can be one of the simple approaches to adopt
 		"PASSWORD": "Simple Passwords"
 	}
 	```
-
-### Using secrets
-Today many consumers are leveraging `remoteEnv` to pass in secrets. So it is a basic requirement that secrets should be used and behave the same way as `remoteEnv` do.
-
-### Securely handle secrets
-Secrets should be handled securely at all times.
-- Secrets should not be exposed in plan text at rest and in transit.
-- Do not persist secrets on the container labels or long lived permanent caches
-- Redact/mask secrets before writing to logs and output.
-
-## Notes
-Notes on how this proposal may be adopted by the dev containers CLI (reference implementation).
-
-### Passing secrets to the commands
-Secrets should not be passed directly in the command line since that would risk it getting stored in command history. Best way to pass secrets would be through a json file, where in the file path is supplied in a command line argument named `--secrets-file`.
-The dev containers CLI may support a default json file path with respect to the .devcontainer root, which will be used if the user does not provide a path explicitly using `--secrets-file` argument.
-
-Secrets should be passed to the following dev containers CLI commands.
-
-#### **Phase 1**
- - up
- - run-user-commands
-
-`up`, `run-user-commands` will use the secrets for use cases like lifecycle hooks (similar to remoteEnv). We do not plan secrets support for `build` command since we do not have a demonstrated requirement, as well as to avoid potentially baking in the user secrets into the docker images.
-
-#### **Phase 2**
-In phase 2 the support for secrets can be expanded to additional commands such as `set-up` and `exec`.

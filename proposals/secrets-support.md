@@ -23,7 +23,7 @@ A [supporting tool](https://containers.dev/supporting#tools) (ie, for example th
   3. Securely handle secrets
 
 ### Passing secrets in
-Secrets are not part of dev containers specification and we do not expect users to store secrets inside devcontainer.json file. A conforming implemntation should provide a secure mechasism to pass secrets, such as a secrets file, Windows credential manager, Mac keychain, Azure keyvault etc. for example.
+Secrets are not part of dev containers specification and we do not expect users to store secrets inside `devcontainer.json` file. A conforming implementation should provide a secure mechanism to pass secrets, such as a secrets file, Windows credential manager, Mac keychain, Azure keyvault etc. for example.
 
 #### **Example**
 

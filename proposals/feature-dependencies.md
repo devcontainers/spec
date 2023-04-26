@@ -106,6 +106,14 @@ To prevent non-deterministic behavior, the algorithm will sort each round accord
 
 If there is no difference based on these comparator rules, the Features are considered equal.
 
-### (D) Modify existing Feature order installation algorithm
+### NOTE: Existing methods for Feature installation
 
 Two existing properties: `installsAfter` on the Feature metadata, and `overrideFeatureInstallationOrder` in the `devcontainer.json` both exist to alter the installation order of user-defined Features. ::TODO::
+
+### NOTE: Feature authorship
+
+Features should be authored with the following considerations:
+
+- Features should be authored with the assumption that they will be installed in any order, so long as the dependencies are met at some point beforehand.
+- Since two Features with different options are considered different, a single Feature may be installed more than once.  Features should be idempotent.
+- Features that require updating shared state in the container (eg: updating the `$PATH`), should be aware that the same Feature may be run multiple times. Consider a method for previous runs of the Feature to communicate with future runs, updating the shared state in the intended way.

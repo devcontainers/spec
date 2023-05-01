@@ -2,11 +2,9 @@
 
 Reference: https://github.com/devcontainers/spec/issues/109
 
-## Notes
+**NOTE**: An alternate and conflicting proposal can be found here: https://github.com/devcontainers/spec/pull/208/.  If the aforementioned proposal is accepted, this proposal should be withdrawn (and vice versa).
 
-An alternate and conflicting proposal can be found here: https://github.com/devcontainers/spec/pull/208/.  If the aforementioned proposal is accepted, this proposal should be withdrawn (and vice versa).
-
-An experimental, prototype implementation can be found here: https://github.com/devcontainers/cli/pull/511
+**NOTE**: An experimental, prototype implementation can be found here: https://github.com/devcontainers/cli/pull/511
 
 ## Motivation
 
@@ -41,7 +39,7 @@ The installation order is subject to the algorithm set forth in this document. W
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `dependsOn` | `object` | The ID and options of the Feature dependency.  Pinning to version tags or digests are honored.  If published, the ID must point to either a Feature (1) published to an OCI registry, or (2) a Feature Tgz URI(**).  Otherwise, IDs follow the same semantics of the `features` object in `devcontainer.json`.  |
+| `dependsOn` | `object` | The ID and options of the Feature dependency.  Pinning to version tags or digests are honored.  If published, the ID must point to either a Feature (1) published to an OCI registry, or (2) a Feature Tgz URI(**).  Otherwise, IDs follow the same semantics of the `features` object in `devcontainer.json`.  Incompatible with the `installsAfter` property. |
 
 
 (**) Deprecated Feature identifiers (i.e GitHub Release) are not supported and should be considered a fatal error. For [local Features](https://containers.dev/implementors/features-distribution/#addendum-locally-referenced), you may also depend on other local Features by providing a relative path to the Feature, relative to the project's `devcontainer.json`. This also mirrors the `features` object in `devcontainer.json`.
@@ -130,7 +128,6 @@ Start with all the elements from (C1) in a `worklist` and an empty list `install
 
 Before committing each `round` to the `installationOrder`, sort all elements of round according to **Round Stable Sort***.
 
-
 Repeat for as many rounds as necessary until the worklist is empty.  If there is ever a round where no elements are added to `installationOrder`, the algorithm should terminate and return an error.  This indicates a circular dependency or other error in the dependency graph.
 
 
@@ -138,9 +135,13 @@ Repeat for as many rounds as necessary until the worklist is empty.  If there is
 
 #### Definition: Feature Equality
 
-This specification defines two Features as equal in the strictest possible sense.  That is, the Feature's manifest (for OCI Features) must be identical and hash to the same value.  That implies that the tgz contents of the Feature and its entire `devcontainer-feature.json` are identical.  Additionally, each Feature's options are compared value by value.  If any of these conditions are not met, the Features are considered not equal.
+This specification defines two Features as equal if both Features point to the same exact contents and are executed with the same options.
 
-::TODO:: tgz Features and local Features
+**For Features published to an OCI registry**, two Feature are identical if their manifest digests are equal, and the options executed against the Feature are equal (compared value by value).  Identical manifest digests implies that the tgz contents of the Feature and its entire `devcontainer-feature.json` are identical.  If any of these conditions are not met, the Features are considered not equal.
+
+**For Features fetched by HTTPS URI**, two Features are identical if the contents of the tgz are identical (hash to the same value), and the options executed against the Feature are equal (compared value by value).  If any of these conditions are not met, the Features are considered not equal.
+
+**For local Features**, each Feature is considered unique and not equal to any other local Feature.
 
 #### Definition: Round Stable Sort
 
@@ -161,7 +162,7 @@ Two existing properties: `installsAfter` on the Feature metadata, and `overrideF
 
 
 
-## Notes
+## Additional Remarks
 
 ### Feature authorship
 

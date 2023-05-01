@@ -33,7 +33,7 @@ See https://github.com/devcontainers/spec/pull/208/files#diff-a29ffaac693437b6fb
 
 ## Proposed Specification
 
-### (A) Add `dependsOn` property to Feature metadata.
+### (A) Add `dependsOn` property
 
 A new property `dependsOn` can be optionally added to the `devcontainer-feature.json`.  This property mirrors the `features` object in `devcontainer.json`.  Adding Feature(s) to this property tell the orchestrating tool to install the Feature(s) before installing the Feature that declares the dependency. 
 
@@ -41,7 +41,7 @@ The installation order is subject to the algorithm set forth in this document. W
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `dependsOn` | `string` | The ID of the Feature.  This follows the same semantics of the `id` property in the `devcontainer-feature.json` file. |
+| `dependsOn` | `string` | The Id of the Feature.  This follows the same semantics of the `id` property in the `devcontainer-feature.json` file. |
 
 An example `devcontainer-feature.json` file with a dependency on three other published Features:
 
@@ -62,23 +62,61 @@ An example `devcontainer-feature.json` file with a dependency on three other pub
 
 `myfeature` will be installed after `myotherFeature`, `aThirdFeature`, and `aFourthFeature`.
 
-### (B) Add `dependsOn` metadata to Feature manifests
+#### OCI Features: Identifying Dependencies
 
-::TODO:: Also need to think about (1) tgz Features and (2) local Features
+To speed up dependency resolution, Features published to an OCI registry will have an annotation added to their manifest.  This annotation will be an escaped JSON object of the entire `dependsOn` object in the Feature's `devcontainer-feature.json`.  The orchestrating tool can use this annotation to resolve the Feature's dependencies without having to download and extract the Feature's tarball.
 
+More specifically, an [annotation](https://github.com/opencontainers/image-spec/blob/main/annotations.md) named `dev.containers.dependsOn` will be populated on the manifest when published by an implementing tool.
 
-### (C) `dependsOn` install order algorithm
+An example manifest with the `dev.containers.dependsOn` annotation:
+
+```
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "config": {
+    "mediaType": "application/vnd.devcontainers",
+    "digest": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "size": 0
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.devcontainers.layer.v1+tar",
+      "digest": "sha256:738af5504b253dc6de51d2cb1556cdb7ce70ab18b2f32b0c2f12650ed6d2e4bc",
+      "size": 3584,
+      "annotations": {
+        "org.opencontainers.image.title": "devcontainer-feature-myFeature.tgz"
+      }
+    }
+  ],
+  "annotations": {
+    "dev.containers.dependsOn": {\"ghcr.io\/myotherFeature:1\": { \"flag\": true}, \"features.azurecr.io\/aThirdFeature:1\": {},  \"features.azurecr.io\/aFourthFeature:1.2.3\": {}\ },
+  }
+}
+```
+
+Supporting tools may choose to first identify all dependencies of the declared **User Features** by fetching the manifests of the Features and reading the `dev.containers.dependsOn` annotation.  This will allow the orchestrating tool to recursively resolve all dependencies without having to download and extract the Feature's tarball. 
+
+####  Tarball: Identifying Dependencies
+
+::TODO::
+
+####  Local Features: Identifying Dependencies
+
+[Local Features]() are Features entirely checked into a project and available on disk without any additional fetching.  Dependencies for local Features are identified by directly reading 
+
+### (B) `dependsOn` install order algorithm
 
 The orchestrating tool will calculate an installation order before as outlined below.
 
-#### (C1) Building dependency graph
+#### (B1) Building dependency graph
 
 From the user-defined Features, the orchestrating tool will build a dependency graph.  The graph will be built by traversing the `dependsOn` property of each Feature and recursively resolving each Feature from the property.  An accumulator is maintained with each new Feature that has been discovered, as well as a pointer to its dependencies.  If the exact Feature (see **Feature Equality**) has already been added to the accumulator, it will not be added again.  The accumulator will be fed into (C2) after all the Feature tree has been resolved.
 
 ::TODO:: psuedocode.
 
 
-#### (C2) Round-based sorting
+#### (B2) Round-based sorting
 
 Perform a sort on the result of (C1) in rounds. This sort will rearrange and deduplicate Features, producing a sorted list of Features to install.  The sort will be performed as follows: 
 
@@ -110,7 +148,7 @@ To prevent non-deterministic behavior, the algorithm will sort each round accord
 
 If there is no difference based on these comparator rules, the Features are considered equal.
 
-### NOTE: Existing methods for Feature installation
+### C: Updating existing methods for influencing Feature installation order
 
 Two existing properties: `installsAfter` on the Feature metadata, and `overrideFeatureInstallationOrder` in the `devcontainer.json` both exist to alter the installation order of user-defined Features. ::TODO::
 

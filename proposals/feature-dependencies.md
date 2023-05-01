@@ -155,7 +155,9 @@ If there is no difference based on these comparator rules, the Features are cons
 
 ### C: Updating existing methods for influencing Feature installation order
 
-Two existing properties: `installsAfter` on the Feature metadata, and `overrideFeatureInstallationOrder` in the `devcontainer.json` both exist to alter the installation order of user-defined Features. ::TODO::
+Two existing properties: `installsAfter` on the Feature metadata, and `overrideFeatureInstallationOrder` in the `devcontainer.json` both exist to alter the installation order of user-defined Features. 
+
+::TODO::
 
 
 

@@ -1,8 +1,12 @@
 # Feature Dependencies
 
-Reference: https://github.com/devcontainers/spec/pull/208/files
+Reference: https://github.com/devcontainers/spec/issues/109
+
+## Notes
 
 An alternate and conflicting proposal can be found here: https://github.com/devcontainers/spec/pull/208/.  If the aforementioned proposal is accepted, this proposal should be withdrawn (and vice versa).
+
+An experimental, prototype implementation can be found here: https://github.com/devcontainers/cli/pull/511
 
 ## Motivation
 

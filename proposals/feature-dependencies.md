@@ -24,8 +24,8 @@ A non-goal is to require the use or implementation of a full-blown dependency ma
 
 ## Definitions
 
-- **User Feature**.  Features defined explicitly by the user in the `features` object of `devcontainer.json`.
-- **Published Feature**.  Features published to an OCI registry.
+- **User-defined Feature**.  Features defined explicitly by the user in the `features` object of `devcontainer.json`.
+- **Published Feature**.  Features published to an OCI registry or a direct HTTPS link to a Feature tgz.
 
 ## Existing Solutions
 
@@ -35,13 +35,16 @@ See https://github.com/devcontainers/spec/pull/208/files#diff-a29ffaac693437b6fb
 
 ### (A) Add `dependsOn` property
 
-A new property `dependsOn` can be optionally added to the `devcontainer-feature.json`.  This property mirrors the `features` object in `devcontainer.json`.  Adding Feature(s) to this property tell the orchestrating tool to install the Feature(s) before installing the Feature that declares the dependency. 
+A new property `dependsOn` can be optionally added to the `devcontainer-feature.json`.  This property mirrors the `features` object in `devcontainer.json`.  Adding Feature(s) to this property tell the orchestrating tool to install the Feature(s) (with the associated options, if provided) before installing the Feature that declares the dependency. 
 
-The installation order is subject to the algorithm set forth in this document. Where there is ambiguity, it is up to the orchestrating tool to decide the order of installation.
+The installation order is subject to the algorithm set forth in this document. Where there is ambiguity, it is up to the orchestrating tool to decide the order of installation. Implementing tools should provide a consistent installation order in instances of ambiguity.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `dependsOn` | `string` | The Id of the Feature.  This follows the same semantics of the `id` property in the `devcontainer-feature.json` file. |
+| `dependsOn` | `object` | The ID and options of the Feature dependency.  Pinning to version tags or digests are honored.  If published, the ID must point to either a Feature (1) published to an OCI registry, or (2) a Feature Tgz URI(**).  Otherwise, IDs follow the same semantics of the `features` object in `devcontainer.json`.  |
+
+
+(**) Deprecated Feature identifiers (i.e GitHub Release) are not supported and should be considered a fatal error. For [local Features](https://containers.dev/implementors/features-distribution/#addendum-locally-referenced), you may also depend on other local Features by providing a relative path to the Feature, relative to the project's `devcontainer.json`. This also mirrors the `features` object in `devcontainer.json`.
 
 An example `devcontainer-feature.json` file with a dependency on three other published Features:
 
@@ -62,11 +65,13 @@ An example `devcontainer-feature.json` file with a dependency on three other pub
 
 `myfeature` will be installed after `myotherFeature`, `aThirdFeature`, and `aFourthFeature`.
 
-#### OCI Features: Identifying Dependencies
+The following three sections will illustrate how an orchestrating tool shouuld identify dependencies between Features, depending on [how the Feature is referenced](https://containers.dev/implementors/features/#referencing-a-feature).
 
-To speed up dependency resolution, Features published to an OCI registry will have an annotation added to their manifest.  This annotation will be an escaped JSON object of the entire `dependsOn` object in the Feature's `devcontainer-feature.json`.  The orchestrating tool can use this annotation to resolve the Feature's dependencies without having to download and extract the Feature's tarball.
+#### Identifying Dependencies - OCI Registry
 
-More specifically, an [annotation](https://github.com/opencontainers/image-spec/blob/main/annotations.md) named `dev.containers.dependsOn` will be populated on the manifest when published by an implementing tool.
+To speed up dependency resolution, Features [published to an OCI registry](https://containers.dev/implementors/features-distribution/#oci-registry) will have an annotation added to their manifest.  This annotation will be an escaped JSON object of the entire `dependsOn` object in the Feature's `devcontainer-feature.json`.  The orchestrating tool can use this annotation to resolve the Feature's dependencies without having to download and extract the Feature's tarball.
+
+More specifically, an [annotation](https://github.com/opencontainers/image-spec/blob/main/annotations.md) named `dev.containers.dependsOn` will be populated on the manifest when published by an implementing tool.  If no annotation is present on a Feature's manifest, the orchestrating tool may deduce the Feature has no dependencies.
 
 An example manifest with the `dev.containers.dependsOn` annotation:
 
@@ -97,17 +102,17 @@ An example manifest with the `dev.containers.dependsOn` annotation:
 
 Supporting tools may choose to first identify all dependencies of the declared **User Features** by fetching the manifests of the Features and reading the `dev.containers.dependsOn` annotation.  This will allow the orchestrating tool to recursively resolve all dependencies without having to download and extract the Feature's tarball. 
 
-####  Tarball: Identifying Dependencies
+#### Identifying Dependencies - HTTPS Direct Tarball
 
-::TODO::
+Published Features referenced directly by [HTTPS URI pointing to the packaged tarball archive](https://containers.dev/implementors/features-distribution/#directly-reference-tarball) will need to be fully downloaded an extracted to read the `dependsOn` property.
 
-####  Local Features: Identifying Dependencies
+#### Identifying Dependencies - Local Features
 
-[Local Features]() are Features entirely checked into a project and available on disk without any additional fetching.  Dependencies for local Features are identified by directly reading 
+[Local Features](https://containers.dev/implementors/features-distribution/#addendum-locally-referenced) dependencies are identified by directly reading the `dependsOn` property in the associated `devcontainer-feature.json` metadata file.
 
 ### (B) `dependsOn` install order algorithm
 
-The orchestrating tool will calculate an installation order before as outlined below.
+The orchestrating tool is responsible for calculating a Featuure installation order (or error, if no valid installation order can be resolved). The set of Features to be installed is the union of user-defined Features and their dependencies.  The orchestrating tool will perform the following steps:
 
 #### (B1) Building dependency graph
 
@@ -152,10 +157,21 @@ If there is no difference based on these comparator rules, the Features are cons
 
 Two existing properties: `installsAfter` on the Feature metadata, and `overrideFeatureInstallationOrder` in the `devcontainer.json` both exist to alter the installation order of user-defined Features. ::TODO::
 
-### NOTE: Feature authorship
+
+
+## Notes
+
+### Feature authorship
 
 Features should be authored with the following considerations:
 
 - Features should be authored with the assumption that they will be installed in any order, so long as the dependencies are met at some point beforehand.
 - Since two Features with different options are considered different, a single Feature may be installed more than once.  Features should be idempotent.
 - Features that require updating shared state in the container (eg: updating the `$PATH`), should be aware that the same Feature may be run multiple times. Consider a method for previous runs of the Feature to communicate with future runs, updating the shared state in the intended way.
+
+
+### Image Metadata
+
+Dependency resolution is only performed on initial container creation by reading the `features` object of `devcontainer.json` and resolving the Features in that point in time.  For subsequent creations from an image (or resumes of a dev container), the dependency tree is **not** re-calculated.  To re-calculate the dependency tree, the user must delete the image (or dev container) and recreate it from a `devcontainer.json`.
+
+Once Feature dependencies are resolved, they are treated the same as if members of the user-defined Features.  That means both user-defined Features and their dependencies are stored in the image's metadata.

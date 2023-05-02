@@ -93,7 +93,7 @@ An example manifest with the `dev.containers.dependsOn` annotation:
     }
   ],
   "annotations": {
-    "dev.containers.dependsOn": "{\"ghcr.io\/myotherFeature:1\": { \"flag\": true}, \"features.azurecr.io\/aThirdFeature:1\": {},  \"features.azurecr.io\/aFourthFeature:1.2.3\": {}\ }"
+    "dev.containers.dependsOn": "{\"ghcr.io\/myotherFeature:1\": { \"flag\": true}, \"features.azurecr.io\/aThirdFeature:1\": {},  \"features.azurecr.io\/aFourthFeature:1.2.3\": {}}"
   }
 }
 ```

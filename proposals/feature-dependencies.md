@@ -39,10 +39,10 @@ The installation order is subject to the algorithm set forth in this document. W
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `dependsOn` | `object` | The ID and options of the Feature dependency.  Pinning to version tags or digests are honored.  If published, the ID must point to either a Feature (1) published to an OCI registry, or (2) a Feature Tgz URI(**).  Otherwise, IDs follow the same semantics of the `features` object in `devcontainer.json`.  Incompatible with the `installsAfter` property. |
+| `dependsOn` | `object` | The ID and options of the Feature dependency.  Pinning to version tags or digests are honored.  When published, the ID must point to either a Feature (1) published to an OCI registry, or (2) a Feature Tgz URI(**).  Otherwise, IDs follow the same semantics of the `features` object in `devcontainer.json`.  Incompatible with the `installsAfter` property. |
 
 
-(**) Deprecated Feature identifiers (i.e GitHub Release) are not supported and should be considered a fatal error. For [local Features](https://containers.dev/implementors/features-distribution/#addendum-locally-referenced), you may also depend on other local Features by providing a relative path to the Feature, relative to the project's `devcontainer.json`. This also mirrors the `features` object in `devcontainer.json`.
+(**) Deprecated Feature identifiers (i.e GitHub Release) are not supported and should be considered a fatal error. For [local Features (ie: during development)](https://containers.dev/implementors/features-distribution/#addendum-locally-referenced), you may also depend on other local Features by providing a relative path to the Feature, relative to folder containing the active `devcontainer.json`. This behavior mirrors the `features` object in `devcontainer.json`.
 
 An example `devcontainer-feature.json` file with a dependency on three other published Features:
 
@@ -73,7 +73,7 @@ More specifically, an [annotation](https://github.com/opencontainers/image-spec/
 
 An example manifest with the `dev.containers.dependsOn` annotation:
 
-```
+```json
 {
   "schemaVersion": 2,
   "mediaType": "application/vnd.oci.image.manifest.v1+json",
@@ -98,7 +98,7 @@ An example manifest with the `dev.containers.dependsOn` annotation:
 }
 ```
 
-Supporting tools may choose to first identify all dependencies of the declared **User Features** by fetching the manifests of the Features and reading the `dev.containers.dependsOn` annotation.  This will allow the orchestrating tool to recursively resolve all dependencies without having to download and extract the Feature's tarball. 
+Supporting tools may choose to first identify all dependencies of the declared user-defined Features by fetching the manifests of the Features and reading the `dev.containers.dependsOn` annotation.  This will allow the orchestrating tool to recursively resolve all dependencies without having to download and extract each Feature's tarball. 
 
 #### Identifying Dependencies - HTTPS Direct Tarball
 
@@ -116,22 +116,17 @@ The orchestrating tool is responsible for calculating a Featuure installation or
 
 From the user-defined Features, the orchestrating tool will build a dependency graph.  The graph will be built by traversing the `dependsOn` property of each Feature and recursively resolving each Feature from the property.  An accumulator is maintained with each new Feature that has been discovered, as well as a pointer to its dependencies.  If the exact Feature (see **Feature Equality**) has already been added to the accumulator, it will not be added again.  The accumulator will be fed into (C2) after all the Feature tree has been resolved.
 
-::TODO:: psuedocode.
-
 
 #### (B2) Round-based sorting
 
-Perform a sort on the result of (C1) in rounds. This sort will rearrange and deduplicate Features, producing a sorted list of Features to install.  The sort will be performed as follows: 
+Perform a sort on the result of (B1) in rounds. This sort will rearrange and deduplicate Features, producing a sorted list of Features to install.  The sort will be performed as follows: 
 
-Start with all the elements from (C1) in a `worklist` and an empty list `installationOrder`.  While the `worklist` is not empty, iterate through each element in the `worklist` and check if all its dependencies (if any) are already members of `installationOrder`.  If the check is true, add it to an intermediate list `round` and remove it from the `worklist`.  If not, skip it.  Equality is determined in **Feature Equality**.
-
+Start with all the elements from (B1) in a `worklist` and an empty list `installationOrder`.  While the `worklist` is not empty, iterate through each element in the `worklist` and check if all its dependencies (if any) are already members of `installationOrder`.  If the check is true, add it to an intermediate list `round` and remove it from the `worklist`.  If not, skip it.  Equality is determined in **Feature Equality**.
 
 Before committing each `round` to the `installationOrder`, sort all elements of round according to **Round Stable Sort***.
 
 Repeat for as many rounds as necessary until the worklist is empty.  If there is ever a round where no elements are added to `installationOrder`, the algorithm should terminate and return an error.  This indicates a circular dependency or other error in the dependency graph.
 
-
-::TODO:: psuedocode.
 
 #### Definition: Feature Equality
 
@@ -145,22 +140,25 @@ This specification defines two Features as equal if both Features point to the s
 
 #### Definition: Round Stable Sort
 
-To prevent non-deterministic behavior, the algorithm will sort each round according to the following rules:
+To prevent non-deterministic behavior, the algorithm will sort each **round** according to the following rules:
 
-- Sort Features lexiographically by their resource Id (without version).  If those are equal:
-- Sort Features from oldest to newest tag (latest being the "most new").  If those are equal:
-- Sort Features by their options ::TODO:: If those are equal:
-- Sort Features by their canonical name (Feature Id resolved to the digest hash).
+- Compare and sort each Feature lexiographically by their fully qualified resource name (For OCI-published Features, that means the ID without version or digest.).  If the comparison is equal:
+- Compare and sort each Feature from oldest to newest tag (`latest` being the "most new").  If the comparision is equal:
+- Compare and sort each Feature by their options by:
+  - Greatest number of user-defined options (note omitting an option will default that value to the Feature's default value and is not considered a user-defined option). If the comparison is equal:
+  - Sort the provided option keys lexicographically.  If the comparison is equal:
+  - Sort the provided option values lexicographically. If the comparision is equal:
+- Sort Features by their canonical name (For OCI-published Features, the Feature ID resolved to the digest hash).
 
 If there is no difference based on these comparator rules, the Features are considered equal.
 
-### C: Updating existing methods for influencing Feature installation order
+### C: Comments on existing methods of altering Feature installation order
 
-Two existing properties: `installsAfter` on the Feature metadata, and `overrideFeatureInstallationOrder` in the `devcontainer.json` both exist to alter the installation order of user-defined Features. 
+Two existing properties (1) `installsAfter` on the Feature metadata, and  (2) `overrideFeatureInstallationOrder` in the `devcontainer.json` both exist to alter the installation order of user-defined Features.
 
-::TODO::
+A Feature may not declare both `installsAfter` and `dependsOn` properties. If a Feature declares both in its metadata, the publishing step should fail with an error.
 
-
+Furthermore, the dependency resolution outlined in this specification will be first be performed to generate an installation order. If that succeeds, the resolved list of Features will then be processed by the existing properties as previously defined.
 
 ## Additional Remarks
 

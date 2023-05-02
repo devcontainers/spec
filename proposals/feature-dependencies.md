@@ -156,9 +156,7 @@ If there is no difference based on these comparator rules, the Features are cons
 
 Two existing properties (1) `installsAfter` on the Feature metadata, and  (2) `overrideFeatureInstallationOrder` in the `devcontainer.json` both exist to alter the installation order of user-defined Features.
 
-A Feature may not declare both `installsAfter` and `dependsOn` properties. If a Feature declares both in its metadata, the publishing step should fail with an error.
-
-Furthermore, the dependency resolution outlined in this specification will be first be performed to generate an installation order. If that succeeds, the resolved list of Features will then be processed by the existing properties as previously defined.
+:: TODO :: More discussion needed!
 
 ## Additional Remarks
 

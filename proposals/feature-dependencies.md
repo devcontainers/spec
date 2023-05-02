@@ -152,7 +152,7 @@ To prevent non-deterministic behavior, the algorithm will sort each **round** ac
 
 If there is no difference based on these comparator rules, the Features are considered equal.
 
-### C: Comments on existing methods of altering Feature installation order
+### Comments on existing methods of altering Feature installation order
 
 Two existing properties (1) `installsAfter` on the Feature metadata, and  (2) `overrideFeatureInstallationOrder` in the `devcontainer.json` both exist to alter the installation order of user-defined Features.
 

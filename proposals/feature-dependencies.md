@@ -67,11 +67,13 @@ The following three sections will illustrate how an orchestrating tool shouuld i
 
 #### Identifying Dependencies - OCI Registry
 
-To speed up dependency resolution, Features [published to an OCI registry](https://containers.dev/implementors/features-distribution/#oci-registry) will have an annotation added to their manifest.  This annotation will be an escaped JSON object of the entire `dependsOn` object in the Feature's `devcontainer-feature.json`.  The orchestrating tool can use this annotation to resolve the Feature's dependencies without having to download and extract the Feature's tarball.
+To speed up dependency resolution, all Features [published to an OCI registry](https://containers.dev/implementors/features-distribution/#oci-registry) will have their entire `devcontainer-feature.json` serialized and added as an annotation..  
 
-More specifically, an [annotation](https://github.com/opencontainers/image-spec/blob/main/annotations.md) named `dev.containers.dependsOn` will be populated on the manifest when published by an implementing tool.  If no annotation is present on a Feature's manifest, the orchestrating tool may deduce the Feature has no dependencies.
+The orchestrating tool can use this annotation to resolve the Feature's dependencies without having to download and extract the Feature's tarball.
 
-An example manifest with the `dev.containers.dependsOn` annotation:
+More specifically, an [annotation](https://github.com/opencontainers/image-spec/blob/main/annotations.md) named `dev.containers.metadata` will be populated on the manifest when published by an implementing tool.  This annotation is the escaped JSON object of the entire `devcontainer-feature.json` as it appears during the [packaging stage](https://containers.dev/implementors/features-distribution/#packaging).  
+
+An example manifest with the `dev.containers.metadata` annotation:
 
 ```json
 {
@@ -93,12 +95,14 @@ An example manifest with the `dev.containers.dependsOn` annotation:
     }
   ],
   "annotations": {
-    "dev.containers.dependsOn": "{\"ghcr.io\/myotherFeature:1\": { \"flag\": true}, \"features.azurecr.io\/aThirdFeature:1\": {},  \"features.azurecr.io\/aFourthFeature:1.2.3\": {}}"
+    "dev.containers.metadata": "{\"name\": \"My Feature\",\"id\": \"myFeature\",\"version\": \"1.0.0\",\"dependsOn\": {\"ghcr.io/myotherFeature:1\": {\"flag\": true},\"features.azurecr.io/aThirdFeature:1\": {},\"features.azurecr.io/aFourthFeature:1.2.3\": {}}}"
   }
 }
 ```
 
-Supporting tools may choose to first identify all dependencies of the declared user-defined Features by fetching the manifests of the Features and reading the `dev.containers.dependsOn` annotation.  This will allow the orchestrating tool to recursively resolve all dependencies without having to download and extract each Feature's tarball. 
+> If no annotation is present on a Feature's manifest, the orchestrating tool may deduce the Feature has been published prior to this specification and has no declared dependencies.
+
+Supporting tools may choose to identify the dependencies of the declared user-defined Features by fetching the manifest of the Features and reading the `dependsOn` and `installsAfter` properties from the `dev.containers.metadata` annotation.  This will allow the orchestrating tool to recursively resolve all dependencies without having to download and extract each Feature's tarball. 
 
 #### Identifying Dependencies - HTTPS Direct Tarball
 

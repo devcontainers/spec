@@ -33,7 +33,9 @@ See https://github.com/devcontainers/spec/pull/208/files#diff-a29ffaac693437b6fb
 
 ### (A) Add `dependsOn` property
 
-A new property `dependsOn` can be optionally added to the `devcontainer-feature.json`.  This property mirrors the `features` object in `devcontainer.json`.  Adding Feature(s) to this property tell the orchestrating tool to install the Feature(s) (with the associated options, if provided) before installing the Feature that declares the dependency. 
+A new property `dependsOn` can be optionally added to the `devcontainer-feature.json`.  This property mirrors the `features` object in `devcontainer.json`.  Adding Feature(s) to this property tell the orchestrating tool to install the Feature(s) (with the associated options, if provided) before installing the Feature that declares the dependency.
+
+> This property is similar to the existing `installsAfter` property, with the key distinctions that `installsAfter` (1) is **not** recursive, (2) indicates a soft dependency to influence installation order **if and only if a given Feature is already set to be installed via a user-defined Feature**, and (3) Features indicated by `installsAfter` can not provide options, nor are they able to be pinned to a specific version tag or digest.
 
 The installation order is subject to the algorithm set forth in this document. Where there is ambiguity, it is up to the orchestrating tool to decide the order of installation. Implementing tools should provide a consistent installation order in instances of ambiguity.
 

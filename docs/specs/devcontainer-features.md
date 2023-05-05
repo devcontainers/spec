@@ -51,6 +51,8 @@ The properties of the file are as follows:
 
 Additionally, the following lifecycle scripts are supported:
 
+| Property | Type | Description |
+| :--- | :--- | :--- |
 | `onCreateCommand` | string,<br>array,<br>object | Mirrors behavior of the property in [devcontainer.json](/docs/specs/devcontainerjson-reference.md#Lifecycle-scripts) |
 | `updateContentCommand` | string,<br>array,<br>object | Mirrors behavior of the property in [devcontainer.json](/docs/specs/devcontainerjson-reference.md#Lifecycle-scripts)|
 | `postCreateCommand` | string,<br>array,<br>object | Mirrors behavior of the property [devcontainer.json](/docs/specs/devcontainerjson-reference.md#Lifecycle-scripts) |

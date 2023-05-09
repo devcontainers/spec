@@ -263,11 +263,21 @@
 				"initializeCommand": {
 					"type": [
 						"string",
-						"array"
+						"array",
+						"object"
 					],
-					"description": "A command to run locally before anything else. This command is run before \"onCreateCommand\". If this is a single string, it will be run in a shell. If this is an array of strings, it will be run as a single command without shell.",
+					"description": "A command to run locally (i.e Your host machine, cloud VM) before anything else. This command is run before \"onCreateCommand\". If this is a single string, it will be run in a shell. If this is an array of strings, it will be run as a single command without shell. If this is an object, each provided command will be run in parallel.",
 					"items": {
 						"type": "string"
+					},
+					"additionalProperties": {
+						"type": [
+							"string",
+							"array"
+						],
+						"items": {
+							"type": "string"
+						}
 					}
 				},
 				"onCreateCommand": {

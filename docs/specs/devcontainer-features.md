@@ -49,17 +49,22 @@ The properties of the file are as follows:
 | `deprecated` | boolean | Indicates that the Feature is deprecated, and will not receive any further updates/support. This property is intended to be used by the supporting tools for highlighting Feature deprecation. |
 | `mounts` | object | Defaults to unset. Cross-orchestrator way to add additional mounts to a container. Each value is an object that accepts the same values as the [Docker CLI `--mount` flag](https://docs.docker.com/engine/reference/commandline/run/#add-bind-mounts-or-volumes-using-the---mount-flag). The Pre-defined [devcontainerId](./devcontainerjson-reference.md/#variables-in-devcontainerjson) variable may be referenced in the value. For example:<br />`"mounts": [{ "source": "dind-var-lib-docker", "target": "/var/lib/docker", "type": "volume" }]` |
 
-Additionally, the following lifecycle scripts are supported:
 
-| Property | Type | Description |
-| :--- | :--- | :--- |
-| `onCreateCommand` | string,<br>array,<br>object | Mirrors behavior of the property in [devcontainer.json](/docs/specs/devcontainerjson-reference.md#Lifecycle-scripts) |
-| `updateContentCommand` | string,<br>array,<br>object | Mirrors behavior of the property in [devcontainer.json](/docs/specs/devcontainerjson-reference.md#Lifecycle-scripts)|
-| `postCreateCommand` | string,<br>array,<br>object | Mirrors behavior of the property [devcontainer.json](/docs/specs/devcontainerjson-reference.md#Lifecycle-scripts) |
-| `postStartCommand` | string,<br>array,<br>object |  Mirrors behavior of the property [devcontainer.json](/docs/specs/devcontainerjson-reference.md#Lifecycle-scripts)|
-| `postAttachCommand` | string,<br>array,<br>object | Mirrors behavior of the property [devcontainer.json](/docs/specs/devcontainerjson-reference.md#Lifecycle-scripts) |
+### Lifecycle scripts
 
-As with all lifecycle hooks, commands are executed from the context (cwd) of the [project workspace folder](https://containers.dev/implementors/spec/#project-workspace-folder). When a dev container is brought up, for each lifecycle hook, each Feature that contributes a command to a lifecycle hook shall have the command executed in sequence, following the same execution order as outlined in [Feature installation order](https://containers.dev/implementors/features/#installation-order), and always _before_ any user-provided lifecycle commands.
+The following lifecycle scripts are supported, mirroring the behavior of the property in [devcontainer.json](/docs/specs/devcontainerjson-reference.md#Lifecycle-scripts).
+
+| Property | Type|
+| :--- | :--- |
+| `onCreateCommand` | string, array, object |
+| `updateContentCommand` | string, array, object |
+| `postCreateCommand` | string, array, object |
+| `postStartCommand` | string, array, object |
+| `postAttachCommand` | string, array, object |
+
+As with all lifecycle hooks, commands are executed from the context (cwd) of the [project workspace folder](https://containers.dev/implementors/spec/#project-workspace-folder). 
+
+When a dev container is brought up, for each lifecycle hook, each Feature that contributes a command to a lifecycle hook shall have the command executed in sequence, following the same execution order as outlined in [Feature installation order](https://containers.dev/implementors/features/#installation-order), and always _before_ any user-provided lifecycle commands.
 
 ### The `options` property
 

@@ -21,21 +21,21 @@ A Feature is a self contained entity in a folder with at least a `devcontainer-f
 |    +-- (other files)
 ```
 
-## devcontainer-feature.json properties
+## `devcontainer-feature.json` properties
 
-the `devcontainer-feature.json` file defines information about the Feature to be used by any supporting tools and the way the Feature will be executed.
+The `devcontainer-feature.json` file defines metadata about a given Feature.
 
-The properties of the file are as follows:
+All properties are optional **except for `id`, `version`, and `name`**. 
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
-| `id` | string | ID of the Feature/definition. The `id` should be unique in the context of the repository/published package where the Feature exists and must match the name of the directory where the `devcontainer-feature.json` resides. |
-| `version` | string | The semantic version of the Feature. |
-| `name` | string | Name of the Feature/definition. |
-| `description` | string | Description of the Feature/definition. |
+| `id` | string | **Required**: Identifier of the Feature.  Must be unique in the context of the repository where the Feature exists and must match the name of the directory where the `devcontainer-feature.json` resides. |
+| `version` | string | **Required**: The semantic version of the Feature (e.g: `1.0.0`). |
+| `name` | string | **Required**: A "human-friendly" display name for the Feature. |
+| `description` | string | Description of the Feature. |
 | `documentationURL` | string | Url that points to the documentation of the Feature. |
 | `licenseURL` | string | Url that points to the license of the Feature. |
-| `keywords` | array | List of strings relevant to a user that would search for this definition/Feature. |
+| `keywords` | array | List of strings relevant to a user that would search for this Feature. |
 | `options` | object | A map of options that will be passed as environment variables to the execution of the script. |
 | `containerEnv` | object | A set of name value pairs that sets or overrides environment variables. |
 | `privileged` | boolean | Sets [privileged mode](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) for the container (required by things like docker-in-docker) when the Feature is used. |
@@ -50,21 +50,27 @@ The properties of the file are as follows:
 | `mounts` | object | Defaults to unset. Cross-orchestrator way to add additional mounts to a container. Each value is an object that accepts the same values as the [Docker CLI `--mount` flag](https://docs.docker.com/engine/reference/commandline/run/#add-bind-mounts-or-volumes-using-the---mount-flag). The Pre-defined [devcontainerId](./devcontainerjson-reference.md/#variables-in-devcontainerjson) variable may be referenced in the value. For example:<br />`"mounts": [{ "source": "dind-var-lib-docker", "target": "/var/lib/docker", "type": "volume" }]` |
 
 
-### Lifecycle scripts
+### Lifecycle Hooks
 
-The following lifecycle scripts are supported, mirroring the behavior of the property in [devcontainer.json](/docs/specs/devcontainerjson-reference.md#Lifecycle-scripts).
+The following lifecycle hooks may be declared as properties of `devcontainer-feature.json`. 
 
 | Property | Type|
 | :--- | :--- |
-| `onCreateCommand` | string, array, object |
-| `updateContentCommand` | string, array, object |
-| `postCreateCommand` | string, array, object |
-| `postStartCommand` | string, array, object |
-| `postAttachCommand` | string, array, object |
+| `onCreateCommand` | [string, array, object](/docs/specs/devcontainerjson-reference.md#formatting-string-vs-array-properties)|
+| `updateContentCommand` | [string, array, object](/docs/specs/devcontainerjson-reference.md#formatting-string-vs-array-properties)|
+| `postCreateCommand` | [string, array, object](/docs/specs/devcontainerjson-reference.md#formatting-string-vs-array-properties)|
+| `postStartCommand` | [string, array, object](/docs/specs/devcontainerjson-reference.md#formatting-string-vs-array-properties) |
+| `postAttachCommand` | [string, array, object](/docs/specs/devcontainerjson-reference.md#formatting-string-vs-array-properties) |
 
-As with all lifecycle hooks, commands are executed from the context (cwd) of the [project workspace folder](https://containers.dev/implementors/spec/#project-workspace-folder). 
+#### Behavior
 
-When a dev container is brought up, for each lifecycle hook, each Feature that contributes a command to a lifecycle hook shall have the command executed in sequence, following the same execution order as outlined in [Feature installation order](https://containers.dev/implementors/features/#installation-order), and always _before_ any user-provided lifecycle commands.
+Each property mirrors the behavior of the matching property in [`devcontainer.json`](/docs/specs/devcontainerjson-reference.md#Lifecycle-scripts), including the behavior that commands are executed from the context of the [project workspace folder](https://containers.dev/implementors/spec/#project-workspace-folder).
+
+For each lifecycle hook (eg: `onCreateCommand`) (in [Feature installation order](https://containers.dev/implementors/features/#installation-order)), each command contributed by a Feature is executed in sequence (blocking the next command from executing).   If the user `devcontainer.json` provides a lifecycle command, commands provided by Features are always exexuted _before_ any user-provided lifecycle command.
+
+If a Feature provides a given command with the [object syntax](/docs/specs/devcontainerjson-reference.md#formatting-string-vs-array-properties), all commands within that group are executed in parallel, but still blocking commands from subsequent Features and/or the `devcontainer.json`.
+
+> NOTE: These properties are stored within [image metadata](https://github.com/devcontainers/spec/blob/joshspicer/lifecycle_hook_feature_spec/docs/specs/devcontainer-reference.md#merge-logic).
 
 ### The `options` property
 

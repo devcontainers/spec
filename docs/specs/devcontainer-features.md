@@ -66,7 +66,7 @@ The following lifecycle hooks may be declared as properties of `devcontainer-fea
 
 Each property mirrors the behavior of the matching property in [`devcontainer.json`](/docs/specs/devcontainerjson-reference.md#Lifecycle-scripts), including the behavior that commands are executed from the context of the [project workspace folder](https://containers.dev/implementors/spec/#project-workspace-folder).
 
-For each lifecycle hook (eg: `onCreateCommand`) (in [Feature installation order](https://containers.dev/implementors/features/#installation-order)), each command contributed by a Feature is executed in sequence (blocking the next command from executing).   If the user `devcontainer.json` provides a lifecycle command, commands provided by Features are always exexuted _before_ any user-provided lifecycle command.
+For each lifecycle hook (in [Feature installation order](https://containers.dev/implementors/features/#installation-order)), each command contributed by a Feature is executed in sequence (blocking the next command from executing).   Commands provided by Features are always executed _before_ any user-provided lifecycle commands (i.e: in the `devcontainer.json`).
 
 If a Feature provides a given command with the [object syntax](/docs/specs/devcontainerjson-reference.md#formatting-string-vs-array-properties), all commands within that group are executed in parallel, but still blocking commands from subsequent Features and/or the `devcontainer.json`.
 

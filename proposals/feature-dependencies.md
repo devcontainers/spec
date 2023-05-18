@@ -160,9 +160,20 @@ If there is no difference based on these comparator rules, the Features are cons
 
 ### Comments on existing methods of altering Feature installation order
 
-Two existing properties (1) `installsAfter` on the Feature metadata, and  (2) `overrideFeatureInstallationOrder` in the `devcontainer.json` both exist to alter the installation order of user-defined Features.
+Two existing properties (1) `installsAfter` on the Feature metadata, and  (2) `overrideFeatureInstallationOrder` in the `devcontainer.json` both exist to alter the installation order of user-defined Features.  The behavior of these properties are carried forward in this proposal.
 
-:: TODO :: More discussion needed!
+#### `installsAfter`
+
+The `installsAfter` property is a "soft dependency" that influences the installation order of Features that are queued to be installed.  The effective behavior of this property is the same as `dependsOn`, with the following differences:
+
+- `installsAfter` is not recursive.  
+- `installsAfter` only influences the installation order of Features that are already set to be installed after resolving the dependency tree.
+- The Feature indicated by `installsAfter` can not provide options, nor are they able to be pinned to a specific version tag or digest.  This is unchanged from the current specification.
+
+From an implementation point of view, `installsAfter` nodes may be added as a seperate set of directed edges, just as `dependsOn` nodes are added as directed edges (see **(B1)**).  Before round-based sorting **(B2)**, an orchestrating tool should remove all `installsAfter` directed edges that do not correspond with a Feature in the `worklist` that is set to be installed.  This will ensure that `installsAfter` is only considered for Features that are already set to be installed.
+
+
+It is not recursive, and only influences the installation order of Features that are already set to be installed via a user-defined Feature.  It is not recursive, and does not influence the installation order of dependencies of the Feature that declares the `installsAfter` property.
 
 ## Additional Remarks
 

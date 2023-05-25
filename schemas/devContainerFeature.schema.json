@@ -322,7 +322,6 @@
       },
       "required": [
         "type",
-        "source",
         "target"
       ],
       "type": "object"

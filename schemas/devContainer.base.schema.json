@@ -688,7 +688,6 @@
 			},
 			"required": [
 				"type",
-				"source",
 				"target"
 			],
 			"additionalProperties": false

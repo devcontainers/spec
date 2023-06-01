@@ -35,7 +35,7 @@ See https://github.com/devcontainers/spec/pull/208/files#diff-a29ffaac693437b6fb
 
 A new property `dependsOn` can be optionally added to the `devcontainer-feature.json`.  This property mirrors the `features` object in `devcontainer.json`.  Adding Feature(s) to this property tell the orchestrating tool to install the Feature(s) (with the associated options, if provided) before installing the Feature that declares the dependency.
 
-> This property is similar to the existing `installsAfter` property, with the key distinctions that `installsAfter` (1) is **not** recursive, (2) indicates a soft dependency to influence installation order **if and only if a given Feature is already set to be installed via a user-defined Feature**, and (3) Features indicated by `installsAfter` can not provide options, nor are they able to be pinned to a specific version tag or digest.
+> This property is similar to the existing `installsAfter` property, with the key distinctions that `installsAfter` (1) is **not** recursive, (2) indicates a soft dependency to influence installation order **if and only if a given Feature is already set to be installed via a user-defined Feature or transitively through a user-defined Feature**, and (3) Features indicated by `installsAfter` can not provide options, nor are they able to be pinned to a specific version tag or digest.
 
 The installation order is subject to the algorithm set forth in this document. Where there is ambiguity, it is up to the orchestrating tool to decide the order of installation. Implementing tools should provide a consistent installation order in instances of ambiguity.
 
@@ -158,11 +158,11 @@ To prevent non-deterministic behavior, the algorithm will sort each **round** ac
 
 If there is no difference based on these comparator rules, the Features are considered equal.
 
-### Comments on existing methods of altering Feature installation order
+## Note: Existing methods of altering Feature installation order
 
 Two existing properties (1) `installsAfter` on the Feature metadata, and  (2) `overrideFeatureInstallationOrder` in the `devcontainer.json` both exist to alter the installation order of user-defined Features.  The behavior of these properties are carried forward in this proposal.
 
-#### `installsAfter`
+### installsAfter
 
 The `installsAfter` property is a "soft dependency" that influences the installation order of Features that are queued to be installed.  The effective behavior of this property is the same as `dependsOn`, with the following differences:
 
@@ -172,8 +172,21 @@ The `installsAfter` property is a "soft dependency" that influences the installa
 
 From an implementation point of view, `installsAfter` nodes may be added as a seperate set of directed edges, just as `dependsOn` nodes are added as directed edges (see **(B1)**).  Before round-based installation and sorting **(B2)**, an orchestrating tool should remove all `installsAfter` directed edges that do not correspond with a Feature in the `worklist` that is set to be installed.  In each round, a Feature can then be installed if all its requirements (both `dependsOn` and `installsAfter` dependencies) have been fulfilled in previous rounds.
 
+An implemention should fail the dependency resolution step if the evaluation of the `installsAfter` property results in an inconsistent state (eg: a circular dependency).
 
-It is not recursive, and only influences the installation order of Features that are already set to be installed via a user-defined Feature.  It is not recursive, and does not influence the installation order of dependencies of the Feature that declares the `installsAfter` property.
+### overrideFeatureInstallOrder
+
+The `overrideFeatureInstallOrder` property of `devcontainer.json` is an array of Feature IDs that are to be installed in descending priority order as soon as its dependencies outlined above are installed.  
+
+This evaluation is performed after **Round Stable Sort** and may result in a different installation order within a round.
+
+This property must not influence the dependency relationship as defined by the dependency graph (see **(B1)**) and shall only be evaulated at the round-based sorting step (see **(B2)**).  Put another way, this property cannot "pull forward" a Feature until all of its dependencies (both soft and hard) have been installed.  After a Feature's dependencies have been installed in other rounds, this property should "pull forward" each Feature as early as possible (given the order of identifiers in the array).
+
+Similar to `installsAfter`, this property's members may not provide options, nor are they able to be pinned to a specific version tag or digest.  This is unchanged from the current specification.
+
+If a Feature is indicated in `overrideFeatureInstallOrder` but not a member of the dependency graph (it is not queued to be installed), the orchestrating tool may fail the dependency resolution step.
+
+One implementation strategy involves assigning each node in the `worklist` a roundPriority integer, defaulting to 0.  If a Feature is indicated in `overrideFeatureInstallOrder`, the orchestrating tool should set the roundPriority of that Feature to  `length(overrideFeatureInstallOrder) - idx`, where `idx` is the zero-based index of the property in the array.  The orchestrating tool should then sort the `worklist` by roundPriority before committing each round's installation order, placing higher priority Features earlier in the `installationOrder`.
 
 ## Additional Remarks
 

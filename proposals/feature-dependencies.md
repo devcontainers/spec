@@ -142,7 +142,7 @@ Start with all the elements from **(B2)** in a `worklist` and an empty list `ins
 
 Then for each intermediate `round` list, commit to `installationOrder` only those nodes who share the maximum `roundPriority`.  Return all nodes in `round` with a strictly lower `roundPriority` to the `worklist` to be reprocessed in subsequent iterations.  If there are multiple nodes with the same `roundPriority`, commit them to `installationOrder` with a final sort according to **Round Stable Sort**.
 
-Repeat for as many rounds as necessary until the worklist is empty.  If there is ever a round where no elements are added to `installationOrder`, the algorithm should terminate and return an error.  This indicates a circular dependency or other fatal error in the dependency graph.  Implementations should attempt to provide the user with information about the error and possible mitigation strategies.
+Repeat for as many rounds as necessary until `worklist` is empty.  If there is ever a round where no elements are added to `installationOrder`, the algorithm should terminate and return an error.  This indicates a circular dependency or other fatal error in the dependency graph.  Implementations should attempt to provide the user with information about the error and possible mitigation strategies.
 
 
 #### Definition: Feature Equality

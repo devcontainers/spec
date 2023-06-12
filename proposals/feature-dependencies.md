@@ -44,7 +44,7 @@ The installation order is subject to the algorithm set forth in this document. W
 
 (**) Deprecated Feature identifiers (i.e GitHub Release) are not supported and the presence of this property may be considered a fatal error or ignored. For [local Features (ie: during development)](https://containers.dev/implementors/features-distribution/#addendum-locally-referenced), you may also depend on other local Features by providing a relative path to the Feature, relative to folder containing the active `devcontainer.json`. This behavior of Features within this property again mirror the `features` object in `devcontainer.json`.
 
-An example `devcontainer-feature.json` file with a dependency on three other published Features:
+An example `devcontainer-feature.json` file with a dependency on four other published Features:
 
 ```json
 {
@@ -52,16 +52,17 @@ An example `devcontainer-feature.json` file with a dependency on three other pub
     "id": "myFeature",
     "version": "1.0.0",
     "dependsOn": {
-        "ghcr.io/myotherFeature:1": {
+        "ghcr.io/second:1": {
             "flag": true
         },
-        "features.azurecr.io/aThirdFeature:1": {},
-        "features.azurecr.io/aFourthFeature:1.2.3": {}
+        "features.azurecr.io/third:1": {},
+        "features.azurecr.io/fourth:1.2.3": {},
+        "features.azurecr.io/fifth@sha256:a4cdc44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" {},
     }
 }
 ```
 
-`myfeature` will be installed after `myotherFeature`, `aThirdFeature`, and `aFourthFeature`.
+`myfeature` will be installed after `second`, `third`, `fourth`, and `fifth`.
 
 The following three sections will illustrate how an orchestrating tool shouuld identify dependencies between Features, depending on [how the Feature is referenced](https://containers.dev/implementors/features/#referencing-a-feature).
 

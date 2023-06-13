@@ -121,17 +121,17 @@ The orchestrating tool is responsible for calculating a Feature installation ord
 
 From the user-defined Features, the orchestrating tool will build a dependency graph.  The graph will be built by traversing the `dependsOn` and `installsAfter` properties of each Feature.  The metadata for each dependency is then fetched and the node added as an edge to to the dependent Feature.  For `dependsOn` dependencies, the dependency will be fed back into the worklist to be recursively resolved. 
 
-An accumulator is maintained with each new Feature that has been discovered, as well as a pointer to its dependencies.  If the exact Feature (see **Feature Equality**) has already been added to the accumulator, it will not be added again.  The accumulator will be fed into (B3) after all the Feature tree has been resolved.
+An accumulator is maintained with all uniquely discovered and user-provided Features, each with a reference to its dependencies.  If the exact Feature (see **Feature Equality**) has already been added to the accumulator, it will not be added again.  The accumulator will be fed into (B3) after the Feature tree has been resolved.
 
 The graph may be stored as an adjacency list with two kinds of edges (1) `dependsOn` edges or "hard dependencies" and (2) `installsAfter` edges or "soft dependencies".
 
 #### **(B2) Assigning `roundPriority`**
 
-Each node in the graph will originally be assigned a default `roundPriority` of 0.  
+Each node in the graph has an implicit, default `roundPriority` of 0.
 
 To influence installation order globally while still honoring the dependency graph of built in **(B1)**, `roundPriority` values may be tweaks for each Feature.  When each round is calculated in **(B3)**, only the Features equal to the max `roundPriority` of that set will be committed (the remaining will be uncommitted and reevaulated in subsequent rounds).
 
-The `roundPriority` is set to a non-default value in the following instances:
+The `roundPriority` is set to a non-zero value in the following instances:
 
 - If the [`devcontainer.json` contains an `overrideFeatureInstallOrder`](#overridefeatureinstallorder).
 

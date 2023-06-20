@@ -18,7 +18,7 @@ While the structure of this metadata is critical, it is also important to call o
 
 - .devcontainer/devcontainer.json
 - .devcontainer.json
-- .devcontainer/**/devcontainer.json (where ** is a sub-folder)
+- .devcontainer/<folder>/devcontainer.json (where <folder> is a sub-folder, one level deep)
 
 It is valid that these files may exist in more than one location, so consider providing a mechanism for users to select one when appropriate.
 

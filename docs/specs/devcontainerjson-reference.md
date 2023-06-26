@@ -161,7 +161,7 @@ Variables can be referenced in certain string values in `devcontainer.json` in t
 
 ## Schema
 
-You can see the VS Code implementation of the dev container schema [here](https://github.com/microsoft/vscode/blob/main/extensions/configuration-editing/schemas/devContainer.schema.src.json).
+You can see the dev container schema [here](https://github.com/devcontainers/spec/blob/main/schemas/devContainer.base.schema.json).
 
 
 ## Publishing vs forwarding ports

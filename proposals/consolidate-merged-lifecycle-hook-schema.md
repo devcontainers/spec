@@ -14,16 +14,17 @@ The current generated 'mergedConfiguration' returned by the `read-configuration`
 
 #### A1. Extends lifecycle script properties
 
-Add a value (`LifecycleCommandParallel[]`) to the unioned definition of each lifecycle hook (except 'initializeCommand').
-
-> NOTE: _This was chosen as every existing lifecycle command (and merged version of each command) can be represented within that type._
+Add a value (`LifecycleCommandParallel[]`) to the unioned definition of each lifecycle hook (except 'initializeCommand').  This allows for a syntax that captures the existing allowed types for a lifecycle hook and additionally provides a pattern for attaching additional metadata to a merged configuration.
 
 ```typescript
+LifecycleCommand = string | string[]
+LifecycleCommandParallel = { [key: string]: LifecycleCommand; $origin?: string };
+```
 
-export type LifecycleCommand = string | string[]
-export type LifecycleCommandParallel = { [key: string]: LifecycleCommand; $origin?: string };
+In a `devcontainer.json`, each of the following lifecycle hooks shown below can now be represented by one of these three types.
 
-interface DevContainerConfig {
+```typescript
+{
     // ...other devcontainer.json properties...
 	onCreateCommand?: LifecycleCommand | LifecycleCommandParallel | LifecycleCommandParallel[]
 	updateContentCommand?: LifecycleCommand | LifecycleCommandParallel | LifecycleCommandParallel[]
@@ -35,6 +36,8 @@ interface DevContainerConfig {
 
 An optional parameter `$origin` is added to the `LifecycleCommandParallel` that supporting tools can use to indicate the source of the command.  For example, this is useful for outputting in the creation log which Feature provided a certain lifecycle hook.  The `$` notation is used to indicate this property is additional tooling metadata that should not be present in a user `devcontainer.json`.
 
+> Per [the 'Allow Dev Container Features to contribute lifecycle scripts' specification](/proposals/features-contribute-lifecycle-scripts.md), each `LifecycleCommandParallel` element in the list variant will execute sequentially, in list order.  
+
 As an example, the following `devcontainer.json` snippet would be valid:
 
 ```json
@@ -43,7 +46,7 @@ As an example, the following `devcontainer.json` snippet would be valid:
 		{
 			"commandA": "echo 'Hello World!'",
 			"commandB": ["echo", "'Hello World!'"],
-			"$origin": "featureA"
+			"$origin": "ghcr.io/devcontainers/featureA@sha256:1234567890"
 		},
 		{
 			"commandA": "echo 'Hello World!'",
@@ -58,16 +61,9 @@ As an example, the following `devcontainer.json` snippet would be valid:
 
 The merging of the `customizations` property is left to the implementing tool, therefore there is no defined merging pattern. 
 
-Extend the interface of to include another unioned type:
+Extend the `devcontainer.json` such that each top-level `customization` namespace is either a map or an array of maps.  The former represents the existing syntax and the latter allows for a namespace's merging algorithm to be defined by the implementing tool.
 
-```typescript
-interface DevContainerConfig {
-	// ...other devcontainer.json properties...
-	customizations?: Record<string, {}> | Record<string, any[]>
-}
-```
-
-The addition of union type `Record<string, any[]>` (and explicitly typing the existing case to an object) allows for various tools to contribute customizations to the same namespace.  For example, a Feature may contribute a `settings` object, and a user (via `devcontainer.json`) may contribute a `settings` object.  The merged `customizations` property would be an array of two objects.  This allows for the merging algorithm to be defined by the implementing tool.
+The addition of the 'array of maps' syntax allows for various tools to contribute customizations to the same namespace.  For example, a Feature may contribute a `vscode` object, and a user (via `devcontainer.json`) may contribute a `vscode` object.  The merged `customizations` property would be an array of two objects.  This allows for the merging algorithm to be defined by the implementing tool.
 
 Similar to above, the `$origin` property may be added by tools to indicate the source of the customization.
 
@@ -85,7 +81,7 @@ In the below example, the `vscode` customization has two entries (contributed fr
 			"extensions": [
 				"GitHub.vscode-pull-request-github"
 			],
-			"$origin": "featureA"
+			"$origin": "ghcr.io/devcontainers/featureA@sha256:1234567890"
 		},
 		{
 			"settings": {
@@ -100,7 +96,7 @@ In the below example, the `vscode` customization has two entries (contributed fr
 		{
 			"bar": "baz",
 			"b": true,
-			"$origin": "featureA"
+			"$origin": "ghcr.io/devcontainers/featureA@sha256:1234567890"
 		},
 		{
 			"bar": "baz",
@@ -116,8 +112,6 @@ In the below example, the `vscode` customization has two entries (contributed fr
 
 The [reference implementation](https://github.com/devcontainers/cli) includes a 'read-configuration' command that can be used to resolve a fully merged configuration from a given `devcontainer.json`.
 
-Implementing tools should follow the [documented merging logic](https://containers.dev/implementors/spec/#merge-logic) and output a `devcontainer.json` that represents the resolved configuration.
-
 Special cases are detailed below.
 
 ### B1. The `entrypoint` property
@@ -126,12 +120,18 @@ Dev Container Features are able to contribute an `entrypoint` property. This pro
 
 A property `$entrypoints` should be added to the merged configuration containing an array of entrypoint strings.  Tooling that reads the 'mergedConfiguration' can process this property as needed.
 
-In the below example, the `entrypoint` property is contributed from two different sources.  The merged `$entrypoints` property would be an array of two strings, one for each entrypoint.
+In the below example, the `entrypoint` property is contributed from two different sources.  The merged `$entrypoints` property would be an array of two strings, one for each entrypoint.  An optional `$origin` property may be added by tools to indicate the source of the entrypoint.
 
 ```json
 "$entrypoints": [
-	"/usr/bin/entrypointA",
-	"/usr/bin/entrypointB"
+	{
+		"entrypoint": "/usr/bin/entrypointA",
+		"$origin": "ghcr.io/devcontainers/featureA@sha256:1234567890"
+	},
+	{
+		"entrypoint": "/usr/bin/entrypointB",
+		"$origin": "ghcr.io/devcontainers/featureB@sha256:1234567890"
+	},
 ],
 ```
 
@@ -139,3 +139,4 @@ In the below example, the `entrypoint` property is contributed from two differen
 
 With these additions, the 'mergedConfiguration' returned by `read-configuration` can directly return a `devcontainer.json` without needing non-spec properties (ie: plural `postCreateCommands`).  The addition of `$origin` in the `LifecycleCommandParallel` and `customizations` array variant types allows for tooling to indicate the source of provided functionality.  The addition of `$entrypoints` allows for tooling to output metadata on the contributed entrypoint(s) without needing to add non-schema properties to the `devcontainer.json`.
 
+ 

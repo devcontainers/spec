@@ -118,9 +118,9 @@ Special cases are detailed below.
 
 Dev Container Features are able to contribute an `entrypoint` property. This property is not available in the `devcontainer.json`.
 
-A property `$entrypoints` should be added to the merged configuration containing an array of entrypoint strings.  Tooling that reads the 'mergedConfiguration' can process this property as needed.
+A property `$entrypoints` should be added to the merged configuration containing an array of entrypoint objects.  Each object contains a required `entrypoint` string property and an optional `$origin` meta property.  Tooling that reads the 'mergedConfiguration' can process this property as needed.
 
-In the below example, the `entrypoint` property is contributed from two different sources.  The merged `$entrypoints` property would be an array of two strings, one for each entrypoint.  An optional `$origin` property may be added by tools to indicate the source of the entrypoint.
+In the below example, the `entrypoint` property is contributed from two different sources.  The merged `$entrypoints` property represents the set of active entrypoints.  The optional `$origin` property may be added by tools to indicate the source of the entrypoint.
 
 ```json
 "$entrypoints": [

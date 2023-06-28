@@ -56,7 +56,7 @@ The metadata is added to the image as a `devcontainer.metadata` label with a JSO
 
 To apply the metadata together with a user's devcontainer.json at runtime the following merge logic by property is used. The table also notes which properties are currently supported coming from the devcontainer.json and which from the feature metadata, this will change over time as we add more properties.
 
-| Property | Type/Format | Merge Logic | devcontainer.json | Feature Metadata |
+| Property | Type/Format | Merge Logic | devcontainer.json | devcontainer-feature.json |
 | -------- | ----------- | ----------- | :---------------: | :--------------: |
 | `id` | E.g., `ghcr.io/devcontainers/features/node:1` | Not merged. |   | x |
 | `init` | `boolean` | `true` if at least one is `true`, `false` otherwise. | x | x |

@@ -20,7 +20,7 @@ Once there is discussion on your proposal, please also open and link a PR to upd
 
 ### Contributing tool-specific support
 
-Tool-specific properties are contained in namespaces in the `"customizations"` property. For instance, VS Code specific properties are formated as:
+Tool-specific properties are contained in namespaces in the `"customizations"` property. For instance, VS Code specific properties are formatted as:
 
 ```bash
 // Configure tool-specific properties.

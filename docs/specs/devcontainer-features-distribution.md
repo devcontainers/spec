@@ -83,6 +83,8 @@ Each features's `devcontainer-feature.json` metadata file is appended into the `
 
 There are several supported ways to distribute Features. Distribution is handled by the implementing packaging tool such as the [Dev Container CLI](https://github.com/devcontainers/cli) or [Dev Container Publish GitHub Action](https://github.com/marketplace/actions/dev-container-publish). See the [quick start repository](https://github.com/devcontainers/feature-template) for a full working example.
 
+> Feature identifiers should be provided lowercase by an author. If not, an implementing packaging tool should normalize the identifier into lowercase for any internal representation.
+
 A user references a distributed feature in a `devcontainer.json` as defined in ['referencing a feature'](./devcontainer-features.md#Referencing-a-feature).
 
 ### OCI Registry
@@ -91,7 +93,7 @@ An OCI registry that implements the [OCI Artifact Distribution Specification](ht
 
 Each packaged feature is pushed to the registry following the naming convention `<registry>/<namespace>/<id>[:version]`, where version is the major, minor, and patch version of the feature, according to the semver specification.
 
-> **Note:** The `namespace` is a unique indentifier for the collection of features.  There are no strict rules for the `namespace`; however, one pattern is to set `namespace` equal to source repository's `<owner>/<repo>`. 
+> **Note:** The `namespace` is a unique indentifier for the collection of features.  There are no strict rules for the `namespace`; however, one pattern is to set `namespace` equal to source repository's `<owner>/<repo>`.  The `namespace` should be lowercase, following [the regex provided in the OCI specification](https://github.com/opencontainers/distribution-spec/blob/main/spec.md#pulling-manifests).
 
 A custom media type `application/vnd.devcontainers` and `application/vnd.devcontainers.layer.v1+tar` are used as demonstrated below.
 

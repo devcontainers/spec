@@ -19,6 +19,8 @@ Each feature is recorded with the identifier and version it is referred to in th
 - `integrity`: `sha256:` followed by the hex encoded SHA-256 checksum of the download artifact.
 - `dependsOn`: An array of feature identifiers equal to the feature's `dependsOn` keys in its `devcontainer-feature.json` including any version or checksum suffix. If the array is empty, this property can be omitted. For every feature listed here, the lockfile will also have a feature record.
 
+The feature identifiers recorded as keys and in the `dependsOn` arrays are converted to lowercase to simplify lookups and comparisons. Note that the `devcontainer.json` and `devcontainer-features.json` may refer to the same features with different casing because these identifiers are not case-senstive.
+
 Local features and the deprecated GitHub releases features are not recorded in the lockfile.
 
 The lockfile is named `devcontainer-lock.json`, is located in the same folder as the `devcontainer.json` and contains a JSON object with a `"features"` property holding the above keys.

@@ -29,7 +29,7 @@ All properties are optional **except for `id`, `version`, and `name`**.
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
-| `id` | string | **Required**: Identifier of the Feature.  Must be unique in the context of the repository where the Feature exists and must match the name of the directory where the `devcontainer-feature.json` resides. |
+| `id` | string | **Required**: Identifier of the Feature.  Must be unique in the context of the repository where the Feature exists and must match the name of the directory where the `devcontainer-feature.json` resides. ID should be provided lowercase. |
 | `version` | string | **Required**: The semantic version of the Feature (e.g: `1.0.0`). |
 | `name` | string | **Required**: A "human-friendly" display name for the Feature. |
 | `description` | string | Description of the Feature. |
@@ -217,6 +217,8 @@ The `id` format specified dictates how a supporting tool will locate and downloa
 | `<oci-registry>/<namespace>/<feature>[:<semantic-version>]` | Reference to feature in OCI registry(*) | `ghcr.io/user/repo/go` <br> `ghcr.io/user/repo/go:1` <br> `ghcr.io/user/repo/go:latest`|
 | `https://<uri-to-feature-tgz>` | Direct HTTPS URI to a tarball. | `https://github.com/user/repo/releases/devcontainer-feature-go.tgz` |
 | `./<path-to-feature-dir>`| A relative directory(**) to folder containing a devcontainer-feature.json. | `./myGoFeature` |
+
+Feature identifiers should be assumed to be case-insensitive and should be normalized to lowercase.
 
 (*) OCI registry must implement the [OCI Artifact Distribution Specification](https://github.com/opencontainers/distribution-spec).  Some implementors can be [found here](https://oras.land/implementors/).
 

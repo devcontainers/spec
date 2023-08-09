@@ -275,7 +275,7 @@ The optional `dependsOn` property indicates a set of required, "hard" dependenci
 
 All Features indicated in the `dependsOn` property **must** be satisfied (a Feature [equal](#definition-feature-equality) to each dependency is present in the installation order) _before_ the given Feature is set to be installed.  If any of the Features indicated in the `dependsOn` property cannot be installed (e.g due to circular dependency, failure to resolve the Feature, etc) the entire dev container creation should fail.
 
-The `dependsOn` property should be evaluated recursively.  Therefore, if a Feature dependency has its own `dependsOn` property, that Feature's dependencies must also be satisfied before the given Feature is installed.
+The `dependsOn` property must be evaluated recursively.  Therefore, if a Feature dependency has its own `dependsOn` property, that Feature's dependencies must also be satisfied before the given Feature is installed.
 
 ```json
 {
@@ -283,25 +283,24 @@ The `dependsOn` property should be evaluated recursively.  Therefore, if a Featu
     "id": "myFeature",
     "version": "1.0.0",
     "dependsOn": {
-        "ghcr.io/second:1": {
+        "foo:1": {
             "flag": true
         },
-        "features.azurecr.io/third:1": {},
-        "features.azurecr.io/fourth:1.2.3": {},
-        "features.azurecr.io/fifth@sha256:a4cdc44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" {},
+        "bar:1.2.3": {},
+        "baz@sha256:a4cdc44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" {},
     }
 }
 ```
 
-In the snippet above, `myfeature` MUST be installed after `second`, `third`, `fourth`, and `fifth`.  If the Features provided via the `dependsOn` property declare their own dependencies, those must also be satisfied before the Feature is installed.
+In the snippet above, `myfeature` MUST be installed after `foo`, `bar`, and `baz`.  If the Features provided via the `dependsOn` property declare their own dependencies, those must also be satisfied before the Feature is installed.
 
 #### The `installsAfter` Property
 
 The `installsAfter` property indicates a "soft dependency" that influences the installation order of Features that are already queued to be installed.  The effective behavior of this property is the same as `dependsOn`, with the following differences:
 
-- `installsAfter` is **not** recursive.
-- `installsAfter` only influences the installation order of Features that are **already set to be installed** after (1)resolving the dependency tree or (2) indicated by the user's `devcontainer.json`.  If a Feature is not indicated in either (1) or (2), it may be ignored.
-- The Feature indicated by `installsAfter` can **not** provide options, nor are they able to be pinned to a specific version tag or digest.
+- `installsAfter` is **not** evaluated recursively.
+- `installsAfter` only influences the installation order of Features that are **already set to be installed**.  Any Feature not set to be installed after (1) resolving the `dependsOn` dependency tree or (2) indicated by the user's `devcontainer.json` should not be added to the installation list.
+- The Feature indicated by `installsAfter` can **not** provide options, nor are they able to be pinned to a specific version tag or digest.  Resolution to the canonical name should still be performed (eg: If the Feature has been [renamed](#steps-to-rename-a-feature)).
 
 ```
 {
@@ -309,26 +308,28 @@ The `installsAfter` property indicates a "soft dependency" that influences the i
     "id": "myFeature",
     "version": "1.0.0",
     "installsAfter": [
-        "features.azurecr.io/second",
-        "features.azurecr.io/third"
+        "foo",
+        "bar"
     ]
 }
 ```
 
-In the snippet above, `myfeature` will be installed after `second` and `third` **if** the Feature is already queued to be installed.  If `second` and `third` are not already queued to be installed, these dependencies should be ignored.
+In the snippet above, `myfeature` must be installed after `foo` and `bar` **if** the Feature is already queued to be installed.  If `second` and `third` are not already queued to be installed, this dependency relationship should be ignored.
 
 
 #### The 'overrideFeatureInstallOrder' property
 
-The `overrideFeatureInstallOrder` property of `devcontainer.json` is an array of Feature IDs that are to be installed in descending priority order as soon as its dependencies outlined above are installed.  
+The `overrideFeatureInstallOrder` property of `devcontainer.json` is an array of Feature IDs that are to be installed in descending priority order as soon as its dependencies outlined above are installed.
 
-This evaluation is performed by assigning a [`roundPriority`](#2-assigning-round-priority) to all nodes that match match the Feature identifier present in the property. 
+> This property may not indicate an installation order that is inconsistent with the resolved dependency graph (see [dependency algorithm](#dependency-installation-order-algorithm)).  If the `overrideFeatureInstallOrder` property is inconsistent with the dependency graph, the implementing tool should fail the dependency resolution step.
+
+This evaluation is performed by assigning a [`roundPriority`](#2-assigning-round-priority) to all nodes that match match the Feature identifier (version omitted) present in the property. 
 
 For example, given `n` Features in the `overrideFeatureInstallOrder` array, the orchestrating tool should assign a `roundPriority` of `n - idx` to each Feature, where `idx` is the zero-based index of the Feature in the array.
 
 For example:
 
-```json
+```javascript
 overrideFeatureInstallOrder = [
   "foo",
   "bar",
@@ -338,7 +339,7 @@ overrideFeatureInstallOrder = [
 
 would result in the following `roundPriority` assignments:
 
-```json
+```javascript
 const roundPriority = {
   "foo": 3,
   "bar": 2,
@@ -346,41 +347,43 @@ const roundPriority = {
 }
 ```
 
-This property must not influence the dependency relationship as defined by the dependency graph (see **(B1)**) and shall only be evaulated at the round-based sorting step (see **(B3)**).  Put another way, this property cannot "pull forward" a Feature until all of its dependencies (both soft and hard) have been installed.  After a Feature's dependencies have been installed in other rounds, this property should "pull forward" each Feature as early as possible (given the order of identifiers in the array).
+This property must not influence the dependency relationship as defined by the dependency graph (see [dependency graph](#1-build-a-dependency-graph)) and shall only be evaulated at the round-based sorting step (see [round sort](#3-round-based-sorting)).  Put another way, this property cannot "pull forward" a Feature until all of its dependencies (both soft and hard) have been installed.  After a Feature's dependencies have been installed in other rounds, this property should "pull forward" each Feature as early as possible (given the order of identifiers in the array).
 
-Similar to `installsAfter`, this property's members may not provide options, nor are they able to be pinned to a specific version tag or digest.  This is unchanged from the current specification.
+Similar to `installsAfter`, this property's members may not provide options, nor are they able to be pinned to a specific version tag or digest.
 
 If a Feature is indicated in `overrideFeatureInstallOrder` but not a member of the dependency graph (it is not queued to be installed), the orchestrating tool may fail the dependency resolution step.
 
+> ## Definitions
+> ### Definition: Feature Equality
+>
+> This specification defines two Features as equal if both Features point to the same exact contents and are executed with > the same options.
+> 
+> **For Features published to an OCI registry**, two Feature are identical if their manifest digests are equal, and the > options executed against the Feature are equal (compared value by value).  Identical manifest digests implies that the tgz  contents of the Feature and its entire `devcontainer-feature.json` are identical.  If any of these conditions are not met,  the Features are considered not equal.
+> 
+> **For Features fetched by HTTPS URI**, two Features are identical if the contents of the tgz are identical (hash to the > same value), and the options executed against the Feature are equal (compared value by value).  If any of these conditions  are not met, the Features are considered not equal.
+> 
+> **For local Features**, each Feature is considered unique and not equal to any other local Feature.
+> 
+> ### Definition: Round Stable Sort
+> 
+> To prevent non-deterministic behavior, the algorithm will sort each **round** according to the following rules:
+> 
+> - Compare and sort each Feature lexiographically by their fully qualified resource name (For OCI-published Features, that  means the ID without version or digest.).  If the comparison is equal:
+> - Compare and sort each Feature from oldest to newest tag (`latest` being the "most new").  If the comparision is equal:
+> - Compare and sort each Feature by their options by:
+>   - Greatest number of user-defined options (note omitting an option will default that value to the Feature's default value  and is not considered a user-defined option). If the comparison is equal:
+>   - Sort the provided option keys lexicographically.  If the comparison is equal:
+>   - Sort the provided option values lexicographically. If the comparision is equal:
+> - Sort Features by their canonical name (For OCI-published Features, the Feature ID resolved to the digest hash).
+> 
+> If there is no difference based on these comparator rules, the Features are considered equal.
+>
+> 
 
-#### Definition: Feature Equality
-
-This specification defines two Features as equal if both Features point to the same exact contents and are executed with the same options.
-
-**For Features published to an OCI registry**, two Feature are identical if their manifest digests are equal, and the options executed against the Feature are equal (compared value by value).  Identical manifest digests implies that the tgz contents of the Feature and its entire `devcontainer-feature.json` are identical.  If any of these conditions are not met, the Features are considered not equal.
-
-**For Features fetched by HTTPS URI**, two Features are identical if the contents of the tgz are identical (hash to the same value), and the options executed against the Feature are equal (compared value by value).  If any of these conditions are not met, the Features are considered not equal.
-
-**For local Features**, each Feature is considered unique and not equal to any other local Feature.
-
-#### Definition: Round Stable Sort
-
-To prevent non-deterministic behavior, the algorithm will sort each **round** according to the following rules:
-
-- Compare and sort each Feature lexiographically by their fully qualified resource name (For OCI-published Features, that means the ID without version or digest.).  If the comparison is equal:
-- Compare and sort each Feature from oldest to newest tag (`latest` being the "most new").  If the comparision is equal:
-- Compare and sort each Feature by their options by:
-  - Greatest number of user-defined options (note omitting an option will default that value to the Feature's default value and is not considered a user-defined option). If the comparison is equal:
-  - Sort the provided option keys lexicographically.  If the comparison is equal:
-  - Sort the provided option values lexicographically. If the comparision is equal:
-- Sort Features by their canonical name (For OCI-published Features, the Feature ID resolved to the digest hash).
-
-If there is no difference based on these comparator rules, the Features are considered equal.
 
 > ## Dependency installation order algorithm
-> 
+>
 > An implementing tool is responsible for calculating the Feature installation order (or providing an error if no valid installation order can be resolved). The set of Features to be installed is the union of user-defined Features (those directly indicated in the user's `devcontainer.json` and their dependencies (those indicated by the `dependsOn` or `installsAfter` property, taking into account the user dev container's `overrideFeatureInstallOrder` property).  The implmenting tool will perform the following steps:
-> 
 > ### (1) Build a dependency graph
 > 
 > From the user-defined Features, the orchestrating tool will build a dependency graph.  The graph will be built by traversing the `dependsOn` and `installsAfter` properties of each Feature.  The metadata for each dependency is then fetched and the node added as an edge to to the dependent Feature.  For `dependsOn`  dependencies, the dependency will be fed back into the worklist to be recursively resolved. 

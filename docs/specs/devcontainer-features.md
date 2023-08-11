@@ -271,7 +271,9 @@ If any of the following properties are provided in the Feature's `devcontainer-f
 
 #### The `dependsOn` property
 
-The optional `dependsOn` property indicates a set of required, "hard" dependencies for a given Feature.  The `dependsOn` property is declared in a Feature's `devcontainer-feature.json` metadata file. Elements of this property mirror the semantics of the `features` object in `devcontainer.json`.
+The optional `dependsOn` property indicates a set of required, "hard" dependencies for a given Feature.  
+
+The `dependsOn` property is declared in a Feature's `devcontainer-feature.json` metadata file. Elements of this property mirror the semantics of the `features` object in `devcontainer.json`.  Therefore, all dependencies may provide the relevant options, or an empty object (eg: `"bar:123": {}`) if the Feature's default options are sufficient.  Identical Features that provide different options are treated as _different_ Features (see [Feature equality](#definition-feature-equality) for more info).
 
 All Features indicated in the `dependsOn` property **must** be satisfied (a Feature [equal](#definition-feature-equality) to each dependency is present in the installation order) _before_ the given Feature is set to be installed.  If any of the Features indicated in the `dependsOn` property cannot be installed (e.g due to circular dependency, failure to resolve the Feature, etc) the entire dev container creation should fail.
 

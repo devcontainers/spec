@@ -44,10 +44,13 @@ All properties are optional **except for `id`, `version`, and `name`**.
 | `securityOpt` | array | Sets container security options like updating the [seccomp profile](https://docs.docker.com/engine/security/seccomp/) when the Feature is used. |
 | `entrypoint` | string | Set if the Feature requires an "entrypoint" script that should fire at container start up. |
 | `customizations` | object | Product specific properties, each namespace under `customizations` is treated as a separate set of properties. For each of this sets the object is parsed, values are replaced while arrays are set as a union. |
-| `installsAfter` | array | Array of ID's of Features (omitting a version tag) that should execute before this one. Allows control for Feature authors on soft dependencies between different Features. |
+| `dependsOn` | `object` | An object (\**)  of Feature dependencies that **must** be satisified before this Feature is installed. Elements follow the same semantics of the `features` object in `devcontainer.json`. [See *Installation Order* for further information](#installation-order).  |
+| `installsAfter` | array | Array of ID's of Features (omitting a version tag) that should execute before this one. Allows control for Feature authors on soft dependencies between different Features. [See *Installation Order* for further information](#installation-order). |
 | `legacyIds` | array | Array of old IDs used to publish this Feature. The property is useful for renaming a currently published Feature within a single namespace. |
 | `deprecated` | boolean | Indicates that the Feature is deprecated, and will not receive any further updates/support. This property is intended to be used by the supporting tools for highlighting Feature deprecation. |
 | `mounts` | object | Defaults to unset. Cross-orchestrator way to add additional mounts to a container. Each value is an object that accepts the same values as the [Docker CLI `--mount` flag](https://docs.docker.com/engine/reference/commandline/run/#mount). The Pre-defined [devcontainerId](./devcontainerjson-reference.md/#variables-in-devcontainerjson) variable may be referenced in the value. For example:<br />`"mounts": [{ "source": "dind-var-lib-docker", "target": "/var/lib/docker", "type": "volume" }]` |
+
+(**) The ID must refer to either a Feature (1) published to an OCI registry, (2) a Feature Tgz URI, or (3) a Feature in the local file tree. Deprecated Feature identifiers (i.e GitHub Release) are not supported and the presence of this property may be considered a fatal error or ignored. For [local Features (ie: during development)](https://containers.dev/implementors/features-distribution/#addendum-locally-referenced), you may also depend on other local Features by providing a relative path to the Feature, relative to folder containing the active `devcontainer.json`. This behavior of Features within this property again mirror the `features` object in `devcontainer.json`.
 
 
 ### Lifecycle Hooks
@@ -260,45 +263,164 @@ To ensure that the appropriate shell is used, the execute bit should be set on `
 
 By default, Features are installed on top of a base image in an order determined as optimal by the implementing tool.
 
-If any of the following properties are provided in the Feature's `devcontainer-feature.json`, or the user's `devcontainer.json`, the order indicated by these propert(ies) are respected (with decreasing precedence).
+If any of the following properties are provided in the Feature's `devcontainer-feature.json`, or the user's `devcontainer.json`, the order indicated by these propert(ies) are respected.
 
-1. The `overrideFeatureInstallOrder` property in user's `devcontainer.json`. Allows users to control the order of execution of their Features.
-2. The `installsAfter` property defined as part of a Feature's `devcontainer-feature.json`.
+* The `dependsOn` property defined as a part of a Feature's `devcontainer-feature.json`.
+* The `installsAfter` property defined as part of a Feature's `devcontainer-feature.json`.
+* The `overrideFeatureInstallOrder` property in user's `devcontainer.json`. Allows users to control the order of execution of their Features.
 
-#### (1) The `overrideFeatureInstallOrder` property
+#### The `dependsOn` property
 
-This property is declared by the user in their `devcontainer.json` file.
+The optional `dependsOn` property indicates a set of required, "hard" dependencies for a given Feature.  
 
-Any **un-versioned** Feature IDs listed in this array will be installed before all other Features, in the provided order. Any omitted Features will be installed in an order selected by the implementing tool, or ordered via the `installsAfter` property _after_  any Features listed in the `overrideFeatureInstallOrder` array, if applicable. 
+The `dependsOn` property is declared in a Feature's `devcontainer-feature.json` metadata file. Elements of this property mirror the semantics of the `features` object in `devcontainer.json`.  Therefore, all dependencies may provide the relevant options, or an empty object (eg: `"bar:123": {}`) if the Feature's default options are sufficient.  Identical Features that provide different options are treated as _different_ Features (see [Feature equality](#definition-feature-equality) for more info).
 
-All un-versioned Feature `id`s provided in `overrideFeatureInstallOrder` must also exist in the `features` property of a user's `devcontainer.json`. For instance, all the Features which follows the OCI registry format would include everything except for the label that contains the version (`<oci-registry>/<namespace>/<feature>` without the `:<semantic-version>`).
+All Features indicated in the `dependsOn` property **must** be satisfied (a Feature [equal](#definition-feature-equality) to each dependency is present in the installation order) _before_ the given Feature is set to be installed.  If any of the Features indicated in the `dependsOn` property cannot be installed (e.g due to circular dependency, failure to resolve the Feature, etc) the entire dev container creation should fail.
 
-Example:
+The `dependsOn` property must be evaluated recursively.  Therefore, if a Feature dependency has its own `dependsOn` property, that Feature's dependencies must also be satisfied before the given Feature is installed.
+
+```json
+{
+    "name": "My Feature",
+    "id": "myFeature",
+    "version": "1.0.0",
+    "dependsOn": {
+        "foo:1": {
+            "flag": true
+        },
+        "bar:1.2.3": {},
+        "baz@sha256:a4cdc44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" {},
+    }
+}
 ```
-  "features": {
-      "ghcr.io/devcontainers/features/java:1",
-      "ghcr.io/devcontainers/features/node:1",
-  },
-  "overrideFeatureInstallOrder": [
-    "ghcr.io/devcontainers/features/node"
-  ]
+
+In the snippet above, `myfeature` MUST be installed after `foo`, `bar`, and `baz`.  If the Features provided via the `dependsOn` property declare their own dependencies, those must also be satisfied before the Feature is installed.
+
+#### The `installsAfter` Property
+
+The `installsAfter` property indicates a "soft dependency" that influences the installation order of Features that are already queued to be installed.  The effective behavior of this property is the same as `dependsOn`, with the following differences:
+
+- `installsAfter` is **not** evaluated recursively.
+- `installsAfter` only influences the installation order of Features that are **already set to be installed**.  Any Feature not set to be installed after (1) resolving the `dependsOn` dependency tree or (2) indicated by the user's `devcontainer.json` should not be added to the installation list.
+- The Feature indicated by `installsAfter` can **not** provide options, nor are they able to be pinned to a specific version tag or digest.  Resolution to the canonical name should still be performed (eg: If the Feature has been [renamed](#steps-to-rename-a-feature)).
+
+```
+{
+    "name": "My Feature",
+    "id": "myFeature",
+    "version": "1.0.0",
+    "installsAfter": [
+        "foo",
+        "bar"
+    ]
+}
 ```
 
-| Property | Type | Description |
-| :--- | :--- | :--- |
-| `overrideFeatureInstallOrder` | array | Array consisting of the Feature `id` (without the semantic version) of Features in the order the user wants them to be installed. |
+In the snippet above, `myfeature` must be installed after `foo` and `bar` **if** the Feature is already queued to be installed.  If `second` and `third` are not already queued to be installed, this dependency relationship should be ignored.
 
-#### (2) The `installsAfter` Feature property
 
-This property is defined in an individual feature's `devcontainer-feature.json` file by the feature author.  `installsAfter` allows an author to provide the tooling hints on loose dependencies between Features.  
+#### The 'overrideFeatureInstallOrder' property
 
-> This property is mostly useful for optimizing build time (by reordering the Feature installation to reduce installing a required CLI twice, for example).  Ideally, all Features should be able to fully install themselves without requiring another Feature to be pre-installed.
+The `overrideFeatureInstallOrder` property of `devcontainer.json` is an array of Feature IDs that are to be installed in descending priority order as soon as its dependencies outlined above are installed.
 
-After `overrideFeatureInstallOrder` is resolved, any remaining Features that declare an `installsAfter` must be installed after the Features declared in the property, provided that the Features have also been declared in the `features` property.
+> This property may not indicate an installation order that is inconsistent with the resolved dependency graph (see [dependency algorithm](#dependency-installation-order-algorithm)).  If the `overrideFeatureInstallOrder` property is inconsistent with the dependency graph, the implementing tool should fail the dependency resolution step.
 
-| Property | Type | Description |
-| :--- | :--- | :--- |
-| `installsAfter` | array | Array consisting of the Feature `id` (omitting a version tag) that should be installed before the given Feature |
+This evaluation is performed by assigning a [`roundPriority`](#2-assigning-round-priority) to all nodes that match match the Feature identifier (version omitted) present in the property. 
+
+For example, given `n` Features in the `overrideFeatureInstallOrder` array, the orchestrating tool should assign a `roundPriority` of `n - idx` to each Feature, where `idx` is the zero-based index of the Feature in the array.
+
+For example:
+
+```javascript
+overrideFeatureInstallOrder = [
+  "foo",
+  "bar",
+  "baz"
+]
+```
+
+would result in the following `roundPriority` assignments:
+
+```javascript
+const roundPriority = {
+  "foo": 3,
+  "bar": 2,
+  "baz": 1
+}
+```
+
+This property must not influence the dependency relationship as defined by the dependency graph (see [dependency graph](#1-build-a-dependency-graph)) and shall only be evaulated at the round-based sorting step (see [round sort](#3-round-based-sorting)).  Put another way, this property cannot "pull forward" a Feature until all of its dependencies (both soft and hard) have been installed.  After a Feature's dependencies have been installed in other rounds, this property should "pull forward" each Feature as early as possible (given the order of identifiers in the array).
+
+Similar to `installsAfter`, this property's members may not provide options, nor are they able to be pinned to a specific version tag or digest.
+
+If a Feature is indicated in `overrideFeatureInstallOrder` but not a member of the dependency graph (it is not queued to be installed), the orchestrating tool may fail the dependency resolution step.
+
+> ## Definitions
+> ### Definition: Feature Equality
+>
+> This specification defines two Features as equal if both Features point to the same exact contents and are executed with > the same options.
+> 
+> **For Features published to an OCI registry**, two Feature are identical if their manifest digests are equal, and the > options executed against the Feature are equal (compared value by value).  Identical manifest digests implies that the tgz  contents of the Feature and its entire `devcontainer-feature.json` are identical.  If any of these conditions are not met,  the Features are considered not equal.
+> 
+> **For Features fetched by HTTPS URI**, two Features are identical if the contents of the tgz are identical (hash to the > same value), and the options executed against the Feature are equal (compared value by value).  If any of these conditions  are not met, the Features are considered not equal.
+> 
+> **For local Features**, each Feature is considered unique and not equal to any other local Feature.
+> 
+> ### Definition: Round Stable Sort
+> 
+> To prevent non-deterministic behavior, the algorithm will sort each **round** according to the following rules:
+> 
+> - Compare and sort each Feature lexiographically by their fully qualified resource name (For OCI-published Features, that  means the ID without version or digest.).  If the comparison is equal:
+> - Compare and sort each Feature from oldest to newest tag (`latest` being the "most new").  If the comparision is equal:
+> - Compare and sort each Feature by their options by:
+>   - Greatest number of user-defined options (note omitting an option will default that value to the Feature's default value  and is not considered a user-defined option). If the comparison is equal:
+>   - Sort the provided option keys lexicographically.  If the comparison is equal:
+>   - Sort the provided option values lexicographically. If the comparision is equal:
+> - Sort Features by their canonical name (For OCI-published Features, the Feature ID resolved to the digest hash).
+> 
+> If there is no difference based on these comparator rules, the Features are considered equal.
+>
+> 
+
+
+> ## Dependency installation order algorithm
+>
+> An implementing tool is responsible for calculating the Feature installation order (or providing an error if no valid installation order can be resolved). The set of Features to be installed is the union of user-defined Features (those directly indicated in the user's `devcontainer.json` and their dependencies (those indicated by the `dependsOn` or `installsAfter` property, taking into account the user dev container's `overrideFeatureInstallOrder` property).  The implmenting tool will perform the following steps:
+> ### (1) Build a dependency graph
+> 
+> From the user-defined Features, the orchestrating tool will build a dependency graph.  The graph will be built by traversing the `dependsOn` and `installsAfter` properties of each Feature.  The metadata for each dependency is then fetched and the node added as an edge to to the dependent Feature.  For `dependsOn`  dependencies, the dependency will be fed back into the worklist to be recursively resolved. 
+> 
+> An accumulator is maintained with all uniquely discovered and user-provided Features, each with a reference to its dependencies.  If the exact Feature (see **Feature Equality**) has already been added to the accumulator, it will not be added again.  The accumulator will be fed into (B3) after the Feature tree has  been resolved.
+> 
+> The graph may be stored as an adjacency list with two kinds of edges (1) `dependsOn` edges or "hard dependencies" and (2) `installsAfter` edges or "soft dependencies".
+> 
+> ### (2) Assigning round priority
+> 
+> Each node in the graph has an implicit, default `roundPriority` of 0.
+> 
+> To influence installation order globally while still honoring the dependency graph of built in **(1)**, `roundPriority` values may be tweaks for each Feature.  When each round is calculated in **(3)**, only the Features equal to the max `roundPriority` of that set will be committed (the remaining will be > uncommitted and reevaulated in subsequent rounds).
+> 
+> The `roundPriority` is set to a non-zero value in the following instances:
+> 
+> - If the [`devcontainer.json` contains an `overrideFeatureInstallOrder`](#the-overridefeatureinstallorder-property).
+> 
+> #### (3) Round-based sorting
+> 
+> Perform a sort on the result of **(1)** in rounds. This sort will rearrange Features, producing a sorted list of Features to install.  The sort will be performed as follows: 
+> 
+> Start with all the elements from **(2)** in a `worklist` and an empty list `installationOrder`.  While the `worklist` is not empty, iterate through each element in the `worklist` and check if all its dependencies (if any) are already members of `installationOrder`.  If the check is true, add it to an intermediate  list `round` If not, skip it.  Equality is determined in **Feature Equality**.
+> 
+> Then for each intermediate `round` list, commit to `installationOrder` only those nodes who share the maximum `roundPriority`.  Return all nodes in `round` with a strictly lower `roundPriority` to the `worklist` to be reprocessed in subsequent iterations.  If there are multiple nodes with the same `roundPriority`,  commit them to `installationOrder` with a final sort according to **Round Stable Sort**.
+> 
+> Repeat for as many rounds as necessary until `worklist` is empty.  If there is ever a round where no elements are added to `installationOrder`, the algorithm should terminate and return an error.  This indicates a circular dependency or other fatal error in the dependency graph.  Implementations should attempt to  provide the user with information about the error and possible mitigation strategies.
+>
+> ### Notes
+>
+> From an implementation point of view, `installsAfter` nodes may be added as a separate set of directed edges, just as `dependsOn` nodes are added as directed edges (see **(1)**).  Before round-based installation and sorting **(3)**, an orchestrating tool should remove all `installsAfter` directed edges that do not correspond with a Feature in the `worklist` that is set to be installed.  In each round, a Feature can then be installed if all its requirements (both `dependsOn` and `installsAfter` dependencies) have been fulfilled in previous rounds.
+> 
+> An implemention should fail the dependency resolution step if the evaluation of the `installsAfter` property results in an inconsistent state (eg: a circular dependency).
+>
+
 
 ### Option Resolution
 

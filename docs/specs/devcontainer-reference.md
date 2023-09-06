@@ -58,32 +58,32 @@ To apply the metadata together with a user's devcontainer.json at runtime the fo
 
 | Property | Type/Format | Merge Logic | devcontainer.json | devcontainer-feature.json |
 | -------- | ----------- | ----------- | :---------------: | :--------------: |
-| `id` | E.g., `ghcr.io/devcontainers/features/node:1` | Not merged. |   | x |
-| `init` | `boolean` | `true` if at least one is `true`, `false` otherwise. | x | x |
-| `privileged` | `boolean` | `true` if at least one is `true`, `false` otherwise. | x | x |
-| `capAdd` | `string[]` | Union of all `capAdd` arrays without duplicates. | x | x |
-| `securityOpt` | `string[]` | Union of all `securityOpt` arrays without duplicates. | x | x |
-| `entrypoint` | `string` | Collected list of all entrypoints. |   | x |
-| `mounts` | `(string \| { type, src, dst })[]` | Collected list of all mountpoints. Conflicts: Last source wins. | x | x |
-| `onCreateCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all onCreateCommands. | x | x  |
-| `updateContentCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all updateContentCommands. | x | x  |
-| `postCreateCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all postCreateCommands. | x | x  |
-| `postStartCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all postStartCommands. | x | x  |
-| `postAttachCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all postAttachCommands. | x | x  |
-| `waitFor` | enum | Last value wins. | x |   |
-| `customizations` | Object of tool-specific customizations. | Merging is left to the tools. | x | x |
-| `containerUser` | `string` | Last value wins. | x |   |
-| `remoteUser` | `string` | Last value wins. | x |   |
-| `userEnvProbe` | `string` (enum) | Last value wins. | x |   |
-| `remoteEnv` | Object of strings. | Per variable, last value wins. | x |   |
-| `containerEnv` | Object of strings. | Per variable, last value wins. | x |   |
-| `overrideCommand` | `boolean` | Last value wins. | x |   |
-| `portsAttributes` | Map of ports to attributes. | Per port (not per port attribute), last value wins. | x |   |
-| `otherPortsAttributes` | Port attributes. | Last value wins (not per port attribute). | x |   |
-| `forwardPorts` | `(number \| string)[]` | Union of all ports without duplicates. Last one wins (when mapping changes). | x |   |
-| `shutdownAction` | `string` (enum) | Last value wins. | x |   |
-| `updateRemoteUserUID` | `boolean` | Last value wins. | x |   |
-| `hostRequirements` | `cpus`, `memory`, `storage` | Max value wins. | x |   |
+| `id` | E.g., `ghcr.io/devcontainers/features/node:1` | Not merged. |   | ✓ |
+| `init` | `boolean` | `true` if at least one is `true`, `false` otherwise. | ✓ | ✓ |
+| `privileged` | `boolean` | `true` if at least one is `true`, `false` otherwise. | ✓ | ✓ |
+| `capAdd` | `string[]` | Union of all `capAdd` arrays without duplicates. | ✓ | ✓ |
+| `securityOpt` | `string[]` | Union of all `securityOpt` arrays without duplicates. | ✓ | ✓ |
+| `entrypoint` | `string` | Collected list of all entrypoints. |   | ✓ |
+| `mounts` | `(string \| { type, src, dst })[]` | Collected list of all mountpoints. Conflicts: Last source wins. | ✓ | ✓ |
+| `onCreateCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all onCreateCommands. | ✓ | ✓ |
+| `updateContentCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all updateContentCommands. | ✓ | ✓ |
+| `postCreateCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all postCreateCommands. | ✓ | ✓ |
+| `postStartCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all postStartCommands. | ✓ | ✓ |
+| `postAttachCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all postAttachCommands. | ✓ | ✓ |
+| `waitFor` | enum | Last value wins. | ✓ |   |
+| `customizations` | Object of tool-specific customizations. | Merging is left to the tools. | ✓ | ✓ |
+| `containerUser` | `string` | Last value wins. | ✓ |   |
+| `remoteUser` | `string` | Last value wins. | ✓ |   |
+| `userEnvProbe` | `string` (enum) | Last value wins. | ✓ |   |
+| `remoteEnv` | Object of strings. | Per variable, last value wins. | ✓ |   |
+| `containerEnv` | Object of strings. | Per variable, last value wins. | ✓ |   |
+| `overrideCommand` | `boolean` | Last value wins. | ✓ |   |
+| `portsAttributes` | Map of ports to attributes. | Per port (not per port attribute), last value wins. | ✓ |   |
+| `otherPortsAttributes` | Port attributes. | Last value wins (not per port attribute). | ✓ |   |
+| `forwardPorts` | `(number \| string)[]` | Union of all ports without duplicates. Last one wins (when mapping changes). | ✓ |   |
+| `shutdownAction` | `string` (enum) | Last value wins. | ✓ |   |
+| `updateRemoteUserUID` | `boolean` | Last value wins. | ✓ |   |
+| `hostRequirements` | `cpus`, `memory`, `storage`, `gpu` | Max value wins. | ✓ |   |
 
 Variables in string values will be substituted at the time the value is applied. When the order matters, the devcontainer.json is considered last.
 

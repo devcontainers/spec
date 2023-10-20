@@ -1,6 +1,8 @@
 # Supporting tools and services
 
-This page outlines tools and services that currently support the development container specification, including the `devcontainer.json` format. A `devcontainer.json` file in your project tells tools and services that support the dev container spec how to access (or create) a dev container with a well-defined tool and runtime stack. 
+**Note: For the latest set of supporting tools, please check out https://containers.dev/supporting.**
+
+This page outlines tools and services that currently support the Development Container Specification, including the `devcontainer.json` format. A `devcontainer.json` file in your project tells tools and services that support the dev container spec how to access (or create) a dev container with a well-defined tool and runtime stack. 
 
 While most [dev container properties](devcontainerjson-reference.md) apply to any supporting tool or service, a few are specific to certain tools, which are outlined below.
 
@@ -8,7 +10,7 @@ While most [dev container properties](devcontainerjson-reference.md) apply to an
 
 ### Visual Studio Code
 
-Visual studio code specific properties go under `vscode` inside `customizations`.
+Visual Studio Code specific properties go under `vscode` inside `customizations`.
 
 
 ```jsonc
@@ -28,11 +30,11 @@ Visual studio code specific properties go under `vscode` inside `customizations`
 | `extensions` | array | An array of extension IDs that specify the extensions that should be installed inside the container when it is created. Defaults to `[]`. |
 | `settings` | object | Adds default `settings.json` values into a container/machine specific settings file. Defaults to `{}`. |
 
-Please note that [Dev Containers](#visual-studio-code-remote---containers) and [GitHub Codespaces](#github-codespaces) support the VS Code properties.
+Please note that the VS Code [Dev Containers](#visual-studio-code-remote---containers) extension and [GitHub Codespaces](#github-codespaces) support the VS Code properties.
 
 ### Visual Studio
 
-Visual Studio added Dev Container support in Visual Studio 2022 17.4 for C++ projects using CMake Presets. It is part of the Linux and embedded development with C++ workload, so make sure it is selected in your VS installation. Visual Studio manages the lifecycle of Dev Containers it uses as you work, but it treats them as remote targets in a similar way to other Linux or WSL targets.
+Visual Studio added dev container support in Visual Studio 2022 17.4 for C++ projects using CMake Presets. It is part of the Linux and embedded development with C++ workload, so make sure it is selected in your VS installation. Visual Studio manages the lifecycle of dev containers it uses as you work, but it treats them as remote targets in a similar way to other Linux or WSL targets.
 
 You may learn more in the [announcement blog post](https://devblogs.microsoft.com/cppblog/dev-containers-for-c-in-visual-studio/).
 
@@ -48,11 +50,11 @@ VS Code has a [CLI](https://code.visualstudio.com/docs/remote/devcontainer-cli) 
 
 ### Cachix devenv
 
-Cachix's [devenv](https://devenv.sh/) supports automatically generating a `.devcontainer.json` file so you can use it with any Dev Container spec supporting tool. See [devenv documentation](https://devenv.sh/integrations/codespaces-devcontainer/) for detais. 
+Cachix's [devenv](https://devenv.sh/) supports automatically generating a `.devcontainer.json` file so you can use it with any Dev Container Spec supporting tool. See [devenv documentation](https://devenv.sh/integrations/codespaces-devcontainer/) for detais. 
 
 ### Jetpack.io Devbox
 
-[Jetpack.io's VS Code extension](https://marketplace.visualstudio.com/items?itemName=jetpack-io.devbox) supports a **Generate Dev Container files** command so you can use Jetpack.io from Dev Container spec supporting tools.
+[Jetpack.io's VS Code extension](https://marketplace.visualstudio.com/items?itemName=jetpack-io.devbox) supports a **Generate Dev Container files** command so you can use Jetpack.io from Dev Container Spec supporting tools.
 
 ### Visual Studio Code Dev Containers
 
@@ -62,7 +64,7 @@ The [**Visual Studio Code Dev Containers** extension](https://marketplace.visual
 
 #### Product specific properties
 
-Dev Containers implements the [VS Code properties](#visual-studio-code) specific properties.
+Dev Containers implements the [VS Code](#visual-studio-code) specific properties.
 
 #### Product specific limitations
 
@@ -84,9 +86,9 @@ A [codespace](https://docs.github.com/en/codespaces/overview) is a development e
 > **Tip** Codespaces implements an auto `workspaceFolder` mount in **Docker Compose** scenarios.
 
 #### Product specific properties
-GitHub Codespaces works with a growing number of tools and, where applicable, their `devcontainer.json` properties. For example, connecting the Codespaces web editor or VS Code enables the use of [VS Code properties](#visual-studio-code).
+GitHub Codespaces works with a growing number of tools and, where applicable, their `devcontainer.json` properties. For example, connecting the codespaces web editor or VS Code enables the use of [VS Code properties](#visual-studio-code).
 
-If your Codespaces project needs additional permissions for other repositories, you can configure this through the `repositories` and `permissions` properties. You may learn more about this in the [Codespaces documentation](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-repository-access-for-your-codespaces). As with other tools, Codespaces specific properties are placed within a `codespaces` namespace inside the `customizations` property.
+If your codespaces project needs additional permissions for other repositories, you can configure this through the `repositories` and `permissions` properties. You may learn more about this in the [Codespaces documentation](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-repository-access-for-your-codespaces). As with other tools, Codespaces specific properties are placed within a `codespaces` namespace inside the `customizations` property.
 
 ```jsonc
 "customizations": {
@@ -118,11 +120,11 @@ You can customize which files are initially opened when the codespace is created
 
 The paths are relative to the root of the repository. They will be opened in order, with the first file activated.
 
-Note that currently Codespaces reads these properties from devcontainer.json, not image metadata.
+Note that currently codespaces reads these properties from `devcontainer.json`, not image metadata.
 
 #### Product specific limitations
 
-Some properties may apply differently to Codespaces.
+Some properties may apply differently to codespaces.
 
 | Property or variable | Type | Description |
 |----------|---------|----------------------|

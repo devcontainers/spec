@@ -1,6 +1,6 @@
 # Dev Container Features reference
 
-Development container "Features" are self-contained, shareable units of installation code and development container configuration. The name comes from the idea that referencing one of them allows you to quickly and easily add more tooling, runtime, or library "Features" into your development container for you or your collaborators to use.
+**Development Container Features** are self-contained, shareable units of installation code and development container configuration. The name comes from the idea that referencing one of them allows you to quickly and easily add more tooling, runtime, or library "Features" into your development container for you or your collaborators to use.
 
 > **Note:** While Features may be installed on top of any base image, the implementation of a Feature might restrict it to a subset of possible base images.  
 > 
@@ -12,7 +12,7 @@ Feature metadata is captured by a `devcontainer-feature.json` file in the root f
 
 ## Folder structure 
 
-A Feature is a self contained entity in a folder with at least a `devcontainer-feature.json` and `install.sh` entrypoint script.  Additional files are permitted and are packaged along side the required files.
+A Feature is a self contained entity in a folder with at least a `devcontainer-feature.json` and `install.sh` entrypoint script. Additional files are permitted and are packaged along side the required files.
 
 ```
 +-- feature
@@ -51,7 +51,6 @@ All properties are optional **except for `id`, `version`, and `name`**.
 | `mounts` | object | Defaults to unset. Cross-orchestrator way to add additional mounts to a container. Each value is an object that accepts the same values as the [Docker CLI `--mount` flag](https://docs.docker.com/engine/reference/commandline/run/#mount). The Pre-defined [devcontainerId](./devcontainerjson-reference.md/#variables-in-devcontainerjson) variable may be referenced in the value. For example:<br />`"mounts": [{ "source": "dind-var-lib-docker", "target": "/var/lib/docker", "type": "volume" }]` |
 
 (**) The ID must refer to either a Feature (1) published to an OCI registry, (2) a Feature Tgz URI, or (3) a Feature in the local file tree. Deprecated Feature identifiers (i.e GitHub Release) are not supported and the presence of this property may be considered a fatal error or ignored. For [local Features (ie: during development)](https://containers.dev/implementors/features-distribution/#addendum-locally-referenced), you may also depend on other local Features by providing a relative path to the Feature, relative to folder containing the active `devcontainer.json`. This behavior of Features within this property again mirror the `features` object in `devcontainer.json`.
-
 
 ### Lifecycle Hooks
 
@@ -113,7 +112,7 @@ The container user can be set with `containerUser` in the devcontainer.json and 
 
 ### Dev Container ID
 
-An identifier will be referred to as `${devcontainerId}` in the devcontainer.json and the Feature metadata and that will be replaced with the dev container's id. It should only be used in parts of the configuration and metadata that is not used for building the image because that would otherwise prevent pre-building the image at a time when the dev container's id is not known yet. Excluding boolean, numbers and enum properties the properties supporting `${devcontainerId}` in the Feature metadata are: `entrypoint`, `mounts`, `customizations`.
+An identifier will be referred to as `${devcontainerId}` in the `devcontainer.json` and the Feature metadata and that will be replaced with the dev container's id. It should only be used in parts of the configuration and metadata that is not used for building the image because that would otherwise prevent pre-building the image at a time when the dev container's id is not known yet. Excluding boolean, numbers and enum properties the properties supporting `${devcontainerId}` in the Feature metadata are: `entrypoint`, `mounts`, `customizations`.
 
 Implementations can choose how to compute this identifier. They must ensure that it is unique among other dev containers on the same Docker host and that it is stable across rebuilds of dev containers. The identifier must only contain alphanumeric characters. We describe a way to do this below.
 
@@ -168,12 +167,11 @@ function uniqueIdForLabels(idLabels) {
 
 Features are referenced in a user's [`devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) under the top level `features` object. 
 
-A user can specify an arbitrary number of Features.  At build time, these Features will be installed in an order defined by a combination of the [installation order rules and implementation](#Installation-Order). 
+A user can specify an arbitrary number of Features. At build time, these Features will be installed in an order defined by a combination of the [installation order rules and implementation](#Installation-Order). 
 
-A single Feature is provided as a key/value pair, where the key is the Feature identifier, and the value is an object containing "options" (or empty for "default").  Each key in the Feature object must be unique.
+A single Feature is provided as a key/value pair, where the key is the Feature identifier, and the value is an object containing "options" (or empty for "default"). Each key in the Feature object must be unique.
 
 These options are sourced as environment variables at build-time, as specified in [Option Resolution](#Option-Resolution).
-
 
 Below is a valid `features` object provided as an example.
 ```jsonc
@@ -298,7 +296,7 @@ In the snippet above, `myfeature` MUST be installed after `foo`, `bar`, and `baz
 
 #### The `installsAfter` Property
 
-The `installsAfter` property indicates a "soft dependency" that influences the installation order of Features that are already queued to be installed.  The effective behavior of this property is the same as `dependsOn`, with the following differences:
+The `installsAfter` property indicates a "soft dependency" that influences the installation order of Features that are already queued to be installed. The effective behavior of this property is the same as `dependsOn`, with the following differences:
 
 - `installsAfter` is **not** evaluated recursively.
 - `installsAfter` only influences the installation order of Features that are **already set to be installed**.  Any Feature not set to be installed after (1) resolving the `dependsOn` dependency tree or (2) indicated by the user's `devcontainer.json` should not be added to the installation list.
@@ -316,8 +314,7 @@ The `installsAfter` property indicates a "soft dependency" that influences the i
 }
 ```
 
-In the snippet above, `myfeature` must be installed after `foo` and `bar` **if** the Feature is already queued to be installed.  If `second` and `third` are not already queued to be installed, this dependency relationship should be ignored.
-
+In the snippet above, `myfeature` must be installed after `foo` and `bar` **if** the Feature is already queued to be installed. If `second` and `third` are not already queued to be installed, this dependency relationship should be ignored.
 
 #### The 'overrideFeatureInstallOrder' property
 
@@ -349,7 +346,7 @@ const roundPriority = {
 }
 ```
 
-This property must not influence the dependency relationship as defined by the dependency graph (see [dependency graph](#1-build-a-dependency-graph)) and shall only be evaulated at the round-based sorting step (see [round sort](#3-round-based-sorting)).  Put another way, this property cannot "pull forward" a Feature until all of its dependencies (both soft and hard) have been installed.  After a Feature's dependencies have been installed in other rounds, this property should "pull forward" each Feature as early as possible (given the order of identifiers in the array).
+This property must not influence the dependency relationship as defined by the dependency graph (see [dependency graph](#1-build-a-dependency-graph)) and shall only be evaulated at the round-based sorting step (see [round sort](#3-round-based-sorting)).  Put another way, this property cannot "pull forward" a Feature until all of its dependencies (both soft and hard) have been installed. After a Feature's dependencies have been installed in other rounds, this property should "pull forward" each Feature as early as possible (given the order of identifiers in the array).
 
 Similar to `installsAfter`, this property's members may not provide options, nor are they able to be pinned to a specific version tag or digest.
 
@@ -381,7 +378,6 @@ If a Feature is indicated in `overrideFeatureInstallOrder` but not a member of t
 > If there is no difference based on these comparator rules, the Features are considered equal.
 >
 > 
-
 
 > ## Dependency installation order algorithm
 >

@@ -114,6 +114,7 @@ There are multiple properties that allow users to control how `docker build` wor
 
 - `build.context` 
 - `build.args`
+- `build.cliOptions`
 - `build.target`
 - `build.cacheFrom`
 

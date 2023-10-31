@@ -1,6 +1,6 @@
 # Dev container specification
 
-The purpose of the **development container** specification is to provide a way to enrich containers with the content and metadata necessary to enable development inside them. These container **environments** should be easy to use, create, and recreate. 
+The purpose of the **Development Container Specification** is to provide a way to enrich containers with the content and metadata necessary to enable development inside them. These container **environments** should be easy to use, create, and recreate. 
 
 A **development container** is a container in which a user can develop an application.  Tools that want to implement this specification should provide a set of features/commands that give more flexibility to users and allow **development containers** to scale to large development groups.
 
@@ -8,26 +8,25 @@ An **environment** is defined as a logical instance of one or more **development
 
 # Metadata
 
-**Development containers** allow one to define a repeatable development environment for a user or team of developers that includes the execution environment the application needs. A development container defines an environment in which you develop your application before you are ready to deploy. While deployment and development containers may resemble one another, you may not want to include tools in a deployment image that you use during development and you may need to use different secrets or other settings. 
+Development containers allow one to define a repeatable development environment for a user or team of developers that includes the execution environment the application needs. A development container defines an environment in which you develop your application before you are ready to deploy. While deployment and development containers may resemble one another, you may not want to include tools in a deployment image that you use during development and you may need to use different secrets or other settings. 
 
 Furthermore, working inside a development container can require additional **metadata** to drive tooling or service experiences than you would normally need with a production container. Providing a structured and consistent form for this metadata is a core part of this specification.
 
 ## devcontainer.json
 
-While the structure of this metadata is critical, it is also important to call out how this data can be represented on disk where appropriate. While other representations may be added over time, metadata can be stored in a JSON with Comments file called `devcontainer.json` today. Products using it should expect to find a devcontainer.json file in one or more of the following locations (in order of precedence):
+While the structure of this metadata is critical, it is also important to call out how this data can be represented on disk where appropriate. While other representations may be added over time, metadata can be stored in a JSON with Comments file called `devcontainer.json` today. Products using it should expect to find a `devcontainer.json` file in one or more of the following locations (in order of precedence):
 
 - .devcontainer/devcontainer.json
 - .devcontainer.json
-- .devcontainer/**/devcontainer.json (where ** is a sub-folder)
+- .devcontainer/`<folder>`/devcontainer.json (where `<folder>` is a sub-folder, one level deep)
 
 It is valid that these files may exist in more than one location, so consider providing a mechanism for users to select one when appropriate.
 
 ## Image Metadata
 
-Certain dev container metadata properties can be stored in an image label as an array of metadata snippets. This allows them to be stored in prebuilt images, such that, the image and its related configuration are self-contained. These contents should then be merged with any local devcontainer.json file contents at the time the container is created. An array is used so subsequent image builds can simply append changes to the array rather than attempting to merge at that point - which improves compatibility with arbitrary image build systems.
+Certain dev container metadata properties can be stored in an image label as an array of metadata snippets. This allows them to be stored in prebuilt images, such that, the image and its related configuration are self-contained. These contents should then be merged with any local `devcontainer.json` file contents at the time the container is created. An array is used so subsequent image builds can simply append changes to the array rather than attempting to merge at that point - which improves compatibility with arbitrary image build systems.
 
-Metadata should be representative of with the following structure, using one entry per [Dev Container Feature](../features) and devcontainer.json (see table below for the full list):
-
+Metadata should be representative of with the following structure, using one entry per [Dev Container Feature](../features) and `devcontainer.json` (see table below for the full list):
 
 ```json
 [
@@ -54,44 +53,44 @@ The metadata is added to the image as a `devcontainer.metadata` label with a JSO
 
 ### Merge Logic
 
-To apply the metadata together with a user's devcontainer.json at runtime the following merge logic by property is used. The table also notes which properties are currently supported coming from the devcontainer.json and which from the feature metadata, this will change over time as we add more properties.
+To apply the metadata together with a user's `devcontainer.json` at runtime the following merge logic by property is used. The table also notes which properties are currently supported coming from the `devcontainer.json` and which from the Feature metadata, this will change over time as we add more properties.
 
-| Property | Type/Format | Merge Logic | devcontainer.json | Feature Metadata |
+| Property | Type/Format | Merge Logic | devcontainer.json | devcontainer-feature.json |
 | -------- | ----------- | ----------- | :---------------: | :--------------: |
-| `id` | E.g., `ghcr.io/devcontainers/features/node:1` | Not merged. |   | x |
-| `init` | `boolean` | `true` if at least one is `true`, `false` otherwise. | x | x |
-| `privileged` | `boolean` | `true` if at least one is `true`, `false` otherwise. | x | x |
-| `capAdd` | `string[]` | Union of all `capAdd` arrays without duplicates. | x | x |
-| `securityOpt` | `string[]` | Union of all `securityOpt` arrays without duplicates. | x | x |
-| `entrypoint` | `string` | Collected list of all entrypoints. |   | x |
-| `mounts` | `(string \| { type, src, dst })[]` | Collected list of all mountpoints. Conflicts: Last source wins. | x | x |
-| `onCreateCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all onCreateCommands. | x |   |
-| `updateContentCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all updateContentCommands. | x |   |
-| `postCreateCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all postCreateCommands. | x |   |
-| `postStartCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all postStartCommands. | x |   |
-| `postAttachCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all postAttachCommands. | x |   |
-| `waitFor` | enum | Last value wins. | x |   |
-| `customizations` | Object of tool-specific customizations. | Merging is left to the tools. | x | x |
-| `containerUser` | `string` | Last value wins. | x |   |
-| `remoteUser` | `string` | Last value wins. | x |   |
-| `userEnvProbe` | `string` (enum) | Last value wins. | x |   |
-| `remoteEnv` | Object of strings. | Per variable, last value wins. | x |   |
-| `containerEnv` | Object of strings. | Per variable, last value wins. | x |   |
-| `overrideCommand` | `boolean` | Last value wins. | x |   |
-| `portsAttributes` | Map of ports to attributes. | Per port (not per port attribute), last value wins. | x |   |
-| `otherPortsAttributes` | Port attributes. | Last value wins (not per port attribute). | x |   |
-| `forwardPorts` | `(number \| string)[]` | Union of all ports without duplicates. Last one wins (when mapping changes). | x |   |
-| `shutdownAction` | `string` (enum) | Last value wins. | x |   |
-| `updateRemoteUserUID` | `boolean` | Last value wins. | x |   |
-| `hostRequirements` | `cpus`, `memory`, `storage` | Max value wins. | x |   |
+| `id` | E.g., `ghcr.io/devcontainers/features/node:1` | Not merged. |   | ✓ |
+| `init` | `boolean` | `true` if at least one is `true`, `false` otherwise. | ✓ | ✓ |
+| `privileged` | `boolean` | `true` if at least one is `true`, `false` otherwise. | ✓ | ✓ |
+| `capAdd` | `string[]` | Union of all `capAdd` arrays without duplicates. | ✓ | ✓ |
+| `securityOpt` | `string[]` | Union of all `securityOpt` arrays without duplicates. | ✓ | ✓ |
+| `entrypoint` | `string` | Collected list of all entrypoints. |   | ✓ |
+| `mounts` | `(string \| { type, src, dst })[]` | Collected list of all mountpoints. Conflicts: Last source wins. | ✓ | ✓ |
+| `onCreateCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all onCreateCommands. | ✓ | ✓ |
+| `updateContentCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all updateContentCommands. | ✓ | ✓ |
+| `postCreateCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all postCreateCommands. | ✓ | ✓ |
+| `postStartCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all postStartCommands. | ✓ | ✓ |
+| `postAttachCommand` | `string \| string[] \| {[key: string]: string \| string[]}` | Collected list of all postAttachCommands. | ✓ | ✓ |
+| `waitFor` | enum | Last value wins. | ✓ |   |
+| `customizations` | Object of tool-specific customizations. | Merging is left to the tools. | ✓ | ✓ |
+| `containerUser` | `string` | Last value wins. | ✓ |   |
+| `remoteUser` | `string` | Last value wins. | ✓ |   |
+| `userEnvProbe` | `string` (enum) | Last value wins. | ✓ |   |
+| `remoteEnv` | Object of strings. | Per variable, last value wins. | ✓ |   |
+| `containerEnv` | Object of strings. | Per variable, last value wins. | ✓ |   |
+| `overrideCommand` | `boolean` | Last value wins. | ✓ |   |
+| `portsAttributes` | Map of ports to attributes. | Per port (not per port attribute), last value wins. | ✓ |   |
+| `otherPortsAttributes` | Port attributes. | Last value wins (not per port attribute). | ✓ |   |
+| `forwardPorts` | `(number \| string)[]` | Union of all ports without duplicates. Last one wins (when mapping changes). | ✓ |   |
+| `shutdownAction` | `string` (enum) | Last value wins. | ✓ |   |
+| `updateRemoteUserUID` | `boolean` | Last value wins. | ✓ |   |
+| `hostRequirements` | `cpus`, `memory`, `storage`, `gpu` | Max value wins. | ✓ |   |
 
-Variables in string values will be substituted at the time the value is applied. When the order matters, the devcontainer.json is considered last.
+Variables in string values will be substituted at the time the value is applied. When the order matters, the `devcontainer.json` is considered last.
 
 ### Notes
 
 - Passing the label as a `LABEL` instruction in the Dockerfile:
 	- The size limit on Dockerfiles is around 1.3MB. The line length is limited to 65k characters.
-	- Using one line per feature should allow for making full use of these limits.
+	- Using one line per Feature should allow for making full use of these limits.
 - Passing the label as a command line argument:
 	- There is no size limit documented for labels, but the daemon returns an error when the request header is >500kb.
 	- The 500kb limit is shared, so we cannot use a second label in the same build to avoid it.
@@ -109,7 +108,7 @@ Image based configurations only reference an image that should be reachable and 
 
 ## Dockerfile based
 
-These configurations are defined as using a `Dockerfile` to define the starting point of the **development containers**. As with image based configurations, it is assumed that any base images are already reachable by **Docker** when performing a `docker build` command. The only required parameter in this case is the relative reference to the `Dockerfile` in `build.dockerfile`. The details are [here](devcontainerjson-reference.md#image-or-dockerfile-specific-properties).
+These configurations are defined as using a `Dockerfile` to define the starting point of the development containers. As with image based configurations, it is assumed that any base images are already reachable by **Docker** when performing a `docker build` command. The only required parameter in this case is the relative reference to the `Dockerfile` in `build.dockerfile`. The details are [here](devcontainerjson-reference.md#image-or-dockerfile-specific-properties).
 
 There are multiple properties that allow users to control how `docker build` works:
 
@@ -123,14 +122,14 @@ There are multiple properties that allow users to control how `docker build` wor
 Docker Compose configurations use `docker-compose` (which may be Docker Compose V1 or aliased Docker Compose V2) to create and manage a set of containers required for an application. As with the other configurations, any images required for this operation are assumed to be reachable. The required parameters are:
 
 - `dockerComposeFile`: the reference to the Docker Compose file(s) to be used.
-- `service`: declares the **main** container that will be used for all other operations. Tools are assumed to also use this parameter to connect to the **development container**, although they can provide facilities to connect to the other containers as required by the user.
+- `service`: declares the **main** container that will be used for all other operations. Tools are assumed to also use this parameter to connect to the development container, although they can provide facilities to connect to the other containers as required by the user.
 - `runServices`: an optional property that indicates the set of services in the `docker-compose` configuration that should be started or stopped with the environment.
 
-It is important to note that **image** and **dockerfile** properties are not needed since Docker Compose supports them natively in the format. 
+It is important to note that `image` and `dockerfile` properties are not needed since Docker Compose supports them natively in the format. 
 
 # Other options
 
-In addition to the configuration options explained above, there are other settings that apply when creating **development containers** to facilitate their use by developers. 
+In addition to the configuration options explained above, there are other settings that apply when creating development containers to facilitate their use by developers. 
 
 A complete list of available metadata properties and their purposes can be found in the [`devcontainer.json` reference](devcontainerjson-reference.md). However, we will describe the critical ones below in more detail.
 
@@ -143,12 +142,11 @@ Environment variables can be set at different points in the dev container lifecy
 
 The reason for this separation is it allows for the use of information not available at image build time and simplifies updating the environment for project/repository specific needs without modifying an image. With this in in mind, it's important to note that implementing tools should also support the [dynamic variable syntax](devcontainerjson-reference.md#variables-in-devcontainerjson) described in the metadata reference document.
 
-
-Another notable and important environment variable related property is **`userEnvProbe`**. Implementing tools should use this property to "probe" for expected environment variables using the specified type of shell. However, it does not specify that this type of shell needs to be used for all sub-processes (given the performance impact). Instead, "probed" environment variables should be merged with Remote environment variables for any processes the implementer injects after the container is created.  This allows implementors to emulate developer expected behaviors around values added to their profile and rc files. 
+Another notable and important environment variable related property is **`userEnvProbe`**. Implementing tools should use this property to "probe" for expected environment variables using the specified type of shell. However, it does not specify that this type of shell needs to be used for all sub-processes (given the performance impact). Instead, "probed" environment variables should be merged with Remote environment variables for any processes the implementer injects after the container is created. This allows implementors to emulate developer expected behaviors around values added to their profile and rc files. 
 
 ## Mounts
 
-Mounts allow containers to have access to the underlying machine, share data between containers and to persist information between **development containers**. 
+Mounts allow containers to have access to the underlying machine, share data between containers and to persist information between development containers. 
 
 A default mount should be included so that the source code is accessible from inside the container. Source code is stored outside of the container so that a developer's in-flight edits can be extracted, or a new container created in the event a container no longer starts.
 
@@ -184,7 +182,7 @@ A development environment goes through different lifecycle events during its use
 
 ## Configuration Validation
 
-The exact steps required to validate configuration can vary based on exactly where the **development container** metadata is persisted. However, when considering a `devcontainer.json` file, the following validation should occur:
+The exact steps required to validate configuration can vary based on exactly where the development container metadata is persisted. However, when considering a `devcontainer.json` file, the following validation should occur:
 
 1. Validate that a workspace source folder has been provided. It is up to the implementing tool to determine what to do if no source folder is provided.
 2. Search for a `devcontainer.json` file in one of the locations [above](#devcontainerjson) in the workspace source folder. 
@@ -203,7 +201,7 @@ During this step, the following is executed:
 
 ### Image creation
 
-The first part of environment creation is generating the final image(s) that the **development containers** are going to use. This step is orchestrator dependent and can consist of just pulling a Docker image, running Docker build, or docker-compose build. Additionally, this step is useful on its own since it permits the creation of intermediate images that can be uploaded and used by other users, thus cutting down on creation time. It is encouraged that tools implementing this specification give access to a command that just executes this step.
+The first part of environment creation is generating the final image(s) that the development containers are going to use. This step is orchestrator dependent and can consist of just pulling a Docker image, running Docker build, or docker-compose build. Additionally, this step is useful on its own since it permits the creation of intermediate images that can be uploaded and used by other users, thus cutting down on creation time. It is encouraged that tools implementing this specification give access to a command that just executes this step.
 
 This step executes the following tasks:
 

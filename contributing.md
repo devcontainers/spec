@@ -64,4 +64,4 @@ We use the following [labels](https://github.com/microsoft/dev-container-spec/la
 There are several additional options to engage with the dev container community, such as asking questions, providing feedback, or engaging on how your team may use or contribute to dev containers:
 - [GitHub Discussions](https://github.com/devcontainers/spec/discussions): This is a great opportunity to connect with the community and maintainers of this project, without the requirement of contributing a change to the actual spec (which we see more in issues and PRs)
 - [Community Slack channel](https://aka.ms/dev-container-community): This is a great opportunity to connect with the community and maintainers
-- You can always check out the issues and PRs (and contribute new ones) across the repos in the [Dev Containers GitHub org](https://github.com/devcontainers/devcontainers.github.io/edit/gh-pages/contributing.md) too!
+- You can always check out the issues and PRs (and contribute new ones) across the repos in the [Dev Containers GitHub org](https://github.com/devcontainers) too!

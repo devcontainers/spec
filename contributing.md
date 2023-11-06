@@ -37,8 +37,19 @@ Tool-specific properties are contained in namespaces in the `"customizations"` p
 
 You may propose adding a new namespace for a specific tool, and any properties specific to that tool.
 
-### GitHub Discussions
-If you'd like to discuss the spec, such as asking questions, providing feedback, or engaging on how your team may use or contribute to dev containers, please check out the [GitHub Discussions](https://github.com/devcontainers/spec/discussions) in this repo. This is a great opportunity to connect with the community and maintainers of this project, without the requirement of contributing a change to the actual spec (which we see more in issues and PRs).
+## Formatting Guidelines
+
+When contributing an official doc or referencing dev containers in your projects, please consider the following guidelines:
+
+- Refer to the spec as the "Development Container Specification"
+     - All capital letters
+     - Singular "Container" rather than plural "Containers"
+- The term "dev container" shouldn't be capitalized on its own
+     - It should only be capitalized when referring to an official tool title, like the VS Code Dev Containers extension 
+- Signify `devcontainer.json` is a file type through backticks 
+- Features and Templates should always be capitalized
+- Refer to the CLI as the "Dev Container CLI" (note the caps)
+- Use bolding for emphasis sprinkled throughout sections, rather than try to use it to always bold certain terms
 
 ## Review process
 
@@ -48,3 +59,9 @@ We use the following [labels](https://github.com/microsoft/dev-container-spec/la
 - `finalization`: Proposals we intend to make part of the spec.
 
 [Milestones](https://github.com/microsoft/dev-container-spec/milestones) use a "month year" pattern (i.e. January 2022). If a finalized proposal is added to a milestone, it is intended to be merged during that milestone.
+
+## Community Engagement
+There are several additional options to engage with the dev container community, such as asking questions, providing feedback, or engaging on how your team may use or contribute to dev containers:
+- [GitHub Discussions](https://github.com/devcontainers/spec/discussions): This is a great opportunity to connect with the community and maintainers of this project, without the requirement of contributing a change to the actual spec (which we see more in issues and PRs)
+- [Community Slack channel](https://aka.ms/dev-container-community): This is a great opportunity to connect with the community and maintainers
+- You can always check out the issues and PRs (and contribute new ones) across the repos in the [Dev Containers GitHub org](https://github.com/devcontainers/devcontainers.github.io/edit/gh-pages/contributing.md) too!

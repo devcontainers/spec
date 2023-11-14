@@ -1,4 +1,4 @@
-# GPU host requirement
+# GPU Host Requirement
 
 This has now been implemented:
 * Discussion issue: https://github.com/devcontainers/spec/issues/82

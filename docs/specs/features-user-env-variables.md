@@ -1,4 +1,4 @@
-# User env variables for Features
+# User Env Variables for Features
 
 This has now been implemented:
 * Discussion issue: https://github.com/devcontainers/spec/issues/91

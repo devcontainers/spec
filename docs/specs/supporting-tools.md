@@ -1,4 +1,4 @@
-# Supporting tools and services
+# Supporting Tools and Services
 
 **Note: For the latest set of supporting tools, please check out https://containers.dev/supporting.**
 

@@ -1,4 +1,4 @@
-# First class secrets support in dev containers implementations
+# First Class Secrets Support
 
 This has now been implemented:
 * Discussion issue: https://github.com/devcontainers/spec/issues/219

@@ -1,3 +1,11 @@
+# User env variables for Features
+
+This has now been implemented:
+* Discussion issue: https://github.com/devcontainers/spec/issues/91
+* CLI PR: https://github.com/devcontainers/cli/pull/228
+
+Below is the original proposal.
+
 ## Goal
 
 Feature scripts run as the `root` user and sometimes need to know which user account the dev container will be used with.

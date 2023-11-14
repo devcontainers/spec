@@ -1,5 +1,13 @@
 # Parallel lifecycle script execution
 
+This has now been implemented:
+* Discussion issue: https://github.com/devcontainers/spec/issues/83
+* CLI PR: https://github.com/devcontainers/cli/pull/172
+
+Below is the original proposal.
+
+## Goal
+
 Support executing multiple lifecycle scripts in parallel by providing them in `object` form.
 
 ## Motivation

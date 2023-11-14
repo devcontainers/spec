@@ -1,3 +1,11 @@
+# Lockfiles
+
+This has now been implemented:
+* Discussion issue: https://github.com/devcontainers/spec/issues/236
+* CLI PR: https://github.com/devcontainers/cli/issues/564
+
+Below is the original proposal.
+
 ## Goal
 
 Introduce a lockfile that records the exact version, download information and checksums for each feature listed in the devcontainer.json.

@@ -20,7 +20,7 @@ A GitHub Action and an Azure DevOps Task are available in [devcontainers/ci](htt
 
 You may review the specification in the [docs/specs folder](https://github.com/devcontainers/spec/tree/main/docs/specs) of this repo.
 
-You may also review proposed references in the [proposals folder](https://github.com/devcontainers/spec/tree/main/proposals).
+You may also review active proposals in the [proposals folder](https://github.com/devcontainers/spec/tree/main/proposals).
 
 Images used in this repo will be contained in the [images folder](/images). The icon for the [dev container GitHub org](https://github.com/devcontainers) is from the [Fluent icon library](https://github.com/microsoft/fluentui-system-icons/blob/master/assets/Cube/SVG/ic_fluent_cube_32_filled.svg).
 

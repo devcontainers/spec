@@ -1,6 +1,12 @@
 # Declarative Secrets
 
-## Motiviation
+This has now been implemented:
+* Discussion issue: https://github.com/devcontainers/spec/issues/198, https://github.com/devcontainers/spec/issues/216
+* Schema PR: https://github.com/devcontainers/spec/pull/303
+
+Below is the original proposal.
+
+## Motivation
 
 Various projects exist in the wild that require various secrets for them to run properly. Examples include:
 

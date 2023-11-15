@@ -1,6 +1,10 @@
-# [Proposal] Allow Dev Container Features to contribute lifecycle scripts
+# Allow Dev Container Features to contribute lifecycle scripts
 
-Related to: https://github.com/devcontainers/spec/issues/60, https://github.com/devcontainers/spec/issues/181
+This has now been implemented:
+* Discussion issue: https://github.com/devcontainers/spec/issues/60, https://github.com/devcontainers/spec/issues/181
+* CLI PR: https://github.com/devcontainers/cli/pull/390
+
+Below is the original proposal.
 
 ## Goal
 

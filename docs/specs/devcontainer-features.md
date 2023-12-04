@@ -56,13 +56,13 @@ All properties are optional **except for `id`, `version`, and `name`**.
 
 The following lifecycle hooks may be declared as properties of `devcontainer-feature.json`. 
 
-| Property | Type|
-| :--- | :--- |
-| `onCreateCommand` | [string, array, object](/docs/specs/devcontainerjson-reference.md#formatting-string-vs-array-properties)|
-| `updateContentCommand` | [string, array, object](/docs/specs/devcontainerjson-reference.md#formatting-string-vs-array-properties)|
-| `postCreateCommand` | [string, array, object](/docs/specs/devcontainerjson-reference.md#formatting-string-vs-array-properties)|
-| `postStartCommand` | [string, array, object](/docs/specs/devcontainerjson-reference.md#formatting-string-vs-array-properties) |
-| `postAttachCommand` | [string, array, object](/docs/specs/devcontainerjson-reference.md#formatting-string-vs-array-properties) |
+| Property | Type|Description | 
+| :--- | :--- | :-- |
+| `onCreateCommand` | [string, array, object](/docs/specs/devcontainerjson-reference.md#formatting-string-vs-array-properties)|First time inside the container immediately after it has started. |
+| `updateContentCommand` | [string, array, object](/docs/specs/devcontainerjson-reference.md#formatting-string-vs-array-properties)| First time inside the container after `onCreateCommand` whenever new content is available in the source tree during the creation process.|
+| `postCreateCommand` | [string, array, object](/docs/specs/devcontainerjson-reference.md#formatting-string-vs-array-properties)| First time after `updateContentCommand` and once the dev container has been assigned to a user.|
+| `postStartCommand` | [string, array, object](/docs/specs/devcontainerjson-reference.md#formatting-string-vs-array-properties) |Every time the container is successfully started.|
+| `postAttachCommand` | [string, array, object](/docs/specs/devcontainerjson-reference.md#formatting-string-vs-array-properties) |Every time a tool has successfully attached to the container.|
 
 #### Behavior
 

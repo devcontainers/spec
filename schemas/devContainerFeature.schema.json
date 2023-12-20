@@ -55,6 +55,11 @@
           },
           "type": "array"
         },
+        "dependsOn": {
+          "description": "An object of Feature dependencies that must be satisified before this Feature is installed. Elements follow the same semantics of the features object in devcontainer.json",
+          "additionalProperties": true
+          "type": "object"
+        },
         "licenseURL": {
           "description": "URL to the license for the Feature.",
           "type": "string"

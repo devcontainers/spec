@@ -6,6 +6,11 @@
     "Feature": {
       "additionalProperties": false,
       "properties": {
+        "$schema": {
+          "description": "The JSON schema of the `devcontainer-feature.json` file.",
+          "type": "string",
+          "format": "uri"
+        },
         "capAdd": {
           "description": "Passes docker capabilities to include when creating the dev container.",
           "examples": [

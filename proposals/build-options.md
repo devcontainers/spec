@@ -36,7 +36,7 @@ The following example adds a host-definition while the image is being built:
 
 ### Use host network
 
-The following example allows to sue the host network while building an image:
+The following example allows to use the host network while building an image:
 
 ```jsonc
 {

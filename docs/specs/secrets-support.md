@@ -35,10 +35,10 @@ Secrets are not part of dev containers specification and we do not expect users 
 
 Using a file to pass in the secrets can be one of the simple approaches to adopt. In this example the supporting tool can input secrets in a JSON file format.
 
-	```json
-	{
-		"API_KEY": "adsjhsd6dfwdjfwde7edwfwedfdjedwf7wedfwe",
-		"NUGET_CONFIG": "<config>\n    <add key=\"dependencyVersion\" value=\"Highest\" />\n    <add key=\"http_proxy\" value=\"http://company-squid:3128@contoso.com\" />\n</config>",
-		"PASSWORD": "Simple Passwords"
-	}
-	```
+```json
+{
+	"API_KEY": "adsjhsd6dfwdjfwde7edwfwedfdjedwf7wedfwe",
+	"NUGET_CONFIG": "<config>\n    <add key=\"dependencyVersion\" value=\"Highest\" />\n    <add key=\"http_proxy\" value=\"http://company-squid:3128@contoso.com\" />\n</config>",
+	"PASSWORD": "Simple Passwords"
+}
+```

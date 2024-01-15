@@ -633,6 +633,13 @@
 					"items": {
 						"type": "string"
 					}
+				},
+				"options": {
+					"type": "array",
+					"description": "Additional CLI options passed when building the container image.",
+					"items": {
+						"type": "string"
+					}
 				}
 			}
 		},

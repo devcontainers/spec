@@ -634,12 +634,12 @@
 						"type": "string"
 					}
 				},
-				"cliOptions": {
+				"options": {
 					"type": "array",
 					"description": "Additional arguments passed to the build command.",
 					"items": {
 						"type": "string"
-					}					
+					}
 				}
 			}
 		},

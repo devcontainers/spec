@@ -164,10 +164,7 @@
                     "type": "string"
                   }
                 }
-              },
-              "required": [
-                "proposals"
-              ]
+              }
             }
           ]
         }

@@ -216,7 +216,7 @@
       "type": "object"
     },
     "FeatureOption": {
-      "anyOf": [
+      "oneOf": [
         {
           "description": "Option value is represented with a boolean value.",
           "additionalProperties": false,

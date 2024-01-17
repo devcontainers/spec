@@ -633,6 +633,13 @@
 					"items": {
 						"type": "string"
 					}
+				},
+				"options": {
+					"type": "array",
+					"description": "Additional arguments passed to the build command.",
+					"items": {
+						"type": "string"
+					}
 				}
 			}
 		},

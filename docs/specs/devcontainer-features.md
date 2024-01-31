@@ -468,7 +468,7 @@ The user's `devcontainer.json` declared the python Feature like so
 ```jsonc
 
 "features": {
-    "python": {
+    "ghcr.io/devcontainers/features/python:1": {
         "version": "3.10",
         "pip": false
     }

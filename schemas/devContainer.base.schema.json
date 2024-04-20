@@ -2,7 +2,7 @@
 	"$schema": "https://json-schema.org/draft/2019-09/schema",
 	"description": "Defines a dev container",
 	"allowComments": true,
-	"allowTrailingCommas": false,
+	"allowTrailingCommas": true,
 	"definitions": {
 		"devContainerCommon": {
 			"type": "object",

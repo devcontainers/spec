@@ -120,7 +120,7 @@ You can customize which files are initially opened when the codespace is created
 
 The paths are relative to the root of the repository. They will be opened in order, with the first file activated.
 
-Codespaces will automatically perform some default setup when the `devcontainer.json` does not specify a `postCreateCommand`. This can be disable with the `disableAutomaticConfiguration` setting:
+Codespaces will automatically perform some default setup when the `devcontainer.json` does not specify a `postCreateCommand`. This can be disabled with the `disableAutomaticConfiguration` setting:
 
 ```jsonc
 "customizations": {

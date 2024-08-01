@@ -33,10 +33,11 @@ The properties of the file are as follows:
 | `description` | string | Description of the Template. |
 | `documentationURL` | string | Url that points to the documentation of the Template. |
 | `licenseURL` | string | Url that points to the license of the Template. |
-| `options` | object | A map of options that the supporting tools should use to populate different configuration options for the Template. |
+| [`options`](#the-options-property) | object | A map of options that the supporting tools should use to populate different configuration options for the Template. |
 | `platforms` | array | Languages and platforms supported by the Template. |
 | `publisher` | string | Name of the publisher/maintainer of the Template. |
 | `keywords` | array | List of strings relevant to a user that would search for this Template. |
+| [`optionalPath`](#the-optionalpaths-property) | array | An array of files or directories that tooling may consider "optional" when applying a Template.
 
 ### The `options` property
 
@@ -65,6 +66,26 @@ The `options` property contains a map of option IDs and their related configurat
 | `optionId.default` | string | Default value for the option. |
 
 > `Note`: The `options` must be unique for every `devcontainer-template.json`
+
+### The `optionalPaths` property
+
+Before applying a Template, tooling must inspect the `optionalPaths` property of a Template and prompt the user on whether each file or folder should be included in the resulting output workspace folder.  
+
+An optional path is relative to the root of the Template source directory.  For a directory, a trailing slash (`/`) should be appended to the path.  Examples are shown below:
+
+```json
+{
+    "id": "cpp",
+    "version": "3.0.0",
+    "name": "C++",
+    "description": "Develop C++ applications",
+    "optionalPaths": [
+         "GETTING-STARTED.md",
+         "example-project-1/MyProject.csproj",
+         ".github/"
+     ]
+}
+```
 
 ### Referencing a Template 
 

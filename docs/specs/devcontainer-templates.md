@@ -71,8 +71,7 @@ The `options` property contains a map of option IDs and their related configurat
 
 Before applying a Template, tooling must inspect the `optionalPaths` property of a Template and prompt the user on whether each file or folder should be included in the resulting output workspace folder.  A path is relative to the root of the Template source directory.
 
-- For a single file, provide the full relative path without any path delimiters.  
-
+- For a single file, provide the full relative path (without any leading or trailing path delimiters).  
 - For a directory, provide the full relative path with a trailing slash and asterisk (`/*`) appended to the path.  The directory and its children will be recursively ignored.
 
 Examples are shown below:

@@ -26,7 +26,7 @@ It is valid that these files may exist in more than one location, so consider pr
 
 Certain dev container metadata properties can be stored in an image label as an array of metadata snippets. This allows them to be stored in prebuilt images, such that, the image and its related configuration are self-contained. These contents should then be merged with any local `devcontainer.json` file contents at the time the container is created. An array is used so subsequent image builds can simply append changes to the array rather than attempting to merge at that point - which improves compatibility with arbitrary image build systems.
 
-Metadata should be representative of with the following structure, using one entry per [Dev Container Feature](../features) and `devcontainer.json` (see table below for the full list):
+Metadata should be representative of with the following structure, using one entry per [Dev Container Feature](devcontainer-features.md) and `devcontainer.json` (see table below for the full list):
 
 ```json
 [

@@ -1,0 +1,179 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Development Container Template Metadata",
+  "description": "Development Container Template Metadata (devcontainer-template.json). See https://containers.dev/implementors/templates/ for more information.",
+  "definitions": {
+    "Template": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "$schema": {
+          "description": "The JSON schema of the `devcontainer-template.json` file.",
+          "type": "string",
+          "format": "uri"
+        },
+        "description": {
+          "description": "Description of the Template.",
+          "type": "string"
+        },
+        "documentationURL": {
+          "description": "Url that points to the documentation of the Template.",
+          "type": "string",
+          "format": "uri"
+        },
+        "id": {
+          "description": "ID of the Template. The id should be unique in the context of the repository/published package where the Template exists and must match the name of the directory where the devcontainer-template.json resides.",
+          "type": "string"
+        },
+        "keywords": {
+          "description": "List of strings relevant to a user that would search for this Template.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "licenseURL": {
+          "description": "Url that points to the license of the Template.",
+          "type": "string",
+          "format": "uri"
+        },
+        "name": {
+          "description": "Name of the Template.",
+          "type": "string"
+        },
+        "options": {
+          "description": "A map of options that the supporting tools should use to populate different configuration options for the Template.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Option"
+          }
+        },
+        "platforms": {
+          "description": "Languages and platforms supported by the Template.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "publisher": {
+          "description": "Name of the publisher/maintainer of the Template.",
+          "type": "string"
+        },
+        "version": {
+          "description": "The semantic version of the Template.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "version"
+      ]
+    },
+    "Option": {
+      "description": "An option that the supporting tools should use to populate different configuration options for the Template.",
+      "type": "object",
+      "properties": {
+        "default": {
+          "description": "Default value for the option.",
+          "type": [
+            "boolean",
+            "string"
+          ]
+        },
+        "description": {
+          "description": "Description for the option.",
+          "type": "string"
+        },
+        "type": {
+          "description": "Type of the option. Valid types are currently: boolean, string",
+          "type": "string",
+          "enum": [
+            "boolean",
+            "string"
+          ]
+        }
+      },
+      "required": [
+        "default",
+        "description",
+        "type"
+      ],
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "default": {
+              "type": "boolean"
+            },
+            "description": true,
+            "type": {
+              "type": "string",
+              "const": "boolean"
+            }
+          },
+          "required": [
+            "default",
+            "type"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "default": {
+              "type": "string"
+            },
+            "description": true,
+            "enum": true,
+            "proposals": true,
+            "type": {
+              "type": "string",
+              "const": "string"
+            }
+          },
+          "required": [
+            "default",
+            "type"
+          ],
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "enum": {
+                  "description": "A strict list of allowed string values. Free-form values are not allowed. Omit when using optionId.proposals.",
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "enum"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "proposals": {
+                  "description": "A list of suggested string values. Free-form values are allowed. Omit when using optionId.enum.",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/definitions/Template"
+    }
+  ]
+}

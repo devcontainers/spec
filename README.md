@@ -1,4 +1,4 @@
-# Development Containers
+# Development Containers 
 
 This repository is for the Development Container Specification.
 

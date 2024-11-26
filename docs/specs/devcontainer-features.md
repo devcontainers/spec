@@ -550,3 +550,35 @@ There are several things to keep in mind for an application that implements Feat
 - Parameters like `capAdd`, `securityOp`  are concatenated.
 - `containerEnv` is added before the Feature is executed as `ENV` commands in the Dockerfile.
 - Each Feature script executes as its own layer to aid in caching and rebuilding.
+
+## Creating and Managing Docker Containers
+
+Docker containers are lightweight, portable, and consistent environments that encapsulate applications and their dependencies. They are essential in development environments as they provide a reproducible and isolated environment for building, testing, and deploying applications.
+
+### Dockerfile
+
+A Dockerfile is a text document that contains all the commands to assemble an image. You can find examples and references in the repository, such as the `Dockerfile` in the `src` directory of various features.
+
+### Docker Compose
+
+Docker Compose is a tool for defining and running multi-container Docker applications. You can find examples of Docker Compose files in the repository, such as `docker-compose.yml` in the `src` directory of various templates.
+
+### Dev Container Features
+
+Dev Container Features are self-contained, shareable units of installation code and development container configuration. You can learn more about them in the [Dev Container Features](#dev-container-features-reference) section.
+
+### Dev Container Templates
+
+Dev Container Templates are source files packaged together that encode configuration for a complete development environment. You can learn more about them in the [Dev Container Templates](./devcontainer-templates.md) section.
+
+### Lifecycle Scripts
+
+Lifecycle scripts are commands that run at different points in the container's lifecycle. You can learn more about them in the [Lifecycle Scripts](./devcontainer-reference.md#lifecycle-scripts) section.
+
+### Secrets
+
+Secrets are variables that hold sensitive values and need to be handled securely. You can learn more about them in the [Secrets](./declarative-secrets.md) section.
+
+### Image Metadata
+
+Image metadata allows you to store dev container configuration and feature metadata in prebuilt images. You can learn more about it in the [Image Metadata](./image-metadata.md) section.

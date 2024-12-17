@@ -1,5 +1,5 @@
 {
-    "allOf": [
+    "all": [
         {
             "$ref": "./devContainer.base.schema.json"
         },

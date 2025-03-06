@@ -39,7 +39,7 @@ All properties are optional **except for `id`, `version`, and `name`**.
 | `options` | object | A map of options that will be passed as environment variables to the execution of the script. |
 | `containerEnv` | object | A set of name value pairs that sets or overrides environment variables. |
 | `privileged` | boolean | Sets [privileged mode](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) for the container (required by things like docker-in-docker) when the Feature is used. |
-| `init` | boolean | Adds the [tini init](https://github.com/krallin/tini) process to the container (`--init`) when the Feature is used. |
+| `init` | boolean | Adds the [tiny init](https://github.com/RKrahl/tiny-init) process to the container (`--init`) when the Feature is used. |
 | `capAdd` | array | Adds container [capabilities](https://docs.docker.com/engine/security/#linux-kernel-capabilities) when the Feature is used. |
 | `securityOpt` | array | Sets container security options like updating the [seccomp profile](https://docs.docker.com/engine/security/seccomp/) when the Feature is used. |
 | `entrypoint` | string | Set if the Feature requires an "entrypoint" script that should fire at container start up. |

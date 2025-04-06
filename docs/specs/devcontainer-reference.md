@@ -157,7 +157,7 @@ Inside the container this mount defaults to `/workspace`.
 
 ## workspaceFolder and workspaceMount
 
-The default mount point for the source code can be set with the `workspaceMount` property for **image** and **dockerfile** scenarios or using the built in `mounts` property in **Docker Compose** files. This folder should point to the root of a repository (where the `.git` folder is found) so that source control operations work correctly inside the container.
+The default mount point for the source code can be set with the `workspaceMount` property for **image** and **dockerfile** scenarios or using the built in [`volumes` attribute](https://docs.docker.com/reference/compose-file/services/#volumes) in **Docker Compose** files. This folder should point to the root of a repository (where the `.git` folder is found) so that source control operations work correctly inside the container.
 
 The `workspaceFolder` can then be set to the default folder inside the container that should used in the container. Typically this is either the mount point in the container, or a sub-folder under it. Allowing a sub-folder to be used is particularly important for monorepos given you need the `.git` folder to interact with source control but developers are typically are interacting with a specific sub-project within the overall repository. 
 

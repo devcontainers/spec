@@ -59,7 +59,7 @@ An example `devcontainer-feature.json` file with a dependency on four other publ
         },
         "features.azurecr.io/third:1": {},
         "features.azurecr.io/fourth:1.2.3": {},
-        "features.azurecr.io/fifth@sha256:a4cdc44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" {},
+        "features.azurecr.io/fifth@sha256:a4cdc44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855": {}
     }
 }
 ```

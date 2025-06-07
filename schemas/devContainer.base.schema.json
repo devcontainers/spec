@@ -1,5 +1,5 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2019-09/schema",
 	"description": "Defines a dev container",
 	"allowComments": true,
 	"allowTrailingCommas": false,
@@ -7,6 +7,11 @@
 		"devContainerCommon": {
 			"type": "object",
 			"properties": {
+				"$schema": {
+					"type": "string",
+					"format": "uri",
+					"description": "The JSON schema of the `devcontainer.json` file."
+				},
 				"name": {
 					"type": "string",
 					"description": "A name for the dev container which can be displayed to the user."
@@ -14,7 +19,60 @@
 				"features": {
 					"type": "object",
 					"description": "Features to add to the dev container.",
+					"properties": {
+						"fish": {
+							"deprecated": true,
+							"deprecationMessage": "Legacy feature not supported. Please check https://containers.dev/features for replacements."
+						},
+						"maven": {
+							"deprecated": true,
+							"deprecationMessage": "Legacy feature will be removed in the future. Please check https://containers.dev/features for replacements. E.g., `ghcr.io/devcontainers/features/java` has an option to install Maven."
+						},
+						"gradle": {
+							"deprecated": true,
+							"deprecationMessage": "Legacy feature will be removed in the future. Please check https://containers.dev/features for replacements. E.g., `ghcr.io/devcontainers/features/java` has an option to install Gradle."
+						},
+						"homebrew": {
+							"deprecated": true,
+							"deprecationMessage": "Legacy feature not supported. Please check https://containers.dev/features for replacements."
+						},
+						"jupyterlab": {
+							"deprecated": true,
+							"deprecationMessage": "Legacy feature will be removed in the future. Please check https://containers.dev/features for replacements. E.g., `ghcr.io/devcontainers/features/python` has an option to install JupyterLab."
+						}
+					},
 					"additionalProperties": true
+				},
+				"overrideFeatureInstallOrder": {
+					"type": "array",
+					"description": "Array consisting of the Feature id (without the semantic version) of Features in the order the user wants them to be installed.",
+					"items": {
+						"type": "string"
+					}
+				},
+				"secrets": {
+					"type": "object",
+					"description": "Recommended secrets for this dev container. Recommendations are provided as environment variable keys with optional metadata.",
+					"patternProperties": {
+						"^[a-zA-Z_][a-zA-Z0-9_]*$": {
+							"type": "object",
+							"description": "Environment variable keys following unix-style naming conventions. eg: ^[a-zA-Z_][a-zA-Z0-9_]*$",
+							"properties": {
+								"description": {
+									"type": "string",
+									"description": "A description of the secret."
+								},
+								"documentationUrl": {
+									"type": "string",
+									"format": "uri",
+									"description": "A URL to documentation about the secret."
+								}
+							},
+							"additionalProperties": false
+						},
+						"additionalProperties": false
+					},
+					"additionalProperties": false
 				},
 				"forwardPorts": {
 					"type": "array",
@@ -200,7 +258,9 @@
 				"capAdd": {
 					"type": "array",
 					"description": "Passes docker capabilities to include when creating the dev container.",
-					"examples": [ "SYS_PTRACE" ],
+					"examples": [
+						"SYS_PTRACE"
+					],
 					"items": {
 						"type": "string"
 					}
@@ -208,7 +268,9 @@
 				"securityOpt": {
 					"type": "array",
 					"description": "Passes docker security options to include when creating the dev container.",
-					"examples": [ "seccomp=unconfined" ],
+					"examples": [
+						"seccomp=unconfined"
+					],
 					"items": {
 						"type": "string"
 					}
@@ -230,11 +292,21 @@
 				"initializeCommand": {
 					"type": [
 						"string",
-						"array"
+						"array",
+						"object"
 					],
-					"description": "A command to run locally before anything else. This command is run before \"onCreateCommand\". If this is a single string, it will be run in a shell. If this is an array of strings, it will be run as a single command without shell.",
+					"description": "A command to run locally (i.e Your host machine, cloud VM) before anything else. This command is run before \"onCreateCommand\". If this is a single string, it will be run in a shell. If this is an array of strings, it will be run as a single command without shell. If this is an object, each provided command will be run in parallel.",
 					"items": {
 						"type": "string"
+					},
+					"additionalProperties": {
+						"type": [
+							"string",
+							"array"
+						],
+						"items": {
+							"type": "string"
+						}
 					}
 				},
 				"onCreateCommand": {
@@ -243,7 +315,7 @@
 						"array",
 						"object"
 					],
-					"description": "A command to run when creating the container. This command is run after \"initializeCommand\" and before \"updateContentCommand\". If this is a single string, it will be run in a shell. If this is an array of strings, it will be run as a single command without shell.",
+					"description": "A command to run when creating the container. This command is run after \"initializeCommand\" and before \"updateContentCommand\". If this is a single string, it will be run in a shell. If this is an array of strings, it will be run as a single command without shell. If this is an object, each provided command will be run in parallel.",
 					"items": {
 						"type": "string"
 					},
@@ -263,7 +335,7 @@
 						"array",
 						"object"
 					],
-					"description": "A command to run when creating the container and rerun when the workspace content was updated while creating the container. This command is run after \"onCreateCommand\" and before \"postCreateCommand\". If this is a single string, it will be run in a shell. If this is an array of strings, it will be run as a single command without shell.",
+					"description": "A command to run when creating the container and rerun when the workspace content was updated while creating the container. This command is run after \"onCreateCommand\" and before \"postCreateCommand\". If this is a single string, it will be run in a shell. If this is an array of strings, it will be run as a single command without shell. If this is an object, each provided command will be run in parallel.",
 					"items": {
 						"type": "string"
 					},
@@ -283,7 +355,7 @@
 						"array",
 						"object"
 					],
-					"description": "A command to run after creating the container. This command is run after \"updateContentCommand\" and before \"postStartCommand\". If this is a single string, it will be run in a shell. If this is an array of strings, it will be run as a single command without shell.",
+					"description": "A command to run after creating the container. This command is run after \"updateContentCommand\" and before \"postStartCommand\". If this is a single string, it will be run in a shell. If this is an array of strings, it will be run as a single command without shell. If this is an object, each provided command will be run in parallel.",
 					"items": {
 						"type": "string"
 					},
@@ -303,7 +375,7 @@
 						"array",
 						"object"
 					],
-					"description": "A command to run after starting the container. This command is run after \"postCreateCommand\" and before \"postAttachCommand\". If this is a single string, it will be run in a shell. If this is an array of strings, it will be run as a single command without shell.",
+					"description": "A command to run after starting the container. This command is run after \"postCreateCommand\" and before \"postAttachCommand\". If this is a single string, it will be run in a shell. If this is an array of strings, it will be run as a single command without shell. If this is an object, each provided command will be run in parallel.",
 					"items": {
 						"type": "string"
 					},
@@ -323,7 +395,7 @@
 						"array",
 						"object"
 					],
-					"description": "A command to run when attaching to the container. This command is run after \"postStartCommand\". If this is a single string, it will be run in a shell. If this is an array of strings, it will be run as a single command without shell.",
+					"description": "A command to run when attaching to the container. This command is run after \"postStartCommand\". If this is a single string, it will be run in a shell. If this is an array of strings, it will be run as a single command without shell. If this is an object, each provided command will be run in parallel.",
 					"items": {
 						"type": "string"
 					},
@@ -361,61 +433,57 @@
 				"hostRequirements": {
 					"type": "object",
 					"description": "Host hardware requirements.",
-					"allOf": [
-						{
-							"type": "object",
-							"properties": {
-								"cpus": {
-									"type": "integer",
-									"minimum": 1,
-									"description": "Number of required CPUs."
+					"properties": {
+						"cpus": {
+							"type": "integer",
+							"minimum": 1,
+							"description": "Number of required CPUs."
+						},
+						"memory": {
+							"type": "string",
+							"pattern": "^\\d+([tgmk]b)?$",
+							"description": "Amount of required RAM in bytes. Supports units tb, gb, mb and kb."
+						},
+						"storage": {
+							"type": "string",
+							"pattern": "^\\d+([tgmk]b)?$",
+							"description": "Amount of required disk space in bytes. Supports units tb, gb, mb and kb."
+						},
+						"gpu": {
+							"oneOf": [
+								{
+									"type": [
+										"boolean",
+										"string"
+									],
+									"enum": [
+										true,
+										false,
+										"optional"
+									],
+									"description": "Indicates whether a GPU is required. The string \"optional\" indicates that a GPU is optional. An object value can be used to configure more detailed requirements."
 								},
-								"memory": {
-									"type": "string",
-									"pattern": "^\\d+([tgmk]b)?$",
-									"description": "Amount of required RAM in bytes. Supports units tb, gb, mb and kb."
-								},
-								"storage": {
-									"type": "string",
-									"pattern": "^\\d+([tgmk]b)?$",
-									"description": "Amount of required disk space in bytes. Supports units tb, gb, mb and kb."
-								},
-								"gpu": {
-									"oneOf": [
-										{
-											"type": [
-												"boolean",
-												"string"
-											],
-											"enum": [
-												true,
-												false,
-												"optional"
-											],
-											"description": "Indicates whether a GPU is required. The string \"optional\" indicates that a GPU is optional. An object value can be used to configure more detailed requirements."
+								{
+									"type": "object",
+									"properties": {
+										"cores": {
+											"type": "integer",
+											"minimum": 1,
+											"description": "Number of required cores."
 										},
-										{
-											"type": "object",
-											"properties": {
-												"cores": {
-													"type": "integer",
-													"minimum": 1,
-													"description": "Number of required cores."
-												},
-												"memory": {
-													"type": "string",
-													"pattern": "^\\d+([tgmk]b)?$",
-													"description": "Amount of required RAM in bytes. Supports units tb, gb, mb and kb."
-												}
-											},
-											"description": "Indicates whether a GPU is required. The string \"optional\" indicates that a GPU is optional. An object value can be used to configure more detailed requirements.",
-											"additionalProperties": false
+										"memory": {
+											"type": "string",
+											"pattern": "^\\d+([tgmk]b)?$",
+											"description": "Amount of required RAM in bytes. Supports units tb, gb, mb and kb."
 										}
-									]
+									},
+									"description": "Indicates whether a GPU is required. The string \"optional\" indicates that a GPU is optional. An object value can be used to configure more detailed requirements.",
+									"additionalProperties": false
 								}
-							}
+							]
 						}
-					]
+					},
+					"unevaluatedProperties": false
 				},
 				"customizations": {
 					"type": "object",
@@ -501,7 +569,8 @@
 								{
 									"$ref": "#/definitions/buildOptions"
 								}
-							]
+							],
+							"unevaluatedProperties": false
 						}
 					},
 					"required": [
@@ -561,6 +630,13 @@
 						"array"
 					],
 					"description": "The image to consider as a cache. Use an array to specify multiple images.",
+					"items": {
+						"type": "string"
+					}
+				},
+				"options": {
+					"type": "array",
+					"description": "Additional arguments passed to the build command.",
 					"items": {
 						"type": "string"
 					}
@@ -648,7 +724,6 @@
 			},
 			"required": [
 				"type",
-				"source",
 				"target"
 			],
 			"additionalProperties": false
@@ -691,5 +766,6 @@
 			"$ref": "#/definitions/devContainerCommon",
 			"additionalProperties": false
 		}
-	]
+	],
+	"unevaluatedProperties": false
 }

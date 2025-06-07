@@ -1,6 +1,6 @@
 # Dev Container Templates reference
 
-Development container "Templates" are source files packaged together that encode configuration for a complete development environment. A Template can be used in a new or existing project, and a [supporting tool](https://containers.dev/supporting) will use the configuration from the Template to build a development container.
+**Development Container Templates** are source files packaged together that encode configuration for a complete development environment. A Template can be used in a new or existing project, and a [supporting tool](https://containers.dev/supporting) will use the configuration from the Template to build a development container.
 
 The configuration is placed in a [`.devcontainer/devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) which can also reference other files within the Template. A Template can also provide additional source files (eg: boilerplate code or a [lifecycle script](https://containers.dev/implementors/json_reference/#lifecycle-scripts).
 
@@ -33,10 +33,11 @@ The properties of the file are as follows:
 | `description` | string | Description of the Template. |
 | `documentationURL` | string | Url that points to the documentation of the Template. |
 | `licenseURL` | string | Url that points to the license of the Template. |
-| `options` | object | A map of options that the supporting tools should use to populate different configuration options for the Template. |
+| [`options`](#the-options-property) | object | A map of options that the supporting tools should use to populate different configuration options for the Template. |
 | `platforms` | array | Languages and platforms supported by the Template. |
 | `publisher` | string | Name of the publisher/maintainer of the Template. |
 | `keywords` | array | List of strings relevant to a user that would search for this Template. |
+| [`optionalPaths`](#the-optionalpaths-property) | array | An array of files or directories that tooling may consider "optional" when applying a Template. Directories are indicated with a trailing `/*`, (eg: `.github/*`).
 
 ### The `options` property
 
@@ -66,6 +67,29 @@ The `options` property contains a map of option IDs and their related configurat
 
 > `Note`: The `options` must be unique for every `devcontainer-template.json`
 
+### The `optionalPaths` property
+
+Before applying a Template, tooling must inspect the `optionalPaths` property of a Template and prompt the user on whether each file or folder should be included in the resulting output workspace folder.  A path is relative to the root of the Template source directory.
+
+- For a single file, provide the full relative path (without any leading or trailing path delimiters).  
+- For a directory, provide the full relative path with a trailing slash and asterisk (`/*`) appended to the path.  The directory and its children will be recursively ignored.
+
+Examples are shown below:
+
+```jsonc
+{
+    "id": "cpp",
+    "version": "3.0.0",
+    "name": "C++",
+    "description": "Develop C++ applications",
+    "optionalPaths": [
+         "GETTING-STARTED.md",                 // Single file
+         "example-project-1/MyProject.csproj", // Single file in nested directory
+         ".github/*"                           // Entire recursive contents of directory
+     ]
+}
+```
+
 ### Referencing a Template 
 
 The `id` format (`<oci-registry>/<namespace>/<template>[:<semantic-version>]`) dictates how a [supporting tool](https://containers.dev/supporting) will locate and download a given Template from an OCI registry. For example:
@@ -78,7 +102,7 @@ The registry must implement the [OCI Artifact Distribution Specification](https:
 
 ## Versioning
 
-Each Template is individually [versioned according to the semver specification](https://semver.org/).  The `version` property in the respective `devcontainer-template.json` file is updated to increment the Template's version.
+Each Template is individually [versioned according to the semver specification](https://semver.org/). The `version` property in the respective `devcontainer-template.json` file is updated to increment the Template's version.
 
 Tooling that handles releasing Templates will not republish Templates if that exact version has already been published; however, tooling must republish major and minor versions in accordance with the semver specification.
 

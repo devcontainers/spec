@@ -1,0 +1,1954 @@
+%!PS-Adobe-3.0
+%%BoundingBox: (atend)
+%%Pages: (atend)
+%%DocumentFonts: (atend)
+%%EndComments
+%
+% FrameMaker PostScript Prolog 3.0, for use with FrameMaker 3.0
+% Copyright (c) 1986,87,89,90,91 by Frame Technology Corporation.
+% All rights reserved.
+%
+% Known Problems:
+%	Due to bugs in Transcript, the 'PS-Adobe-' is omitted from line 1
+%       UCI-> added the PS-Adobe-3.0 line because we don't use Transcript
+/FMversion (3.0) def 
+% Set up Color vs. Black-and-White
+	/FMPrintInColor systemdict /colorimage known
+		systemdict /currentcolortransfer known or def
+% Uncomment this line to force b&w on color printer
+%   /FMPrintInColor false def
+/FrameDict 195 dict def 
+systemdict /errordict known not {/errordict 10 dict def
+		errordict /rangecheck {stop} put} if
+% The readline in 23.0 doesn't recognize cr's as nl's on AppleTalk
+FrameDict /tmprangecheck errordict /rangecheck get put 
+errordict /rangecheck {FrameDict /bug true put} put 
+FrameDict /bug false put 
+mark 
+% Some PS machines read past the CR, so keep the following 3 lines together!
+currentfile 5 string readline
+00
+0000000000
+cleartomark 
+errordict /rangecheck FrameDict /tmprangecheck get put 
+FrameDict /bug get { 
+	/readline {
+		/gstring exch def
+		/gfile exch def
+		/gindex 0 def
+		{
+			gfile read pop 
+			dup 10 eq {exit} if 
+			dup 13 eq {exit} if 
+			gstring exch gindex exch put 
+			/gindex gindex 1 add def 
+		} loop
+		pop 
+		gstring 0 gindex getinterval true 
+		} def
+	} if
+/FMVERSION {
+	FMversion ne {
+		/Times-Roman findfont 18 scalefont setfont
+		100 100 moveto
+		(FrameMaker version does not match postscript_prolog!)
+		dup =
+		show showpage
+		} if
+	} def 
+/FMLOCAL {
+	FrameDict begin
+	0 def 
+	end 
+	} def 
+	/gstring FMLOCAL
+	/gfile FMLOCAL
+	/gindex FMLOCAL
+	/orgxfer FMLOCAL
+	/orgproc FMLOCAL
+	/organgle FMLOCAL
+	/orgfreq FMLOCAL
+	/yscale FMLOCAL
+	/xscale FMLOCAL
+	/manualfeed FMLOCAL
+	/paperheight FMLOCAL
+	/paperwidth FMLOCAL
+/FMDOCUMENT { 
+	array /FMfonts exch def 
+	/#copies exch def
+	FrameDict begin
+	0 ne dup {setmanualfeed} if
+	/manualfeed exch def
+	/paperheight exch def
+	/paperwidth exch def
+	/yscale exch def
+	/xscale exch def
+	currenttransfer cvlit /orgxfer exch def
+	currentscreen cvlit /orgproc exch def
+	/organgle exch def /orgfreq exch def
+	end 
+	} def 
+	/pagesave FMLOCAL
+	/orgmatrix FMLOCAL
+	/landscape FMLOCAL
+/FMBEGINPAGE { 
+	FrameDict begin 
+	/pagesave save def
+	3.86 setmiterlimit
+	/landscape exch 0 ne def
+	landscape { 
+		90 rotate 0 exch neg translate pop 
+		}
+		{pop pop}
+		ifelse
+	xscale yscale scale
+	/orgmatrix matrix def
+	gsave 
+	} def 
+/FMENDPAGE {
+	grestore 
+	pagesave restore
+	end 
+	showpage
+	} def 
+/FMFONTDEFINE { 
+	FrameDict begin
+	findfont 
+	ReEncode 
+	1 index exch 
+	definefont 
+	FMfonts 3 1 roll 
+	put
+	end 
+	} def 
+/FMFILLS {
+	FrameDict begin
+	array /fillvals exch def
+	end 
+	} def 
+/FMFILL {
+	FrameDict begin
+	 fillvals 3 1 roll put
+	end 
+	} def 
+/FMNORMALIZEGRAPHICS { 
+	newpath
+	0.0 0.0 moveto
+	1 setlinewidth
+	0 setlinecap
+	0 0 0 sethsbcolor
+	0 setgray 
+	} bind def
+	/fx FMLOCAL
+	/fy FMLOCAL
+	/fh FMLOCAL
+	/fw FMLOCAL
+	/llx FMLOCAL
+	/lly FMLOCAL
+	/urx FMLOCAL
+	/ury FMLOCAL
+/FMBEGINEPSF { 
+	end 
+	/FMEPSF save def 
+	/showpage {} def 
+	FMNORMALIZEGRAPHICS 
+	[/fy /fx /fh /fw /ury /urx /lly /llx] {exch def} forall 
+	fx fy translate 
+	rotate
+	fw urx llx sub div fh ury lly sub div scale 
+	llx neg lly neg translate 
+	} bind def
+/FMENDEPSF {
+	FMEPSF restore
+	FrameDict begin 
+	} bind def
+FrameDict begin 
+/setmanualfeed {
+%%BeginFeature *ManualFeed True
+	 statusdict /manualfeed true put
+%%EndFeature
+	} def
+/max {2 copy lt {exch} if pop} bind def
+/min {2 copy gt {exch} if pop} bind def
+/inch {72 mul} def
+/savematrix {
+	orgmatrix currentmatrix pop
+	} bind def
+/restorematrix {
+	orgmatrix setmatrix
+	} bind def
+/dmatrix matrix def
+/dpi    72 0 dmatrix defaultmatrix dtransform
+    dup mul exch   dup mul add   sqrt def
+/freq dpi 18.75 div 8 div round dup 0 eq {pop 1} if 8 mul dpi exch div def
+/sangle 1 0 dmatrix defaultmatrix dtransform exch atan def
+/DiacriticEncoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /space /exclam /quotedbl
+/numbersign /dollar /percent /ampersand /quotesingle /parenleft
+/parenright /asterisk /plus /comma /hyphen /period /slash /zero /one
+/two /three /four /five /six /seven /eight /nine /colon /semicolon
+/less /equal /greater /question /at /A /B /C /D /E /F /G /H /I /J /K
+/L /M /N /O /P /Q /R /S /T /U /V /W /X /Y /Z /bracketleft /backslash
+/bracketright /asciicircum /underscore /grave /a /b /c /d /e /f /g /h
+/i /j /k /l /m /n /o /p /q /r /s /t /u /v /w /x /y /z /braceleft /bar
+/braceright /asciitilde /.notdef /Adieresis /Aring /Ccedilla /Eacute
+/Ntilde /Odieresis /Udieresis /aacute /agrave /acircumflex /adieresis
+/atilde /aring /ccedilla /eacute /egrave /ecircumflex /edieresis
+/iacute /igrave /icircumflex /idieresis /ntilde /oacute /ograve
+/ocircumflex /odieresis /otilde /uacute /ugrave /ucircumflex
+/udieresis /dagger /.notdef /cent /sterling /section /bullet
+/paragraph /germandbls /registered /copyright /trademark /acute
+/dieresis /.notdef /AE /Oslash /.notdef /.notdef /.notdef /.notdef
+/yen /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/ordfeminine /ordmasculine /.notdef /ae /oslash /questiondown
+/exclamdown /logicalnot /.notdef /florin /.notdef /.notdef
+/guillemotleft /guillemotright /ellipsis /.notdef /Agrave /Atilde
+/Otilde /OE /oe /endash /emdash /quotedblleft /quotedblright
+/quoteleft /quoteright /.notdef /.notdef /ydieresis /Ydieresis
+/fraction /currency /guilsinglleft /guilsinglright /fi /fl /daggerdbl
+/periodcentered /quotesinglbase /quotedblbase /perthousand
+/Acircumflex /Ecircumflex /Aacute /Edieresis /Egrave /Iacute
+/Icircumflex /Idieresis /Igrave /Oacute /Ocircumflex /.notdef /Ograve
+/Uacute /Ucircumflex /Ugrave /dotlessi /circumflex /tilde /macron
+/breve /dotaccent /ring /cedilla /hungarumlaut /ogonek /caron
+] def
+/ReEncode { 
+	dup 
+	length 
+	dict begin 
+	{
+	1 index /FID ne 
+		{def} 
+		{pop pop} ifelse 
+	} forall 
+	0 eq {/Encoding DiacriticEncoding def} if 
+	currentdict 
+	end 
+	} bind def
+/graymode true def
+	/bwidth FMLOCAL
+	/bpside FMLOCAL
+	/bstring FMLOCAL
+	/onbits FMLOCAL
+	/offbits FMLOCAL
+	/xindex FMLOCAL
+	/yindex FMLOCAL
+	/x FMLOCAL
+	/y FMLOCAL
+/setpattern {
+	 /bwidth  exch def
+	 /bpside  exch def
+	 /bstring exch def
+	 /onbits 0 def  /offbits 0 def
+	 freq sangle landscape {90 add} if 
+		{/y exch def
+		 /x exch def
+		 /xindex x 1 add 2 div bpside mul cvi def
+		 /yindex y 1 add 2 div bpside mul cvi def
+		 bstring yindex bwidth mul xindex 8 idiv add get
+		 1 7 xindex 8 mod sub bitshift and 0 ne
+		 {/onbits  onbits  1 add def 1}
+		 {/offbits offbits 1 add def 0}
+		 ifelse
+		}
+		setscreen
+	 {} settransfer
+	 offbits offbits onbits add div FMsetgray
+	/graymode false def
+	} bind def
+/grayness {
+	FMsetgray
+	graymode not {
+		/graymode true def
+		orgxfer cvx settransfer
+		orgfreq organgle orgproc cvx setscreen
+		} if
+	} bind def
+	/HUE FMLOCAL
+	/SAT FMLOCAL
+	/BRIGHT FMLOCAL
+	/Colors FMLOCAL
+FMPrintInColor 
+	
+	{
+	/HUE 0 def
+	/SAT 0 def
+	/BRIGHT 0 def
+	% array of arrays Hue and Sat values for the separations [HUE BRIGHT]
+	/Colors   
+	[[0    0  ]    % black
+	 [0    0  ]    % white
+	 [0.00 1.0]    % red
+	 [0.37 1.0]    % green
+	 [0.60 1.0]    % blue
+	 [0.50 1.0]    % cyan
+	 [0.83 1.0]    % magenta
+	 [0.16 1.0]    % comment / yellow
+	 ] def
+      
+	/BEGINBITMAPCOLOR { 
+		BITMAPCOLOR} def
+	/BEGINBITMAPCOLORc { 
+		BITMAPCOLORc} def
+	/BEGINBITMAPTRUECOLOR { 
+		BITMAPTRUECOLOR } def
+	/BEGINBITMAPTRUECOLORc { 
+		BITMAPTRUECOLORc } def
+	/K { 
+		Colors exch get dup
+		0 get /HUE exch store 
+		1 get /BRIGHT exch store
+		  HUE 0 eq BRIGHT 0 eq and
+			{1.0 SAT sub setgray}
+			{HUE SAT BRIGHT sethsbcolor} 
+		  ifelse
+		} def
+	/FMsetgray { 
+		/SAT exch 1.0 exch sub store 
+		  HUE 0 eq BRIGHT 0 eq and
+			{1.0 SAT sub setgray}
+			{HUE SAT BRIGHT sethsbcolor} 
+		  ifelse
+		} bind def
+	}
+	
+	{
+	/BEGINBITMAPCOLOR { 
+		BITMAPGRAY} def
+	/BEGINBITMAPCOLORc { 
+		BITMAPGRAYc} def
+	/BEGINBITMAPTRUECOLOR { 
+		BITMAPTRUEGRAY } def
+	/BEGINBITMAPTRUECOLORc { 
+		BITMAPTRUEGRAYc } def
+	/FMsetgray {setgray} bind def
+	/K { 
+		pop
+		} def
+	}
+ifelse
+/normalize {
+	transform round exch round exch itransform
+	} bind def
+/dnormalize {
+	dtransform round exch round exch idtransform
+	} bind def
+/lnormalize { 
+	0 dtransform exch cvi 2 idiv 2 mul 1 add exch idtransform pop
+	} bind def
+/H { 
+	lnormalize setlinewidth
+	} bind def
+/Z {
+	setlinecap
+	} bind def
+	/fillvals FMLOCAL
+/X { 
+	fillvals exch get
+	dup type /stringtype eq
+	{8 1 setpattern} 
+	{grayness}
+	ifelse
+	} bind def
+/V { 
+	gsave eofill grestore
+	} bind def
+/N { 
+	stroke
+	} bind def
+/M {newpath moveto} bind def
+/E {lineto} bind def
+/D {curveto} bind def
+/O {closepath} bind def
+	/n FMLOCAL
+/L { 
+ 	/n exch def
+	newpath
+	normalize
+	moveto 
+	2 1 n {pop normalize lineto} for
+	} bind def
+/Y { 
+	L 
+	closepath
+	} bind def
+	/x1 FMLOCAL
+	/x2 FMLOCAL
+	/y1 FMLOCAL
+	/y2 FMLOCAL
+	/rad FMLOCAL
+/R { 
+	/y2 exch def
+	/x2 exch def
+	/y1 exch def
+	/x1 exch def
+	x1 y1
+	x2 y1
+	x2 y2
+	x1 y2
+	4 Y 
+	} bind def
+/RR { 
+	/rad exch def
+	normalize
+	/y2 exch def
+	/x2 exch def
+	normalize
+	/y1 exch def
+	/x1 exch def
+	newpath
+	x1 y1 rad add moveto
+	x1 y2 x2 y2 rad arcto
+	x2 y2 x2 y1 rad arcto
+	x2 y1 x1 y1 rad arcto
+	x1 y1 x1 y2 rad arcto
+	closepath
+	16 {pop} repeat
+	} bind def
+/C { 
+	grestore
+	gsave
+	R 
+	clip
+	} bind def
+	/FMpointsize FMLOCAL
+/F { 
+	FMfonts exch get
+	FMpointsize scalefont
+	setfont
+	} bind def
+/Q { 
+	/FMpointsize exch def
+	F 
+	} bind def
+/T { 
+	moveto show
+	} bind def
+/RF { 
+	rotate
+	0 ne {-1 1 scale} if
+	} bind def
+/TF { 
+	gsave
+	moveto 
+	RF
+	show
+	grestore
+	} bind def
+/P { 
+	moveto
+	0 32 3 2 roll widthshow
+	} bind def
+/PF { 
+	gsave
+	moveto 
+	RF
+	0 32 3 2 roll widthshow
+	grestore
+	} bind def
+/S { 
+	moveto
+	0 exch ashow
+	} bind def
+/SF { 
+	gsave
+	moveto
+	RF
+	0 exch ashow
+	grestore
+	} bind def
+/B { 
+	moveto
+	0 32 4 2 roll 0 exch awidthshow
+	} bind def
+/BF { 
+	gsave
+	moveto
+	RF
+	0 32 4 2 roll 0 exch awidthshow
+	grestore
+	} bind def
+/G { 
+	gsave
+	newpath
+	normalize translate 0.0 0.0 moveto 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath fill
+	grestore
+	} bind def
+/A { 
+	gsave
+	savematrix
+	newpath
+	2 index 2 div add exch 3 index 2 div sub exch 
+	normalize 2 index 2 div sub exch 3 index 2 div add exch 
+	translate 
+	scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	restorematrix
+	stroke
+	grestore
+	} bind def
+	/x FMLOCAL
+	/y FMLOCAL
+	/w FMLOCAL
+	/h FMLOCAL
+	/xx FMLOCAL
+	/yy FMLOCAL
+	/ww FMLOCAL
+	/hh FMLOCAL
+	/FMsaveobject FMLOCAL
+	/FMoptop FMLOCAL
+	/FMdicttop FMLOCAL
+/BEGINPRINTCODE { 
+	/FMdicttop countdictstack 1 add def 
+	/FMoptop count 4 sub def 
+	/FMsaveobject save def
+	userdict begin 
+	/showpage {} def 
+	FMNORMALIZEGRAPHICS 
+	3 index neg 3 index neg translate
+	} bind def
+/ENDPRINTCODE {
+	count -1 FMoptop {pop pop} for 
+	countdictstack -1 FMdicttop {pop end} for 
+	FMsaveobject restore 
+	} bind def
+/gn { 
+	0 
+	{	46 mul 
+		cf read pop 
+		32 sub 
+		dup 46 lt {exit} if 
+		46 sub add 
+		} loop
+	add 
+	} bind def
+	/str FMLOCAL
+/cfs { 
+	/str sl string def 
+	0 1 sl 1 sub {str exch val put} for 
+	str def 
+	} bind def
+/ic [ 
+	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0223
+	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0223
+	0
+	{0 hx} {1 hx} {2 hx} {3 hx} {4 hx} {5 hx} {6 hx} {7 hx} {8 hx} {9 hx}
+	{10 hx} {11 hx} {12 hx} {13 hx} {14 hx} {15 hx} {16 hx} {17 hx} {18 hx}
+	{19 hx} {gn hx} {0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11} {12}
+	{13} {14} {15} {16} {17} {18} {19} {gn} {0 wh} {1 wh} {2 wh} {3 wh}
+	{4 wh} {5 wh} {6 wh} {7 wh} {8 wh} {9 wh} {10 wh} {11 wh} {12 wh}
+	{13 wh} {14 wh} {gn wh} {0 bl} {1 bl} {2 bl} {3 bl} {4 bl} {5 bl} {6 bl}
+	{7 bl} {8 bl} {9 bl} {10 bl} {11 bl} {12 bl} {13 bl} {14 bl} {gn bl}
+	{0 fl} {1 fl} {2 fl} {3 fl} {4 fl} {5 fl} {6 fl} {7 fl} {8 fl} {9 fl}
+	{10 fl} {11 fl} {12 fl} {13 fl} {14 fl} {gn fl}
+	] def
+	/sl FMLOCAL
+	/val FMLOCAL
+	/ws FMLOCAL
+	/im FMLOCAL
+	/bs FMLOCAL
+	/cs FMLOCAL
+	/len FMLOCAL
+	/pos FMLOCAL
+/ms { 
+	/sl exch def 
+	/val 255 def 
+	/ws cfs 
+	/im cfs 
+	/val 0 def 
+	/bs cfs 
+	/cs cfs 
+	} bind def
+400 ms 
+/ip { 
+	is 
+	0 
+	cf cs readline pop 
+	{	ic exch get exec 
+		add 
+		} forall 
+	pop 
+	
+	} bind def
+/wh { 
+	/len exch def 
+	/pos exch def 
+	ws 0 len getinterval im pos len getinterval copy pop
+	pos len 
+	} bind def
+/bl { 
+	/len exch def 
+	/pos exch def 
+	bs 0 len getinterval im pos len getinterval copy pop
+	pos len 
+	} bind def
+/s1 1 string def
+/fl { 
+	/len exch def 
+	/pos exch def 
+	/val cf s1 readhexstring pop 0 get def
+	pos 1 pos len add 1 sub {im exch val put} for
+	pos len 
+	} bind def
+/hx { 
+	3 copy getinterval 
+	cf exch readhexstring pop pop 
+	} bind def
+	/h FMLOCAL
+	/w FMLOCAL
+	/d FMLOCAL
+	/lb FMLOCAL
+	/bitmapsave FMLOCAL
+	/is FMLOCAL
+	/cf FMLOCAL
+/wbytes { 
+	dup 
+	8 eq {pop} {1 eq {7 add 8 idiv} {3 add 4 idiv} ifelse} ifelse
+	} bind def
+/BEGINBITMAPBWc { 
+	1 {} COMMONBITMAPc
+	} bind def
+/BEGINBITMAPGRAYc { 
+	8 {} COMMONBITMAPc
+	} bind def
+/BEGINBITMAP2BITc { 
+	2 {} COMMONBITMAPc
+	} bind def
+/COMMONBITMAPc { 
+	/r exch def
+	/d exch def
+	gsave
+	translate rotate scale /h exch def /w exch def
+	/lb w d wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+	r                    
+	/is im 0 lb getinterval def 
+	ws 0 lb getinterval is copy pop 
+	/cf currentfile def 
+	w h d [w 0 0 h neg 0 h] 
+	{ip} image 
+	bitmapsave restore 
+	grestore
+	} bind def
+/BEGINBITMAPBW { 
+	1 {} COMMONBITMAP
+	} bind def
+/BEGINBITMAPGRAY { 
+	8 {} COMMONBITMAP
+	} bind def
+/BEGINBITMAP2BIT { 
+	2 {} COMMONBITMAP
+	} bind def
+/COMMONBITMAP { 
+	/r exch def
+	/d exch def
+	gsave
+	translate rotate scale /h exch def /w exch def
+	/bitmapsave save def 
+	r                    
+	/is w d wbytes string def
+	/cf currentfile def 
+	w h d [w 0 0 h neg 0 h] 
+	{cf is readhexstring pop} image
+	bitmapsave restore 
+	grestore
+	} bind def
+	/proc1 FMLOCAL
+	/proc2 FMLOCAL
+	/newproc FMLOCAL
+/Fmcc {
+    /proc2 exch cvlit def
+    /proc1 exch cvlit def
+    /newproc proc1 length proc2 length add array def
+    newproc 0 proc1 putinterval
+    newproc proc1 length proc2 putinterval
+    newproc cvx
+} bind def
+/ngrayt 256 array def
+/nredt 256 array def
+/nbluet 256 array def
+/ngreent 256 array def
+	/gryt FMLOCAL
+	/blut FMLOCAL
+	/grnt FMLOCAL
+	/redt FMLOCAL
+	/indx FMLOCAL
+	/cynu FMLOCAL
+	/magu FMLOCAL
+	/yelu FMLOCAL
+	/k FMLOCAL
+	/u FMLOCAL
+/colorsetup {
+	currentcolortransfer
+	/gryt exch def
+	/blut exch def
+	/grnt exch def
+	/redt exch def
+	0 1 255 {
+		/indx exch def
+		/cynu 1 red indx get 255 div sub def
+		/magu 1 green indx get 255 div sub def
+		/yelu 1 blue indx get 255 div sub def
+		/k cynu magu min yelu min def
+		/u k currentundercolorremoval exec def
+		nredt indx 1 0 cynu u sub max sub redt exec put
+		ngreent indx 1 0 magu u sub max sub grnt exec put
+		nbluet indx 1 0 yelu u sub max sub blut exec put
+		ngrayt indx 1 k currentblackgeneration exec sub gryt exec put
+	} for
+	{255 mul cvi nredt exch get}
+	{255 mul cvi ngreent exch get}
+	{255 mul cvi nbluet exch get}
+	{255 mul cvi ngrayt exch get}
+	setcolortransfer
+	{pop 0} setundercolorremoval
+	{} setblackgeneration
+	} bind def
+	/tran FMLOCAL
+/fakecolorsetup {
+	/tran 256 string def
+	0 1 255 {/indx exch def 
+		tran indx
+		red indx get 77 mul
+		green indx get 151 mul
+		blue indx get 28 mul
+		add add 256 idiv put} for
+	currenttransfer
+	{255 mul cvi tran exch get 255.0 div}
+	exch Fmcc settransfer
+} bind def
+/BITMAPCOLOR { 
+	/d 8 def
+	gsave
+	translate rotate scale /h exch def /w exch def
+	/bitmapsave save def 
+	colorsetup
+	/is w d wbytes string def
+	/cf currentfile def 
+	w h d [w 0 0 h neg 0 h] 
+	{cf is readhexstring pop} {is} {is} true 3 colorimage 
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPCOLORc { 
+	/d 8 def
+	gsave
+	translate rotate scale /h exch def /w exch def
+	/lb w d wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+	colorsetup
+	/is im 0 lb getinterval def 
+	ws 0 lb getinterval is copy pop 
+	/cf currentfile def 
+	w h d [w 0 0 h neg 0 h] 
+	{ip} {is} {is} true 3 colorimage
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPTRUECOLORc { 
+        gsave
+        translate rotate scale /h exch def /w exch def
+        /bitmapsave save def 
+        
+        /is w string def
+        
+        ws 0 w getinterval is copy pop 
+        /cf currentfile def 
+        w h 8 [w 0 0 h neg 0 h] 
+        {ip} {gip} {bip} true 3 colorimage
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPTRUECOLOR { 
+        gsave
+        translate rotate scale /h exch def /w exch def
+        /bitmapsave save def 
+        /is w string def
+        /gis w string def
+        /bis w string def
+        /cf currentfile def 
+        w h 8 [w 0 0 h neg 0 h] 
+        { cf is readhexstring pop } 
+        { cf gis readhexstring pop } 
+        { cf bis readhexstring pop } 
+        true 3 colorimage 
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPTRUEGRAYc { 
+        gsave
+        translate rotate scale /h exch def /w exch def
+        /bitmapsave save def 
+        
+        /is w string def
+        
+        ws 0 w getinterval is copy pop 
+        /cf currentfile def 
+        w h 8 [w 0 0 h neg 0 h] 
+        {ip gip bip w gray} image
+        bitmapsave restore 
+        grestore
+        } bind def
+/ww FMLOCAL
+/r FMLOCAL
+/g FMLOCAL
+/b FMLOCAL
+/i FMLOCAL
+/gray { 
+        /ww exch def
+        /b exch def
+        /g exch def
+        /r exch def
+        0 1 ww 1 sub { /i exch def r i get .299 mul g i get .587 mul
+			b i get .114 mul add add r i 3 -1 roll floor cvi put } for
+        r
+        } bind def
+/BITMAPTRUEGRAY { 
+        gsave
+        translate rotate scale /h exch def /w exch def
+        /bitmapsave save def 
+        /is w string def
+        /gis w string def
+        /bis w string def
+        /cf currentfile def 
+        w h 8 [w 0 0 h neg 0 h] 
+        { cf is readhexstring pop 
+          cf gis readhexstring pop 
+          cf bis readhexstring pop w gray}  image
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPGRAY { 
+	8 {fakecolorsetup} COMMONBITMAP
+	} bind def
+/BITMAPGRAYc { 
+	8 {fakecolorsetup} COMMONBITMAPc
+	} bind def
+/ENDBITMAP {
+	} bind def
+end 
+	/ALDsave FMLOCAL
+	/ALDmatrix matrix def ALDmatrix currentmatrix pop
+/StartALD {
+	/ALDsave save def
+	 savematrix
+	 ALDmatrix setmatrix
+	} bind def
+/InALD {
+	 restorematrix
+	} bind def
+/DoneALD {
+	 ALDsave restore
+	} bind def
+%%EndProlog
+%%BeginSetup
+(3.0) FMVERSION
+1 1 594.72 841.68 0 1 8 FMDOCUMENT
+0 0 /Times-Bold FMFONTDEFINE
+1 0 /Times-Roman FMFONTDEFINE
+2 0 /Times-Italic FMFONTDEFINE
+3 0 /Helvetica FMFONTDEFINE
+4 0 /Courier FMFONTDEFINE
+32 FMFILLS
+0 0 FMFILL
+1 .1 FMFILL
+2 .3 FMFILL
+3 .5 FMFILL
+4 .7 FMFILL
+5 .9 FMFILL
+6 .97 FMFILL
+7 1 FMFILL
+8 <0f1e3c78f0e1c387> FMFILL
+9 <0f87c3e1f0783c1e> FMFILL
+10 <cccccccccccccccc> FMFILL
+11 <ffff0000ffff0000> FMFILL
+12 <8142241818244281> FMFILL
+13 <03060c183060c081> FMFILL
+14 <8040201008040201> FMFILL
+16 1 FMFILL
+17 .9 FMFILL
+18 .7 FMFILL
+19 .5 FMFILL
+20 .3 FMFILL
+21 .1 FMFILL
+22 0.03 FMFILL
+23 0 FMFILL
+24 <f0e1c3870f1e3c78> FMFILL
+25 <f0783c1e0f87c3e1> FMFILL
+26 <3333333333333333> FMFILL
+27 <0000ffff0000ffff> FMFILL
+28 <7ebddbe7e7dbbd7e> FMFILL
+29 <fcf9f3e7cf9f3f7e> FMFILL
+30 <7fbfdfeff7fbfdfe> FMFILL
+%%EndSetup
+%%Page: "1" 1
+%%BeginPaperSize: A4
+%%EndPaperSize
+594.72 841.68 0 FMBEGINPAGE
+0 18 Q
+0 X
+0 K
+(Maintaining Distributed Hypertext Infostructures:) 101.87 757.68 T
+(Welcome to MOMspider\325s Web) 174.84 733.68 T
+0 12 Q
+(Roy T. Fielding) 257.18 695.68 T
+1 10 Q
+(fielding@ics.uci.edu) 255.48 681.01 T
+(Department of Information and Computer Science) 196.38 669.01 T
+(University of California, Irvine CA  92717-3425) 199.7 657.01 T
+(April 17, 1994) 267.71 645.01 T
+0 14 Q
+(Abstract) 72 614.35 T
+1 10 Q
+0.07 (Most documents made available on the World-Wide Web can be considered part of an infostructure \321 an infor-) 72 589.01 P
+0.88 (mation resource database with a specifically designed structure. Infostructures often contain a wide variety of) 72 577.01 P
+-0.02 (information sources, in the form of interlinked documents at distributed sites, which are maintained by a number) 72 565.01 P
+-0.23 (of different document owners \050usually, but not necessarily, the original document authors\051. Individual documents) 72 553.01 P
+0.2 (may also be shared by multiple infostructures. Since it is rarely static, the content of an infostructure is likely to) 72 541.01 P
+0.75 (change over time and may vary from the intended structure. Documents may be moved or deleted, referenced) 72 529.01 P
+(information may change, and hypertext links may be broken.) 72 517.01 T
+-0.07 (As it grows, an infostructure becomes complex and difficult to maintain. Such maintenance currently relies upon) 72 493.01 P
+-0.3 (the error logs of each server \050often never relayed to the document owners\051, the complaints of users \050often not seen) 72 481.01 P
+-0.3 (by the actual document maintainers\051, and periodic manual traversals by each owner of all the webs for which they) 72 469.01 P
+0.82 (are responsible. Since thorough manual traversal of a web can be time-consuming and boring, maintenance is) 72 457.01 P
+-0.31 (rarely or inconsistently performed and the infostructure eventually becomes corrupted. What is needed is an auto-) 72 445.01 P
+-0.07 (mated means for traversing a web of documents and checking for changes which may require the attention of the) 72 433.01 P
+(human maintainers \050owners\051 of that web.) 72 421.01 T
+0.62 (The Multi-Owner Maintenance spider \050MOMspider\051 has been developed to at least partially solve this mainte-) 72 397.01 P
+-0.42 (nance problem. MOMspider can periodically traverse a list of webs \050by owner, site, or document tree\051, check each) 72 385.01 P
+-0.33 (web for any changes which may require its owner\325s attention, and build a special index document that lists out the) 72 373.01 P
+0.37 (attributes and connections of the web in a form that can itself be traversed as a hypertext document. This paper) 72 361.01 P
+-0.29 (describes the design of MOMspider and how it was influenced by the nature of distributed hypertext maintenance) 72 349.01 P
+0.04 (and requirements for the good behavior of any web-traversing robot. It also includes discussion of the efficiency) 72 337.01 P
+-0.18 (requirements for maintaining world-wide webs and proposed changes to HTML and HTTP to support distributed) 72 325.01 P
+0.5 (maintenance. The paper concludes with a short description of MOMspider\325s future and pointers to its freeware) 72 313.01 P
+(distribution site.) 72 301.01 T
+0 14 Q
+(1. Introduction) 72 270.35 T
+1 10 Q
+-0.52 (The World-Wide Web \050WWW\051 can be described in many ways. From an organizational perspective, it is an initia-) 72 245.01 P
+0.43 (tive aiming to give universal access to a world of documents [Hughes94]. Technically, it is a distributed object) 72 233.01 P
+-0.4 (management system designed for information retrieval via textual relations. From a practical viewpoint, however,) 72 221.01 P
+-0.59 (the WWW is a synergistic combination of three technologies: a means for providing potentially useful information) 72 209.01 P
+0.6 (in such a way that it can be accessed by distributed \050and sometimes distant\051 users; a means for users to access) 72 197.01 P
+0.58 (information stored at distributed sites without requiring knowledge of the underlying access mechanism; and a) 72 185.01 P
+0.22 (means for structuring information such that it can be discovered, retrieved and viewed by those who would find) 72 173.01 P
+0.19 (it useful. These three technologies are enabled by WWW server and client programs and a set of proposed stan-) 72 161.01 P
+-0.61 (dards which allow them to communicate, to identify information objects, and to structure and view the information) 72 149.01 P
+(such that it can be traversed via hypertext links.) 72 137.01 T
+-0.08 (The Hypertext Transfer Protocol [HTTP] is used by distributed servers to communicate with each other and with) 72 113.01 P
+0.21 (a variety of client applications. Many of these clients are also capable of communicating with other information) 72 101.01 P
+0.57 (services, such as FTP, Gopher, and WAIS. A client can send commands to any server accessible via a TCP/IP) 72 89.01 P
+-0.55 (connection. The command is usually a request for transfer \050GET\051 of an information object, which is then displayed) 72 77.01 P
+(\050or saved\051 locally by the client.) 72 65.01 T
+FMENDPAGE
+%%EndPage: "1" 2
+%%Page: "2" 2
+594.72 841.68 0 FMBEGINPAGE
+1 10 Q
+0 X
+0 K
+1.2 (An information object is identified by a Uniform Resource Locator [URL] which, in its canonical form, can) 72 763.01 P
+-0.52 (include the access scheme \050e.g. http, gopher, telnet, etc.\051, an IP/hostname address and TCP port for the server loca-) 72 751.01 P
+0.23 (tion \050e.g. www.ics.uci.edu:80\051, and a name recognizable by the server as representing that object \050usually in the) 72 739.01 P
+(form of a relative file pathname\051. For example, the full URL for this document is:) 72 727.01 T
+-0.06 (<http://www.ics.uci.edu:80/WebSoft/MOMspider/WWW94/intro.html>. In most cases, the URL is embedded in) 72 715.01 P
+0.36 (other documents as a hypertext reference \050link\051 associated with some meaningful text pointer \050anchor\051. Viewed) 72 703.01 P
+(graphically, these links form a hypertext "web" of related information.) 72 691.01 T
+0.33 (The Hypertext Markup Language [HTML] is used to structure information such that it can be readily displayed) 72 667.01 P
+-0.03 (by viewing clients. Because these clients exist on heterogeneous platforms and may vary in their rendering abili-) 72 655.01 P
+1.45 (ties, HTML emphasizes the description of content and structure rather than form. Of primary importance is) 72 643.01 P
+-0.06 (HTML\325s ability to define portions of a document as being hypertext \321 pieces of text or images which are linked) 72 631.01 P
+1.46 (\050via anchor references\051 to other documents. End-users of the WWW interact with a viewing client \050such as) 72 619.01 P
+0.24 (NCSA\325s Mosaic\051 by reading documents and traversing to related documents by selecting the hypertext anchors.) 72 607.01 P
+0.21 (In addition to the main body of information, HTML documents can contain special header information \050metain-) 72 595.01 P
+(formation\051 such as the document\325s title, expiration date, and version.) 72 583.01 T
+0 14 Q
+(2. The Maintenance Problem) 72 552.35 T
+1 10 Q
+0.78 (All documents in the World-Wide Web can be considered part of an) 72 527.01 P
+2 F
+0.78 (infostructure) 356.75 527.01 P
+1 F
+0.78 ( \321 an information resource) 408.39 527.01 P
+0.8 (collection with a specifically designed structure [Tilton93]. An infostructure is created any time an amount of) 72 515.01 P
+-0.36 (information is organized in a useful manner, such as a dictionary or this paper \050Figure 1\051. In the WWW, infostruc-) 72 503.01 P
+-0.22 (tures can include a wide variety of information sources, in the form of interlinked documents, and each document) 72 491.01 P
+-0.22 (may be shared by multiple infostructures. In turn, an infostructure can be contained within higher-level infostruc-) 72 479.01 P
+-0.11 (tures, just as the table of contents is contained within the overall structure of this paper. The World-Wide Web as) 72 467.01 P
+(a whole can be considered the ultimate online infostructure.) 72 453.68 T
+72 80.54 522 449.68 C
+1 10 Q
+0 X
+0 K
+(paper) 136.21 295.07 T
+(appendix-A) 123.71 190.67 T
+(appendix-B) 123.99 169.07 T
+(appendix-C) 123.99 147.47 T
+(appendix-D) 123.71 125.87 T
+(intro) 263.86 392.27 T
+(problem) 256.65 359.87 T
+(existing) 257.48 327.47 T
+(solution) 257.2 295.07 T
+(design) 260.26 262.67 T
+(meta) 263.59 230.27 T
+(conclusions) 249.71 197.87 T
+(acknowledge) 246.94 165.47 T
+(HTML) 466.15 385.07 T
+(People) 466.7 406.67 T
+(Dan) 471.98 363.47 T
+(HTTP) 467.81 428.27 T
+(URL) 470.31 341.87 T
+(Hughes94) 460.04 320.27 T
+(Kevin) 468.09 298.67 T
+(Koster94) 461.98 277.07 T
+(Martijn) 465.31 255.47 T
+(Raggett94) 459.76 233.87 T
+(Dave) 469.76 212.27 T
+(Pitkow93) 461.14 190.67 T
+(James) 468.09 169.07 T
+(T) 463.26 147.47 T
+(ilton93) 469.02 147.47 T
+(Eric) 471.98 125.87 T
+(Figure 1: The infostructure for this paper) 107.56 95.85 T
+(. The table-of-contents substructure is in green \050gray\051.) 270.78 95.85 T
+241.8 159.88 304.8 177.88 R
+0.5 H
+2 Z
+N
+241.8 192.28 304.8 210.28 R
+N
+241.8 224.68 304.8 242.68 R
+N
+241.8 257.08 304.8 275.08 R
+N
+241.8 289.48 304.8 307.48 R
+N
+241.8 321.88 304.8 339.88 R
+N
+241.8 354.28 304.8 372.28 R
+N
+241.8 386.68 304.8 404.68 R
+N
+115.81 289.48 178.8 307.48 R
+3 K
+N
+115.81 185.08 178.8 203.08 R
+0 K
+N
+115.81 163.48 178.8 181.48 R
+N
+115.81 141.88 178.8 159.88 R
+N
+115.81 120.28 178.8 138.28 R
+N
+448.8 271.48 511.8 289.48 R
+8 X
+N
+448.8 401.08 511.8 419.08 R
+N
+448.8 379.48 511.8 397.48 R
+N
+448.8 357.88 511.8 375.88 R
+N
+448.8 336.28 511.8 354.28 R
+N
+448.8 314.68 511.8 332.68 R
+N
+448.8 293.08 511.8 311.08 R
+N
+448.8 422.68 511.8 440.68 R
+N
+448.8 249.88 511.8 267.88 R
+N
+448.8 228.28 511.8 246.28 R
+N
+448.8 206.68 511.8 224.68 R
+N
+448.8 185.08 511.8 203.08 R
+N
+448.8 163.48 511.8 181.48 R
+N
+448.8 141.88 511.8 159.88 R
+N
+448.8 120.28 511.8 138.28 R
+N
+0 X
+(MOMspider) 122.6 392.27 T
+115.81 386.68 178.8 404.68 R
+8 X
+N
+442.08 282.41 448.8 280.48 442.08 278.55 442.78 280.48 4 Y
+0 X
+V
+412.8 280.48 442.78 280.48 2 L
+0 Z
+N
+442.53 261.18 448.8 259.38 442.53 257.58 443.18 259.38 4 Y
+V
+443.18 259.38 443.18 259.38 443.18 276.68 413.45 276.68 4 L
+N
+441.89 303.48 448.17 301.68 441.89 299.88 442.54 301.68 4 Y
+V
+442.54 301.68 442.54 301.68 442.54 284.38 412.8 284.38 4 L
+N
+442.72 239.12 449.45 237.19 442.72 235.26 443.42 237.19 4 Y
+V
+443.42 237.19 438.4 237.19 438.4 272.99 413.12 272.99 4 L
+N
+442.22 325.92 448.95 323.99 442.22 322.06 442.92 323.99 4 Y
+V
+442.92 323.99 437.9 323.99 437.9 288.19 412.62 288.19 4 L
+N
+441.72 217.61 448.45 215.68 441.72 213.75 442.42 215.68 4 Y
+V
+408.62 271.49 408.62 215.68 442.42 215.68 3 L
+N
+442.08 196.11 448.8 194.18 442.08 192.25 442.78 194.18 4 Y
+V
+403.62 270.99 403.62 194.18 442.78 194.18 3 L
+N
+442.08 174.86 448.8 172.93 442.08 171.01 442.78 172.93 4 Y
+V
+397.89 271.24 397.89 172.93 442.78 172.93 3 L
+N
+442.08 152.81 448.8 150.88 442.08 148.95 442.78 150.88 4 Y
+V
+392.89 271.24 392.89 150.88 442.78 150.88 3 L
+N
+442.08 131.36 448.8 129.43 442.08 127.51 442.78 129.43 4 Y
+V
+387.89 271.74 387.89 129.43 442.78 129.43 3 L
+N
+441.72 346.43 448.45 344.5 441.72 342.57 442.42 344.5 4 Y
+V
+408.62 289.48 408.62 344.5 442.42 344.5 3 L
+N
+442.08 367.93 448.8 366 442.08 364.07 442.78 366 4 Y
+V
+403.62 289.19 403.62 366 442.78 366 3 L
+N
+442.08 389.17 448.8 387.24 442.08 385.32 442.78 387.24 4 Y
+V
+397.89 288.93 397.89 387.24 442.78 387.24 3 L
+N
+442.08 411.23 448.8 409.3 442.08 407.37 442.78 409.3 4 Y
+V
+392.89 288.93 392.89 409.3 442.78 409.3 3 L
+N
+442.08 430.34 448.8 428.41 442.08 426.48 442.78 428.41 4 Y
+V
+387.89 289.48 387.89 428.41 442.78 428.41 3 L
+N
+(references) 360.78 277.07 T
+349.8 271.48 412.8 289.48 R
+2 Z
+N
+185.53 192 178.8 193.93 185.53 195.86 184.83 193.93 4 Y
+V
+212.86 271.24 212.86 193.93 184.83 193.93 3 L
+0 Z
+N
+185.53 170.76 178.8 172.68 185.53 174.61 184.83 172.68 4 Y
+V
+217.11 266.99 217.11 172.68 184.83 172.68 3 L
+N
+185.53 148.7 178.8 150.63 185.53 152.56 184.83 150.63 4 Y
+V
+220.82 262.74 220.82 150.63 184.83 150.63 3 L
+N
+185.53 127.26 178.8 129.18 185.53 131.11 184.83 129.18 4 Y
+V
+224.53 258.18 224.53 129.18 184.83 129.18 3 L
+N
+234.97 260.11 241.7 258.18 234.97 256.25 235.67 258.18 4 Y
+V
+224.28 258.18 235.67 258.18 2 L
+N
+235.08 264.42 241.8 262.49 235.08 260.57 235.78 262.49 4 Y
+V
+220.82 262.49 235.78 262.49 2 L
+N
+234.97 268.67 241.7 266.74 234.97 264.82 235.67 266.74 4 Y
+V
+217.11 266.74 235.67 266.74 2 L
+N
+234.72 272.92 241.45 270.99 234.72 269.07 235.42 270.99 4 Y
+V
+212.7 270.99 235.42 270.99 2 L
+N
+108.72 196.39 115.44 194.46 108.72 192.53 109.42 194.46 4 Y
+3 K
+V
+94.4 291.39 94.4 194.46 109.42 194.46 3 L
+N
+108.72 174.39 115.44 172.46 108.72 170.53 109.42 172.46 4 Y
+V
+91.78 296.16 91.78 172.46 109.42 172.46 3 L
+N
+108.72 152.81 115.44 150.88 108.72 148.95 109.42 150.88 4 Y
+V
+89.49 301.08 89.49 150.88 109.42 150.88 3 L
+N
+108.72 131.45 115.44 129.52 108.72 127.59 109.42 129.52 4 Y
+V
+87.2 305.66 87.2 129.52 109.42 129.52 3 L
+N
+108.97 293.32 115.69 291.39 108.97 289.46 109.67 291.39 4 Y
+V
+94.4 291.39 109.67 291.39 2 L
+N
+109.08 298.09 115.81 296.16 109.08 294.23 109.78 296.16 4 Y
+V
+91.78 296.16 109.78 296.16 2 L
+N
+108.97 303.01 115.69 301.08 108.97 299.15 109.67 301.08 4 Y
+V
+89.49 301.08 109.67 301.08 2 L
+N
+108.72 307.59 115.44 305.66 108.72 303.73 109.42 305.66 4 Y
+V
+86.69 305.66 109.42 305.66 2 L
+N
+234.74 333.09 241.47 331.16 234.74 329.23 235.45 331.16 4 Y
+V
+207.41 291.52 207.41 331.16 235.45 331.16 3 L
+N
+234.74 365.67 241.47 363.74 234.74 361.81 235.45 363.74 4 Y
+V
+203.16 295.76 203.16 363.74 235.45 363.74 3 L
+N
+234.74 397.61 241.47 395.68 234.74 393.75 235.45 395.68 4 Y
+V
+199.46 300.01 199.46 395.68 235.45 395.68 3 L
+N
+195.75 304.58 195.75 430.57 381.47 430.57 3 L
+N
+185.31 302.65 178.58 304.58 185.31 306.51 184.61 304.58 4 Y
+V
+196 304.58 184.61 304.58 2 L
+N
+185.2 298.3 178.47 300.23 185.2 302.16 184.5 300.23 4 Y
+V
+199.46 300.23 184.5 300.23 2 L
+N
+185.31 294.02 178.58 295.95 185.31 297.88 184.61 295.95 4 Y
+V
+203.16 295.95 184.61 295.95 2 L
+N
+185.56 289.72 178.83 291.65 185.56 293.58 184.86 291.65 4 Y
+V
+207.58 291.65 184.86 291.65 2 L
+N
+383.23 296.21 381.3 289.48 379.38 296.21 381.3 295.51 4 Y
+V
+381.3 295.51 381.3 431.01 2 L
+N
+145.38 379.95 147.3 386.68 149.23 379.95 147.3 380.65 4 Y
+0 K
+V
+147.3 307.48 147.3 380.65 2 L
+N
+235.08 298.08 241.8 296.15 235.08 294.22 235.78 296.15 4 Y
+3 K
+V
+172.51 282.76 174.45 289.49 176.37 282.76 174.45 283.46 4 Y
+V
+235.78 296.15 223.45 296.15 223.45 280.01 174.45 280.01 174.45 283.46 5 L
+N
+235.08 235.61 241.8 233.68 235.08 231.75 235.78 233.68 4 Y
+V
+158.18 282.75 160.11 289.48 162.04 282.75 160.11 283.45 4 Y
+V
+235.78 233.68 160.11 233.68 160.11 283.45 3 L
+N
+235.08 203.21 241.8 201.28 235.08 199.35 235.78 201.28 4 Y
+V
+151.51 282.75 153.45 289.48 155.37 282.75 153.45 283.45 4 Y
+V
+235.78 201.28 227.05 201.28 227.05 229.35 153.45 229.35 153.45 283.45 5 L
+N
+235.08 165.94 241.8 164.01 235.08 162.08 235.78 164.01 4 Y
+V
+145.38 282.75 147.3 289.48 149.23 282.75 147.3 283.45 4 Y
+V
+235.78 164.01 195.62 164.01 195.62 223.68 147.3 223.68 147.3 283.45 5 L
+N
+311.53 400.75 304.8 402.68 311.53 404.61 310.83 402.68 4 Y
+0 K
+V
+376.71 296.21 374.78 289.48 372.85 296.21 374.78 295.51 4 Y
+V
+310.83 402.68 374.78 402.68 374.78 295.51 3 L
+N
+235.08 277.01 241.8 275.08 235.08 273.15 235.78 275.08 4 Y
+3 K
+V
+165.18 282.75 167.11 289.48 169.04 282.75 167.11 283.45 4 Y
+V
+235.78 275.08 167.11 275.08 167.11 283.45 3 L
+N
+275.23 379.01 273.3 372.28 271.38 379.01 273.3 378.31 4 Y
+0 K
+V
+273.3 386.68 273.3 378.31 2 L
+N
+275.23 346.61 273.3 339.88 271.38 346.61 273.3 345.91 4 Y
+V
+273.3 354.28 273.3 345.91 2 L
+N
+275.23 314.21 273.3 307.48 271.38 314.21 273.3 313.51 4 Y
+V
+273.3 321.88 273.3 313.51 2 L
+N
+275.23 281.81 273.3 275.08 271.38 281.81 273.3 281.11 4 Y
+V
+273.3 289.48 273.3 281.11 2 L
+N
+275.23 249.41 273.3 242.68 271.38 249.41 273.3 248.71 4 Y
+V
+273.3 257.08 273.3 248.71 2 L
+N
+275.23 217.01 273.3 210.28 271.38 217.01 273.3 216.31 4 Y
+V
+273.3 224.68 273.3 216.31 2 L
+N
+275.23 184.61 273.3 177.88 271.38 184.61 273.3 183.91 4 Y
+V
+273.3 192.28 273.3 183.91 2 L
+N
+311.53 166.95 304.8 168.88 311.53 170.81 310.83 168.88 4 Y
+V
+379.38 264.75 381.3 271.48 383.23 264.75 381.3 265.45 4 Y
+V
+310.83 168.88 381.3 168.88 381.3 265.45 3 L
+N
+311.53 202.68 304.8 204.61 311.53 206.54 310.83 204.61 4 Y
+V
+372.93 264.75 374.86 271.48 376.79 264.75 374.86 265.45 4 Y
+V
+310.83 204.61 374.86 204.61 374.86 265.45 3 L
+N
+311.53 235.08 304.8 237.01 311.53 238.94 310.83 237.01 4 Y
+V
+360.02 264.75 361.95 271.48 363.87 264.75 361.95 265.45 4 Y
+V
+310.83 237.01 361.95 237.01 361.95 265.45 3 L
+N
+311.53 258.75 304.8 260.68 311.53 262.61 310.83 260.68 4 Y
+V
+353.21 264.75 355.14 271.48 357.07 264.75 355.14 265.45 4 Y
+V
+310.83 260.68 355.14 260.68 355.14 265.45 3 L
+N
+311.53 296.55 304.8 298.48 311.53 300.41 310.83 298.48 4 Y
+V
+343.08 276.86 349.8 274.93 343.08 273 343.78 274.93 4 Y
+V
+310.83 298.48 320.2 298.48 320.2 274.93 343.78 274.93 4 L
+N
+311.53 396.25 304.8 398.18 311.53 400.11 310.83 398.18 4 Y
+V
+371.87 296.21 369.95 289.48 368.02 296.21 369.95 295.51 4 Y
+V
+310.83 398.18 369.95 398.18 369.95 295.51 3 L
+N
+366.62 296.21 364.7 289.48 362.77 296.21 364.7 295.51 4 Y
+V
+311.42 391.75 304.7 393.68 311.42 395.61 310.72 393.68 4 Y
+V
+364.7 295.51 364.7 393.68 310.72 393.68 3 L
+N
+361.37 296.21 359.45 289.48 357.52 296.21 359.45 295.51 4 Y
+V
+311.53 387.25 304.8 389.18 311.53 391.11 310.83 389.18 4 Y
+V
+359.45 295.51 359.45 389.18 310.83 389.18 3 L
+N
+311.53 361.35 304.8 363.28 311.53 365.21 310.83 363.28 4 Y
+V
+355.87 296.21 353.95 289.48 352.02 296.21 353.95 295.51 4 Y
+V
+310.83 363.28 353.95 363.28 353.95 295.51 3 L
+N
+343.08 282.41 349.8 280.48 343.08 278.55 343.78 280.48 4 Y
+V
+311.53 324.25 304.8 326.18 311.53 328.11 310.83 326.18 4 Y
+V
+343.78 280.48 325.2 280.48 325.2 326.18 310.83 326.18 4 L
+N
+311.53 328.95 304.8 330.88 311.53 332.81 310.83 330.88 4 Y
+V
+343.08 288.11 349.8 286.18 343.08 284.25 343.78 286.18 4 Y
+V
+310.83 330.88 332.45 330.88 332.45 286.18 343.78 286.18 4 L
+N
+274.37 412.08 272.45 405.35 270.52 412.08 272.45 411.37 4 Y
+V
+163.11 307.48 163.11 349.68 188.45 349.68 188.45 423.35 272.45 423.35 272.45 411.37 6 L
+N
+442.08 436.94 448.8 435.01 442.08 433.08 442.78 435.01 4 Y
+V
+304.8 335.68 348.11 335.68 348.11 435.01 442.78 435.01 4 L
+N
+109.22 398.11 115.94 396.18 109.22 394.25 109.92 396.18 4 Y
+V
+304.8 197.01 323.45 197.01 323.45 115.55 82.19 115.55 82.19 396.18 109.92 396.18 6 L
+N
+311.53 228.08 304.8 230.01 311.53 231.94 310.83 230.01 4 Y
+V
+365.85 264.75 367.78 271.48 369.71 264.75 367.78 265.45 4 Y
+V
+310.83 230.01 367.78 230.01 367.78 265.45 3 L
+N
+0 0 594.72 841.68 C
+FMENDPAGE
+%%EndPage: "2" 3
+%%Page: "3" 3
+594.72 841.68 0 FMBEGINPAGE
+1 10 Q
+0 X
+0 K
+-0.31 (A good infostructure doesn\325t just exist; it exists by) 72 763.01 P
+0 F
+-0.31 (design) 273.82 763.01 P
+1 F
+-0.31 (. The documents are linked specifically to allow readers) 301.04 763.01 P
+-0.12 (to navigate through the information presented. If that information is presented as hypertext, the reader should not) 72 751.01 P
+0.41 (be constrained by the linear nature of traditional documents. Therefore, hypertext authors attempt to provide as) 72 739.01 P
+-0.3 (many routes of navigation as are conceived to be useful for potential readers. Each hypertext link creates a depen-) 72 727.01 P
+(dency between the source and destination documents.) 72 715.01 T
+0.59 (In a world of information, most of the best sources are maintained at sites other than the author of a particular) 72 691.01 P
+0.79 (infostructure. Furthermore, such information is rarely static, consisting of living documents maintained by the) 72 679.01 P
+-0.03 (owner \050usually, but not necessarily, the original document author\051 at those distributed sites. Rather than copy the) 72 667.01 P
+-0.5 (contents, the WWW enables infostructures to be composed simply by referencing the desired object\325s URL within) 72 655.01 P
+-0.38 (the guiding text of any HTML document. In addition to providing document reuse, this allows new routes of navi-) 72 643.01 P
+-0.28 (gation to be developed by the consumers of that information, independent of the design considerations of existing) 72 631.01 P
+(infostructures.) 72 619.01 T
+0.51 (Unfortunately, the flexible and dynamic nature of the World-Wide Web leads to a glaring problem \321 one that) 72 595.01 P
+0.38 (should already be familiar to many information providers. Most infostructures are time dependent. They reflect) 72 583.01 P
+-0.62 (the navigational desires and information contents that were available at the time of their design. However, as living) 72 571.01 P
+-0.4 (documents change and new documents are added, the resulting structure may vary from that intended. Documents) 72 559.01 P
+-0.1 (may be moved or deleted, referenced information may change, and hypertext links may become broken. A living) 72 547.01 P
+(infostructure must therefore be actively maintained in order to prevent structural collapse.) 72 535.01 T
+-0.01 (The maintenance problem is further exacerbated by that of scale. As it grows, an infostructure becomes complex) 72 511.01 P
+0.43 (and difficult to maintain. Each new document may result in an exponential increase in document links. A large) 72 499.01 P
+0.08 (infostructure will therefore require many human maintainers, particularly if it is spread over multiple distributed) 72 487.01 P
+-0.26 (sites. However, this also compounds the problem \321 as individual maintainers make changes to support their own) 72 475.01 P
+(part of the infostructure, those same changes may break the structures maintained by others.) 72 463.01 T
+0 14 Q
+(3. Limitations of Existing Maintenance Methods) 72 432.35 T
+1 10 Q
+-0.09 (Maintenance of World-Wide Web infostructures currently relies upon the diligence of each document owner and) 72 407.01 P
+0.33 (a small stream of maintenance information. The primary source of that information is from users, commonly in) 72 395.01 P
+-0.49 (the form of complaints from those who encountered broken links or malformed documents. However, information) 72 383.01 P
+0.47 (providers cannot rely on user complaints. Most users of the Web are very tolerant of the errors encountered \321) 72 371.01 P
+-0.12 (after all, since the information is often provided by volunteers, many users feel that it would be impolite or disre-) 72 359.01 P
+-0.26 (spectful to point out any problems. Furthermore, many documents do not explicitly indicate to whom a complaint) 72 347.01 P
+0.36 (should be sent. Finally, even when a complaint is received, it is often directed to the wrong person \050i.e. the one) 72 335.01 P
+(maintaining the source of a link instead of its destination\051.) 72 323.01 T
+0.68 (A second source of maintenance information is provided by the logfiles of each server. The server records \050or) 72 299.01 P
+-0.27 (attempts to record\051 each document request and, if an error occurred, the nature of that error. Such information can) 72 287.01 P
+-0.41 (be extremely useful for identifying requests for documents that have moved and those that have misspelled URLs.) 72 275.01 P
+-0.01 (However, only the server managers have access to that information. The error is often never relayed to the docu-) 72 263.01 P
+-0.62 (ment maintainer, either because it is not recognized as a document error \050users frequently mistype document URLs) 72 251.01 P
+0.76 (when accessing them via an "Open..." dialog\051 or because the origin of the error is not apparent from the error) 72 239.01 P
+1.65 (message. Although this situation will improve as WWW clients begin using the Referer header in requests) 72 227.01 P
+0.08 ([HTTP], log information will never be sufficient to cover maintenance needs. Logs cannot reveal failed requests) 72 215.01 P
+-0.21 (that never made it to the server, nor can they support preventive maintenance and problems of changed document) 72 203.01 P
+(content.) 72 191.01 T
+0.02 (Although rarely applied, static analyzers of document infostructures can be a third source for maintenance infor-) 72 167.01 P
+0.85 (mation. One such tool is the) 72 155.01 P
+3 F
+0.95 (html_analyzer) 191.76 155.01 P
+1 F
+0.85 ( [Pitkow93]. It can examine a local infostructure and validate the) 253.97 155.01 P
+-0.39 (document links for accessibility, completeness, and consistency. This type of information could be very useful for) 72 143.01 P
+0.74 (infostructure maintenance, but tends to be applied more as a means for one-time verification than as a regular) 72 131.01 P
+-0.22 (maintenance process. Also, it fails to provide adequate support across distributed infostructures and for situations) 72 119.01 P
+(in which the document contents are outside the control of the program user.) 72 107.01 T
+FMENDPAGE
+%%EndPage: "3" 4
+%%Page: "4" 4
+594.72 841.68 0 FMBEGINPAGE
+1 10 Q
+0 X
+0 K
+0.11 (Given these limitations, the only existing method for performing adequate maintenance of WWW infostructures) 72 763.01 P
+-0.36 (is the brute-force one of periodic manual traversals, by each owner, of all the webs for which they are responsible.) 72 751.01 P
+-0.55 (Such traversals are repetitive, time-consuming, and boring \321 a guaranteed recipe for human inattentiveness. They) 72 739.01 P
+-0.37 (also require a great deal of duplication of effort for overlapping infostructures, as each owner retests the same link) 72 727.01 P
+0 (destinations. The result is that maintenance is rarely or inconsistently performed and the infostructure eventually) 72 715.01 P
+-0.27 (becomes corrupted. What is needed is a means for automating this traversal process such that a human maintainer) 72 703.01 P
+0.71 (\050owner\051 of an infostructure need only investigate documents which are likely to require maintenance effort \321) 72 691.01 P
+(those that are known to have changed, expired, or which contain broken links.) 72 679.01 T
+0 14 Q
+(4. Automated Traversal as a Maintenance Solution) 72 648.35 T
+1 10 Q
+0.16 (Given that a means for automating the traversal process is desired, we need to define the requirements and limi-) 72 623.01 P
+-0.6 (tations of such a solution. The primary requirement is that it improve the existing maintenance process by reducing) 72 611.01 P
+(the detrimental effects of human inattentiveness, duplication of effort, and distributed document ownership.) 72 599.01 T
+1.63 (Manual traversal is both time-consuming and boring. Current WWW browsers are designed for the normal) 72 575.01 P
+-0.34 (viewing process \321 they make no distinction between old documents and those that have recently changed, nor do) 72 563.01 P
+-0.16 (they show the user a document\325s last-modification and expiration dates. In addition, their only method for testing) 72 551.01 P
+0.37 (a link is to actually request and transfer the document contents. This is so inefficient \050particularly for sites with) 72 539.01 P
+-0.14 (slow network connections\051 that many document owners avoid testing those links at all. Even when applied repet-) 72 527.01 P
+0.91 (itively \050as is required for consistent maintenance\051, manual traversal fails because no human being can remain) 72 515.01 P
+(consistently attentive during a repetitive, time-consuming, and boring process.) 72 503.01 T
+-0.17 (Fortunately, these are the characteristics for which automation is most effective. An automated traversal program) 72 479.01 P
+-0.48 (can test a link without transferring the document contents by using the) 72 467.01 P
+3 F
+-0.53 (HEAD) 349.98 467.01 P
+1 F
+-0.48 ( request method rather than the) 377.74 467.01 P
+3 F
+-0.53 (GET) 501.45 467.01 P
+1 F
+0.22 (used by browsers [HTTP]. Provided that document metainformation is available in the response headers, such a) 72 455.01 P
+0.09 (program can also check for special conditions that would interest the infostructure owner, such as a recent) 72 443.01 P
+3 F
+0.09 (Last-) 499.78 443.01 P
+-0.29 (modified) 72 431.01 P
+1 F
+-0.26 ( date or an approaching) 109.77 431.01 P
+3 F
+-0.29 (Expires) 204.78 431.01 P
+1 F
+-0.26 ( date. Furthermore, the program can restrict its focus to the web\325s struc-) 238.1 431.01 P
+(ture and not be distracted by the contents of each document.) 72 419.01 T
+-0.12 (With manual traversal, duplication of effort occurs because different infostructure owners don\325t see the results of) 72 395.01 P
+-0.15 (others\325 traversals. World-Wide Web infostructures are encouraged to overlap \050i.e. to reuse documents created for) 72 383.01 P
+-0.58 (other infostructures\051. For example, just think of how many documents at your site reference the) 72 371.01 P
+3 F
+-0.64 (What\325s New With) 447.21 371.01 P
+1.6 (NCSA Mosaic) 72 359.01 P
+1 F
+1.44 ( document. If the owner of each infostructure independently checks each link with a) 135.79 359.01 P
+3 F
+1.6 (HEAD) 494.23 359.01 P
+1 F
+0.31 (request, the result would be a great deal of duplication, wasted network bandwidth, and an unnecessary load on) 72 347.01 P
+-0.11 (the document servers. An automated traversal program should therefore be required to handle multiple infostruc-) 72 335.01 P
+(tures, possibly maintained by different owners, and share its testing information across them.) 72 323.01 T
+0.02 (Sharing maintenance information can also be beneficial in reducing the problem of distributed document owner-) 72 299.01 P
+0.42 (ship. Since the program is performing traversals for multiple owners, it needs to place the results where all can) 72 287.01 P
+-0.48 (gain access. Surely the best place for such information is on the Web itself, in the form of HTML index documents) 72 275.01 P
+-0.22 (generated for each infostructure. In this way, the document owners can make use of shared maintenance informa-) 72 263.01 P
+-0.5 (tion even when they are not located at the site where the program is executed. It also allows a single site to perform) 72 251.01 P
+(the maintenance traversals for many others.) 72 239.01 T
+-0.51 (Unfortunately, no automated traversal program can completely solve the maintenance problem. A program cannot) 72 215.01 P
+-0.41 (tell when a document\325s contents are changed such that they no longer represent the intentions of a given infostruc-) 72 203.01 P
+0.04 (ture. Nor can a program, once it has discovered a broken link, determine why that link is broken or how to fix it.) 72 191.01 P
+0.72 (These tasks must still be performed by human maintainers. However, a traversal program can greatly ease the) 72 179.01 P
+-0.09 (process by alerting the human maintainer and explicitly pointing to those documents that have changed and links) 72 167.01 P
+(that are broken.) 72 155.01 T
+0.1 (Clearly, an automated traversal program would be useful for easing the maintenance of hypertext infostructures.) 72 131.01 P
+0.24 (We have developed the Multi-Owner Maintenance spider \050MOMspider\051 for this purpose. MOMspider is a web-) 72 119.01 P
+0.43 (wandering robot that, given a list of instructions that details what infostructures to traverse, whom to notify for) 72 107.01 P
+0.15 (problems, and where to put the resulting maintenance information, will traverse each infostructure and fulfill all) 72 95.01 P
+FMENDPAGE
+%%EndPage: "4" 5
+%%Page: "5" 5
+594.72 841.68 0 FMBEGINPAGE
+1 10 Q
+0 X
+0 K
+-0.17 (of the requirements listed above. The remainder of this paper will focus on the specific design of MOMspider, its) 72 763.01 P
+0.56 (capabilities and limitations, and proposed enhancements to HTML and HTTP which would further increase its) 72 751.01 P
+(usefulness.) 72 739.01 T
+0 14 Q
+(5. MOMspider Design) 72 708.35 T
+1 10 Q
+0.19 (The design of MOMspider focuses on fulfilling the requirements of multi-owner maintenance while at the same) 72 683.01 P
+0.16 (time minimizing its effect on World-Wide Web servers and network bandwidth. Because the MOMspider client) 72 671.01 P
+-0.41 (is oriented toward maintenance issues in general, it also attempts to maximize the benefit to information providers) 72 659.01 P
+(while respecting any limits they may place on wandering robots.) 72 647.01 T
+0 12 Q
+(5.1 Functionality) 72 617.68 T
+1 10 Q
+-0.15 (MOMspider gets its instructions by reading a text file that contains a list of options and tasks to be performed \050an) 72 593.01 P
+0.08 (example instruction file is provided in Appendix A\051. Each task is intended to describe a specific infostructure so) 72 581.01 P
+-0.29 (that it can be encompassed by the traversal process. A task instruction includes the traversal type, an infostructure) 72 569.01 P
+-0.29 (name \050for later reference\051, the "Top" URL at which to start traversing, the location for placing the indexed output,) 72 557.01 P
+-0.54 (an e-mail address that corresponds to the owner of that infostructure, and a set of options that determine what iden-) 72 545.01 P
+(tified maintenance issues justify sending an e-mail message.) 72 533.01 T
+0.36 (For each task, MOMspider traverses the web from the specified top document down to each leaf node, where a) 72 509.01 P
+-0.01 (leaf node is defined to be any information object which is not of document-type HTML \050and thus cannot contain) 72 497.01 P
+0.18 (any further links\051 or which is outside the given infostructure. MOMspider determines the boundaries of an info-) 72 485.01 P
+-0.27 (structure according to the task\325s traversal type:) 72 473.01 P
+0 F
+-0.27 (Site) 259.66 473.01 P
+1 F
+-0.27 (,) 275.76 473.01 P
+0 F
+-0.27 (Tree) 280.48 473.01 P
+1 F
+-0.27 (, or) 300.46 473.01 P
+0 F
+-0.27 (Owner) 315.73 473.01 P
+1 F
+-0.27 (. Site traversal specifies that any URL which) 345.16 473.01 P
+0.18 (points to a site \050the pairing of hostname/IP address and port\051 other than that of the top document is considered a) 72 461.01 P
+-0.32 (leaf node. Tree traversal specifies that any document not at or below the "level" of the top document is considered) 72 449.01 P
+-0.04 (a leaf node, where level is determined by the pathname in the URL. Owner traversal specifies that any document) 72 437.01 P
+0.55 (beyond the top which does not contain an "Owner:" metainformation header equal to the infostructure name is) 72 425.01 P
+(considered a leaf node.) 72 413.01 T
+-0.04 (The maintenance information produced by each task is formatted as an HTML index and output to the file speci-) 72 389.01 P
+0.19 (fied in the task instructions \050an example of which is provided in Appendix B\051. The index contains the following) 72 377.01 P
+(maintenance information:) 72 365.01 T
+(\245) 72 347.01 T
+(Information regarding how and when the index was generated \050i.e. program options and execution time\051;) 86.4 347.01 T
+(\245) 72 335.01 T
+(A hypertext link to the one prior version of the index document;) 86.4 335.01 T
+(\245) 72 323.01 T
+(The following for each non-leaf document accessible via the "top":) 86.4 323.01 T
+(\245) 90 311.01 T
+(An anchor which links to the actual document;) 108 311.01 T
+(\245) 90 299.01 T
+(Document header info \050Title, Modification Date, Expires Date, etc.\051;) 108 299.01 T
+(\245) 90 287.01 T
+(A list of all unique hypertext references made by the document, with each reference including:) 108 287.01 T
+(\245) 108 275.01 T
+(The type of reference made \050i.e. get, query, img, ftp, etc.\051;) 126 275.01 T
+(\245) 108 263.01 T
+(An anchor which duplicates the reference;) 126 263.01 T
+(\245) 108 251.01 T
+(Document header info if available \050Title and Modification Date\051;) 126 251.01 T
+(\245) 108 239.01 T
+-0.04 (If the referenced object is within the current infostructure \050i.e. not a leaf\051, then an additional anchor) 126 239.01 P
+(is provided to cross-reference jump to its own entry in the index document.) 126 227.01 T
+(\245) 72 215.01 T
+(A list of cross-reference anchors which point to interesting changes as reflected in the index entries.) 86.4 215.01 T
+(MOMspider looks for four types of document change which may be of interest to the owner:) 72 191.01 T
+(1.) 72 173.01 T
+(referenced objects which have redirected URLs \050moved documents\051;) 86.4 173.01 T
+(2.) 72 161.01 T
+(referenced objects which cannot be accessed \050broken links\051;) 86.4 161.01 T
+(3.) 72 149.01 T
+(referenced objects with recent modification dates; and,) 86.4 149.01 T
+(4.) 72 137.01 T
+(owned objects with expiration dates near to the current date.) 86.4 137.01 T
+0.16 (Each interesting item is placed in the closing cross-reference table and, if the corresponding option is requested,) 72 113.01 P
+(enclosed in a single e-mail message and posted to the owner at the task\325s completion.) 72 101.01 T
+FMENDPAGE
+%%EndPage: "5" 6
+%%Page: "6" 6
+594.72 841.68 0 FMBEGINPAGE
+0 12 Q
+0 X
+0 K
+(5.2 Efficient Use of Network Resources) 72 761.68 T
+1 10 Q
+-0.5 (A key design constraint of MOMspider is that of efficiency \321 particularly in regards to network bandwidth usage.) 72 737.01 P
+0.47 (It would be irresponsible to develop a maintenance robot which overly taxed the limited resources of networks) 72 725.01 P
+0.24 (like the Internet. Therefore, MOMspider minimizes the load on network bandwidth by using the) 72 713.01 P
+3 F
+0.27 (HEAD) 462.33 713.01 P
+1 F
+0.24 (request) 493.14 713.01 P
+0.19 (wherever possible, keeping track of nodes that have already been tested, grouping multiple tasks within a single) 72 701.01 P
+(execution, and allowing the user to restrict the traversal of certain URLs.) 72 689.01 T
+-0.09 (Aside from the restrictions described above regarding the task\325s traversal type, MOMspider also enables the user) 72 665.01 P
+-0.51 (to specify any URL prefixes which must always be avoided or leafed. These URL prefixes are listed in the system-) 72 653.01 P
+-0.54 (wide or user avoid files \050an example of which is provided in Appendix C\051. Each entry in the file includes the action) 72 641.01 P
+-0.08 (\050Avoid or Leaf\051, the URL prefix on which to apply that action, and an optional expiration date for the entry. This) 72 629.01 P
+0.57 (allows the user to completely avoid documents for which maintenance is not a concern or which could trap an) 72 617.01 P
+(unsuspecting spider \050some forms of computational hypertext can have that effect\051.) 72 605.01 T
+0 12 Q
+(5.3 Being Friendly to Service Providers) 72 575.68 T
+1 10 Q
+0.23 (The second key design constraint for MOMspider is that it minimize its impact on information providers \050desti-) 72 551.01 P
+0.42 (nation servers\051 while at the same time maximizing the indirect benefits they receive from the traversal process.) 72 539.01 P
+(All HTTP requests are similar to:) 72 527.01 T
+4 F
+(HEAD /path HTTP/1.0) 90 509.01 T
+(User-Agent: MOMspider/0.1) 90 499.01 T
+(From: user@machine.sub.dom.ain) 90 489.01 T
+(Referer: http://www.site.edu/current/document.html) 90 479.01 T
+1 F
+-0.19 (This allows server maintainers to properly recognize the source of the request and, if necessary, place restrictions) 72 457.01 P
+-0.39 (upon a particular spider. It also provides them useful information, including how to contact the person running the) 72 445.01 P
+(spider and what document contains the reference being tested.) 72 433.01 T
+(As an additional precaution, MOMspider periodically looks for and obeys any restrictions found in a site\325s) 72 409.01 T
+0.38 (/RobotsNotWanted.txt document as per the standard proposed by Martijn Koster [Koster94]. Before any link is) 72 397.01 P
+-0.15 (tested, the destination site is looked-up in a table of recently accessed sites \050the definition of "recently" can be set) 72 385.01 P
+0.31 (by the user\051. If it is not found, that site\325s /RobotsNotWanted.txt document is requested and, if found, parsed for) 72 373.01 P
+0.4 (any restrictions to be placed on MOMspider robots. Any such restrictions are added to the user\325s avoid list and) 72 361.01 P
+1.05 (the site is added to the site table, both with expiration dates indicating when the site must be checked again.) 72 349.01 P
+0 (Although this opens the possibility for a discrepancy to exist between the restrictions applied and the contents of) 72 337.01 P
+0.63 (a recently changed /RobotsNotWanted.txt document, it is necessary to avoid a condition where the site checks) 72 325.01 P
+-0.25 (cause a greater load on the server than would the maintenance requests alone. An example sites file is provided in) 72 313.01 P
+(Appendix D.) 72 301.01 T
+0 14 Q
+(6. The Need for Visible Metainformation) 72 270.35 T
+1 10 Q
+-0.44 (MOMspider needs some method for obtaining the Owner, Last-modified date, and Expires date of any maintained) 72 245.01 P
+1.22 (documents. For efficiency reasons, this metainformation must be returned as HTTP headers in response to a) 72 233.01 P
+3 F
+-0.02 (HEAD) 72 221.01 P
+1 F
+-0.01 ( request on that document [HTTP]. This means that existing HTTP servers must be changed to send those) 99.76 221.01 P
+-0.58 (headers and some means must be provided for the server to obtain the relevant metainformation for each document) 72 209.01 P
+(it serves. There are three possible means of providing that information to the server:) 72 197.01 T
+(1.) 72 179.01 T
+-0.59 (A special server configuration table \050or tables\051 which lists each served document and its corresponding metain-) 86.4 179.01 P
+(formation.) 86.4 167.01 T
+(2.) 72 155.01 T
+0.03 (Special server directories which mirror the names of served documents and contain the metainformation cor-) 86.4 155.01 P
+(responding to those names.) 86.4 143.01 T
+(3.) 72 131.01 T
+(Optional HTML META elements which can be embedded in the document and parsed by the server.) 86.4 131.01 T
+-0.47 (The first and second solutions are more efficient \050for the server\051 and are applicable to both HTML and non-HTML) 72 107.01 P
+0.66 (documents. However, it adds an additional maintenance problem of keeping the metainformation table or files) 72 95.01 P
+1.47 (consistent with the corresponding documents. This may be alleviated by distributing the table or directories) 72 83.01 P
+(amongst the infostructure, as in special .metainfo documents in each server directory.) 72 71.01 T
+FMENDPAGE
+%%EndPage: "6" 7
+%%Page: "7" 7
+594.72 841.68 0 FMBEGINPAGE
+1 10 Q
+0 X
+0 K
+-0.38 (The third solution is less efficient for the server \050because it must parse the HTML headers each time the document) 72 763.01 P
+-0.59 (is requested\051 but is much more flexible and easier for distributed authors to maintain. Also, since MOMspider does) 72 751.01 P
+(not care about getting Owner information from non-HTML objects, this is the preferred solution for now.) 72 739.01 T
+0.14 (For this purpose, the META element has been added to the HTML+ specification [Raggett94]. Each maintained) 72 715.01 P
+(HTML file would include optional META elements within the HEAD part of the document like the following:) 72 703.01 T
+4 F
+(<META header name="Owner" value="AnyOwnerAlias">) 90 685.01 T
+(<META header name="Expires" value="Fri, 01 Apr 1994 00:00:00 GMT">) 90 675.01 T
+1 F
+0.34 (Unfortunately, this still does not solve the problem of getting HTTP servers to provide the parsing necessary to) 72 653.01 P
+-0.1 (produce the actual headers. It is likely that this will only occur once it becomes clear how useful that information) 72 641.01 P
+0.24 (can be. For the meantime, MOMspider has been designed so as not to be dependent on that information and yet) 72 629.01 P
+(be able to make full use of it whenever it does become available.) 72 617.01 T
+0 14 Q
+(7. Conclusions and Future Research) 72 586.35 T
+1 10 Q
+-0.05 (At the present time, the World-Wide Web is experiencing phenomenal growth. Our ability to sustain that growth) 72 561.01 P
+0.33 (will depend a great deal upon the manageability, and thus the maintainability, of the infostructures which make) 72 549.01 P
+0.02 (up the web. Existing maintenance methods are inadequate to support large infostructures, particularly when they) 72 537.01 P
+-0.21 (span distributed sites or multiple owners. Failure to address this maintenance problem could result in the collapse) 72 525.01 P
+(of large portions of the Web and considerably reduce its usefulness for serious applications.) 72 513.01 T
+0.91 (The Multi-Owner Maintenance spider \050MOMspider\051 alleviates this maintenance problem by automating those) 72 489.01 P
+0.63 (tasks which are most tiresome for human maintainers. MOMspider can periodically traverse a list of webs \050by) 72 477.01 P
+-0.44 (owner, site, or document tree\051, check each web for any changes which may require its owner\325s attention, and build) 72 465.01 P
+1.18 (a special index document that lists out the attributes and connections of the web in a form that can itself be) 72 453.01 P
+0.89 (traversed as a hypertext document. Moreover, it does so in an efficient manner by sharing information across) 72 441.01 P
+0.04 (maintenance tasks, minimizing the use of network bandwidth, and allowing complex restrictions to be placed on) 72 429.01 P
+(its operation.) 72 417.01 T
+0.34 (This paper has described the requirements for automated support of distributed hypertext maintenance and how) 72 393.01 P
+0.61 (those requirements have influenced MOMspider\325s design. The MOMspider program, including source code, is) 72 381.01 P
+(freely available and can be found at the following distribution sites:) 72 369.01 T
+4 F
+(http://www.ics.uci.edu/WebSoft/MOMspider/) 90 351.01 T
+(ftp://liege.ics.uci.edu/pub/arcadia/MOMspider/) 90 341.01 T
+1 F
+-0.55 (The future applications for maintenance tools like MOMspider will depend on the availabilty of document metain-) 72 319.01 P
+-0.12 (formation. For instance, the index that MOMspider generates is not significantly different than that used to index) 72 307.01 P
+-0.54 (sites for search engines like ALIWEB and Archie [ED92] \321 all that need be added is the specific metainformation) 72 295.01 P
+0.04 (that is useful to those engines. Similarly, since MOMspider already does the work of traversing an infostructure,) 72 283.01 P
+(it would be possible to have it generate a graphical description of the webspace usable by browsing clients.) 72 271.01 T
+-0.21 (As the Web continues to grow, more applications will be found for programs that can properly traverse infostruc-) 72 247.01 P
+-0.14 (tures without becoming a burden on limited network and server resources. It is hoped that MOMspider will serve) 72 235.01 P
+(as an example of how such a web-roaming robot should be designed.) 72 223.01 T
+FMENDPAGE
+%%EndPage: "7" 8
+%%Page: "8" 8
+594.72 841.68 0 FMBEGINPAGE
+0 14 Q
+0 X
+0 K
+(Acknowledgements) 72 760.35 T
+1 10 Q
+-0.54 (I am indebted to Mark Ackerman for his suggestion that finding a way to automate or assist hypertext maintenance) 72 735.01 P
+-0.61 (would be an excellent project for the World-Wide Web. I would also like to thank Tim Berners-Lee, Dave Raggett,) 72 723.01 P
+-0.38 (and Lou Montulli for their comments on the original MOMspider proposal, Martijn Koster for taking the time and) 72 711.01 P
+0.94 (effort to set up the robot exclusion proposal, and James "Eric" Tilton for coining the word) 72 699.01 P
+2 F
+0.94 (infostructure) 449.16 699.01 P
+1 F
+0.94 (\050and) 504.24 699.01 P
+(telling us all about it\051.) 72 687.01 T
+0.71 (This material is based upon work sponsored by the Advanced Research Projects Agency under Grant Number) 72 663.01 P
+0.07 (MDA972-91-J-1010. The content of the information does not necessarily reflect the position or the policy of the) 72 651.01 P
+(U.S. Government and no official endorsement should be inferred.) 72 639.01 T
+0 14 Q
+(References) 72 608.35 T
+1 10 Q
+([HTML]) 72 587.01 T
+(Tim Berners-Lee and Daniel Connolly.) 126 587.01 T
+2 F
+(Hypertext Markup Language.) 285.33 587.01 T
+1 F
+(Internet working draft, 13 Jul 1993 \050now expired\051. Published on the WWW at) 126 575.01 T
+(http://info.cern.ch/hypertext/WWW/MarkUp/HTML.html) 126 563.01 T
+([HTTP]) 72 545.01 T
+(Tim Berners-Lee.) 126 545.01 T
+2 F
+(Hypertext Transfer Protocol.) 199.55 545.01 T
+1 F
+(Internet working draft, 5 Nov 1993. Published on the WWW at) 126 533.01 T
+(http://info.cern.ch/hypertext/WWW/Protocols/HTTP/HTTP2.html) 126 521.01 T
+([URL]) 72 503.01 T
+(Tim Berners-Lee.) 126 503.01 T
+2 F
+(Universal Resource Locators.) 199.55 503.01 T
+1 F
+(Internet working draft, 1 Jan 1994. Published on the WWW at) 126 491.01 T
+(http://info.cern.ch/hypertext/WWW/Addressing/URL/Overview.html) 126 479.01 T
+([ED92]) 72 461.01 T
+(A. Emtage and P. Deutsch.) 126 461.01 T
+2 F
+(Archie: An Electronic Directory Service for the Internet.) 236.48 461.01 T
+1 F
+(Proceedings Winter 1992 Usenix Conf., Usenix, Sunset Beach, Calif., 1992, pp. 93-110.) 126 449.01 T
+([Hughes94]) 72 431.01 T
+(Kevin Hughes.) 126 431.01 T
+2 F
+(Entering the World-Wide Web: A Guide to Cyberspace.) 188.46 431.01 T
+1 F
+(Version 6.0, 18 Mar 1994. Published on the WWW at ftp://ftp.eit.com/pub/web.guide/) 126 419.01 T
+([Koster94]) 72 401.01 T
+(Martijn Koster.) 126 401.01 T
+2 F
+(A proposed standard for Robot exclusion.) 190.12 401.01 T
+1 F
+(Published on the WWW at) 359.75 401.01 T
+(http://web.nexor.co.uk/mak/doc/robots/norobots.html) 126 389.01 T
+([Raggett94]) 72 371.01 T
+(Dave Raggett.) 126 371.01 T
+2 F
+(Document Type Definition for the HyperText Markup Language Plus) 185.68 371.01 T
+(\050HTML+ DTD\051.) 126 359.01 T
+1 F
+( Published on the WWW at ftp://15.254.100.100/pub/htmlplus.dtd.txt) 191.04 359.01 T
+([Pitkow93]) 72 341.01 T
+(James Pitkow.) 126 341.01 T
+2 F
+(HTML_ANALYZER-1.00 README.) 186.25 341.01 T
+1 F
+(Published on the WWW at) 333.95 341.01 T
+(http://www.gatech.edu/pitkow/html_analyzer/README.html) 126 329.01 T
+([Tilton93]) 72 311.01 T
+(James "Eric" Tilton.) 126 311.01 T
+2 F
+(What is an Infostructure?) 209.66 311.01 T
+1 F
+( Published on the WWW at) 312.11 311.01 T
+(http://www.willamette.edu/~jtilton/info-p.html) 126 299.01 T
+FMENDPAGE
+%%EndPage: "8" 9
+%%Page: "9" 9
+594.72 841.68 0 FMBEGINPAGE
+0 14 Q
+0 X
+0 K
+(Appendix A) 72 760.35 T
+4 10 Q
+(# MOMspider-0.1a Instruction File) 72 739.01 T
+(SystemAvoid /usr/local/httpd/admin/avoid.mom) 72 719.01 T
+(SystemSites /usr/local/httpd/admin/sites.mom) 72 709.01 T
+(AvoidFile   /usr/grads/fielding/test/.momspider-avoid) 72 699.01 T
+(SitesFile   /usr/grads/fielding/test/.momspider-sites) 72 689.01 T
+(SitesCheck  7) 72 679.01 T
+(<Site) 72 669.01 T
+(    Name          ICS) 72 659.01 T
+(    TopURL        http://www.ics.uci.edu/ICShome.html) 72 649.01 T
+(    IndexURL      http://www.ics.uci.edu/Admin/ICS.html) 72 639.01 T
+(    IndexFile     /usr/local/httpd/documentroot/MOM/ICS.html) 72 629.01 T
+(    IndexTitle    MOMspider Index for All of ICS) 72 619.01 T
+(    EmailAddress  www@ics.uci.edu) 72 609.01 T
+(    EmailBroken) 72 599.01 T
+(    EmailExpired  2) 72 589.01 T
+(>) 72 579.01 T
+(<Tree) 72 569.01 T
+(    Name          MOMspider-WWW94) 72 559.01 T
+(    TopURL        http://www.ics.uci.edu/WebSoft/MOMspider/WWW94/paper.html) 72 549.01 T
+(    IndexURL      http://www.ics.uci.edu/Admin/MOMspider-WWW94.html) 72 539.01 T
+(    IndexFile     /usr/local/httpd/documentroot/Admin/MOMspider-WWW94.html) 72 529.01 T
+(    IndexTitle    MOMspider Index for Roy\325s WWW94 Paper) 72 519.01 T
+(    EmailAddress  fielding@ics.uci.edu) 72 509.01 T
+(    EmailBroken) 72 499.01 T
+(>) 72 489.01 T
+(<Owner) 72 479.01 T
+(    Name          RTF) 72 469.01 T
+(    TopURL        http://www.ics.uci.edu/~fielding/hotlist.html) 72 459.01 T
+(    IndexURL      http://www.ics.uci.edu/~fielding/MOM/RTF.html) 72 449.01 T
+(    IndexFile     /usr/grads/fielding/public_html/MOM/RTF.html) 72 439.01 T
+(    EmailAddress  fielding@ics.uci.edu) 72 429.01 T
+(    EmailBroken) 72 419.01 T
+(    EmailChanged  3) 72 409.01 T
+(    EmailExpired  7) 72 399.01 T
+(>) 72 389.01 T
+0 14 Q
+(Appendix B) 72 360.35 T
+1 10 Q
+(See) 72 335.01 T
+4 F
+(http://www.ics.uci.edu/WebSoft/MOMspider/WWW94/appendix-B.html) 88.93 335.01 T
+0 14 Q
+(Appendix C) 72 304.35 T
+4 10 Q
+(# MOMspider-0.1a Avoid File:  Lists URL prefixes to avoid or leaf.) 72 283.01 T
+(# New URL prefixes can be added when the program is not running.) 72 273.01 T
+(# The file format is:  EntryType  URLprefix  [ExpireDate]) 72 263.01 T
+(# where EntryType  = \322Avoid\323 or \322Leaf\323) 72 253.01 T
+(#       URLprefix  = the full URL prefix for which this entry applies) 72 243.01 T
+(#       ExpireDate =  [*] for never expire) 72 233.01 T
+(#                  or [date] \050see wwwdates.pl for valid date formats\051) 72 223.01 T
+(# This file is automatically generated, so don\325t bother changing the format.) 72 213.01 T
+(Avoid http://www.ncsa.uiuc.edu:8001/ [*]) 72 193.01 T
+(Avoid http://info.cern.ch:8001/ [*]) 72 183.01 T
+(Avoid http://www.contrib.andrew.cmu.edu:8001/sokoban/ [*]) 72 173.01 T
+(Leaf  http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/whats-new.html [*]) 72 163.01 T
+(Leaf  http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/MetaIndex.html [*]) 72 153.01 T
+(Leaf  http://info.cern.ch/hypertext/DataSources/ByAccess.html [*]) 72 143.01 T
+(Leaf  http://info.cern.ch/hypertext/DataSources/bySubject/Overview.html [*]) 72 133.01 T
+(Avoid http://www.whitehouse.gov/ [*]) 72 123.01 T
+(Leaf  http://www.ics.uci.edu/Admin/ [*]) 72 113.01 T
+-1.2 (Avoid http://www.ics.uci.edu/Test/momtest.html [Sat, 02 Apr 1994 00:00:00 GMT]) 72 103.01 P
+(Avoid http://betelgeuse.com/name.html [Fri, 31 Dec 1999 09:30:00 GMT]) 72 93.01 T
+(Avoid http://simplon.ics.uci.edu:8001/ [Thu, 29 Sep 1994 23:59:59 GMT]) 72 83.01 T
+FMENDPAGE
+%%EndPage: "9" 10
+%%Page: "10" 10
+594.72 841.68 0 FMBEGINPAGE
+0 14 Q
+0 X
+0 K
+(Appendix D) 72 760.35 T
+4 10 Q
+(# MOMspider-0.1a Sites File:  Lists IPaddress:port locations we\325ve checked) 72 739.01 T
+(# for a /RobotsNotWanted.txt file and followed its directions.) 72 729.01 T
+(# New sites can be added when the program is not running.) 72 719.01 T
+(# The file format is:  EntryType  IPaddress:Port  [ExpireDate]) 72 709.01 T
+(# where EntryType   = \322Site\323) 72 699.01 T
+(#       IPaddress   = the full hostname or IP address for the site) 72 689.01 T
+-0.68 (#       Port        = the numeric TCP port for the site \050write 80 for default\051) 72 679.01 P
+(#       ExpireDate  =  [*] for never expire \050i.e. never check this site\051) 72 669.01 T
+(#                   or [date] \050see wwwdates.pl for valid date formats\051) 72 659.01 T
+(#                      Entries are automatically cleared after 7 days) 72 649.01 T
+-0.52 (# This file is automatically generated, so don\325t bother changing the format.) 72 639.01 P
+(Site www.ics.uci.edu:80 [*]) 72 619.01 T
+(Site betelgeuse.com:80 [Fri, 31 Dec 1999 09:30:00 GMT]) 72 609.01 T
+(Site simplon.ics.uci.edu:8001 [Thu, 29 Sep 1994 23:59:59 GMT]) 72 599.01 T
+FMENDPAGE
+%%EndPage: "10" 11
+%%Trailer
+%%BoundingBox: 0 0 594.72 841.68
+%%Pages: 10 1
+%%DocumentFonts: Times-Bold
+%%+ Times-Roman
+%%+ Times-Italic
+%%+ Helvetica
+%%+ Courier

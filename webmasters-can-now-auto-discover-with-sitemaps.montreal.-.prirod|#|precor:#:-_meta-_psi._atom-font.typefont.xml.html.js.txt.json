@@ -1,0 +1,980 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+
+<head profile="http://gmpg.org/xfn/11"><script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=zC7xTh84" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden"};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+    __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://ysearchblog.com:80/2007/04/11/webmasters-can-now-auto-discover-with-sitemaps/","20090305061841","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1236233921");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=p7PEIJWi" />
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv" />
+<!-- End Wayback Rewrite JS Include -->
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+<title>Yahoo! Search Blog  &raquo; Blog Archive   &raquo; Webmasters Can Now Auto-Discover With Sitemaps</title>
+
+<link rel="stylesheet" href="https://web.archive.org/web/20090305061841cs_/http://ysearchblog.com/blog/wp-content/themes/ysearchblog/style.css" type="text/css" media="screen"/>
+<link rel="alternate" type="application/rss+xml" title="Yahoo! Search Blog RSS Feed" href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/feed/"/>
+<link rel="pingback" href="http://ysearchblog.com/blog/xmlrpc.php"/>
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ysearchblog.com/blog/xmlrpc.php?rsd"/>
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ysearchblog.com/blog/wp-includes/wlwmanifest.xml"/> 
+<script type="text/javascript" src="https://web.archive.org/web/20090305061841js_/http://ajax.googleapis.com/ajax/libs/swfobject/2.1/swfobject.js?ver=2.1"></script>
+<meta name="generator" content="WordPress 2.7"/>
+
+<script type="text/javascript" src="https://web.archive.org/web/20090305061841js_/http://ysearchblog.com/blog/wp-content/plugins/flash-video-player/swfobject.js"></script>
+<link rel="stylesheet" type="text/css" href="https://web.archive.org/web/20090305061841cs_/http://ysearchblog.com/blog/wp-content/plugins/wp-recaptcha/recaptcha.css"/><script src="https://web.archive.org/web/20090305061841js_/http://tools.search.yahoo.com/SearchPad/swfobject.js" language="javascript"></script>
+<script src="https://web.archive.org/web/20090305061841js_/http://tools.search.yahoo.com/SearchPad/cam_embed.js" language="javascript"></script>
+</head>
+<body>
+<div id="body">
+
+
+<div id="header">
+	
+	<div id="header-inner">
+
+		<div id="headerleft">	
+			<div id="logo">	
+
+				<a href="https://web.archive.org/web/20090305061841/http://www.ysearchblog.com/"><img src="https://web.archive.org/web/20090305061841im_/http://www.ysearchblog.com/images/ysb-title.gif" width="288" height="87" border="0" alt="Yahoo! Search Blog"></a>
+			</div>
+		</div>
+
+
+		<div id="headerright">
+			<div id="yahoolink">
+				<a href="https://web.archive.org/web/20090305061841/http://www.yahoo.com/">Yahoo!</a>
+			</div>
+			<div id="tagline">
+				A look inside the world of search from the people at Yahoo!
+			</div>
+		</div>
+	
+		<div class="clr"> </div>
+	
+	</div><!-- id=header-inner -->
+	
+</div><!-- id=header -->
+
+<div id="content">
+	<div id="content-inner">
+		<div id="blog">
+			<div id="blog-inner">
+
+				
+					<div class="content-nav">
+						&laquo; <a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/2007/04/10/site-explorer-matures-a-bit-more-and-accepts-mobile-feeds/">Site Explorer Matures a Bit More and Accepts Mobile Feeds</a> | <a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/">Main</a> | <a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/2007/04/13/yahoo-search-aims-for-aiim/">Yahoo! Search Aims for AIIM</a> &raquo;					</div>
+
+					<div class="post" id="post-437">
+						<div class="date">April 11, 2007</div>
+						<h2>Webmasters Can Now Auto-Discover With Sitemaps</h2>
+
+						<div class="entry-body">
+							<p>Since <a href="https://web.archive.org/web/20090305061841/http://www.ysearchblog.com/archives/000380.html">working with Google and Microsoft</a> to support a single format for submission with Sitemaps, we have continued to discuss further enhancements to make it easy for webmasters to get their content to all search engines quickly.</p>
+<p>All search crawlers recognize <a href="https://web.archive.org/web/20090305061841/http://www.robotstxt.org/">robots.txt</a>, so it seemed like a good idea to use that mechanism to allow webmasters to share their Sitemaps. You agreed and encouraged us to allow <a href="https://web.archive.org/web/20090305061841/http://suggestions.yahoo.com/detail/?prop=SiteExplorer&amp;fid=2854">robots.txt discovery of Sitemaps</a> on our suggestion board. We took the idea to Google and Microsoft and are happy to announce today that you can now find your sitemaps in a uniform way across all participating engines. To do this, simply add the following line to your robots.txt file:</p>
+<p>Sitemap: http://www.example.com/sitemap.xml</p>
+<p>Please provide the complete URL for your Sitemap on this line. We will pick it up wherever you put it in your robots.txt file. This directive is not specific to user-agent. If you have multiple Sitemaps, you can point to your Sitemap index file on this line. Details about the Sitemaps protocol including this addition are available on the protocol website &#8212; <a href="https://web.archive.org/web/20090305061841/http://www.sitemaps.org/">http://www.sitemaps.org</a>.</p>
+<p>If you prefer, you can continue to <a href="https://web.archive.org/web/20090305061841/https://siteexplorer.search.yahoo.com/submit">issue Sitemaps to Yahoo! Search</a> by simply inputting the URL for your Sitemap and submitting. Or add feeds to a site you are already managing under &#8216;My Sites&#8217; in Site Explorer. This also allows us to provide more feedback to you about what we are doing with the sitemap.</p>
+<p>We&#8217;re also happy to have some east coasters, Ask and IBM, announce their support for Sitemaps. The more the merrier!</p>
+<p>We&#8217;ll also be sharing more this week at <a href="https://web.archive.org/web/20090305061841/http://www.searchenginestrategies.com/sew/ny07/">SES NY</a>.</p>
+<p>If you have other thoughts about how we can collaborate with other search engines on standards such as robots.txt, we&#8217;d love to hear from you &#8212; visit our <a href="https://web.archive.org/web/20090305061841/http://suggestions.yahoo.com/?prop=SiteExplorer">suggestion board</a>.</p>
+<p>Priyank Garg<br/>
+Product Manager, Yahoo! Search</p>
+
+																				</div>
+						<div class="entry-footer">
+						<a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/2007/04/11/webmasters-can-now-auto-discover-with-sitemaps/">Permalink</a> 
+						 
+						 | <script showbranding="0" src="https://web.archive.org/web/20090305061841js_/http://d.yimg.com/ds/badge.js" badgetype="text">yahoo_search_56:http://ysearchblog.com/2007/04/11/webmasters-can-now-auto-discover-with-sitemaps/</script> | <img src="/web/20090305061841im_/http://ysearchblog.com/images/delicious.gif"> <a href="https://web.archive.org/web/20090305061841/http://del.icio.us/post?url=http://ysearchblog.com/2007/04/11/webmasters-can-now-auto-discover-with-sitemaps/&amp;title=Webmasters Can Now Auto-Discover With Sitemaps">del.icio.us</a> | <img src="/web/20090305061841im_/http://ysearchblog.com/images/digg.gif"> <a href="https://web.archive.org/web/20090305061841/http://digg.com/submit?phase=2&amp;URL=http://ysearchblog.com/2007/04/11/webmasters-can-now-auto-discover-with-sitemaps/&amp;title=Webmasters Can Now Auto-Discover With Sitemaps">digg</a> |  Filed In: <a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/site-explorer/" title="View all posts in Site Explorer" rel="category tag">Site Explorer</a>    
+						</div>
+					</div>
+
+				
+<!-- You can start editing here. -->
+
+	<h2 id="comments">Comments</h2>
+
+	<ol class="commentlist">
+
+	
+		<li class="alt" id="comment-4190" class="comment">
+			<div class="comment-content">
+								<p>Excellent idea to point the sitemap in robots.txt. I considered to submit my sitemap via an HTTP request but couldn&#8217;t found (according with <a href="https://web.archive.org/web/20090305061841/http://www.sitemaps.org/" rel="nofollow">http://www.sitemaps.org</a>) what is &#8220;searchengine_URL&#8221; in &#8220;searchengine_URL/ping?sitemap=sitemap_url&#8221;.</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.oiok.itl.pl/" rel="external nofollow" class="url">Grzegorz</a> | <a href="#comment-4190" title="">April 11th, 2007 10:37 am</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4191" class="comment">
+			<div class="comment-content">
+								<p>Thank you for the info. Followed the directions and was able to do it myself without having to ask anyone. Very simple indeed using the robots.txt file.</p>
+<p>Cheers!</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://jessicadoyle.ca/" rel="external nofollow" class="url">Jessica Doyle</a> | <a href="#comment-4191" title="">April 11th, 2007 8:38 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4193" class="comment">
+			<div class="comment-content">
+								<p>Is there a reference somewhere to all these non-standard but widely used robots.txt extensions, as well as a validator approved by all the major engines?</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: Marek | <a href="#comment-4193" title="">April 12th, 2007 3:07 am</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4195" class="comment">
+			<div class="comment-content">
+								<p>great! it&#8217;s fantastic.it&#8217;s an advanced and simple way of making your website notable by search engines.</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.insurancebookers.ie/" rel="external nofollow" class="url">pavan</a> | <a href="#comment-4195" title="">April 12th, 2007 6:32 am</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4199" class="comment">
+			<div class="comment-content">
+								<p>This is great news, and it helps make sure that all of the major search engines provide a standard method of sitemap submission. Kudos!</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.halfbrown.com/" rel="external nofollow" class="url">Jon</a> | <a href="#comment-4199" title="">April 12th, 2007 11:29 am</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4203" class="comment">
+			<div class="comment-content">
+								<p>this might be the most stupid question ever! but!  how often should i &#8220;resubmit&#8221; my site using the yahoo-search tool?  daily? weekly?</p>
+<p>the context of my xml feed files change daily but i am not sure how often i should resubmit them.</p>
+<p>any suggestions is more than welcome.</p>
+<p>Thanks</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.pinsonly.com/" rel="external nofollow" class="url">Pinsonly.com</a> | <a href="#comment-4203" title="">April 12th, 2007 3:36 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4206" class="comment">
+			<div class="comment-content">
+								<p>do engines take now all sites faster in their index with this system?</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.online-marketing-news.de/" rel="external nofollow" class="url">Paul Buchhorn - Online Marketing News</a> | <a href="#comment-4206" title="">April 13th, 2007 1:54 am</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4210" class="comment">
+			<div class="comment-content">
+								<p>awesome idea.</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.mukamo.com/" rel="external nofollow" class="url">erik</a> | <a href="#comment-4210" title="">April 14th, 2007 8:23 am</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4215" class="comment">
+			<div class="comment-content">
+								<p>Good to see more use being made of Robots.txt. How about incorporating other useful hints for search engines such as a geographic location to ensure sites are listed in the correct country search. (This could not be abused as there&#8217;s only one robots.txt file per site and only one location would be accepted.)</p>
+<p>(Also to GlobalOneTechnology, Google&#8217;s Matt Cutts has blogged on the Webmaster Tools error, it will be fixed.)</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.stephennewton.com/" rel="external nofollow" class="url">Stephen Newton</a> | <a href="#comment-4215" title="">April 17th, 2007 7:50 am</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4219" class="comment">
+			<div class="comment-content">
+								<p>It&#8217;s good to see uniform recognition for this amongst search engines. If sitemap.xml becomes a regognised standard could search engines simply look for it in the same way they do the robots.txt file?</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.ukmoneypot.co.uk/" rel="external nofollow" class="url">UKMoneyPot</a> | <a href="#comment-4219" title="">April 17th, 2007 2:31 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4223" class="comment">
+			<div class="comment-content">
+								<p>I think yahoo is an awesome search engine! Really appreciate the great work done by you guys! Wish you could take over from goolge!</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.makemypenislarger4u.com/" rel="external nofollow" class="url">William Clay</a> | <a href="#comment-4223" title="">April 18th, 2007 4:54 am</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4228" class="comment">
+			<div class="comment-content">
+								<p>Just wondering if what is the reason to force webmasters to provide FULL paths (starting with <a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/2007/04/11/webmasters-can-now-auto-discover-with-sitemaps/" rel="nofollow">http://</a> ) to sitemap files?! Why the &#8220;Sitemap:&#8221; entry format should NOT comply with &#8220;Disallow:&#8221; entry format that requires RELATIVE paths, and why there is no way to specify multiple sitemaps in one row like multiple paths to ignore separated by space in the same row?</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.free-to-try.com/" rel="external nofollow" class="url">Andrey</a> | <a href="#comment-4228" title="">April 18th, 2007 9:07 am</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4232" class="comment">
+			<div class="comment-content">
+								<p>Excellent idea - will make life much easier!</p>
+<p>It&#8217;s good that you can sometimes co-operate to do this sort of thing&#8230;</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.24hourtrading.co.uk/blog" rel="external nofollow" class="url">Rob Scott</a> | <a href="#comment-4232" title="">April 18th, 2007 11:50 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4236" class="comment">
+			<div class="comment-content">
+								<p>I have to agree with the comment made by Andrey, having to specify the URL to the sitemap was a major oversight at the time when this could have done right.</p>
+<p>You can&#8217;t have a sitemap file coming from one server for another server anyway; so what is the point?</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://alan.blog-city.com/" rel="external nofollow" class="url">Alan</a> | <a href="#comment-4236" title="">April 20th, 2007 12:41 am</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4239" class="comment">
+			<div class="comment-content">
+								<p>Looks like it will still take some time for the robots.text file validators to update, if in fact they do. None of them recognize this new syntax yet.</p>
+<p>Just because the big Search Engines now allow this declaration does not in itself mean that it has been added to the robots.txt standard.</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.apassion4jazz.net/" rel="external nofollow" class="url">D C DowDell</a> | <a href="#comment-4239" title="">April 21st, 2007 2:17 am</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4243" class="comment">
+			<div class="comment-content">
+								<p>Was wondering when this would come along :-)<br/>
+Great stuff!</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.galway.ws/" rel="external nofollow" class="url">James Galway</a> | <a href="#comment-4243" title="">April 23rd, 2007 2:59 am</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4244" class="comment">
+			<div class="comment-content">
+								<p>For Webmaster this is the best news from Yahoo, and it&#8217;s good also feeds submit&#8230;</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://abc-medicine.com/" rel="external nofollow" class="url">turifungia</a> | <a href="#comment-4244" title="">April 23rd, 2007 9:51 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4245" class="comment">
+			<div class="comment-content">
+								<p>It&#8217;s good to see that the search engines have worked together again to get this great initiative completed. Hopefully this will make it easier for Yahoo and the other engines to find good web content.</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.voipmentor.com/blog/" rel="external nofollow" class="url">Tim</a> | <a href="#comment-4245" title="">April 25th, 2007 6:01 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4246" class="comment">
+			<div class="comment-content">
+								<p>Good work, thanks!</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.onlinemarketingbusinessopportunity.net/" rel="external nofollow" class="url">Online Marketing</a> | <a href="#comment-4246" title="">April 26th, 2007 1:02 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4247" class="comment">
+			<div class="comment-content">
+								<p>Looks like the most popular robots.txt file validator: <a href="https://web.archive.org/web/20090305061841/http://tool.motoricerca.info/robots-checker.phtml" rel="nofollow">http://tool.motoricerca.info/robots-checker.phtml</a>  has updated to support the new syntax. Now this is progress!</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.apassion4jazz.net/" rel="external nofollow" class="url">D C DowDell</a> | <a href="#comment-4247" title="">April 26th, 2007 3:24 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4249" class="comment">
+			<div class="comment-content">
+								<p>Cool, finally I won&#8217;t have to create multiple sitemap versions.</p>
+<p>TedallSearch<br/>
+<a href="https://web.archive.org/web/20090305061841/http://www.tedallsearch.com/" rel="nofollow">http://www.tedallsearch.com</a></p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.tedallsearch.com/" rel="external nofollow" class="url">Ethical SEO</a> | <a href="#comment-4249" title="">April 26th, 2007 5:31 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4250" class="comment">
+			<div class="comment-content">
+								<p>This is a very good information. I did it on my site and it really helped me. I suggest everyone related to SEO should concentrate on SiteMaps and Robots.txt</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.knowledgewithoutlimits.com/" rel="external nofollow" class="url">Nilam Doctor</a> | <a href="#comment-4250" title="">April 26th, 2007 7:32 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4251" class="comment">
+			<div class="comment-content">
+								<p>Great information, this definately help us a lot.</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://internet-marketing-global.blogspot.com/" rel="external nofollow" class="url">Internet Marketing</a> | <a href="#comment-4251" title="">April 28th, 2007 4:18 am</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4252" class="comment">
+			<div class="comment-content">
+								<p>just off to update all my files. Thanks for the update.</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.conseoquences.com/" rel="external nofollow" class="url">Michael</a> | <a href="#comment-4252" title="">May 1st, 2007 3:41 am</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4253" class="comment">
+			<div class="comment-content">
+								<p>This is a great addition the robots.txt file, maybe search engines will start to follow the other instructions on the robots.txt file</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.zantayartprints.com/" rel="external nofollow" class="url">Movie Posters</a> | <a href="#comment-4253" title="">May 1st, 2007 3:42 am</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4255" class="comment">
+			<div class="comment-content">
+								<p>RE: Comment #9: &#8220;How about incorporating other useful hints for search engines such as a geographic location to ensure sites are listed in the correct country search?&#8221;</p>
+<p>We already have that:</p>
+<p>- DNS LOC RR (RFC 1876).<br/>
+- HTML META NAME=&#8221;Geo.Position&#8221; (see <a href="https://web.archive.org/web/20090305061841/http://geourl.org/)." rel="nofollow"></a><a href="https://web.archive.org/web/20090305061841/http://geourl.org/" rel="nofollow">http://geourl.org/</a>).</p>
+<p>We don&#8217;t need to clutter &#8220;/rbots.txt&#8221; with unnecessary stuff.</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.geourl.org/" rel="external nofollow" class="url">Mr. X</a> | <a href="#comment-4255" title="">May 2nd, 2007 4:10 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4256" class="comment">
+			<div class="comment-content">
+								<p>This is amazing, I already started to update robots.txt from my sites. It would be nice to have an automatic site verification using MicroID for Yahoo Site Explorer.<br/>
+cheers<br/>
+dimitre</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://dmtr.org/" rel="external nofollow" class="url">dimitre</a> | <a href="#comment-4256" title="">May 2nd, 2007 7:14 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4257" class="comment">
+			<div class="comment-content">
+								<p>Thanks, we tried and got excellent result with site map</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.bizmakers.org/" rel="external nofollow" class="url">Nishita</a> | <a href="#comment-4257" title="">May 5th, 2007 6:48 am</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4258" class="comment">
+			<div class="comment-content">
+								<p>great idea, good to see the major search engines working on the same level.</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://directory.vbulletinsetup.com/" rel="external nofollow" class="url">Brandon</a> | <a href="#comment-4258" title="">May 5th, 2007 2:10 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4259" class="comment">
+			<div class="comment-content">
+								<p>I use Yahoo sitemap. But curios enough since then I have fallen out ofresults some as 60 pages are not shown. <a href="https://web.archive.org/web/20090305061841/http://www.rosehr.info/" rel="nofollow">http://www.rosehr.info</a> I`ve been writing to Yahoo Support but I did not receive an answer? What is may wrong doing? Looking forwar hearing from u</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.rosehr.info/" rel="external nofollow" class="url">achim</a> | <a href="#comment-4259" title="">May 7th, 2007 2:47 am</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4260" class="comment">
+			<div class="comment-content">
+								<p>Hello, I just submitted my site to the site map, how long does this take to authenticate?</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.garyrichardsrealestate.com/" rel="external nofollow" class="url">Gary Richards</a> | <a href="#comment-4260" title="">May 15th, 2007 6:28 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4261" class="comment">
+			<div class="comment-content">
+								<p>FAntastic news.</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.adenhepburn.com/blog/" rel="external nofollow" class="url">Aden</a> | <a href="#comment-4261" title="">May 18th, 2007 4:30 am</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4262" class="comment">
+			<div class="comment-content">
+								<p>Thanks for the hard work!</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.uniquedogclothing.com/" rel="external nofollow" class="url">Dog Clothing &amp; Dog Collars</a> | <a href="#comment-4262" title="">May 18th, 2007 9:07 am</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4263" class="comment">
+			<div class="comment-content">
+								<p>how about blogger blogs? and atom.xml?</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://homework62.blogspot.com/" rel="external nofollow" class="url">Ben Uy</a> | <a href="#comment-4263" title="">May 21st, 2007 4:40 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4264" class="comment">
+			<div class="comment-content">
+								<p>Yahoo is actually a better search engine than Google, I&#8217;m glad some poeple are finally realizing that. This is another great move by the team at Yahoo.</p>
+<p>Andy<br/>
+<a href="https://web.archive.org/web/20090305061841/http://www.tradeshowdirect.com/products" rel="nofollow">http://www.tradeshowdirect.com/products</a></p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.tradeshowdirect.com/" rel="external nofollow" class="url">Trade Show Displays</a> | <a href="#comment-4264" title="">May 22nd, 2007 12:25 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4265" class="comment">
+			<div class="comment-content">
+								<p>Yes i also think that ki yahoo is better search engine but pls tell me how can i add my blog in to yahoo???????</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://rohittripathi.blogspot.com/" rel="external nofollow" class="url">Raghvendra Tripathi</a> | <a href="#comment-4265" title="">May 23rd, 2007 4:00 am</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4266" class="comment">
+			<div class="comment-content">
+								<p>Man what an awesome news!</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://jbwebdev.com/" rel="external nofollow" class="url">Jon</a> | <a href="#comment-4266" title="">May 26th, 2007 8:45 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4267" class="comment">
+			<div class="comment-content">
+								<p>Yes, but us YAHOO STORE OWNERS cannot edit our &#8216;robot text files&#8217;.</p>
+<p>And how come &#8217;site explorer&#8217; for my store has NEVER shown all the product pages?</p>
+<p>And how come the pages that are shown in &#8217;site explorer&#8217; are not crawled for MONTHS at a time?</p>
+<p>And how come YAHOO CUSTOMER SUPPORT will not respond to my inquiries on these matters?</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.lillyanneinc.com/" rel="external nofollow" class="url">lilly anne</a> | <a href="#comment-4267" title="">May 27th, 2007 12:36 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4268" class="comment">
+			<div class="comment-content">
+								<p>Finally, the sitemap we have been waiting for arrived thanks.</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.candlesandcandlescent.com/" rel="external nofollow" class="url">Scented Candles</a> | <a href="#comment-4268" title="">May 30th, 2007 9:55 am</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4269" class="comment">
+			<div class="comment-content">
+								<p>Thanks for info<br/>
+but I tried to add sitemap for yahoo to my site <a href="https://web.archive.org/web/20090305061841/http://www.iptelshop.com/" rel="nofollow">http://www.iptelshop.com</a> and I saw that yahoo didn&#8217;t like my site, and then I delete sitemap, after that in 7 days was good&#8230; I didn&#8217;t understand, why it happened&#8230;if anybody know, please tell me</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: vik | <a href="#comment-4269" title="">June 11th, 2007 3:00 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4270" class="comment">
+			<div class="comment-content">
+								<p>I noticed my site&#8217;s SERP in Yahoo is twice lower than in Google. I cannot understand why</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://roksolana-dating.com/" rel="external nofollow" class="url">roksolana</a> | <a href="#comment-4270" title="">June 12th, 2007 3:37 am</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4271" class="comment">
+			<div class="comment-content">
+								<p>Re: Sitemap requiring a completely specified URL</p>
+<p>Note that although Yahoo says it must be a complete URL, the definition at sitemaps.org says only that it &#8220;SHOULD&#8221; be a complete URL, which implies (at least to me) that relative URLs are permitted.  If it were a requirement, then the language would have said &#8220;MUST.&#8221;  It seems that Google allows and properly handles relative URLs for sitemaps.  If Yahoo is saying that they expect only a complete URL, then I say that they are not following the standard agreed upon with the other search engine operators.</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: Mr. X | <a href="#comment-4271" title="">June 17th, 2007 7:11 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4272" class="comment">
+			<div class="comment-content">
+								<p>I am just glad to see major SE working together and agreeing to a standard.  This is a good step for content submission to the SEs.</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.militpc.com/" rel="external nofollow" class="url">George Manlangit</a> | <a href="#comment-4272" title="">June 27th, 2007 5:50 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4274" class="comment">
+			<div class="comment-content">
+								<p>Hi,<br/>
+I have a 7 year old site that has been in yahoo&#8217;s directory since 2000/2001 - for some reason yahoo has always just showed 1 url for this domain meanwhile over the years the site has always had around 100 or more pages</p>
+<p>I have added the site to yahoo explorer but still it only ever shows 1 listing</p>
+<p>My stats shows that the yahoo robot visits the site regular but still only 1 listing</p>
+<p>Yahoo currently shows over 6000 backlinks but still just the index page is listed</p>
+<p>Ive been racking my brain trying to figure out what is wrong but with no luck</p>
+<p>Please can anyone make any suggestions to me as to what to do?</p>
+<p>Regards<br/>
+Reggie</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: reggie | <a href="#comment-4274" title="">July 2nd, 2007 2:04 am</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4275" class="comment">
+			<div class="comment-content">
+								<p>Today pad printing has reached a technical advanced state and the range is quite diversified. Compared to the method described in the historical section not much has changed. The basic procedure has remained the same.</p>
+<p>Since the late 1960&#8217;s an old printing method,which had been particularly well established in the watch-making industry, has been an unexpected boom. Pad printing was discovered for newer, broader applications and with the help of silicone pads and new machine constructions it truly blossomed. Pad printing machine manufacturers sprung up like mushrooms and satisfied the real market need for printing and decorating parts in a simple and inexpensive way. Pad printing allows new designing possibilities for engineers and designers as a result, the products are becoming more attractive and functional.</p>
+<p>If you are interested to know more about Pad Printing then please visit <a href="https://web.archive.org/web/20090305061841/http://www.aadish.com./" rel="nofollow"></a><a href="https://web.archive.org/web/20090305061841/http://www.aadish.com/" rel="nofollow">http://www.aadish.com</a>.</p>
+<p>Best in Quality, Best in service, Best in complete solutions.</p>
+<p>We specialize in Machines &#038; Consumables for Surface Decoration-Printing-Marking,Glass Decoration also Pads Plates Cliches inks for pad printing.</p>
+<p>At AIM we are committed to providing printing solutions &#038; machines for printing, marking &#038; surface decoration of finished products &#038; components. We have machines &#038; solutions for various products &#038; industries.</p>
+<p>AIM brings to you pad printing &#038; customized pad printing solutions from the European Leader, microPrint- Switzerland. Swiss Machines are world renowned for their precision, accuracy &#038; craftsmanship.</p>
+<p>The fantastically accurate pad printing machines for printing 1-8 colors &#038; many more from microPrint are now available in India. With our more than 20 years experience in printing industry our experts are best placed to guide you in the choice of right Pad Printer for your application</p>
+<p>&#8220;Your Product&#8217;s are valueless, If your brand or logo is not printed clearly on your gift&#8217;s and promotional articles. Your brand is your asset. Value it.&#8221;</p>
+<p>Pad printing machines, Printing Machine, Printing inks, Pad printing supplies, Glass decoration.</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.aadish.com/" rel="external nofollow" class="url">Adish International</a> | <a href="#comment-4275" title="">July 13th, 2007 1:31 am</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4276" class="comment">
+			<div class="comment-content">
+								<p>Excellent.. This is going to make life so much more easier..</p>
+<p>Well done Yahoo..</p>
+<p>bruce</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.perthbusinesswebsites.com/" rel="external nofollow" class="url">Bruce</a> | <a href="#comment-4276" title="">July 16th, 2007 9:49 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4277" class="comment">
+			<div class="comment-content">
+								<p>I have submitted and authenicated my sitemap more than 3 months ago but the subpages still haven&#8217;t been indexed by Yahoo. According to the suggestion forum, it appears that I am not the only one having this issue. Any advice would be greatly appreciated.</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.uniquedogclothing.com/ind.html" rel="external nofollow" class="url">The Dog Clothing Company</a> | <a href="#comment-4277" title="">July 19th, 2007 7:33 am</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4278" class="comment">
+			<div class="comment-content">
+								<p>This is fantastic - we wish we&#8217;d found out about this sooner. So much easier to just click and have Yahoo re-check the site. Thanks.</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.aquariuscoaching.co.uk/" rel="external nofollow" class="url">Aquarius Coaching</a> | <a href="#comment-4278" title="">July 24th, 2007 3:01 am</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4279" class="comment">
+			<div class="comment-content">
+								<p>Finally, the sitemap we have been waiting for arrived thanks.</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://hghlook.com/" rel="external nofollow" class="url">HGH</a> | <a href="#comment-4279" title="">July 25th, 2007 8:36 am</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4280" class="comment">
+			<div class="comment-content">
+								<p>What about submitting two sitemaps?</p>
+<p>One line for each one? or both in the same sitemap: tag?</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://alberto666.blogspot.com/" rel="external nofollow" class="url">Alberto Garcia</a> | <a href="#comment-4280" title="">August 3rd, 2007 12:50 am</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4281" class="comment">
+			<div class="comment-content">
+								<p>I too am not seeing any index changes based on a sitemap submitted several weeks ago. Is anyone seeing any value in this?</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.perfectmatchfavors.com/" rel="external nofollow" class="url">wedding favors</a> | <a href="#comment-4281" title="">August 5th, 2007 6:22 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4282" class="comment">
+			<div class="comment-content">
+								<p>I agree this is a long time coming. Finally large database driven sites can get indexed!</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.spartaninternet.com/marketing_consultant.asp" rel="external nofollow" class="url">marketing consultant</a> | <a href="#comment-4282" title="">August 6th, 2007 7:18 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4283" class="comment">
+			<div class="comment-content">
+								<p>Beautiful idea&#8230; I&#8217;ve been looking for the simplest way to submit sitemap. Eureka! Can&#8217;t wait to see the result. Thanks!</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://bayi-tabung.com/" rel="external nofollow" class="url">Rudy</a> | <a href="#comment-4283" title="">August 11th, 2007 5:25 pm</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4284" class="comment">
+			<div class="comment-content">
+								<p>I think its great that these 3 huge companies have come together and started accepting the same file format.</p>
+<p>Im sure it will make  a huge difference.</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://www.pragmites.com/" rel="external nofollow" class="url">pune seo services</a> | <a href="#comment-4284" title="">August 19th, 2007 3:14 am</a> 			</div>
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4285" class="comment">
+			<div class="comment-content">
+								<p>Hi,</p>
+<p>Good now we can use site map easily and effectively.<br/>
+See my link for cbse results cbse exams results cbse results cbse syllabus cbse sample papers and much more try it.<br/>
+Thanks</p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://cbseresult.blogspot.com/" rel="external nofollow" class="url">prabhat</a> | <a href="#comment-4285" title="">August 23rd, 2007 1:25 am</a> 			</div>
+		</li>
+
+	
+	
+		<li id="comment-4286" class="comment">
+			<div class="comment-content">
+								<p>Very nice.  Glad to see that the big 3 search engines are following the same standard.</p>
+<p>Joe<br/>
+<a href="https://web.archive.org/web/20090305061841/http://seemywifestits.com/" rel="nofollow">http://seemywifestits.com/</a></p>
+			</div>
+			<div class="comment-footer">	
+				Posted by: <a href="https://web.archive.org/web/20090305061841/http://seemywifestits.com/" rel="external nofollow" class="url">joe</a> | <a href="#comment-4286" title="">September 1st, 2007 10:00 am</a> 			</div>
+		</li>
+
+	
+	
+	</ol>
+
+ 
+
+
+				
+				</div><!-- id=blog-inner -->
+			</div><!-- id=blog -->
+
+			<div id="sidebar">
+
+			<ul>
+				<li id="search" class="widget widget_search"><form method="get" id="searchform" action="https://web.archive.org/web/20090305061841/http://ysearchblog.com/">
+	<label class="hidden" for="s">Search for:</label>
+	<div><input type="text" value="" name="s" id="s"/>
+	<input type="submit" id="searchsubmit" value="Search"/>
+	</div>
+	</form></li><li id="archive-dropdown-navigation" class="widget archive_dropdown_nav_widget"><h2 class="widgettitle">Archive</h2><select name="archivemenu" onchange="document.location.href=this.options[this.selectedIndex].value;"><option value="">Select month...</option>	<option value="http://ysearchblog.com/2009/02/"> February 2009 </option>
+	<option value="http://ysearchblog.com/2009/01/"> January 2009 </option>
+	<option value="http://ysearchblog.com/2008/12/"> December 2008 </option>
+	<option value="http://ysearchblog.com/2008/11/"> November 2008 </option>
+	<option value="http://ysearchblog.com/2008/10/"> October 2008 </option>
+	<option value="http://ysearchblog.com/2008/09/"> September 2008 </option>
+	<option value="http://ysearchblog.com/2008/08/"> August 2008 </option>
+	<option value="http://ysearchblog.com/2008/07/"> July 2008 </option>
+	<option value="http://ysearchblog.com/2008/06/"> June 2008 </option>
+	<option value="http://ysearchblog.com/2008/05/"> May 2008 </option>
+	<option value="http://ysearchblog.com/2008/04/"> April 2008 </option>
+	<option value="http://ysearchblog.com/2008/03/"> March 2008 </option>
+	<option value="http://ysearchblog.com/2008/02/"> February 2008 </option>
+	<option value="http://ysearchblog.com/2008/01/"> January 2008 </option>
+	<option value="http://ysearchblog.com/2007/12/"> December 2007 </option>
+	<option value="http://ysearchblog.com/2007/11/"> November 2007 </option>
+	<option value="http://ysearchblog.com/2007/10/"> October 2007 </option>
+	<option value="http://ysearchblog.com/2007/09/"> September 2007 </option>
+	<option value="http://ysearchblog.com/2007/08/"> August 2007 </option>
+	<option value="http://ysearchblog.com/2007/07/"> July 2007 </option>
+	<option value="http://ysearchblog.com/2007/06/"> June 2007 </option>
+	<option value="http://ysearchblog.com/2007/05/"> May 2007 </option>
+	<option value="http://ysearchblog.com/2007/04/"> April 2007 </option>
+	<option value="http://ysearchblog.com/2007/03/"> March 2007 </option>
+	<option value="http://ysearchblog.com/2007/02/"> February 2007 </option>
+	<option value="http://ysearchblog.com/2007/01/"> January 2007 </option>
+	<option value="http://ysearchblog.com/2006/12/"> December 2006 </option>
+	<option value="http://ysearchblog.com/2006/11/"> November 2006 </option>
+	<option value="http://ysearchblog.com/2006/10/"> October 2006 </option>
+	<option value="http://ysearchblog.com/2006/09/"> September 2006 </option>
+	<option value="http://ysearchblog.com/2006/08/"> August 2006 </option>
+	<option value="http://ysearchblog.com/2006/07/"> July 2006 </option>
+	<option value="http://ysearchblog.com/2006/06/"> June 2006 </option>
+	<option value="http://ysearchblog.com/2006/05/"> May 2006 </option>
+	<option value="http://ysearchblog.com/2006/04/"> April 2006 </option>
+	<option value="http://ysearchblog.com/2006/03/"> March 2006 </option>
+	<option value="http://ysearchblog.com/2006/02/"> February 2006 </option>
+	<option value="http://ysearchblog.com/2006/01/"> January 2006 </option>
+	<option value="http://ysearchblog.com/2005/12/"> December 2005 </option>
+	<option value="http://ysearchblog.com/2005/11/"> November 2005 </option>
+	<option value="http://ysearchblog.com/2005/10/"> October 2005 </option>
+	<option value="http://ysearchblog.com/2005/09/"> September 2005 </option>
+	<option value="http://ysearchblog.com/2005/08/"> August 2005 </option>
+	<option value="http://ysearchblog.com/2005/07/"> July 2005 </option>
+	<option value="http://ysearchblog.com/2005/06/"> June 2005 </option>
+	<option value="http://ysearchblog.com/2005/05/"> May 2005 </option>
+	<option value="http://ysearchblog.com/2005/04/"> April 2005 </option>
+	<option value="http://ysearchblog.com/2005/03/"> March 2005 </option>
+	<option value="http://ysearchblog.com/2005/02/"> February 2005 </option>
+	<option value="http://ysearchblog.com/2005/01/"> January 2005 </option>
+	<option value="http://ysearchblog.com/2004/12/"> December 2004 </option>
+	<option value="http://ysearchblog.com/2004/11/"> November 2004 </option>
+	<option value="http://ysearchblog.com/2004/10/"> October 2004 </option>
+	<option value="http://ysearchblog.com/2004/09/"> September 2004 </option>
+	<option value="http://ysearchblog.com/2004/08/"> August 2004 </option>
+</select></li>		<li id="text-280681512" class="widget widget_text">			<h2 class="widgettitle">Subscribe to This Blog</h2>			<div class="textwidget"><p>Add the Yahoo! Search Blog feed to your personalized My Yahoo! page.</p>
+<p><a href="https://web.archive.org/web/20090305061841/http://feeds.feedburner.com/YahooSearchBlog"><img alt="Subscribe" src="/web/20090305061841im_/http://ysearchblog.com/images/feed16.gif" width="16" height="16" border="0"/></a>
+<a href="https://web.archive.org/web/20090305061841/http://add.my.yahoo.com/rss?url=http://feeds.feedburner.com/YahooSearchBlog"><img alt="Add to MyYahoo" src="/web/20090305061841im_/http://ysearchblog.com/images/ic_myyahoo.gif" width="97" height="16" border="0"/></a>
+</p></div>
+		</li>		<li id="recent-posts" class="widget widget_recent_entries">			<h2 class="widgettitle">Recent Posts</h2>			<ul>
+						<li><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/2009/02/27/weather-report-yahoo-search-index-update-19/">Weather Report: Yahoo! Search Index Update </a></li>
+						<li><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/2009/02/26/let-searchmonkey-feed-your-facebook-addiction/">Let SearchMonkey Feed Your Facebook Addiction </a></li>
+						<li><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/2009/02/20/get-ready-for-the-oscars-with-yahoo-image-search/">Get Ready for the Oscars with Yahoo! Image Search </a></li>
+						<li><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/2009/02/18/five-years-of-yahoo-search/">Five Years of Yahoo! Search </a></li>
+						<li><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/2009/02/13/time-to-say-goodbye-to-yahoo-myweb/">Time to Say Goodbye to Yahoo! MyWeb </a></li>
+						</ul>
+		</li><li><h2 class="widgettitle">Yahoo! Blogs</h2>
+	<ul class="xoxo blogroll">
+<li><a href="https://web.archive.org/web/20090305061841/http://developer.yahoo.com/search/boss/">BOSS on YDN</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://blog.delicious.com/">Delicious Blog</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://blog.flickr.com/">FlickrBlog</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://next.yahoo.net/">Next.Yahoo</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://developer.yahoo.com/searchmonkey">SearchMonkey on YDN</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://www.yanswersblog.com/">Yahoo! Answers Blog</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://buzz.yahoo.com/buzz_log/">Yahoo! Buzz Log</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://developer.yahoo.net/blog/">Yahoo! Developer Network Blog</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://www.ypnblog.com/">Yahoo! Publisher Network Blog</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://www.flickr.com/photos/ysearchblog/">Yahoo! Search Flickr Photostream</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://ysmblog.com/">Yahoo! Search Marketing</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://yuiblog.com/">Yahoo! User Interface Blog</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://ycorpblog.com/">Yodel Anecdotal</a></li>
+
+	</ul>
+</li>
+<li><h2 class="widgettitle">Blogs We Read</h2>
+	<ul class="xoxo blogroll">
+<li><a href="https://web.archive.org/web/20090305061841/http://allthingsd.com/">All Things Digital</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://gigaom.com/">GigaOm</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://googleblog.blogspot.com/">Google Blog</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://battellemedia.com/">John Battelle&#8217;s Searchblog</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://blogs.msdn.com/msnsearch/">Live Search</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://mashable.com/">Mashable</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://www.readwriteweb.com/">Read Write Web</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://www.researchbuzz.org/">ResearchBuzz</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://www.searchengineblog.com/">Search Engine Blog</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://www.searchengineguide.com/">Search Engine Guide</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://www.searchenginejournal.com/">Search Engine Journal</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://searchengineland.com/">Search Engine Land</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://www.seroundtable.com/">Search Engine Roundtable</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://blog.searchenginewatch.com/blog/">Search Engine Watch</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://www.techcrunch.com/">TechCrunch</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://blog.ask.com/">The Ask.com Blog</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://www.traffick.com/">Traffick</a></li>
+<li><a href="https://web.archive.org/web/20090305061841/http://www.webpronews.com/">WebProNews</a></li>
+
+	</ul>
+</li>
+		<li id="text-280681514" class="widget widget_text">			<h2 class="widgettitle">Vistor Roll</h2>			<div class="textwidget"><ul>
+<li><script type="text/javascript" src="https://web.archive.org/web/20090305061841js_/http://pub.mybloglog.com/comm2.php?mblID=2007022314365473&amp;c_width=200&amp;c_sn_opt=y&amp;c_rows=5&amp;c_img_size=h&amp;c_heading_text=Recent+Readers&amp;c_color_heading_bg=FFFFFF&amp;c_color_heading=FFFFFF&amp;c_color_link_bg=E3E3E3&amp;c_color_link=005A94&amp;c_color_bottom_bg=999999"></script></li>
+</ul></div>
+		</li><li id="categories-280681515" class="widget widget_categories"><h2 class="widgettitle">Categories</h2>		<ul>
+			<li class="cat-item cat-item-11"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/advertisingsponsored-search/" title="View all posts filed under Advertising/Sponsored Search">Advertising/Sponsored Search</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/answers/" title="View all posts filed under Answers">Answers</a>
+</li>
+	<li class="cat-item cat-item-31"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/audio/" title="View all posts filed under Audio">Audio</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/bookmarks/" title="View all posts filed under Bookmarks">Bookmarks</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/boss/" title="View all posts filed under BOSS">BOSS</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/developer/" title="View all posts filed under Developer">Developer</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/flickr/" title="View all posts filed under Flickr">Flickr</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/fun/" title="View all posts filed under Fun">Fun</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/guest-bloggers/" title="View all posts filed under Guest Bloggers">Guest Bloggers</a>
+</li>
+	<li class="cat-item cat-item-32"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/industry/" title="View all posts filed under Industry">Industry</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/interviews/" title="View all posts filed under Interviews">Interviews</a>
+</li>
+	<li class="cat-item cat-item-34"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/jobs/" title="View all posts filed under Jobs">Jobs</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/local/" title="View all posts filed under Local">Local</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/mash-ups/" title="View all posts filed under Mash-ups">Mash-ups</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/meta/" title="View all posts filed under Meta">Meta</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/misc/" title="View all posts filed under Misc">Misc</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/mobile/" title="View all posts filed under Mobile">Mobile</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/multimedia-search/" title="View all posts filed under Multimedia Search">Multimedia Search</a>
+</li>
+	<li class="cat-item cat-item-30"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/music/" title="View all posts filed under Music">Music</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/newsannouncements/" title="View all posts filed under News/Announcements">News/Announcements</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/people/" title="View all posts filed under People">People</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/search/" title="View all posts filed under Search">Search</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/search-tips/" title="View all posts filed under Search Tips">Search Tips</a>
+</li>
+	<li class="cat-item cat-item-33"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/searchmonkey/" title="View all posts filed under SearchMonkey">SearchMonkey</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/shopping-search/" title="View all posts filed under Shopping Search">Shopping Search</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/site-explorer/" title="View all posts filed under Site Explorer">Site Explorer</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/social-search/" title="View all posts filed under Social Search">Social Search</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/toolbar/" title="View all posts filed under Toolbar">Toolbar</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/travel/" title="View all posts filed under Travel">Travel</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/video/" title="View all posts filed under Video">Video</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="https://web.archive.org/web/20090305061841/http://ysearchblog.com/category/weather-report/" title="View all posts filed under Weather Report">Weather Report</a>
+</li>
+		</ul>
+</li>		<li id="text-280681516" class="widget widget_text">			<h2 class="widgettitle">About This Blog</h2>			<div class="textwidget"><p>The Yahoo! Search blog began in 2004, the year we debuted Yahoo! Search technology which powers search across Yahoo! Here on this blog, we post news and insight on all things search. 
+<a href="/web/20090305061841/http://ysearchblog.com/about/">Read more...</a></p></div>
+		</li>		<li id="text-280681517" class="widget widget_text">			<h2 class="widgettitle">Comment Policy</h2>			<div class="textwidget"><p>We encourage comments and look forward to hearing from you. Please note that Yahoo! may, in our sole 
+discretion, remove comments if they are off topic, inappropriate, or otherwise violate our <a href="https://web.archive.org/web/20090305061841/http://docs.yahoo.com/info/terms/">Terms of Service</a>.
+
+<p>Copyright &copy; 2008 Yahoo! Inc. All rights reserved. <a href="https://web.archive.org/web/20090305061841/http://privacy.yahoo.com/privacy/us/ysearch/">Privacy Policy</a> - <a href="https://web.archive.org/web/20090305061841/http://docs.yahoo.com/info/terms/">Terms of Service</a></p></div>
+		</li>			</ul>
+
+	</div> <!-- id=sidebar -->
+
+
+
+
+
+		</div><!-- id=content-inner -->
+
+		<div class="clr"> </div>
+
+	</div><!-- id=content -->
+
+	<div id="footer-top"> </div>
+	<div id="footer">
+		<div style="display: none;">
+		<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://web.archive.org/web/20090305061841/https://ssl." : "https://web.archive.org/web/20090305061841/http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript">
+		try {
+		var pageTracker = _gat._getTracker("UA-6563788-1");
+		pageTracker._trackPageview();
+		} catch(err) {}</script>
+		<script type="text/javascript" src="https://web.archive.org/web/20090305061841js_/http://track3.mybloglog.com/js/jsserv.php?mblID=2007022314365473"></script>
+		</div>
+	</div><!-- id=footer -->
+	
+</div><!-- id=body -->
+
+
+		
+<!-- Yahoo! Web Analytics - All rights reserved --> 
+<script type="text/javascript" src="https://web.archive.org/web/20090305061841js_/http://d.yimg.com/mi/ywa.js">
+</script>
+<script type="text/javascript">
+var YWATracker = YWA.getTracker("1000312032699"); 
+YWATracker.submit();
+</script>
+<noscript> <div><img src="https://web.archive.org/web/20090305061841im_/http://a.analytics.yahoo.com/p.pl?a=1000312032699&amp;js=no" width="1" height="1" alt=""/></div> </noscript>
+<!-- End of Yahoo! Web Analytics Code -->
+
+</body>
+</html>
+<!--
+     FILE ARCHIVED ON 06:18:41 Mar 05, 2009 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 19:19:25 May 02, 2025.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 0.842
+  exclusion.robots: 0.041
+  exclusion.robots.policy: 0.025
+  esindex: 0.015
+  cdx.remote: 59.282
+  LoadShardBlock: 147.977 (3)
+  PetaboxLoader3.datanode: 182.957 (4)
+  PetaboxLoader3.resolve: 365.688 (2)
+  load_resource: 450.76
+-->

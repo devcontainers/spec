@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html class="client-nojs mf-expand-sections-clientpref-0 mf-font-size-clientpref-small mw-mf-amc-clientpref-0" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<title>Manual:$wgUploadPath - MediaWiki</title>
+<script>(function(){var className="client-js mf-expand-sections-clientpref-0 mf-font-size-clientpref-small mw-mf-amc-clientpref-0";var cookie=document.cookie.match(/(?:^|; )mediawikiwikimwclientpreferences=([^;]+)/);if(cookie){cookie[1].split('%2C').forEach(function(pref){className=className.replace(new RegExp('(^| )'+pref.replace(/-clientpref-\w+$|[^\w-]+/g,'')+'-clientpref-\\w+( |$)'),'$1'+pref+'$2');});}document.documentElement.className=className;}());RLCONF={"wgBreakFrames":false,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"f10386dc-1fc3-413a-90ed-fcdfe24aa599","wgCanonicalNamespace":"Manual","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":100,"wgPageName":"Manual:$wgUploadPath","wgTitle":"$wgUploadPath","wgCurRevisionId":6731995,"wgRevisionId":6731995,"wgArticleId":2856,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgPageViewLanguage":"en","wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"Manual:$wgUploadPath","wgRelevantArticleId":2856,"wgIsProbablyEditable":true,"wgRelevantPageIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgNoticeProject":"mediawiki","wgCiteReferencePreviewsActive":false,"wgMediaViewerOnClick":true,"wgMediaViewerEnabledByDefault":true,"wgVisualEditor":{"pageLanguageCode":"en","pageLanguageDir":"ltr","pageVariantFallbacks":"en"},"wgMFMode":"stable","wgMFAmc":false,"wgMFAmcOutreachActive":false,"wgMFAmcOutreachUserEligible":false,"wgMFLazyLoadImages":true,"wgMFEditNoticesFeatureConflict":false,"wgMFDisplayWikibaseDescriptions":{"search":true,"watchlist":true,"tagline":false,"nearby":true},"wgMFIsSupportedEditRequest":true,"wgMFScriptPath":"","wgWMESchemaEditAttemptStepOversample":false,"wgWMEPageLength":3000,"wgInternalRedirectTargetUrl":"/wiki/Manual:$wgUploadPath","wgTranslatePageTranslation":"source","wgEditSubmitButtonLabelPublish":true,"wgWikibaseItemId":"Q22092719","wgCheckUserClientHintsHeadersJsApi":["brands","architecture","bitness","fullVersionList","mobile","model","platform","platformVersion"],"wgMinervaPermissions":{"watchable":true,"watch":false},"wgMinervaFeatures":{"beta":false,"donateBanner":true,"donate":false,"mobileOptionsLink":true,"categories":false,"pageIssues":true,"talkAtTop":false,"historyInPageActions":false,"overflowSubmenu":false,"tabsOnSpecials":true,"personalMenu":false,"mainMenuExpanded":false,"echo":true,"nightMode":false},"wgMinervaDownloadNamespaces":[0],"wgSiteNoticeId":"2.8"};
+RLSTATE={"ext.globalCssJs.user.styles":"ready","site.styles":"ready","user.styles":"ready","ext.globalCssJs.user":"ready","user":"ready","user.options":"loading","ext.translate.tag.languages":"ready","skins.minerva.styles":"ready","skins.minerva.content.styles.images":"ready","mediawiki.hlist":"ready","skins.minerva.codex.styles":"ready","skins.minerva.icons":"ready","ext.translate.edit.documentation.styles":"ready","ext.translate":"ready","ext.wikimediamessages.styles":"ready","mobile.init.styles":"ready","wikibase.client.init":"ready","ext.dismissableSiteNotice.styles":"ready"};RLPAGEMODULES=["mediawiki.action.view.redirect","site","mediawiki.page.ready","skins.minerva.scripts","ext.centralNotice.geoIP","ext.centralNotice.startUp","ext.translate.pagetranslation.uls","ext.urlShortener.toolbar","ext.centralauth.centralautologin","mobile.init","ext.echo.centralauth","ext.eventLogging","ext.wikimediaEvents","ext.navigationTiming","ext.checkUser.clientHints","ext.dismissableSiteNotice"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.impl(function(){return["user.options@12s5i",function($,jQuery,require,module){mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+}];});});</script>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=ext.dismissableSiteNotice.styles%7Cext.translate%7Cext.translate.edit.documentation.styles%7Cext.translate.tag.languages%7Cext.wikimediamessages.styles%7Cmediawiki.hlist%7Cmobile.init.styles%7Cskins.minerva.codex.styles%7Cskins.minerva.content.styles.images%7Cskins.minerva.icons%2Cstyles%7Cwikibase.client.init&amp;only=styles&amp;skin=minerva">
+<script async="" src="/w/load.php?lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=minerva"></script>
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=minerva">
+<meta name="generator" content="MediaWiki 1.44.0-wmf.28">
+<meta name="referrer" content="origin">
+<meta name="referrer" content="origin-when-cross-origin">
+<meta name="robots" content="max-image-preview:standard">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#eaecf0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=0.25, maximum-scale=5.0">
+<meta property="og:site_name" content="MediaWiki">
+<meta property="og:title" content="Manual:$wgUploadPath - MediaWiki">
+<meta property="og:type" content="website">
+<link rel="manifest" href="/w/api.php?action=webapp-manifest">
+<link rel="alternate" type="application/x-wiki" title="Edit" href="/w/index.php?title=Manual:$wgUploadPath&amp;action=edit">
+<link rel="apple-touch-icon" href="/static/apple-touch/mediawiki.png">
+<link rel="icon" href="/static/favicon/mediawiki.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="/w/rest.php/v1/search" title="MediaWiki (en)">
+<link rel="EditURI" type="application/rsd+xml" href="//www.mediawiki.org/w/api.php?action=rsd">
+<link rel="canonical" href="https://www.mediawiki.org/wiki/Manual:$wgUploadPath">
+<link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+<link rel="dns-prefetch" href="auth.wikimedia.org">
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-100 ns-subject mw-editable page-Manual_wgUploadPath rootpage-Manual_wgUploadPath stable skin-minerva action-view skin--responsive mw-mf-amc-disabled mw-mf"><div id="mw-mf-viewport">
+	<div id="mw-mf-page-center">
+		<a class="mw-mf-page-center__mask" href="#"></a>
+		<header class="header-container header-chrome">
+			<div class="minerva-header">
+				<nav class="navigation-drawer toggle-list view-border-box">
+					<input type="checkbox" id="main-menu-input"
+						data-event-name="ui.mainmenu"
+						class="toggle-list__checkbox" role="button" aria-haspopup="true" aria-expanded="false" aria-labelledby="mw-mf-main-menu-button">
+					<label for="main-menu-input" id="mw-mf-main-menu-button" aria-hidden="true" class="cdx-button cdx-button--size-large cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--icon-only cdx-button--weight-quiet toggle-list__toggle">
+    <span class="minerva-icon minerva-icon--menu"></span>
+<span></span>
+</label>
+
+					<div id="mw-mf-page-left" class="menu view-border-box">
+	<ul id="p-navigation" class="toggle-list__list">
+			<li class="toggle-list-item ">
+				<a class="toggle-list-item__anchor menu__item--home" href="/wiki/MediaWiki" data-mw="interface">
+					<span class="minerva-icon minerva-icon--home"></span>
+
+					<span class="toggle-list-item__label">Home</span>
+				</a>
+			</li>
+			<li class="toggle-list-item ">
+				<a class="toggle-list-item__anchor menu__item--random" href="/wiki/Special:Random" data-mw="interface">
+					<span class="minerva-icon minerva-icon--die"></span>
+
+					<span class="toggle-list-item__label">Random</span>
+				</a>
+			</li>
+			<li class="toggle-list-item skin-minerva-list-item-jsonly">
+				<a class="toggle-list-item__anchor menu__item--nearby" href="/wiki/Special:Nearby" data-event-name="menu.nearby" data-mw="interface">
+					<span class="minerva-icon minerva-icon--mapPin"></span>
+
+					<span class="toggle-list-item__label">Nearby</span>
+				</a>
+			</li>
+	</ul>
+	<ul id="p-personal" class="toggle-list__list">
+			<li class="toggle-list-item ">
+				<a class="toggle-list-item__anchor mw-list-item menu__item--login" href="/w/index.php?title=Special:UserLogin&amp;returnto=Manual%3A%24wgUploadPath" data-event-name="menu.login" data-mw="interface">
+					<span class="minerva-icon minerva-icon--logIn"></span>
+
+					<span class="toggle-list-item__label">Log in</span>
+				</a>
+			</li>
+	</ul>
+	<ul id="pt-preferences" class="toggle-list__list">
+			<li class="toggle-list-item skin-minerva-list-item-jsonly">
+				<a class="toggle-list-item__anchor menu__item--settings" href="/w/index.php?title=Special:MobileOptions&amp;returnto=Manual%3A%24wgUploadPath" data-event-name="menu.settings" data-mw="interface">
+					<span class="minerva-icon minerva-icon--settings"></span>
+
+					<span class="toggle-list-item__label">Settings</span>
+				</a>
+			</li>
+	</ul>
+			<div class="donate-banner">
+				<a href="https://donate.wikimedia.org/?wmf_source=donate&amp;wmf_medium=sidebar&amp;wmf_campaign=www.mediawiki.org&amp;uselang=en&amp;wmf_key=minerva" class="donate-banner__link"
+					data-event-name="menu.donateBanner">
+					<div class="donate-banner__text-container">
+						<span class="donate-banner__text">Donate Now</span>
+						<span class="donate-banner__subtitle">If this site has been useful to you, please give today.</span>
+					</div>
+					<picture>
+						<source
+			    			srcset="https://en.wikipedia.org/static/images/donate/donate.png"
+			   				media="(prefers-reduced-motion)" />
+						<img src="https://en.wikipedia.org/static/images/donate/donate.gif" alt="" class="donate-banner__gif" loading="lazy">
+					</picture>
+				</a>
+			</div>
+	<ul class="hlist">
+			<li class="toggle-list-item ">
+				<a class="toggle-list-item__anchor menu__item--about" href="/wiki/Project:About" data-mw="interface">
+					
+					<span class="toggle-list-item__label">About mediawiki.org</span>
+				</a>
+			</li>
+			<li class="toggle-list-item ">
+				<a class="toggle-list-item__anchor menu__item--disclaimers" href="/wiki/Project:General_disclaimer" data-mw="interface">
+					
+					<span class="toggle-list-item__label">Disclaimers</span>
+				</a>
+			</li>
+	</ul>
+</div>
+
+					<label class="main-menu-mask" for="main-menu-input"></label>
+				</nav>
+				<div class="branding-box">
+					<a href="/wiki/MediaWiki">
+						<span><img src="/static/images/mobile/copyright/mediawikiwiki-wordmark.svg" alt="MediaWiki" width="120" height="18"
+	style="width: 7.5em; height: 1.125em;"/>
+
+</span>
+						
+					</a>
+				</div>
+					<form action="/w/index.php" method="get" class="minerva-search-form">
+				<div class="search-box">
+					<input type="hidden" name="title" value="Special:Search"/>
+					<input class="search skin-minerva-search-trigger" id="searchInput"
+						 type="search" name="search" placeholder="Search mediawiki.org" aria-label="Search mediawiki.org" autocapitalize="sentences" spellcheck="false" title="Search MediaWiki [f]" accesskey="f">
+					<span class="search-box-icon-overlay"><span class="minerva-icon minerva-icon--search"></span>
+</span>
+				</div>
+				<button id="searchIcon" class="cdx-button cdx-button--size-large cdx-button--icon-only cdx-button--weight-quiet skin-minerva-search-trigger">
+	    <span class="minerva-icon minerva-icon--search"></span>
+<span>Search</span>
+	</button>
+</form>
+		<nav class="minerva-user-navigation" aria-label="User navigation">
+					
+				</nav>
+			</div>
+		</header>
+		<main id="content" class="mw-body">
+			<div class="banner-container">
+			<div id="siteNotice"></div>
+			</div>
+			
+			<div class="pre-content heading-holder">
+				<div class="page-heading">
+					<h1 id="firstHeading" class="firstHeading mw-first-heading"><span class="mw-page-title-namespace">Manual</span><span class="mw-page-title-separator">:</span><span class="mw-page-title-main">$wgUploadPath</span></h1>
+					<div class="tagline"></div>
+				</div>
+				<nav class="page-actions-menu">
+	<ul id="p-views" class="page-actions-menu__list minerva-icon-only-menu">
+		<li id="page-actions-watch" class="page-actions-menu__list-item">
+				<a role="button" id="ca-watch" href="/w/index.php?title=Special:UserLogin&amp;returnto=Manual%3A%24wgUploadPath" data-event-name="menu.watch" class="cdx-button cdx-button--size-large cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--icon-only cdx-button--weight-quiet menu__item--page-actions-watch">
+				    <span class="minerva-icon minerva-icon--star"></span>
+<span>Watch</span>
+				</a>
+		</li>
+		<li id="page-actions-edit" class="page-actions-menu__list-item">
+				<a role="button" id="ca-edit" href="/w/index.php?title=Manual:$wgUploadPath&amp;action=edit" data-event-name="menu.edit" data-mw="interface" class="cdx-button cdx-button--size-large cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--icon-only cdx-button--weight-quiet edit-page menu__item--page-actions-edit">
+				    <span class="minerva-icon minerva-icon--edit"></span>
+<span>Edit</span>
+				</a>
+		</li>
+	</ul>
+</nav>
+<!-- version 1.0.2 (change every time you update a partial) -->
+				<div id="mw-content-subtitle"></div>
+			</div>
+			<div id="bodyContent" class="content">
+				<div id="mw-content-text" class="mw-body-content"><script>function mfTempOpenSection(id){var block=document.getElementById("mf-section-"+id);block.className+=" open-block";block.previousSibling.className+=" open-block";}</script><div class="mw-pt-translate-header noprint nomobile" dir="ltr" lang="en"><a href="/w/index.php?title=Special:Translate&amp;group=page-Manual%3A%24wgUploadPath&amp;action=page&amp;filter=&amp;action_source=translate_page" title="Special:Translate">Translate this page</a></div><div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><section class="mf-section-0" id="mf-section-0"><div class="mw-pt-languages noprint navigation-not-searchable" lang="en" dir="ltr"><div class="mw-pt-languages-label">Languages:</div><ul class="mw-pt-languages-list"><li><a href="/w/index.php?title=Special:Translate&amp;group=page-Manual%3A%24wgUploadPath&amp;language=&amp;task=view" class="new" title="Start translation for this language" lang="" dir="ltr"></a></li>
+<li><a href="/wiki/Manual:%24wgUploadPath/de" class="mw-pt-progress mw-pt-progress--med" title="Handbuch:$wgUploadPath (33% translated)" lang="de" dir="ltr">Deutsch</a></li>
+<li><span class="mw-pt-languages-ui mw-pt-languages-selected mw-pt-progress mw-pt-progress--complete" lang="en" dir="ltr">English</span></li>
+<li><a href="/wiki/Manual:%24wgUploadPath/fr" class="mw-pt-progress mw-pt-progress--complete" title="Manuel:$wgUploadPath (100% translated)" lang="fr" dir="ltr">français</a></li>
+<li><a href="/wiki/Manual:%24wgUploadPath/hu" class="mw-pt-progress mw-pt-progress--complete" title="Kézikönyv:$wgUploadPath (100% translated)" lang="hu" dir="ltr">magyar</a></li>
+<li><a href="/wiki/Manual:%24wgUploadPath/pl" class="mw-pt-progress mw-pt-progress--low" title="Manual:$wgUploadPath/pl (11% translated)" lang="pl" dir="ltr">polski</a></li>
+<li><a href="/wiki/Manual:%24wgUploadPath/pt" class="mw-pt-progress mw-pt-progress--med" title="Manual:$wgUploadPath (50% translated)" lang="pt" dir="ltr">português</a></li>
+<li><a href="/wiki/Manual:%24wgUploadPath/pt-br" class="mw-pt-progress mw-pt-progress--low" title="Manual:$wgUploadPath/pt-br (0% translated)" lang="pt-BR" dir="ltr">português do Brasil</a></li>
+<li><a href="/wiki/Manual:%24wgUploadPath/cs" class="mw-pt-progress mw-pt-progress--complete" title="Příručka:$wgUploadPath (100% translated)" lang="cs" dir="ltr">čeština</a></li>
+<li><a href="/wiki/Manual:%24wgUploadPath/ru" class="mw-pt-progress mw-pt-progress--low" title="Manual:$wgUploadPath/ru (6% translated)" lang="ru" dir="ltr">русский</a></li>
+<li><a href="/wiki/Manual:%24wgUploadPath/zh" class="mw-pt-progress mw-pt-progress--complete" title="手册:$wgUploadPath (100% translated)" lang="zh" dir="ltr">中文</a></li>
+<li><a href="/wiki/Manual:%24wgUploadPath/ja" class="mw-pt-progress mw-pt-progress--complete" title="Manual:$wgUploadPath (100% translated)" lang="ja" dir="ltr">日本語</a></li>
+<li><a href="/wiki/Manual:%24wgUploadPath/ko" class="mw-pt-progress mw-pt-progress--med" title="메뉴얼:$wgUploadPath (17% translated)" lang="ko" dir="ltr">한국어</a></li></ul></div>
+<style data-mw-deduplicate="TemplateStyles:r6815794">.mw-parser-output .settingsummary{margin:1em auto;text-align:left;background:var(--background-color-base,#fff);color:var(--color-base,#202122);border:1px solid var(--border-color-base,#a2a9b1);border-collapse:collapse}.mw-parser-output .settingsummary th,.mw-parser-output .settingsummary td{padding:5px}.mw-parser-output .settingsummary-header{padding:.5em;text-align:center;background-color:var(--background-color-neutral,#eaecf0)}.mw-parser-output .settingsummary-summary{text-align:center}.mw-parser-output .settingsummary th[scope="row"]{padding:0.3em;text-align:left}.mw-parser-output .settingsummary-default th{vertical-align:top}.mw-parser-output .settingsummary-footer{text-align:center;margin:0.3em;font-size:small;font-style:italic}@media screen{html.skin-theme-clientpref-night .mw-parser-output .settingsummary-header{border-bottom:solid 1px var(--border-color-base,#a2a9b1)}}@media screen and (prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .settingsummary-header{border-bottom:solid 1px var(--border-color-base,#a2a9b1)}}</style>
+<table class="settingsummary">
+<tbody><tr>
+<th class="settingsummary-header" colspan="2"><a href="/wiki/Special:MyLanguage/Manual:Configuration_settings#Paths" title="Special:MyLanguage/Manual:Configuration settings">Server URLs and file paths</a>: $wgUploadPath</th>
+</tr><tr>
+<td class="settingsummary-summary" colspan="2">The path segment of the upload directory.<br></td>
+</tr><tr>
+<th scope="row">Introduced in version:</th><td><a href="/wiki/Category:MediaWiki_configuration_settings_introduced_before_version_1.1.0" title="Category:MediaWiki configuration settings introduced before version 1.1.0">Before 1.1.0</a></td>
+</tr>
+
+<tr>
+<th scope="row">Removed in version:</th><td><i><a href="/wiki/Category:MediaWiki_configuration_settings_still_in_use" title="Category:MediaWiki configuration settings still in use">Still in use</a></i></td>
+</tr><tr>
+<th scope="row">Allowed values:</th><td>(path)</td>
+</tr><tr class="settingsummary-default">
+<th scope="row">Default value:</th><td><code>"{<a href="/wiki/Special:MyLanguage/Manual:%24wgScriptPath" title="Special:MyLanguage/Manual:$wgScriptPath">$wgScriptPath</a><span style="display:none"><a href="/wiki/Manual:%24wgScriptPath" title="Manual:$wgScriptPath"> </a></span>}/images"</code> (1.8+)<br>
+<code>"{<a href="/wiki/Special:MyLanguage/Manual:%24wgScriptPath" title="Special:MyLanguage/Manual:$wgScriptPath">$wgScriptPath</a><span style="display:none"><a href="/wiki/Manual:%24wgScriptPath" title="Manual:$wgScriptPath"> </a></span>}/upload"</code> (pre-1.1 - 1.7)<br><small>(Note: The default value of this variable depends on other variables, such as the values set in <a href="/wiki/Special:MyLanguage/Manual:Setup.php" title="Special:MyLanguage/Manual:Setup.php">Setup.php</a><span style="display:none"><a href="/wiki/Manual:Setup.php" title="Manual:Setup.php"> </a></span>, after <a href="/wiki/Special:MyLanguage/Manual:LocalSettings.php" title="Special:MyLanguage/Manual:LocalSettings.php">LocalSettings.php</a><span style="display:none"><a href="/wiki/Manual:LocalSettings.php" title="Manual:LocalSettings.php"> </a></span> is executed)</small></td>
+</tr><tr>
+<td class="settingsummary-footer" colspan="2">Other settings: <a href="/wiki/Special:MyLanguage/Manual:Configuration_settings_(alphabetical)" title="Special:MyLanguage/Manual:Configuration settings (alphabetical)">Alphabetical</a> | <a href="/wiki/Special:MyLanguage/Manual:Configuration_settings" title="Special:MyLanguage/Manual:Configuration settings">By function</a></td>
+</tr>
+</tbody></table>
+</section><div class="mw-heading mw-heading2 section-heading" onclick="mfTempOpenSection(1)"><span class="indicator mf-icon mf-icon-expand mf-icon--small"></span><h2 id="Details">Details</h2><span class="mw-editsection">
+<a role="button" href="/w/index.php?title=Manual:%24wgUploadPath&amp;action=edit&amp;section=1" title="Edit section: Details" class="cdx-button cdx-button--size-large cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--icon-only cdx-button--weight-quiet ">
+    <span class="minerva-icon minerva-icon--edit"></span>
+<span>edit</span>
+</a>
+
+</span>
+
+</div><section class="mf-section-1 collapsible-block" id="mf-section-1">
+<p>The relative path to the upload directory.
+This is used to construct the URLs for viewing uploaded files.
+</p><p>In most cases this is just the path component, such as "/w/images".
+If uploaded files are served from a different domain, this can be a fully-qualified URL with hostname, such as "<a class="external free" href="https://upload.wikimedia.org/wikipedia/en">http://upload.wikimedia.org/wikipedia/en</a>".
+</p><p>If the variable contains a local path (without "http://") then it must start with a slash, otherwise it will result in a bad URL.
+(For example if you set it to "foldername" it will result in files being loaded from "http://www.example.comfoldername" - note the missing slash after ".com")
+</p>
+<style data-mw-deduplicate="TemplateStyles:r6651107">.mw-parser-output .note{background-position:left 7px top 50%;padding:0.5em 0.5em 0.5em 40px;margin:0.5em 0;overflow:hidden;background-color:#f8f9fa;color:#333;background-repeat:no-repeat;border:1px solid #ddd}.mw-parser-output .note-inline{display:inline-block;vertical-align:middle}.mw-parser-output .note-info{background-color:#eaf3ff;color:#333;background-image:url("https://upload.wikimedia.org/wikipedia/commons/e/ec/OOjs_UI_icon_information-progressive.svg");background-size:25px;border-color:#a3caff;padding-left:40px;min-height:25px}.mw-parser-output .note-reminder{background-color:#fff9ea;color:#333;background-image:url("https://upload.wikimedia.org/wikipedia/commons/a/a8/OOjs_UI_icon_lightbulb-yellow.svg");background-size:25px;border-color:#fc3;min-height:25px}.mw-parser-output .note-warn{background-color:#fff9ea;color:#333;background-image:url("https://upload.wikimedia.org/wikipedia/commons/3/3b/OOjs_UI_icon_alert-warning.svg");background-size:25px;border-color:#fc3;min-height:25px}.mw-parser-output .note-error{background-color:#fee7e6;color:#333;background-image:url("https://upload.wikimedia.org/wikipedia/commons/b/bf/OOjs_UI_icon_notice-destructive.svg");background-size:25px;border-color:#c33;min-height:25px}@media screen{html.skin-theme-clientpref-night .mw-parser-output .note{background-color:transparent;color:inherit}}@media screen and (prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .note{background-color:transparent;color:inherit}}</style><div role="note" class="note note-info"><a href="/wiki/Special:MyLanguage/Manual:%24wgEnableUploads" title="Special:MyLanguage/Manual:$wgEnableUploads">$wgEnableUploads</a><span style="display:none"><a href="/wiki/Manual:%24wgEnableUploads" title="Manual:$wgEnableUploads"> </a></span> is <b>false</b> by default. Also remember to set directory permissions.</div>
+<p>To enable permission checks on image files, $wgUploadPath can be pointed to the img_auth.php script (<code>$wgUploadPath = "$wgScriptPath/img_auth.php";</code>) - see <a href="/wiki/Special:MyLanguage/Manual:Image_authorization" title="Special:MyLanguage/Manual:Image authorization">Manual:Image authorization</a><span style="display:none"><a href="/wiki/Manual:Image_authorization" title="Manual:Image authorization"> </a></span> for instructions.
+</p>
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r6651107"><div role="note" class="note note-info">There are other variables which are defined relative to this one. If you redefine this in your <code>LocalSettings.php</code> then all dependent variables including <a href="/wiki/Special:MyLanguage/Manual:%24wgUploadDirectory" title="Special:MyLanguage/Manual:$wgUploadDirectory">$wgUploadDirectory</a><span style="display:none"><a href="/wiki/Manual:%24wgUploadDirectory" title="Manual:$wgUploadDirectory"> </a></span> will need redefining also. If both these settings are not coherent the files will be uploaded to a different folder (<code>$wgUploadDirectory</code>) than from where MediaWiki will try to retrieve them for viewing (<code>$wgUploadPath</code>)!</div>
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r6651107"><div role="note" class="note note-info">If using <a href="/wiki/Special:MyLanguage/Manual:%24wgUseInstantCommons" title="Special:MyLanguage/Manual:$wgUseInstantCommons">$wgUseInstantCommons</a><span style="display:none"><a href="/wiki/Manual:%24wgUseInstantCommons" title="Manual:$wgUseInstantCommons"> </a></span> or <a href="/wiki/Special:MyLanguage/Manual:%24wgForeignFileRepos" title="Special:MyLanguage/Manual:$wgForeignFileRepos">$wgForeignFileRepos</a><span style="display:none"><a href="/wiki/Manual:%24wgForeignFileRepos" title="Manual:$wgForeignFileRepos"> </a></span> with file caching enabled, cached foreign files will be served from <code>$wgUploadPath</code></div>
+</section><div class="mw-heading mw-heading2 section-heading" onclick="mfTempOpenSection(2)"><span class="indicator mf-icon mf-icon-expand mf-icon--small"></span><h2 id="See_also">See also</h2><span class="mw-editsection">
+<a role="button" href="/w/index.php?title=Manual:%24wgUploadPath&amp;action=edit&amp;section=2" title="Edit section: See also" class="cdx-button cdx-button--size-large cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--icon-only cdx-button--weight-quiet ">
+    <span class="minerva-icon minerva-icon--edit"></span>
+<span>edit</span>
+</a>
+
+</span>
+
+</div><section class="mf-section-2 collapsible-block" id="mf-section-2">
+<ul><li><a href="/wiki/Special:MyLanguage/Manual:%24wgUploadBaseUrl" title="Special:MyLanguage/Manual:$wgUploadBaseUrl">Manual:$wgUploadBaseUrl</a><span style="display:none"><a href="/wiki/Manual:%24wgUploadBaseUrl" title="Manual:$wgUploadBaseUrl"> </a></span></li>
+<li><a href="/wiki/Special:MyLanguage/Manual:%24wgUploadDirectory" title="Special:MyLanguage/Manual:$wgUploadDirectory">Manual:$wgUploadDirectory</a><span style="display:none"><a href="/wiki/Manual:%24wgUploadDirectory" title="Manual:$wgUploadDirectory"> </a></span></li></ul>
+<!-- 
+NewPP limit report
+Parsed by mw‐web.eqiad.main‐56b7d9b54‐78gv6
+Cached time: 20250423122102
+Cache expiry: 2592000
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.231 seconds
+Real time usage: 0.312 seconds
+Preprocessor visited node count: 930/1000000
+Post‐expand include size: 11413/2097152 bytes
+Template argument size: 6406/2097152 bytes
+Highest expansion depth: 15/100
+Expensive parser function count: 9/500
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 8471/5000000 bytes
+Lua time usage: 0.022/10.000 seconds
+Lua memory usage: 1048318/52428800 bytes
+Number of Wikibase entities loaded: 0/500
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  144.528      1 -total
+ 50.88%   73.541      1 Template:SettingSummary
+ 48.43%   69.990     11 Template:Ll
+ 31.47%   45.480     23 Template:Translatable
+ 24.52%   35.442     12 Template:Pagelang
+ 19.28%   27.865      3 Template:Note
+ 11.36%   16.423      3 Template:TNTN
+  5.82%    8.413      1 Template:DefaultExplanation
+  4.08%    5.901      1 Translations:Manual:Image_authorization/Page_display_title/en
+  3.97%    5.744      1 Translations:Manual:$wgUploadBaseUrl/Page_display_title/en
+-->
+
+<!-- Saved in parser cache with key mediawikiwiki:pcache:2856:|#|:idhash:canonical and timestamp 20250423122102 and revision id 6731995. Rendering was triggered because: page-view
+ -->
+</section></div>
+<!-- MobileFormatter took 0.003 seconds --><!--esi <esi:include src="/esitest-fa8a495983347898/content" /> --><noscript><img src="https://m.mediawiki.org/wiki/Special:CentralAutoLogin/start?type=1x1&amp;usesul3=1" alt="" width="1" height="1" style="border: none; position: absolute;"></noscript>
+<div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://www.mediawiki.org/w/index.php?title=Manual:$wgUploadPath&amp;oldid=6731995">https://www.mediawiki.org/w/index.php?title=Manual:$wgUploadPath&amp;oldid=6731995</a>"</div></div>
+				
+			</div>
+			<div class="post-content" id="page-secondary-actions">
+			</div>
+		</main>
+		<footer class="mw-footer minerva-footer" role="contentinfo">
+		  <a class="last-modified-bar" href="/w/index.php?title=Manual:$wgUploadPath&amp;action=history">
+  	<div class="post-content last-modified-bar__content">
+  		 <span class="minerva-icon minerva-icon-size-medium minerva-icon--modified-history"></span>
+ 
+  		<span class="last-modified-bar__text modified-enhancement"
+  				data-user-name="Shirayuki"
+  				data-user-gender="male"
+  				data-timestamp="1725067269">
+  				<span>Last edited on 31 August 2024, at 01:21</span>
+  		</span>
+  		 <span class="minerva-icon minerva-icon-size-small minerva-icon--expand"></span>
+ 
+  	</div>
+  </a>
+	<div class="post-content footer-content">
+			
+			<div id="p-lang">
+	    <h4>Languages</h4>
+	    <section>
+	        <ul id="p-variants" class="minerva-languages"></ul>
+	        <ul class="minerva-languages"></ul>
+	        <p>This page is not available in other languages.</p>
+	    </section>
+	</div>
+	<div class="minerva-footer-logo">
+				<img src="/static/images/mobile/copyright/mediawikiwiki-wordmark.svg" alt="MediaWiki" width="120" height="18"
+	style="width: 7.5em; height: 1.125em;"/>
+
+
+				<ul id="footer-icons" class="footer-icons">
+	<li id="footer-copyrightico"><a href="https://www.wikimedia.org/" class="cdx-button cdx-button--fake-button cdx-button--size-large cdx-button--fake-button--enabled"><picture><source media="(min-width: 500px)" srcset="/static/images/footer/wikimedia-button.svg" width="84" height="29"><img src="/static/images/footer/wikimedia.svg" width="25" height="25" alt="Wikimedia Foundation" lang="en" loading="lazy"></picture></a></li>
+	<li id="footer-poweredbyico"><a href="https://www.mediawiki.org/" class="cdx-button cdx-button--fake-button cdx-button--size-large cdx-button--fake-button--enabled"><picture><source media="(min-width: 500px)" srcset="/w/resources/assets/poweredby_mediawiki.svg" width="88" height="31"><img src="/w/resources/assets/mediawiki_compact.svg" alt="Powered by MediaWiki" lang="en" width="25" height="25" loading="lazy"></picture></a></li>
+</ul>
+			</div>
+			<ul id="footer-info" class="footer-info hlist hlist-separated">
+	<li id="footer-info-lastmod"> This page was last edited on 31 August 2024, at 01:21.</li>
+	<li id="footer-info-copyright">Text is available under the <a rel="nofollow" class="external text" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike License</a>; additional terms may apply. Text in <a class="external text" href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents">the Help: namespace</a> is available under the <a rel="nofollow" class="external text" href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons CC0 License</a>.
+By using this site, you agree to the <a class="external text" href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Terms_of_Use">Terms of Use</a> and <a class="external text" href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy">Privacy Policy</a>.</li>
+</ul>
+
+			<ul id="footer-places" class="footer-places hlist hlist-separated">
+	<li id="footer-places-privacy"><a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy">Privacy policy</a></li>
+	<li id="footer-places-about"><a href="/wiki/Project:About">About mediawiki.org</a></li>
+	<li id="footer-places-disclaimers"><a href="/wiki/Project:General_disclaimer">Disclaimers</a></li>
+	<li id="footer-places-wm-codeofconduct"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Code_of_Conduct">Code of Conduct</a></li>
+	<li id="footer-places-developers"><a href="https://developer.wikimedia.org">Developers</a></li>
+	<li id="footer-places-statslink"><a href="https://stats.wikimedia.org/#/www.mediawiki.org">Statistics</a></li>
+	<li id="footer-places-cookiestatement"><a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Cookie_statement">Cookie statement</a></li>
+	<li id="footer-places-terms-use"><a href="https://foundation.m.wikimedia.org/wiki/Special:MyLanguage/Policy:Terms_of_Use">Terms of Use</a></li>
+	<li id="footer-places-desktop-toggle"><a id="mw-mf-display-toggle" href="//www.mediawiki.org/w/index.php?title=Manual:$wgUploadPath&amp;mobileaction=toggle_view_desktop" data-event-name="switch_to_desktop">Desktop</a></li>
+</ul>
+
+			</div>
+		</footer>
+			</div>
+</div>
+<div class="mw-portlet mw-portlet-dock-bottom emptyPortlet" id="p-dock-bottom">
+        <ul>
+                
+        </ul>
+</div>
+<div class="mw-notification-area" data-mw="interface"></div>
+<!-- v:8.3.1 -->
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgHostname":"mw-web.eqiad.main-cfc994776-bbfc6","wgBackendResponseTime":171,"wgPageParseReport":{"limitreport":{"cputime":"0.231","walltime":"0.312","ppvisitednodes":{"value":930,"limit":1000000},"postexpandincludesize":{"value":11413,"limit":2097152},"templateargumentsize":{"value":6406,"limit":2097152},"expansiondepth":{"value":15,"limit":100},"expensivefunctioncount":{"value":9,"limit":500},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":8471,"limit":5000000},"entityaccesscount":{"value":0,"limit":500},"timingprofile":["100.00%  144.528      1 -total"," 50.88%   73.541      1 Template:SettingSummary"," 48.43%   69.990     11 Template:Ll"," 31.47%   45.480     23 Template:Translatable"," 24.52%   35.442     12 Template:Pagelang"," 19.28%   27.865      3 Template:Note"," 11.36%   16.423      3 Template:TNTN","  5.82%    8.413      1 Template:DefaultExplanation","  4.08%    5.901      1 Translations:Manual:Image_authorization/Page_display_title/en","  3.97%    5.744      1 Translations:Manual:$wgUploadBaseUrl/Page_display_title/en"]},"scribunto":{"limitreport-timeusage":{"value":"0.022","limit":"10.000"},"limitreport-memusage":{"value":1048318,"limit":52428800}},"cachereport":{"origin":"mw-web.eqiad.main-56b7d9b54-78gv6","timestamp":"20250423122102","ttl":2592000,"transientcontent":false}}});});</script>
+<script>(window.NORLQ=window.NORLQ||[]).push(function(){var ns,i,p,img;ns=document.getElementsByTagName('noscript');for(i=0;i<ns.length;i++){p=ns[i].nextSibling;if(p&&p.className&&p.className.indexOf('lazy-image-placeholder')>-1){img=document.createElement('img');img.setAttribute('src',p.getAttribute('data-mw-src'));img.setAttribute('width',p.getAttribute('data-width'));img.setAttribute('height',p.getAttribute('data-height'));img.setAttribute('alt',p.getAttribute('data-alt'));p.parentNode.replaceChild(img,p);}}});</script>
+</body>
+</html>

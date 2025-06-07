@@ -1,4 +1,4 @@
-# Supporting tools and services
+# Supporting Tools and Services
 
 **Note: For the latest set of supporting tools, please check out https://containers.dev/supporting.**
 
@@ -119,6 +119,17 @@ You can customize which files are initially opened when the codespace is created
 ```
 
 The paths are relative to the root of the repository. They will be opened in order, with the first file activated.
+
+Codespaces will automatically perform some default setup when the `devcontainer.json` does not specify a `postCreateCommand`. This can be disabled with the `disableAutomaticConfiguration` setting:
+
+```jsonc
+"customizations": {
+	// Configure properties specific to Codespaces.
+	"codespaces": {
+		"disableAutomaticConfiguration": true
+	}
+}
+```
 
 Note that currently codespaces reads these properties from `devcontainer.json`, not image metadata.
 

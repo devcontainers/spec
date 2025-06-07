@@ -1,3 +1,11 @@
+# Dev Container ID
+
+This has now been implemented:
+* Discussion issue: https://github.com/devcontainers/spec/issues/62
+* CLI PR: https://github.com/devcontainers/cli/pull/242
+
+Below is the original proposal.
+
 ## Goal
 
 Allow features to refer to an identifier that is unique to the dev container they are installed into and that is stable across rebuilds.

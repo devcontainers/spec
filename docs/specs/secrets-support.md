@@ -1,4 +1,10 @@
-# First class secrets support in dev containers implementations
+# First Class Secrets Support
+
+This has now been implemented:
+* Discussion issue: https://github.com/devcontainers/spec/issues/219
+* CLI PR: https://github.com/devcontainers/cli/pull/493
+
+Below is the original proposal.
 
 ## What are secrets
 Secrets are variables that hold sensitive values and need to be handled securely at all times (API keys, passwords etc.). Users can change a secret's value at any time, and a conforming dev containers implementation should support dynamically changing secrets without having to rebuild the container.
@@ -29,10 +35,10 @@ Secrets are not part of dev containers specification and we do not expect users 
 
 Using a file to pass in the secrets can be one of the simple approaches to adopt. In this example the supporting tool can input secrets in a JSON file format.
 
-	```json
-	{
-		"API_KEY": "adsjhsd6dfwdjfwde7edwfwedfdjedwf7wedfwe",
-		"NUGET_CONFIG": "<config>\n    <add key=\"dependencyVersion\" value=\"Highest\" />\n    <add key=\"http_proxy\" value=\"http://company-squid:3128@contoso.com\" />\n</config>",
-		"PASSWORD": "Simple Passwords"
-	}
-	```
+```json
+{
+	"API_KEY": "adsjhsd6dfwdjfwde7edwfwedfdjedwf7wedfwe",
+	"NUGET_CONFIG": "<config>\n    <add key=\"dependencyVersion\" value=\"Highest\" />\n    <add key=\"http_proxy\" value=\"http://company-squid:3128@contoso.com\" />\n</config>",
+	"PASSWORD": "Simple Passwords"
+}
+```

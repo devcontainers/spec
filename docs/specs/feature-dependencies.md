@@ -1,8 +1,10 @@
 # Feature Dependencies
 
-Reference: https://github.com/devcontainers/spec/issues/109
+This has now been implemented:
+* Discussion issue: https://github.com/devcontainers/spec/issues/109
+* CLI PR: https://github.com/devcontainers/cli/commit/236b85162a945a1af9e72fcbe02eb5c7c864b31d
 
-**NOTE**: A reference implementation was introduced in https://github.com/devcontainers/cli/commit/236b85162a945a1af9e72fcbe02eb5c7c864b31d
+Below is the original proposal.
 
 ## Motivation
 
@@ -57,7 +59,7 @@ An example `devcontainer-feature.json` file with a dependency on four other publ
         },
         "features.azurecr.io/third:1": {},
         "features.azurecr.io/fourth:1.2.3": {},
-        "features.azurecr.io/fifth@sha256:a4cdc44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" {},
+        "features.azurecr.io/fifth@sha256:a4cdc44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855": {}
     }
 }
 ```

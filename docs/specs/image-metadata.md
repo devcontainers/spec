@@ -1,5 +1,11 @@
 # Image Metadata
 
+This has now been implemented:
+* Discussion issue: https://github.com/devcontainers/spec/issues/18
+* CLI PR: https://github.com/devcontainers/cli/pull/188
+
+Below is the original proposal.
+
 ## Goal
 
 Record dev container config and feature metadata in prebuilt images, such that, the image and the built-in features can be used with a devcontainer.json (image-, Dockerfile- or Docker Compose-based) that does not repeat the dev container config or feature metadata. Other tools should be able to record the same metadata without necessarily using features themselves.

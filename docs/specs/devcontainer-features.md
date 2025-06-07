@@ -39,7 +39,7 @@ All properties are optional **except for `id`, `version`, and `name`**.
 | `options` | object | A map of options that will be passed as environment variables to the execution of the script. |
 | `containerEnv` | object | A set of name value pairs that sets or overrides environment variables. |
 | `privileged` | boolean | Sets [privileged mode](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) for the container (required by things like docker-in-docker) when the Feature is used. |
-| `init` | boolean | Adds the [tiny init](https://github.com/RKrahl/tiny-init) process to the container (`--init`) when the Feature is used. |
+| `init` | boolean | Adds the [tini init](https://github.com/krallin/tini) process to the container (`--init`) when the Feature is used. |
 | `capAdd` | array | Adds container [capabilities](https://docs.docker.com/engine/security/#linux-kernel-capabilities) when the Feature is used. |
 | `securityOpt` | array | Sets container security options like updating the [seccomp profile](https://docs.docker.com/engine/security/seccomp/) when the Feature is used. |
 | `entrypoint` | string | Set if the Feature requires an "entrypoint" script that should fire at container start up. |
@@ -104,7 +104,7 @@ The options property is contains a map of option IDs and their related configura
 
 Feature scripts run as the `root` user and sometimes need to know which user account the dev container will be used with.
 
-`_REMOTE_USER` and `_CONTAINER_USER` environment variables are passsed to the Features scripts with `_CONTAINER_USER` being the container's user and `_REMOTE_USER` being the configured `remoteUser`. If no `remoteUser` is configured, `_REMOTE_USER` is set to the same value as `_CONTAINER_USER`.
+`_REMOTE_USER` and `_CONTAINER_USER` environment variables are passed to the Features scripts with `_CONTAINER_USER` being the container's user and `_REMOTE_USER` being the configured `remoteUser`. If no `remoteUser` is configured, `_REMOTE_USER` is set to the same value as `_CONTAINER_USER`.
 
 Additionally, the home folders of the two users are passed to the Feature scripts as `_REMOTE_USER_HOME` and `_CONTAINER_USER_HOME` environment variables.
 
@@ -468,7 +468,7 @@ The user's `devcontainer.json` declared the python Feature like so
 ```jsonc
 
 "features": {
-    "python": {
+    "ghcr.io/devcontainers/features/python:1": {
         "version": "3.10",
         "pip": false
     }

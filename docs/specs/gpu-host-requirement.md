@@ -1,4 +1,10 @@
-# GPU host requirement
+# GPU Host Requirement
+
+This has now been implemented:
+* Discussion issue: https://github.com/devcontainers/spec/issues/82
+* CLI PR: https://github.com/devcontainers/cli/pull/173
+
+Below is the original proposal.
 
 ## Goal
 

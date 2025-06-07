@@ -36,6 +36,13 @@
           "description": "URL to documentation for the Feature.",
           "type": "string"
         },
+        "keywords": {
+          "description": "List of strings relevant to a user that would search for this definition/Feature.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "entrypoint": {
           "description": "Entrypoint script that should fire at container start up.",
           "type": "string"
@@ -54,6 +61,11 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "dependsOn": {
+          "description": "An object of Feature dependencies that must be satisified before this Feature is installed. Elements follow the same semantics of the features object in devcontainer.json",
+          "additionalProperties": true,
+          "type": "object"
         },
         "licenseURL": {
           "description": "URL to the license for the Feature.",
@@ -322,7 +334,6 @@
       },
       "required": [
         "type",
-        "source",
         "target"
       ],
       "type": "object"

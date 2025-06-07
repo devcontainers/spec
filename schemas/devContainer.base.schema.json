@@ -7,6 +7,11 @@
 		"devContainerCommon": {
 			"type": "object",
 			"properties": {
+				"$schema": {
+					"type": "string",
+					"format": "uri",
+					"description": "The JSON schema of the `devcontainer.json` file."
+				},
 				"name": {
 					"type": "string",
 					"description": "A name for the dev container which can be displayed to the user."
@@ -17,7 +22,7 @@
 					"properties": {
 						"fish": {
 							"deprecated": true,
-							"deprecationMessage": "Legacy feature will be removed in the future. Please check https://containers.dev/features for replacements."
+							"deprecationMessage": "Legacy feature not supported. Please check https://containers.dev/features for replacements."
 						},
 						"maven": {
 							"deprecated": true,
@@ -29,7 +34,7 @@
 						},
 						"homebrew": {
 							"deprecated": true,
-							"deprecationMessage": "Legacy feature will be removed in the future. Please check https://containers.dev/features for replacements."
+							"deprecationMessage": "Legacy feature not supported. Please check https://containers.dev/features for replacements."
 						},
 						"jupyterlab": {
 							"deprecated": true,
@@ -44,6 +49,30 @@
 					"items": {
 						"type": "string"
 					}
+				},
+				"secrets": {
+					"type": "object",
+					"description": "Recommended secrets for this dev container. Recommendations are provided as environment variable keys with optional metadata.",
+					"patternProperties": {
+						"^[a-zA-Z_][a-zA-Z0-9_]*$": {
+							"type": "object",
+							"description": "Environment variable keys following unix-style naming conventions. eg: ^[a-zA-Z_][a-zA-Z0-9_]*$",
+							"properties": {
+								"description": {
+									"type": "string",
+									"description": "A description of the secret."
+								},
+								"documentationUrl": {
+									"type": "string",
+									"format": "uri",
+									"description": "A URL to documentation about the secret."
+								}
+							},
+							"additionalProperties": false
+						},
+						"additionalProperties": false
+					},
+					"additionalProperties": false
 				},
 				"forwardPorts": {
 					"type": "array",
@@ -263,11 +292,21 @@
 				"initializeCommand": {
 					"type": [
 						"string",
-						"array"
+						"array",
+						"object"
 					],
-					"description": "A command to run locally before anything else. This command is run before \"onCreateCommand\". If this is a single string, it will be run in a shell. If this is an array of strings, it will be run as a single command without shell.",
+					"description": "A command to run locally (i.e Your host machine, cloud VM) before anything else. This command is run before \"onCreateCommand\". If this is a single string, it will be run in a shell. If this is an array of strings, it will be run as a single command without shell. If this is an object, each provided command will be run in parallel.",
 					"items": {
 						"type": "string"
+					},
+					"additionalProperties": {
+						"type": [
+							"string",
+							"array"
+						],
+						"items": {
+							"type": "string"
+						}
 					}
 				},
 				"onCreateCommand": {
@@ -594,6 +633,13 @@
 					"items": {
 						"type": "string"
 					}
+				},
+				"options": {
+					"type": "array",
+					"description": "Additional arguments passed to the build command.",
+					"items": {
+						"type": "string"
+					}
 				}
 			}
 		},
@@ -678,7 +724,6 @@
 			},
 			"required": [
 				"type",
-				"source",
 				"target"
 			],
 			"additionalProperties": false

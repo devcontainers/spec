@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Development containers</title>
+    <meta name="description" content="Development containers documentation and specification page.
+">
+
+
+    <!-- link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" -->
+    <link rel="stylesheet" href="/css/bootswatch/cosmo/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="theme-color" content="#2753E3">
+
+    <link rel="canonical" href="https://devcontainers.github.io/">
+    <link rel="alternate" type="application/rss+xml" title="Development containers" href="https://devcontainers.github.io/feed.xml" />
+</head>
+
+<body>
+    <div id='cookie-banner'></div>
+    <header class="navbar navbar-expand-lg navbar-dark bg-primary -navbar">
+    <div class="container navbar-container">
+        <a class="navbar-brand" href="/">
+            <h1>Development Containers</h1>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarSupportedContent" role="navigation" aria-label="Top Level">
+            
+            <ul class="navbar-nav ml-auto">
+                <li  class="nav-item" >
+                    <a class="nav-link" href='/overview'>Overview</a>
+                </li>
+                <!--<li  class="nav-item" >
+                    <a class="nav-link" href="/implementors/spec/">Implementations</a>
+                </li>-->
+                <li  class="nav-item" >
+                    <a class="nav-link" href="/implementors/json_reference">Reference</a>
+                </li>
+                <li  class="nav-item" >
+                    <a class="nav-link" href="/implementors/spec/">Specification</a>
+                </li>
+                <li  class="nav-item" >
+                    <a class="nav-link" href='/supporting'>Supporting Tools</a>
+                </li>
+                <li  class="nav-item" >
+                    <a class="nav-link" href='/guides'>Guides</a>
+                </li>
+                <li  class="nav-item" >
+                    <a class="nav-link" href='/features'>Available Features</a>
+                </li>
+                <li  class="nav-item" >
+                    <a class="nav-link" href='/templates'>Available Templates</a>
+                </li>
+                <li  class="nav-item" >
+                    <a class="nav-link" href='/collections'>Collections</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</header>
+
+    <div class="page-content">
+        <div class="wrapper">
+            <!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<div class="header-container bg-primary jumbotron">
+    <div class="container">
+        <div class="intro">
+            <h1>Development Containers</h1>
+        </div>
+        <p class="intro-text">
+            An open specification for enriching containers with development specific content and settings.
+        </p>
+
+        <br />
+        <div class="intro-text">
+            <a class="github-button" href="https://github.com/devcontainers/spec" data-size="large"
+                data-icon="octicon-star" data-show-count="true" tabindex="0"
+                aria-label="Star devcontainers/spec on GitHub">Star</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-lg-7" role="navigation" aria-label="Main">
+            <h2 class="header-light regular-pad">What are Development Containers?</h2>
+
+            <p>A development container (or dev container for short) allows you to use a container as a full-featured
+                development environment. It can be used to run an application, to separate tools, libraries, or runtimes
+                needed for working with a codebase, and to aid in continuous integration and testing. Dev containers can
+                be run locally or remotely, in a private or public cloud, in a variety of <a href="./supporting"
+                    aria-label="Supporting tools">supporting tools and editors</a>.</p>
+
+            <p>The Development Container Specification seeks to find ways to enrich existing formats with common
+                development specific settings, tools, and configuration while still providing a simplified,
+                un-orchestrated single container option – so that they can be used as coding environments or for
+                continuous integration and testing. Beyond the specification's core metadata, the spec also enables
+                developers to quickly share and reuse container setup steps through <a href="./features"
+                    aria-label="See the Dev Container Features spec">Features</a> and <a href="./templates"
+                    aria-label="See the Dev Container Templates spec">Templates</a>. </p>
+
+        </div>
+        <div class="col-lg-5">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <img alt="Go devcontainer.json config file" src="img/goConfig.png" class="img-fluid rounded" />
+                    <p class="text-left"><i>Use or create dev container definitions for a multitude of tech stacks and
+                            tools.</i></p>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row more-info">
+            <div class="col-lg-4">
+                <h1 class="text-center"><img src="img/cogs.png" alt="Gear cogs"></h1>
+                <a href='/overview'>
+                    <h3 class="text-center">Overview</h3>
+                </a>
+                <p>
+                    More information about the Development Container Specification.
+                </p>
+            </div>
+            <div class="col-lg-4">
+                <h1 class="text-center"><img src="img/book.png" alt="Gear cogs"></h1>
+                
+                <a href="/implementors/spec/">
+                    <h3 class="text-center">Specification</h3>
+                </a>
+                <p>
+                    Check out the latest reference implementation and schemas.
+                </p>
+            </div>
+            <div class="col-lg-4">
+                <h1 class="text-center"><img src="img/branch.png" alt="Gear cogs"></h1>
+                <a href='/supporting'>
+                    <h3 class="text-center">Supporting Tools</h3>
+                </a>
+                <p>
+                    A variety of tools and services support this standard.
+                </p>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+    <script>
+        function manageConsent() {
+            if (WcpConsent.siteConsent.isConsentRequired) {
+                WcpConsent.siteConsent.manageConsent();
+            }
+        }
+    </script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10">
+                <ul class="links">
+                    <li>
+                        <a class="github-button" href="https://github.com/devcontainers/spec" data-icon="octicon-star" data-show-count="true" aria-label="Star devcontainers/spec on GitHub">Star</a>
+                    </li>
+                    <li>
+                        <a class="github-button" href="https://github.com/devcontainers/spec/subscription" aria-label="Watch devcontainers/spec on GitHub">Watch</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-2">
+                <ul class="links">
+                    <li style="display: none;" >
+                        <a id="footer-cookie-link" style="cursor: pointer; padding-right:20px" onclick="manageConsent()"
+                            aria-label="Manage cookies">Manage cookies</a>
+                    </li>
+                    <li>
+                        <div class="copyright">
+                            <a id="footer-microsoft-link" class="logo" href="https://www.microsoft.com">
+                                <img src="/img/microsoft-logo-inverted.png" height="20" alt="Microsoft">
+                            </a>
+                            <span>© 2025 Microsoft</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script>
+  var baseurl = ''
+</script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- Microsoft EU cookie compliance library -->
+<script src="https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-62780441-30"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="/js/page.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+ <head about="https://creativecommons.org/licenses/by-sa/4.0/">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>
+   Deed - Attribution-ShareAlike 4.0 International
+ - Creative Commons
+  </title>
+  <link href="https://creativecommons.org/licenses/by-sa/4.0/deed.en" rel="canonical">
+  <!-- Default: English -->
+  <link href="/licenses/by-sa/4.0/deed.en" hreflang="x-default" rel="alternate">
+  <!-- aragonés -->
+  <link href="/licenses/by-sa/4.0/deed.an" hreflang="an" rel="alternate">
+  <!-- Azərbaycanca -->
+  <link href="/licenses/by-sa/4.0/deed.az" hreflang="az" rel="alternate">
+  <!-- Bahasa Indonesia -->
+  <link href="/licenses/by-sa/4.0/deed.id" hreflang="id" rel="alternate">
+  <!-- Basque -->
+  <link href="/licenses/by-sa/4.0/deed.eu" hreflang="eu" rel="alternate">
+  <!-- català -->
+  <link href="/licenses/by-sa/4.0/deed.ca" hreflang="ca" rel="alternate">
+  <!-- dansk -->
+  <link href="/licenses/by-sa/4.0/deed.da" hreflang="da" rel="alternate">
+  <!-- Deutsch -->
+  <link href="/licenses/by-sa/4.0/deed.de" hreflang="de" rel="alternate">
+  <!-- eesti -->
+  <link href="/licenses/by-sa/4.0/deed.et" hreflang="et" rel="alternate">
+  <!-- español -->
+  <link href="/licenses/by-sa/4.0/deed.es" hreflang="es" rel="alternate">
+  <!-- Esperanto -->
+  <link href="/licenses/by-sa/4.0/deed.eo" hreflang="eo" rel="alternate">
+  <!-- français -->
+  <link href="/licenses/by-sa/4.0/deed.fr" hreflang="fr" rel="alternate">
+  <!-- frysk -->
+  <link href="/licenses/by-sa/4.0/deed.fy" hreflang="fy" rel="alternate">
+  <!-- Gaeilge -->
+  <link href="/licenses/by-sa/4.0/deed.ga" hreflang="ga" rel="alternate">
+  <!-- galego -->
+  <link href="/licenses/by-sa/4.0/deed.gl" hreflang="gl" rel="alternate">
+  <!-- Hrvatski -->
+  <link href="/licenses/by-sa/4.0/deed.hr" hreflang="hr" rel="alternate">
+  <!-- italiano -->
+  <link href="/licenses/by-sa/4.0/deed.it" hreflang="it" rel="alternate">
+  <!-- latviešu -->
+  <link href="/licenses/by-sa/4.0/deed.lv" hreflang="lv" rel="alternate">
+  <!-- Lietuviškai -->
+  <link href="/licenses/by-sa/4.0/deed.lt" hreflang="lt" rel="alternate">
+  <!-- Magyar -->
+  <link href="/licenses/by-sa/4.0/deed.hu" hreflang="hu" rel="alternate">
+  <!-- Melayu -->
+  <link href="/licenses/by-sa/4.0/deed.ms" hreflang="ms" rel="alternate">
+  <!-- Nederlands -->
+  <link href="/licenses/by-sa/4.0/deed.nl" hreflang="nl" rel="alternate">
+  <!-- norsk -->
+  <link href="/licenses/by-sa/4.0/deed.no" hreflang="no" rel="alternate">
+  <!-- polski -->
+  <link href="/licenses/by-sa/4.0/deed.pl" hreflang="pl" rel="alternate">
+  <!-- Português -->
+  <link href="/licenses/by-sa/4.0/deed.pt" hreflang="pt" rel="alternate">
+  <!-- Português Brasileiro -->
+  <link href="/licenses/by-sa/4.0/deed.pt-br" hreflang="pt-br" rel="alternate">
+  <!-- Română -->
+  <link href="/licenses/by-sa/4.0/deed.ro" hreflang="ro" rel="alternate">
+  <!-- Slovensky -->
+  <link href="/licenses/by-sa/4.0/deed.sk" hreflang="sk" rel="alternate">
+  <!-- Slovenščina -->
+  <link href="/licenses/by-sa/4.0/deed.sl" hreflang="sl" rel="alternate">
+  <!-- srpski (latinica) -->
+  <link href="/licenses/by-sa/4.0/deed.sr-latn" hreflang="sr-latn" rel="alternate">
+  <!-- suomi -->
+  <link href="/licenses/by-sa/4.0/deed.fi" hreflang="fi" rel="alternate">
+  <!-- svenska -->
+  <link href="/licenses/by-sa/4.0/deed.sv" hreflang="sv" rel="alternate">
+  <!-- Türkçe -->
+  <link href="/licenses/by-sa/4.0/deed.tr" hreflang="tr" rel="alternate">
+  <!-- Íslenska -->
+  <link href="/licenses/by-sa/4.0/deed.is" hreflang="is" rel="alternate">
+  <!-- česky -->
+  <link href="/licenses/by-sa/4.0/deed.cs" hreflang="cs" rel="alternate">
+  <!-- Ελληνικά -->
+  <link href="/licenses/by-sa/4.0/deed.el" hreflang="el" rel="alternate">
+  <!-- беларуская -->
+  <link href="/licenses/by-sa/4.0/deed.be" hreflang="be" rel="alternate">
+  <!-- български -->
+  <link href="/licenses/by-sa/4.0/deed.bg" hreflang="bg" rel="alternate">
+  <!-- Русский -->
+  <link href="/licenses/by-sa/4.0/deed.ru" hreflang="ru" rel="alternate">
+  <!-- Українська -->
+  <link href="/licenses/by-sa/4.0/deed.uk" hreflang="uk" rel="alternate">
+  <!-- العربيّة -->
+  <link href="/licenses/by-sa/4.0/deed.ar" hreflang="ar" rel="alternate">
+  <!-- فارسی -->
+  <link href="/licenses/by-sa/4.0/deed.fa" hreflang="fa" rel="alternate">
+  <!-- हिंदी -->
+  <link href="/licenses/by-sa/4.0/deed.hi" hreflang="hi" rel="alternate">
+  <!-- বাংলা -->
+  <link href="/licenses/by-sa/4.0/deed.bn" hreflang="bn" rel="alternate">
+  <!-- 日本語 -->
+  <link href="/licenses/by-sa/4.0/deed.ja" hreflang="ja" rel="alternate">
+  <!-- 简体中文 -->
+  <link href="/licenses/by-sa/4.0/deed.zh-hans" hreflang="zh-hans" rel="alternate">
+  <!-- 繁體中文 -->
+  <link href="/licenses/by-sa/4.0/deed.zh-hant" hreflang="zh-hant" rel="alternate">
+  <!-- 한국어 -->
+  <link href="/licenses/by-sa/4.0/deed.ko" hreflang="ko" rel="alternate">
+  <link href="/wp-content/themes/vocabulary-theme/vocabulary/favicon/favicon.ico" rel="icon" sizes="any">
+  <link href="/wp-content/themes/vocabulary-theme/vocabulary/favicon/favicon.svg" rel="icon" type="image/svg+xml">
+  <link href="/wp-content/themes/vocabulary-theme/vocabulary/favicon/manifest.webmanifest" rel="manifest">
+  <link href="/wp-content/themes/vocabulary-theme/vocabulary/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+  <link href="/cc-legal-tools/base.css" rel="stylesheet">
+  <link href="/cc-legal-tools/deed.css" rel="stylesheet">
+ </head>
+ <body about="https://creativecommons.org/licenses/by-sa/4.0/" class="walkthrough-page cc-legal-tools bidi-left" typeof="cc:License">
+  <a class="skip-to-content" href="#main-content-marker">
+   Skip to content
+  </a>
+  <!-- Div element used to mount the Explore CC component-->
+  <header>
+   <div class="masthead">
+    <h1>
+     <a class="identity-logo" href="/">
+      Creative Commons
+     </a>
+    </h1>
+    <button class="expand-menu">
+     Menu
+    </button>
+    <!-- below menu is not final items, for testing only -->
+    <nav class="primary-menu">
+     <ul>
+      <li>
+       <a href="/about/team">
+        Who We Are
+       </a>
+      </li>
+      <li>
+       <a href="/about">
+        What We Do
+       </a>
+      </li>
+      <li>
+       <a href="/about/cclicenses/">
+        Licenses and Tools
+       </a>
+      </li>
+      <li>
+       <a href="/blog">
+        Blog
+       </a>
+      </li>
+      <li>
+       <a href="/about/support-cc/">
+        Support Us
+       </a>
+      </li>
+     </ul>
+    </nav>
+    <nav class="ancillary-menu">
+     <ul>
+      <li>
+       <span class="locale icon-attach fa-globe">
+        <select id="languages-dropdown">
+         <option disabled>
+          Languages available
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.an" id="option-an" value="an">
+          aragonés
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.az" id="option-az" value="az">
+          Azərbaycanca
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.id" id="option-id" value="id">
+          Bahasa Indonesia
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.eu" id="option-eu" value="eu">
+          Basque
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.ca" id="option-ca" value="ca">
+          català
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.da" id="option-da" value="da">
+          dansk
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.de" id="option-de" value="de">
+          Deutsch
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.et" id="option-et" value="et">
+          eesti
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.en" id="option-en" selected value="en">
+          English
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.es" id="option-es" value="es">
+          español
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.eo" id="option-eo" value="eo">
+          Esperanto
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.fr" id="option-fr" value="fr">
+          français
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.fy" id="option-fy" value="fy">
+          frysk
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.ga" id="option-ga" value="ga">
+          Gaeilge
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.gl" id="option-gl" value="gl">
+          galego
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.hr" id="option-hr" value="hr">
+          Hrvatski
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.it" id="option-it" value="it">
+          italiano
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.lv" id="option-lv" value="lv">
+          latviešu
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.lt" id="option-lt" value="lt">
+          Lietuviškai
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.hu" id="option-hu" value="hu">
+          Magyar
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.ms" id="option-ms" value="ms">
+          Melayu
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.nl" id="option-nl" value="nl">
+          Nederlands
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.no" id="option-no" value="no">
+          norsk
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.pl" id="option-pl" value="pl">
+          polski
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.pt" id="option-pt" value="pt">
+          Português
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.pt-br" id="option-pt-br" value="pt-br">
+          Português Brasileiro
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.ro" id="option-ro" value="ro">
+          Română
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.sk" id="option-sk" value="sk">
+          Slovensky
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.sl" id="option-sl" value="sl">
+          Slovenščina
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.sr-latn" id="option-sr-latn" value="sr-latn">
+          srpski (latinica)
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.fi" id="option-fi" value="fi">
+          suomi
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.sv" id="option-sv" value="sv">
+          svenska
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.tr" id="option-tr" value="tr">
+          Türkçe
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.is" id="option-is" value="is">
+          Íslenska
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.cs" id="option-cs" value="cs">
+          česky
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.el" id="option-el" value="el">
+          Ελληνικά
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.be" id="option-be" value="be">
+          беларуская
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.bg" id="option-bg" value="bg">
+          български
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.ru" id="option-ru" value="ru">
+          Русский
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.uk" id="option-uk" value="uk">
+          Українська
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.ar" id="option-ar" value="ar">
+          العربيّة
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.fa" id="option-fa" value="fa">
+          فارسی
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.hi" id="option-hi" value="hi">
+          हिंदी
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.bn" id="option-bn" value="bn">
+          বাংলা
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.ja" id="option-ja" value="ja">
+          日本語
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.zh-hans" id="option-zh-hans" value="zh-hans">
+          简体中文
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.zh-hant" id="option-zh-hant" value="zh-hant">
+          繁體中文
+         </option>
+         <option data-link="/licenses/by-sa/4.0/deed.ko" id="option-ko" value="ko">
+          한국어
+         </option>
+        </select>
+       </span>
+      </li>
+      <script src="/cc-legal-tools/language-dropdown.js">
+      </script>
+      <li>
+       <a class="search icon-attach fa-search" href="/?s">
+        Search
+       </a>
+      </li>
+      <li>
+       <a class="donate icon-attach fa-heart" href="https://www.classy.org/give/313412/#!/donation/checkout?c_src=website&amp;c_src2=top-of-page-banner" target="_blank">
+        Donate
+       </a>
+      </li>
+      <li>
+       <button class="explore">
+        Explore CC
+       </button>
+      </li>
+     </ul>
+    </nav>
+   </div>
+   <div class="explore-panel">
+    <nav class="explore-menu">
+     <ul>
+      <li>
+       <a href="https://network.creativecommons.org/" target="_blank">
+        Global Network
+       </a>
+       <p>
+        Join a  global community working to strengthen the Commons
+       </p>
+      </li>
+      <li>
+       <a href="https://certificate.creativecommons.org/" target="_blank">
+        Certificate
+       </a>
+       <p>
+        Become an expert in creating and engaging with openly licensed materials
+       </p>
+      </li>
+      <li>
+       <a href="https://summit.creativecommons.org/" target="_blank">
+        Global Summit
+       </a>
+       <p>
+        Attend our annual event, promoting the power of open licensing
+       </p>
+      </li>
+      <li>
+       <a href="/choose" target="_blank">
+        Chooser
+       </a>
+       <p>
+        Get help choosing the appropriate license for your work
+       </p>
+      </li>
+      <li>
+       <a href="https://search.creativecommons.org/" target="_blank">
+        Search Portal
+       </a>
+       <p>
+        Find engines to search openly licensed material for creative and educational reuse
+       </p>
+      </li>
+      <li>
+       <a href="https://opensource.creativecommons.org/" target="_blank">
+        Open Source
+       </a>
+       <p>
+        Help us build products that maximize creativity and innovation
+       </p>
+      </li>
+     </ul>
+    </nav>
+   </div>
+  </header>
+  <span id="main-content-marker">
+  </span>
+  <main>
+   <header>
+    <h1>
+     Attribution-ShareAlike 4.0 International
+    </h1>
+    <span class="alt-titles">
+     <span class="tool-icons">
+      <span class="cc-icon">
+       <svg viewbox="0 0 30 30">
+        <use href="/wp-content/themes/vocabulary-theme/vocabulary/svg/cc/icons/cc-icons.svg#cc-logo">
+        </use>
+       </svg>
+      </span>
+      <span class="cc-icon">
+       <svg viewbox="0 0 30 30">
+        <use href="/wp-content/themes/vocabulary-theme/vocabulary/svg/cc/icons/cc-icons.svg#cc-by">
+        </use>
+       </svg>
+      </span>
+      <span class="cc-icon">
+       <svg viewbox="0 0 30 30">
+        <use href="/wp-content/themes/vocabulary-theme/vocabulary/svg/cc/icons/cc-icons.svg#cc-sa">
+        </use>
+       </svg>
+      </span>
+     </span>
+     <span class="tool-identifier">
+      CC BY-SA 4.0
+     </span>
+    </span>
+    <h2>
+     Deed
+    </h2>
+   </header>
+   <div class="content">
+    <div class="tool-meta">
+     <div class="meta-box">
+      <article class="canonical-url">
+       <h2>
+        Canonical URL
+       </h2>
+       <a href="https://creativecommons.org/licenses/by-sa/4.0/">
+        https://creativecommons.org/licenses/by-sa/4.0/
+       </a>
+      </article>
+     </div>
+     <div class="alt-view">
+      <a href="legalcode.en">
+       See the legal code
+      </a>
+     </div>
+    </div>
+    <div id="deed-body">
+     <h2 id="rights">
+      You are free to:
+     </h2>
+     <ol>
+      <li>
+       <strong>
+        Share
+       </strong>
+       — copy and redistribute the material in any medium or format
+        for any purpose, even commercially.
+      </li>
+      <li>
+       <strong>
+        Adapt
+       </strong>
+       — remix, transform, and build upon the material
+        for any purpose, even commercially.
+      </li>
+      <li>
+       The licensor cannot revoke these freedoms as long as you follow the license terms.
+      </li>
+     </ol>
+     <h2 id="terms">
+      Under the following terms:
+     </h2>
+     <ol>
+      <li class="cc-by">
+       <strong>
+        Attribution
+       </strong>
+       —
+      You must give
+       <a href="#ref-appropriate-credit" id="src-appropriate-credit">
+        appropriate credit
+       </a>
+       , provide a link to the license, and
+       <span rel="cc:requires" resource="http://creativecommons.org/ns#Notice">
+        <a href="#ref-indicate-changes" id="src-indicate-changes">
+         indicate if changes were made
+        </a>
+       </span>
+       . You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+      </li>
+      <li class="cc-sa">
+       <strong>
+        ShareAlike
+       </strong>
+       — If you remix, transform, or build upon the material, you must distribute your contributions under the
+       <a href="#ref-same-license" id="src-same-license">
+        same license
+       </a>
+       as the original.
+      </li>
+      <li>
+       <strong>
+        No additional restrictions
+       </strong>
+       — You may not apply legal terms or
+       <a href="#ref-technological-measures" id="src-technological-measures">
+        technological measures
+       </a>
+       that legally restrict others from doing anything the license permits.
+      </li>
+     </ol>
+     <h2 class="b-header has-text-black padding-bottom-big padding-top-normal" style="font-weight: bold;">
+      Notices:
+     </h2>
+     <p>
+      You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable
+      <a href="#ref-exception-or-limitation" id="src-exception-or-limitation">
+       exception or limitation
+      </a>
+      .
+     </p>
+     <p>
+      No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as
+      <a href="#ref-publicity-privacy-or-moral-rights" id="src-publicity-privacy-or-moral-rights">
+       publicity, privacy, or moral rights
+      </a>
+      may limit how you use the material.
+     </p>
+    </div>
+    <div class="notice-bottom" id="notice-40">
+     <h2 class="icon-attach fa-info">
+      Notice
+     </h2>
+     <p>
+      This deed highlights only some of the key features and terms of the actual license. It is not a license and has no legal value. You should carefully review all of the terms and conditions of the actual license before using the licensed material.
+     </p>
+     <p>
+      Creative Commons is not a law firm and does not provide legal services. Distributing, displaying, or linking to this deed or the license that it summarizes does not create a lawyer-client or any other relationship.
+     </p>
+    </div>
+    <div>
+     <p>
+      Creative Commons is the nonprofit behind the open licenses and other legal tools that allow creators to share their work. Our legal tools are free to use.
+     </p>
+     <ul>
+      <li>
+       <a href="/about/">
+        Learn more about our work
+       </a>
+      </li>
+      <li>
+       <strong>
+        <a href="/share-your-work/cclicenses/">
+         Learn more about CC Licensing
+        </a>
+       </strong>
+      </li>
+      <li>
+       <a href="/donate/">
+        Support our work
+       </a>
+      </li>
+      <li>
+       <a href="/choose/">
+        Use the license for your own material.
+       </a>
+      </li>
+      <li>
+       <a href="/licenses/list.en">
+        Licenses List
+       </a>
+      </li>
+      <li>
+       <a href="/publicdomain/list.en">
+        Public Domain List
+       </a>
+      </li>
+     </ul>
+    </div>
+    <footer>
+     <article class="footnotes">
+      <h2 id="footnotes">
+       Footnotes
+      </h2>
+      <ul>
+       <li>
+        <article class="note" id="ref-appropriate-credit">
+         <a href="#src-appropriate-credit">
+          <span class="icon-replace fa-angle-up">
+          </span>
+          <span>
+           return to reference
+          </span>
+         </a>
+         <strong>
+          appropriate credit
+         </strong>
+         —
+If supplied, you must provide the name of the creator and attribution parties, a copyright notice, a license notice, a disclaimer notice, and a link to the material. CC licenses prior to Version 4.0 also require you to provide the title of the material if supplied, and may have other slight differences.
+         <ul>
+          <li>
+           <a href="https://wiki.creativecommons.org/License_Versions#Detailed_attribution_comparison_chart">
+            More info
+           </a>
+          </li>
+         </ul>
+        </article>
+       </li>
+       <li>
+        <article class="note" id="ref-indicate-changes">
+         <a href="#src-indicate-changes">
+          <span class="icon-replace fa-angle-up">
+          </span>
+          <span>
+           return to reference
+          </span>
+         </a>
+         <strong>
+          indicate if changes were made
+         </strong>
+         —
+In 4.0, you must indicate if you modified the material and retain an indication of previous modifications. In 3.0 and earlier license versions, the indication of changes is only required if you create a derivative.
+         <ul>
+          <li>
+           <a href="https://wiki.creativecommons.org/Best_practices_for_attribution#This_is_a_good_attribution_for_material_you_modified_slightly">
+            Marking guide
+           </a>
+          </li>
+          <li>
+           <a href="https://wiki.creativecommons.org/License_Versions#Modifications_and_adaptations_must_be_marked_as_such ">
+            More info
+           </a>
+          </li>
+         </ul>
+        </article>
+       </li>
+       <li>
+        <article class="note" id="ref-same-license">
+         <a href="#src-same-license">
+          <span class="icon-replace fa-angle-up">
+          </span>
+          <span>
+           return to reference
+          </span>
+         </a>
+         <strong>
+          same license
+         </strong>
+         —
+You may also use a license listed as compatible at
+         <a href="https://creativecommons.org/compatiblelicenses">
+          https://creativecommons.org/compatiblelicenses
+         </a>
+         <ul>
+          <li>
+           <a href="/faq/#if-i-derive-or-adapt-material-offered-under-a-creative-commons-license-which-cc-licenses-can-i-use">
+            More info
+           </a>
+          </li>
+         </ul>
+        </article>
+       </li>
+       <li>
+        <article class="note" id="ref-technological-measures">
+         <a href="#src-technological-measures">
+          <span class="icon-replace fa-angle-up">
+          </span>
+          <span>
+           return to reference
+          </span>
+         </a>
+         <strong>
+          technological measures
+         </strong>
+         —
+The license prohibits application of effective technological measures, defined with reference to Article 11 of the WIPO Copyright Treaty.
+         <ul>
+          <li>
+           <a href="https://wiki.creativecommons.org/License_Versions#Application_of_effective_technological_measures_by_users_of_CC-licensed_works_prohibited">
+            More info
+           </a>
+          </li>
+         </ul>
+        </article>
+       </li>
+       <li>
+        <article class="note" id="ref-exception-or-limitation">
+         <a href="#src-exception-or-limitation">
+          <span class="icon-replace fa-angle-up">
+          </span>
+          <span>
+           return to reference
+          </span>
+         </a>
+         <strong>
+          exception or limitation
+         </strong>
+         —
+The rights of users under exceptions and limitations, such as fair use and fair dealing, are not affected by the CC licenses.
+         <ul>
+          <li>
+           <a href="https://wiki.creativecommons.org/Frequently_Asked_Questions#Do_Creative_Commons_licenses_affect_exceptions_and_limitations_to_copyright.2C_such_as_fair_dealing_and_fair_use.3F">
+            More info
+           </a>
+          </li>
+         </ul>
+        </article>
+       </li>
+       <li>
+        <article class="note" id="ref-publicity-privacy-or-moral-rights">
+         <a href="#src-publicity-privacy-or-moral-rights">
+          <span class="icon-replace fa-angle-up">
+          </span>
+          <span>
+           return to reference
+          </span>
+         </a>
+         <strong>
+          publicity, privacy, or moral rights
+         </strong>
+         —
+You may need to get additional permissions before using the material as you intend.
+         <ul>
+          <li>
+           <a href="https://wiki.creativecommons.org/Considerations_for_licensors_and_licensees">
+            More info
+           </a>
+          </li>
+         </ul>
+        </article>
+       </li>
+      </ul>
+     </article>
+    </footer>
+   </div>
+  </main>
+  <footer>
+   <a class="identity-logo" href="/">
+    Creative Commons
+   </a>
+   <nav class="footer-menu">
+    <ul>
+     <li>
+      <a href="/about/contact">
+       Contact
+      </a>
+     </li>
+     <li>
+      <a href="https://mail.creativecommons.org/subscribe" target="_blank">
+       Newsletter
+      </a>
+     </li>
+     <li>
+      <a href="/privacy">
+       Privacy
+      </a>
+     </li>
+     <li>
+      <a href="/policies">
+       Policies
+      </a>
+     </li>
+     <li>
+      <a href="/terms">
+       Terms
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div class="contact">
+    <!-- this area lacks a heading? -->
+    <h2>
+     Contact Us
+    </h2>
+    <p>
+     Creative Commons  PO Box 1866, Mountain View, CA 94042
+    </p>
+    <p>
+     <a href="mailto:info@creativecommons.org">
+      info@creativecommons.org
+     </a>
+    </p>
+    <p>
+     <a href="tel:+14154296753">
+      +1-415-429-6753
+     </a>
+    </p>
+    <nav class="social-menu">
+     <ul>
+      <!-- <li><a class="icon-replace fa-instagram" href="#">Instagram</a></li> -->
+      <li>
+       <a class="icon-replace fa-bluesky" href="https://bsky.app/profile/creativecommons.bsky.social" target="_blank">
+        Bluesky
+       </a>
+      </li>
+      <li>
+       <a class="icon-replace fa-mastodon" href="https://mastodon.social/@creativecommons" target="_blank">
+        Mastodon
+       </a>
+      </li>
+      <li>
+       <a class="icon-replace fa-facebook" href="https://www.facebook.com/creativecommons" target="_blank">
+        Facebook
+       </a>
+      </li>
+      <li>
+       <a class="icon-replace fa-linkedin" href="https://www.linkedin.com/company/creative-commons/" target="_blank">
+        LinkedIn
+       </a>
+      </li>
+     </ul>
+    </nav>
+   </div>
+   <div class="subscribe">
+    <h2>
+     Subscribe to our Newsletter
+    </h2>
+    <form action="https://creativecommons.us4.list-manage.com/subscribe/post?u=fd30364b6577b471373d6076c&amp;id=4603fe102a" class="validate newsletter" id="mc-embedded-subscribe-form" method="post" name="mc-embedded-subscribe-form" novalidate target="_blank">
+     <input class="email input" id="mce-EMAIL" name="EMAIL" placeholder="Your email" required type="email" value>
+     <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+     <div aria-hidden="true" style="position: absolute; left: -5000px">
+      <input name="b_fd30364b6577b471373d6076c_4603fe102a" tabindex="-1" type="text" value>
+     </div>
+     <input class="button small" id="mc-embedded-subscribe" type="submit" value="subscribe">
+    </form>
+   </div>
+   <div class="donate">
+    <h2>
+     Support Our Work
+    </h2>
+    <p>
+     Our work relies on you! Help us keep the Internet free and open.
+    </p>
+    <a class="donate icon-attach cc-heart-filled" href="https://www.classy.org/give/313412/#!/donation/checkout?c_src=website&amp;c_src2=top-of-page-banner" target="_blank">
+     Donate Now
+    </a>
+   </div>
+   <div class="license">
+    <p>
+     Except where otherwise
+     <a href="/policies/#license">
+      noted
+     </a>
+     , content on this site is licensed under a
+     <a href="/licenses/by/4.0/">
+      Creative Commons Attribution 4.0 International license
+     </a>
+     . Icons by
+     <a href="https://fontawesome.com/" target="_blank">
+      Font Awesome
+     </a>
+     .
+    </p>
+    <svg>
+     <use href="/wp-content/themes/vocabulary-theme/vocabulary/svg/cc/icons/cc-icons.svg#cc-logo">
+     </use>
+    </svg>
+    <svg>
+     <use href="/wp-content/themes/vocabulary-theme/vocabulary/svg/cc/icons/cc-icons.svg#cc-by">
+     </use>
+    </svg>
+   </div>
+  </footer>
+  <script src="/wp-content/themes/vocabulary-theme/vocabulary/js/vocabulary.js">
+  </script>
+ </body>
+</html>

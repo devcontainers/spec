@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html class="client-nojs skin-theme-clientpref-day mf-expand-sections-clientpref-0 mf-font-size-clientpref-small mw-mf-amc-clientpref-0" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<title>security.txt - Wikipedia</title>
+<script>(function(){var className="client-js skin-theme-clientpref-day mf-expand-sections-clientpref-0 mf-font-size-clientpref-small mw-mf-amc-clientpref-0";var cookie=document.cookie.match(/(?:^|; )enwikimwclientpreferences=([^;]+)/);if(cookie){cookie[1].split('%2C').forEach(function(pref){className=className.replace(new RegExp('(^| )'+pref.replace(/-clientpref-\w+$|[^\w-]+/g,'')+'-clientpref-\\w+( |$)'),'$1'+pref+'$2');});}document.documentElement.className=className;}());RLCONF={"wgBreakFrames":false,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"0f9892ed-e591-4d6b-949e-8201cf4efc3d","wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Security.txt","wgTitle":"Security.txt","wgCurRevisionId":1287465839,"wgRevisionId":1287465839,"wgArticleId":60496178,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgPageViewLanguage":"en","wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"Security.txt","wgRelevantArticleId":60496178,"wgIsProbablyEditable":true,"wgRelevantPageIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgNoticeProject":"wikipedia","wgCiteReferencePreviewsActive":false,"wgFlaggedRevsParams":{"tags":{"status":{"levels":1}}},"wgMediaViewerOnClick":true,"wgMediaViewerEnabledByDefault":true,"wgPopupsFlags":0,"wgVisualEditor":{"pageLanguageCode":"en","pageLanguageDir":"ltr","pageVariantFallbacks":"en"},"wgMFMode":"stable","wgMFAmc":false,"wgMFAmcOutreachActive":false,"wgMFAmcOutreachUserEligible":false,"wgMFLazyLoadImages":true,"wgMFEditNoticesFeatureConflict":false,"wgMFDisplayWikibaseDescriptions":{"search":true,"watchlist":true,"tagline":false,"nearby":true},"wgMFIsSupportedEditRequest":true,"wgMFScriptPath":"","wgWMESchemaEditAttemptStepOversample":false,"wgWMEPageLength":6000,"wgEditSubmitButtonLabelPublish":true,"wgSectionTranslationMissingLanguages":[{"lang":"ab","autonym":"аԥсшәа","dir":"ltr"},{"lang":"ace","autonym":"Acèh","dir":"ltr"},{"lang":"ady","autonym":"адыгабзэ","dir":"ltr"},{"lang":"af","autonym":"Afrikaans","dir":"ltr"},{"lang":"alt","autonym":"алтай тил","dir":"ltr"},{"lang":"am","autonym":"አማርኛ","dir":"ltr"},{"lang":"ami","autonym":"Pangcah","dir":"ltr"},{"lang":"an","autonym":"aragonés","dir":"ltr"},{"lang":"ang","autonym":"Ænglisc","dir":"ltr"},{"lang":"ann","autonym":"Obolo","dir":"ltr"},{"lang":"anp","autonym":"अंगिका","dir":"ltr"},{"lang":"ar","autonym":"العربية","dir":"rtl"},{"lang":"arc","autonym":"ܐܪܡܝܐ","dir":"rtl"},{"lang":"ary","autonym":"الدارجة","dir":"rtl"},{"lang":"arz","autonym":"مصرى","dir":"rtl"},{"lang":"as","autonym":"অসমীয়া","dir":"ltr"},{"lang":"ast","autonym":"asturianu","dir":"ltr"},{"lang":"atj","autonym":"Atikamekw","dir":"ltr"},{"lang":"av","autonym":"авар","dir":"ltr"},{"lang":"avk","autonym":"Kotava","dir":"ltr"},{"lang":"awa","autonym":"अवधी","dir":"ltr"},{"lang":"ay","autonym":"Aymar aru","dir":"ltr"},{"lang":"az","autonym":"azərbaycanca","dir":"ltr"},{"lang":"azb","autonym":"تۆرکجه","dir":"rtl"},{"lang":"ba","autonym":"башҡортса","dir":"ltr"},{"lang":"ban","autonym":"Basa Bali","dir":"ltr"},{"lang":"bar","autonym":"Boarisch","dir":"ltr"},{"lang":"bbc","autonym":"Batak Toba","dir":"ltr"},{"lang":"bcl","autonym":"Bikol Central","dir":"ltr"},{"lang":"bdr","autonym":"Bajau Sama","dir":"ltr"},{"lang":"be","autonym":"беларуская","dir":"ltr"},{"lang":"be-tarask","autonym":"беларуская (тарашкевіца)","dir":"ltr"},{"lang":"bew","autonym":"Betawi","dir":"ltr"},{"lang":"bg","autonym":"български","dir":"ltr"},{"lang":"bho","autonym":"भोजपुरी","dir":"ltr"},{"lang":"bi","autonym":"Bislama","dir":"ltr"},{"lang":"bjn","autonym":"Banjar","dir":"ltr"},{"lang":"blk","autonym":"ပအိုဝ်ႏဘာႏသာႏ","dir":"ltr"},{"lang":"bm","autonym":"bamanankan","dir":"ltr"},{"lang":"bn","autonym":"বাংলা","dir":"ltr"},{"lang":"bo","autonym":"བོད་ཡིག","dir":"ltr"},{"lang":"bpy","autonym":"বিষ্ণুপ্রিয়া মণিপুরী","dir":"ltr"},{"lang":"br","autonym":"brezhoneg","dir":"ltr"},{"lang":"bs","autonym":"bosanski","dir":"ltr"},{"lang":"btm","autonym":"Batak Mandailing","dir":"ltr"},{"lang":"bug","autonym":"Basa Ugi","dir":"ltr"},{"lang":"bxr","autonym":"буряад","dir":"ltr"},{"lang":"ca","autonym":"català","dir":"ltr"},{"lang":"cbk-zam","autonym":"Chavacano de Zamboanga","dir":"ltr"},{"lang":"cdo","autonym":"閩東語 / Mìng-dĕ̤ng-ngṳ̄","dir":"ltr"},{"lang":"ce","autonym":"нохчийн","dir":"ltr"},{"lang":"ceb","autonym":"Cebuano","dir":"ltr"},{"lang":"ch","autonym":"Chamoru","dir":"ltr"},{"lang":"chr","autonym":"ᏣᎳᎩ","dir":"ltr"},{"lang":"chy","autonym":"Tsetsêhestâhese","dir":"ltr"},{"lang":"ckb","autonym":"کوردی","dir":"rtl"},{"lang":"co","autonym":"corsu","dir":"ltr"},{"lang":"cr","autonym":"Nēhiyawēwin / ᓀᐦᐃᔭᐍᐏᐣ","dir":"ltr"},{"lang":"crh","autonym":"qırımtatarca","dir":"ltr"},{"lang":"csb","autonym":"kaszëbsczi","dir":"ltr"},{"lang":"cu","autonym":"словѣньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ","dir":"ltr"},{"lang":"cv","autonym":"чӑвашла","dir":"ltr"},{"lang":"cy","autonym":"Cymraeg","dir":"ltr"},{"lang":"da","autonym":"dansk","dir":"ltr"},{"lang":"dag","autonym":"dagbanli","dir":"ltr"},{"lang":"dga","autonym":"Dagaare","dir":"ltr"},{"lang":"din","autonym":"Thuɔŋjäŋ","dir":"ltr"},{"lang":"diq","autonym":"Zazaki","dir":"ltr"},{"lang":"dsb","autonym":"dolnoserbski","dir":"ltr"},{"lang":"dtp","autonym":"Kadazandusun","dir":"ltr"},{"lang":"dty","autonym":"डोटेली","dir":"ltr"},{"lang":"dv","autonym":"ދިވެހިބަސް","dir":"rtl"},{"lang":"dz","autonym":"ཇོང་ཁ","dir":"ltr"},{"lang":"ee","autonym":"eʋegbe","dir":"ltr"},{"lang":"el","autonym":"Ελληνικά","dir":"ltr"},{"lang":"eml","autonym":"emiliàn e rumagnòl","dir":"ltr"},{"lang":"eo","autonym":"Esperanto","dir":"ltr"},{"lang":"et","autonym":"eesti","dir":"ltr"},{"lang":"eu","autonym":"euskara","dir":"ltr"},{"lang":"ext","autonym":"estremeñu","dir":"ltr"},{"lang":"fa","autonym":"فارسی","dir":"rtl"},{"lang":"fat","autonym":"mfantse","dir":"ltr"},{"lang":"ff","autonym":"Fulfulde","dir":"ltr"},{"lang":"fi","autonym":"suomi","dir":"ltr"},{"lang":"fj","autonym":"Na Vosa Vakaviti","dir":"ltr"},{"lang":"fo","autonym":"føroyskt","dir":"ltr"},{"lang":"fon","autonym":"fɔ̀ngbè","dir":"ltr"},{"lang":"frp","autonym":"arpetan","dir":"ltr"},{"lang":"frr","autonym":"Nordfriisk","dir":"ltr"},{"lang":"fur","autonym":"furlan","dir":"ltr"},{"lang":"fy","autonym":"Frysk","dir":"ltr"},{"lang":"ga","autonym":"Gaeilge","dir":"ltr"},{"lang":"gag","autonym":"Gagauz","dir":"ltr"},{"lang":"gan","autonym":"贛語","dir":"ltr"},{"lang":"gcr","autonym":"kriyòl gwiyannen","dir":"ltr"},{"lang":"gd","autonym":"Gàidhlig","dir":"ltr"},{"lang":"gl","autonym":"galego","dir":"ltr"},{"lang":"glk","autonym":"گیلکی","dir":"rtl"},{"lang":"gn","autonym":"Avañe'ẽ","dir":"ltr"},{"lang":"gom","autonym":"गोंयची कोंकणी / Gõychi Konknni","dir":"ltr"},{"lang":"gor","autonym":"Bahasa Hulontalo","dir":"ltr"},{"lang":"got","autonym":"𐌲𐌿𐍄𐌹𐍃𐌺","dir":"ltr"},{"lang":"gpe","autonym":"Ghanaian Pidgin","dir":"ltr"},{"lang":"gsw","autonym":"Alemannisch","dir":"ltr"},{"lang":"gu","autonym":"ગુજરાતી","dir":"ltr"},{"lang":"guc","autonym":"wayuunaiki","dir":"ltr"},{"lang":"gur","autonym":"farefare","dir":"ltr"},{"lang":"guw","autonym":"gungbe","dir":"ltr"},{"lang":"gv","autonym":"Gaelg","dir":"ltr"},{"lang":"ha","autonym":"Hausa","dir":"ltr"},{"lang":"hak","autonym":"客家語 / Hak-kâ-ngî","dir":"ltr"},{"lang":"haw","autonym":"Hawaiʻi","dir":"ltr"},{"lang":"hi","autonym":"हिन्दी","dir":"ltr"},{"lang":"hif","autonym":"Fiji Hindi","dir":"ltr"},{"lang":"hr","autonym":"hrvatski","dir":"ltr"},{"lang":"hsb","autonym":"hornjoserbsce","dir":"ltr"},{"lang":"ht","autonym":"Kreyòl ayisyen","dir":"ltr"},{"lang":"hu","autonym":"magyar","dir":"ltr"},{"lang":"hy","autonym":"հայերեն","dir":"ltr"},{"lang":"hyw","autonym":"Արեւմտահայերէն","dir":"ltr"},{"lang":"ia","autonym":"interlingua","dir":"ltr"},{"lang":"iba","autonym":"Jaku Iban","dir":"ltr"},{"lang":"id","autonym":"Bahasa Indonesia","dir":"ltr"},{"lang":"ie","autonym":"Interlingue","dir":"ltr"},{"lang":"ig","autonym":"Igbo","dir":"ltr"},{"lang":"igl","autonym":"Igala","dir":"ltr"},{"lang":"ik","autonym":"Iñupiatun","dir":"ltr"},{"lang":"ilo","autonym":"Ilokano","dir":"ltr"},{"lang":"inh","autonym":"гӀалгӀай","dir":"ltr"},{"lang":"io","autonym":"Ido","dir":"ltr"},{"lang":"is","autonym":"íslenska","dir":"ltr"},{"lang":"it","autonym":"italiano","dir":"ltr"},{"lang":"iu","autonym":"ᐃᓄᒃᑎᑐᑦ / inuktitut","dir":"ltr"},{"lang":"ja","autonym":"日本語","dir":"ltr"},{"lang":"jam","autonym":"Patois","dir":"ltr"},{"lang":"jbo","autonym":"la .lojban.","dir":"ltr"},{"lang":"jv","autonym":"Jawa","dir":"ltr"},{"lang":"ka","autonym":"ქართული","dir":"ltr"},{"lang":"kaa","autonym":"Qaraqalpaqsha","dir":"ltr"},{"lang":"kab","autonym":"Taqbaylit","dir":"ltr"},{"lang":"kbd","autonym":"адыгэбзэ","dir":"ltr"},{"lang":"kbp","autonym":"Kabɩyɛ","dir":"ltr"},{"lang":"kcg","autonym":"Tyap","dir":"ltr"},{"lang":"kg","autonym":"Kongo","dir":"ltr"},{"lang":"kge","autonym":"Kumoring","dir":"ltr"},{"lang":"ki","autonym":"Gĩkũyũ","dir":"ltr"},{"lang":"kk","autonym":"қазақша","dir":"ltr"},{"lang":"kl","autonym":"kalaallisut","dir":"ltr"},{"lang":"km","autonym":"ភាសាខ្មែរ","dir":"ltr"},{"lang":"kn","autonym":"ಕನ್ನಡ","dir":"ltr"},{"lang":"knc","autonym":"Yerwa Kanuri","dir":"ltr"},{"lang":"ko","autonym":"한국어","dir":"ltr"},{"lang":"koi","autonym":"перем коми","dir":"ltr"},{"lang":"krc","autonym":"къарачай-малкъар","dir":"ltr"},{"lang":"ks","autonym":"कॉशुर / کٲشُر","dir":"rtl"},{"lang":"ksh","autonym":"Ripoarisch","dir":"ltr"},{"lang":"ku","autonym":"kurdî","dir":"ltr"},{"lang":"kus","autonym":"Kʋsaal","dir":"ltr"},{"lang":"kv","autonym":"коми","dir":"ltr"},{"lang":"kw","autonym":"kernowek","dir":"ltr"},{"lang":"ky","autonym":"кыргызча","dir":"ltr"},{"lang":"la","autonym":"Latina","dir":"ltr"},{"lang":"lad","autonym":"Ladino","dir":"ltr"},{"lang":"lb","autonym":"Lëtzebuergesch","dir":"ltr"},{"lang":"lbe","autonym":"лакку","dir":"ltr"},{"lang":"lez","autonym":"лезги","dir":"ltr"},{"lang":"lfn","autonym":"Lingua Franca Nova","dir":"ltr"},{"lang":"lg","autonym":"Luganda","dir":"ltr"},{"lang":"li","autonym":"Limburgs","dir":"ltr"},{"lang":"lij","autonym":"Ligure","dir":"ltr"},{"lang":"lld","autonym":"Ladin","dir":"ltr"},{"lang":"lmo","autonym":"lombard","dir":"ltr"},{"lang":"ln","autonym":"lingála","dir":"ltr"},{"lang":"lo","autonym":"ລາວ","dir":"ltr"},{"lang":"lt","autonym":"lietuvių","dir":"ltr"},{"lang":"ltg","autonym":"latgaļu","dir":"ltr"},{"lang":"lv","autonym":"latviešu","dir":"ltr"},{"lang":"lzh","autonym":"文言","dir":"ltr"},{"lang":"mad","autonym":"Madhurâ","dir":"ltr"},{"lang":"mai","autonym":"मैथिली","dir":"ltr"},{"lang":"map-bms","autonym":"Basa Banyumasan","dir":"ltr"},{"lang":"mdf","autonym":"мокшень","dir":"ltr"},{"lang":"mg","autonym":"Malagasy","dir":"ltr"},{"lang":"mhr","autonym":"олык марий","dir":"ltr"},{"lang":"mi","autonym":"Māori","dir":"ltr"},{"lang":"min","autonym":"Minangkabau","dir":"ltr"},{"lang":"mk","autonym":"македонски","dir":"ltr"},{"lang":"ml","autonym":"മലയാളം","dir":"ltr"},{"lang":"mn","autonym":"монгол","dir":"ltr"},{"lang":"mni","autonym":"ꯃꯤꯇꯩ ꯂꯣꯟ","dir":"ltr"},{"lang":"mnw","autonym":"ဘာသာမန်","dir":"ltr"},{"lang":"mos","autonym":"moore","dir":"ltr"},{"lang":"mr","autonym":"मराठी","dir":"ltr"},{"lang":"mrj","autonym":"кырык мары","dir":"ltr"},{"lang":"ms","autonym":"Bahasa Melayu","dir":"ltr"},{"lang":"mt","autonym":"Malti","dir":"ltr"},{"lang":"mwl","autonym":"Mirandés","dir":"ltr"},{"lang":"my","autonym":"မြန်မာဘာသာ","dir":"ltr"},{"lang":"myv","autonym":"эрзянь","dir":"ltr"},{"lang":"mzn","autonym":"مازِرونی","dir":"rtl"},{"lang":"nah","autonym":"Nāhuatl","dir":"ltr"},{"lang":"nan","autonym":"閩南語 / Bân-lâm-gú","dir":"ltr"},{"lang":"nap","autonym":"Napulitano","dir":"ltr"},{"lang":"nb","autonym":"norsk bokmål","dir":"ltr"},{"lang":"nds","autonym":"Plattdüütsch","dir":"ltr"},{"lang":"nds-nl","autonym":"Nedersaksies","dir":"ltr"},{"lang":"ne","autonym":"नेपाली","dir":"ltr"},{"lang":"new","autonym":"नेपाल भाषा","dir":"ltr"},{"lang":"nia","autonym":"Li Niha","dir":"ltr"},{"lang":"nn","autonym":"norsk nynorsk","dir":"ltr"},{"lang":"nov","autonym":"Novial","dir":"ltr"},{"lang":"nqo","autonym":"ߒߞߏ","dir":"rtl"},{"lang":"nr","autonym":"isiNdebele seSewula","dir":"ltr"},{"lang":"nrm","autonym":"Nouormand","dir":"ltr"},{"lang":"nso","autonym":"Sesotho sa Leboa","dir":"ltr"},{"lang":"nv","autonym":"Diné bizaad","dir":"ltr"},{"lang":"ny","autonym":"Chi-Chewa","dir":"ltr"},{"lang":"oc","autonym":"occitan","dir":"ltr"},{"lang":"olo","autonym":"livvinkarjala","dir":"ltr"},{"lang":"om","autonym":"Oromoo","dir":"ltr"},{"lang":"or","autonym":"ଓଡ଼ିଆ","dir":"ltr"},{"lang":"os","autonym":"ирон","dir":"ltr"},{"lang":"pa","autonym":"ਪੰਜਾਬੀ","dir":"ltr"},{"lang":"pag","autonym":"Pangasinan","dir":"ltr"},{"lang":"pam","autonym":"Kapampangan","dir":"ltr"},{"lang":"pap","autonym":"Papiamentu","dir":"ltr"},{"lang":"pcd","autonym":"Picard","dir":"ltr"},{"lang":"pcm","autonym":"Naijá","dir":"ltr"},{"lang":"pdc","autonym":"Deitsch","dir":"ltr"},{"lang":"pfl","autonym":"Pälzisch","dir":"ltr"},{"lang":"pi","autonym":"पालि","dir":"ltr"},{"lang":"pih","autonym":"Norfuk / Pitkern","dir":"ltr"},{"lang":"pms","autonym":"Piemontèis","dir":"ltr"},{"lang":"pnb","autonym":"پنجابی","dir":"rtl"},{"lang":"pnt","autonym":"Ποντιακά","dir":"ltr"},{"lang":"ps","autonym":"پښتو","dir":"rtl"},{"lang":"pwn","autonym":"pinayuanan","dir":"ltr"},{"lang":"qu","autonym":"Runa Simi","dir":"ltr"},{"lang":"rm","autonym":"rumantsch","dir":"ltr"},{"lang":"rmy","autonym":"romani čhib","dir":"ltr"},{"lang":"rn","autonym":"ikirundi","dir":"ltr"},{"lang":"ro","autonym":"română","dir":"ltr"},{"lang":"roa-tara","autonym":"tarandíne","dir":"ltr"},{"lang":"rsk","autonym":"руски","dir":"ltr"},{"lang":"ru","autonym":"русский","dir":"ltr"},{"lang":"rue","autonym":"русиньскый","dir":"ltr"},{"lang":"rup","autonym":"armãneashti","dir":"ltr"},{"lang":"rw","autonym":"Ikinyarwanda","dir":"ltr"},{"lang":"sa","autonym":"संस्कृतम्","dir":"ltr"},{"lang":"sah","autonym":"саха тыла","dir":"ltr"},{"lang":"sat","autonym":"ᱥᱟᱱᱛᱟᱲᱤ","dir":"ltr"},{"lang":"sc","autonym":"sardu","dir":"ltr"},{"lang":"scn","autonym":"sicilianu","dir":"ltr"},{"lang":"sco","autonym":"Scots","dir":"ltr"},{"lang":"sd","autonym":"سنڌي","dir":"rtl"},{"lang":"se","autonym":"davvisámegiella","dir":"ltr"},{"lang":"sg","autonym":"Sängö","dir":"ltr"},{"lang":"sgs","autonym":"žemaitėška","dir":"ltr"},{"lang":"sh","autonym":"srpskohrvatski / српскохрватски","dir":"ltr"},{"lang":"shi","autonym":"Taclḥit","dir":"ltr"},{"lang":"shn","autonym":"တႆး","dir":"ltr"},{"lang":"si","autonym":"සිංහල","dir":"ltr"},{"lang":"simple","autonym":"Simple English","dir":"ltr"},{"lang":"sk","autonym":"slovenčina","dir":"ltr"},{"lang":"skr","autonym":"سرائیکی","dir":"rtl"},{"lang":"sl","autonym":"slovenščina","dir":"ltr"},{"lang":"sm","autonym":"Gagana Samoa","dir":"ltr"},{"lang":"smn","autonym":"anarâškielâ","dir":"ltr"},{"lang":"sn","autonym":"chiShona","dir":"ltr"},{"lang":"so","autonym":"Soomaaliga","dir":"ltr"},{"lang":"sq","autonym":"shqip","dir":"ltr"},{"lang":"sr","autonym":"српски / srpski","dir":"ltr"},{"lang":"srn","autonym":"Sranantongo","dir":"ltr"},{"lang":"ss","autonym":"SiSwati","dir":"ltr"},{"lang":"st","autonym":"Sesotho","dir":"ltr"},{"lang":"stq","autonym":"Seeltersk","dir":"ltr"},{"lang":"su","autonym":"Sunda","dir":"ltr"},{"lang":"sw","autonym":"Kiswahili","dir":"ltr"},{"lang":"syl","autonym":"ꠍꠤꠟꠐꠤ","dir":"ltr"},{"lang":"szl","autonym":"ślůnski","dir":"ltr"},{"lang":"szy","autonym":"Sakizaya","dir":"ltr"},{"lang":"ta","autonym":"தமிழ்","dir":"ltr"},{"lang":"tay","autonym":"Tayal","dir":"ltr"},{"lang":"tcy","autonym":"ತುಳು","dir":"ltr"},{"lang":"tdd","autonym":"ᥖᥭᥰ ᥖᥬᥲ ᥑᥨᥒᥰ","dir":"ltr"},{"lang":"te","autonym":"తెలుగు","dir":"ltr"},{"lang":"tet","autonym":"tetun","dir":"ltr"},{"lang":"tg","autonym":"тоҷикӣ","dir":"ltr"},{"lang":"th","autonym":"ไทย","dir":"ltr"},{"lang":"ti","autonym":"ትግርኛ","dir":"ltr"},{"lang":"tig","autonym":"ትግሬ","dir":"ltr"},{"lang":"tk","autonym":"Türkmençe","dir":"ltr"},{"lang":"tl","autonym":"Tagalog","dir":"ltr"},{"lang":"tly","autonym":"tolışi","dir":"ltr"},{"lang":"tn","autonym":"Setswana","dir":"ltr"},{"lang":"to","autonym":"lea faka-Tonga","dir":"ltr"},{"lang":"tpi","autonym":"Tok Pisin","dir":"ltr"},{"lang":"tr","autonym":"Türkçe","dir":"ltr"},{"lang":"trv","autonym":"Seediq","dir":"ltr"},{"lang":"ts","autonym":"Xitsonga","dir":"ltr"},{"lang":"tt","autonym":"татарча / tatarça","dir":"ltr"},{"lang":"tum","autonym":"chiTumbuka","dir":"ltr"},{"lang":"tw","autonym":"Twi","dir":"ltr"},{"lang":"ty","autonym":"reo tahiti","dir":"ltr"},{"lang":"tyv","autonym":"тыва дыл","dir":"ltr"},{"lang":"udm","autonym":"удмурт","dir":"ltr"},{"lang":"ug","autonym":"ئۇيغۇرچە / Uyghurche","dir":"rtl"},{"lang":"ur","autonym":"اردو","dir":"rtl"},{"lang":"uz","autonym":"oʻzbekcha / ўзбекча","dir":"ltr"},{"lang":"ve","autonym":"Tshivenda","dir":"ltr"},{"lang":"vec","autonym":"vèneto","dir":"ltr"},{"lang":"vep","autonym":"vepsän kel’","dir":"ltr"},{"lang":"vi","autonym":"Tiếng Việt","dir":"ltr"},{"lang":"vls","autonym":"West-Vlams","dir":"ltr"},{"lang":"vo","autonym":"Volapük","dir":"ltr"},{"lang":"vro","autonym":"võro","dir":"ltr"},{"lang":"wa","autonym":"walon","dir":"ltr"},{"lang":"war","autonym":"Winaray","dir":"ltr"},{"lang":"wo","autonym":"Wolof","dir":"ltr"},{"lang":"wuu","autonym":"吴语","dir":"ltr"},{"lang":"xal","autonym":"хальмг","dir":"ltr"},{"lang":"xh","autonym":"isiXhosa","dir":"ltr"},{"lang":"xmf","autonym":"მარგალური","dir":"ltr"},{"lang":"yi","autonym":"ייִדיש","dir":"rtl"},{"lang":"yo","autonym":"Yorùbá","dir":"ltr"},{"lang":"yue","autonym":"粵語","dir":"ltr"},{"lang":"za","autonym":"Vahcuengh","dir":"ltr"},{"lang":"zea","autonym":"Zeêuws","dir":"ltr"},{"lang":"zgh","autonym":"ⵜⴰⵎⴰⵣⵉⵖⵜ ⵜⴰⵏⴰⵡⴰⵢⵜ","dir":"ltr"},{"lang":"zh","autonym":"中文","dir":"ltr"},{"lang":"zu","autonym":"isiZulu","dir":"ltr"}],"wgSectionTranslationTargetLanguages":["ab","ace","ady","af","alt","am","ami","an","ang","ann","anp","ar","arc","ary","arz","as","ast","atj","av","avk","awa","ay","az","azb","ba","ban","bar","bbc","bcl","bdr","be","be-tarask","bew","bg","bho","bi","bjn","blk","bm","bn","bo","bpy","br","bs","btm","bug","bxr","ca","cbk-zam","cdo","ce","ceb","ch","chr","chy","ckb","co","cr","crh","cs","csb","cu","cv","cy","da","dag","de","dga","din","diq","dsb","dtp","dty","dv","dz","ee","el","eml","en","eo","es","et","eu","ext","fa","fat","ff","fi","fj","fo","fon","fr","frp","frr","fur","fy","ga","gag","gan","gcr","gd","gl","glk","gn","gom","gor","got","gpe","gsw","gu","guc","gur","guw","gv","ha","hak","haw","he","hi","hif","hr","hsb","ht","hu","hy","hyw","ia","iba","id","ie","ig","igl","ik","ilo","inh","io","is","it","iu","ja","jam","jbo","jv","ka","kaa","kab","kbd","kbp","kcg","kg","kge","ki","kk","kl","km","kn","knc","ko","koi","krc","ks","ksh","ku","kus","kv","kw","ky","la","lad","lb","lbe","lez","lfn","lg","li","lij","lld","lmo","ln","lo","lt","ltg","lv","lzh","mad","mai","map-bms","mdf","mg","mhr","mi","min","mk","ml","mn","mni","mnw","mos","mr","mrj","ms","mt","mwl","my","myv","mzn","nah","nan","nap","nb","nds","nds-nl","ne","new","nia","nl","nn","nov","nqo","nr","nrm","nso","nv","ny","oc","olo","om","or","os","pa","pag","pam","pap","pcd","pcm","pdc","pfl","pi","pih","pl","pms","pnb","pnt","ps","pt","pwn","qu","rm","rmy","rn","ro","roa-tara","rsk","ru","rue","rup","rw","sa","sah","sat","sc","scn","sco","sd","se","sg","sgs","sh","shi","shn","si","simple","sk","skr","sl","sm","smn","sn","so","sq","sr","srn","ss","st","stq","su","sv","sw","syl","szl","szy","ta","tay","tcy","tdd","te","tet","tg","th","ti","tig","tk","tl","tly","tn","to","tpi","tr","trv","ts","tt","tum","tw","ty","tyv","udm","ug","uk","ur","uz","ve","vec","vep","vi","vls","vo","vro","wa","war","wo","wuu","xal","xh","xmf","yi","yo","yue","za","zea","zgh","zh","zu"],"isLanguageSearcherCXEntrypointEnabled":true,"mintEntrypointLanguages":["tn","vec","ast","lmo"],"wgWikibaseItemId":"Q65057155","wgCheckUserClientHintsHeadersJsApi":["brands","architecture","bitness","fullVersionList","mobile","model","platform","platformVersion"],"GEHomepageSuggestedEditsEnableTopics":true,"wgGETopicsMatchModeEnabled":false,"wgGELevelingUpEnabledForUser":false,"wgMinervaPermissions":{"watchable":true,"watch":false},"wgMinervaFeatures":{"beta":false,"donateBanner":true,"donate":false,"mobileOptionsLink":true,"categories":false,"pageIssues":true,"talkAtTop":true,"historyInPageActions":false,"overflowSubmenu":false,"tabsOnSpecials":true,"personalMenu":false,"mainMenuExpanded":false,"echo":true,"nightMode":true},"wgMinervaDownloadNamespaces":[0]};
+RLSTATE={"ext.globalCssJs.user.styles":"ready","site.styles":"ready","user.styles":"ready","ext.globalCssJs.user":"ready","user":"ready","user.options":"loading","ext.cite.styles":"ready","skins.minerva.styles":"ready","skins.minerva.content.styles.images":"ready","mediawiki.hlist":"ready","skins.minerva.codex.styles":"ready","skins.minerva.icons":"ready","skins.minerva.amc.styles":"ready","ext.wikimediamessages.styles":"ready","mobile.init.styles":"ready","ext.relatedArticles.styles":"ready","wikibase.client.init":"ready"};RLPAGEMODULES=["ext.cite.ux-enhancements","site","mediawiki.page.ready","skins.minerva.scripts","ext.centralNotice.geoIP","ext.centralNotice.startUp","ext.gadget.switcher","ext.urlShortener.toolbar","ext.centralauth.centralautologin","ext.popups","mobile.init","ext.echo.centralauth","ext.relatedArticles.readMore.bootstrap","ext.eventLogging","ext.wikimediaEvents","ext.navigationTiming","ext.cx.eventlogging.campaigns","ext.cx.entrypoints.mffrequentlanguages","ext.cx.entrypoints.languagesearcher.init","mw.externalguidance.init","ext.checkUser.clientHints","ext.quicksurveys.init","ext.growthExperiments.SuggestedEditSession"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.impl(function(){return["user.options@12s5i",function($,jQuery,require,module){mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+}];});});</script>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=ext.cite.styles%7Cext.relatedArticles.styles%7Cext.wikimediamessages.styles%7Cmediawiki.hlist%7Cmobile.init.styles%7Cskins.minerva.amc.styles%7Cskins.minerva.codex.styles%7Cskins.minerva.content.styles.images%7Cskins.minerva.icons%2Cstyles%7Cwikibase.client.init&amp;only=styles&amp;skin=minerva">
+<script async="" src="/w/load.php?lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=minerva"></script>
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=minerva">
+<meta name="generator" content="MediaWiki 1.44.0-wmf.25">
+<meta name="referrer" content="origin">
+<meta name="referrer" content="origin-when-cross-origin">
+<meta name="robots" content="max-image-preview:standard">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#eaecf0">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Security_txt.png/1200px-Security_txt.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="390">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Security_txt.png/960px-Security_txt.png">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="260">
+<meta property="og:image:width" content="640">
+<meta property="og:image:height" content="208">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=0.25, maximum-scale=5.0">
+<meta property="og:title" content="security.txt - Wikipedia">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="//upload.wikimedia.org">
+<link rel="manifest" href="/w/api.php?action=webapp-manifest">
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/w/index.php?title=Security.txt&amp;action=edit">
+<link rel="apple-touch-icon" href="/static/apple-touch/wikipedia.png">
+<link rel="icon" href="/static/favicon/wikipedia.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="/w/rest.php/v1/search" title="Wikipedia (en)">
+<link rel="EditURI" type="application/rsd+xml" href="//en.wikipedia.org/w/api.php?action=rsd">
+<link rel="canonical" href="https://en.wikipedia.org/wiki/Security.txt">
+<link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+<link rel="dns-prefetch" href="auth.wikimedia.org">
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-Security_txt rootpage-Security_txt stable issues-group-B skin-minerva action-view skin--responsive mw-mf-amc-disabled mw-mf"><div id="mw-mf-viewport">
+	<div id="mw-mf-page-center">
+		<a class="mw-mf-page-center__mask" href="#"></a>
+		<header class="header-container header-chrome">
+			<div class="minerva-header">
+				<nav class="navigation-drawer toggle-list view-border-box">
+					<input type="checkbox" id="main-menu-input"
+						data-event-name="ui.mainmenu"
+						class="toggle-list__checkbox" role="button" aria-haspopup="true" aria-expanded="false" aria-labelledby="mw-mf-main-menu-button">
+					<label for="main-menu-input" id="mw-mf-main-menu-button" aria-hidden="true" class="cdx-button cdx-button--size-large cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--icon-only cdx-button--weight-quiet toggle-list__toggle">
+    <span class="minerva-icon minerva-icon--menu"></span>
+<span></span>
+</label>
+
+					<div id="mw-mf-page-left" class="menu view-border-box">
+	<ul id="p-navigation" class="toggle-list__list">
+			<li class="toggle-list-item ">
+				<a class="toggle-list-item__anchor menu__item--home" href="/wiki/Main_Page" data-mw="interface">
+					<span class="minerva-icon minerva-icon--home"></span>
+
+					<span class="toggle-list-item__label">Home</span>
+				</a>
+			</li>
+			<li class="toggle-list-item ">
+				<a class="toggle-list-item__anchor menu__item--random" href="/wiki/Special:Random" data-mw="interface">
+					<span class="minerva-icon minerva-icon--die"></span>
+
+					<span class="toggle-list-item__label">Random</span>
+				</a>
+			</li>
+			<li class="toggle-list-item skin-minerva-list-item-jsonly">
+				<a class="toggle-list-item__anchor menu__item--nearby" href="/wiki/Special:Nearby" data-event-name="menu.nearby" data-mw="interface">
+					<span class="minerva-icon minerva-icon--mapPin"></span>
+
+					<span class="toggle-list-item__label">Nearby</span>
+				</a>
+			</li>
+	</ul>
+	<ul id="p-personal" class="toggle-list__list">
+			<li class="toggle-list-item ">
+				<a class="toggle-list-item__anchor mw-list-item menu__item--login" href="/w/index.php?title=Special:UserLogin&amp;returnto=Security.txt" data-event-name="menu.login" data-mw="interface">
+					<span class="minerva-icon minerva-icon--logIn"></span>
+
+					<span class="toggle-list-item__label">Log in</span>
+				</a>
+			</li>
+	</ul>
+	<ul id="pt-preferences" class="toggle-list__list">
+			<li class="toggle-list-item skin-minerva-list-item-jsonly">
+				<a class="toggle-list-item__anchor menu__item--settings" href="/w/index.php?title=Special:MobileOptions&amp;returnto=Security.txt" data-event-name="menu.settings" data-mw="interface">
+					<span class="minerva-icon minerva-icon--settings"></span>
+
+					<span class="toggle-list-item__label">Settings</span>
+				</a>
+			</li>
+	</ul>
+			<div class="donate-banner">
+				<a href="https://donate.wikimedia.org/?wmf_source=donate&amp;wmf_medium=sidebar&amp;wmf_campaign=en.wikipedia.org&amp;uselang=en" class="donate-banner__link"
+					data-event-name="menu.donateBanner">
+					<div class="donate-banner__text-container">
+						<span class="donate-banner__text">Donate Now</span>
+						<span class="donate-banner__subtitle">If Wikipedia is useful to you, please give today.</span>
+					</div>
+					<picture>
+						<source
+			    			srcset="https://en.wikipedia.org/static/images/donate/donate.png"
+			   				media="(prefers-reduced-motion)" />
+						<img src="https://en.wikipedia.org/static/images/donate/donate.gif" alt="" class="donate-banner__gif" loading="lazy">
+					</picture>
+				</a>
+			</div>
+	<ul class="hlist">
+			<li class="toggle-list-item ">
+				<a class="toggle-list-item__anchor menu__item--about" href="/wiki/Wikipedia:About" data-mw="interface">
+					
+					<span class="toggle-list-item__label">About Wikipedia</span>
+				</a>
+			</li>
+			<li class="toggle-list-item ">
+				<a class="toggle-list-item__anchor menu__item--disclaimers" href="/wiki/Wikipedia:General_disclaimer" data-mw="interface">
+					
+					<span class="toggle-list-item__label">Disclaimers</span>
+				</a>
+			</li>
+	</ul>
+</div>
+
+					<label class="main-menu-mask" for="main-menu-input"></label>
+				</nav>
+				<div class="branding-box">
+					<a href="/wiki/Main_Page">
+						<span><img src="/static/images/mobile/copyright/wikipedia-wordmark-en.svg" alt="Wikipedia" width="120" height="18"
+	style="width: 7.5em; height: 1.125em;"/>
+
+</span>
+						
+					</a>
+				</div>
+					<form action="/w/index.php" method="get" class="minerva-search-form">
+				<div class="search-box">
+					<input type="hidden" name="title" value="Special:Search"/>
+					<input class="search skin-minerva-search-trigger" id="searchInput"
+						 type="search" name="search" placeholder="Search Wikipedia" aria-label="Search Wikipedia" autocapitalize="sentences" title="Search Wikipedia [f]" accesskey="f">
+					<span class="search-box-icon-overlay"><span class="minerva-icon minerva-icon--search"></span>
+</span>
+				</div>
+				<button id="searchIcon" class="cdx-button cdx-button--size-large cdx-button--icon-only cdx-button--weight-quiet skin-minerva-search-trigger">
+	    <span class="minerva-icon minerva-icon--search"></span>
+<span>Search</span>
+	</button>
+</form>
+		<nav class="minerva-user-navigation" aria-label="User navigation">
+					
+				</nav>
+			</div>
+		</header>
+		<main id="content" class="mw-body">
+			<div class="banner-container">
+			<div id="siteNotice"></div>
+			</div>
+			
+			<div class="pre-content heading-holder">
+				<div class="page-heading">
+					<h1 id="firstHeading" class="firstHeading mw-first-heading">security.txt</h1>
+					<div class="tagline"></div>
+				</div>
+					<ul id="p-associated-pages" class="minerva__tab-container">
+							<li class="minerva__tab selected mw-list-item">
+								<a class="minerva__tab-text" href="/wiki/Security.txt" rel="" data-event-name="tabs.main">Article</a>
+							</li>
+							<li class="minerva__tab mw-list-item">
+								<a class="minerva__tab-text" href="/wiki/Talk:Security.txt" rel="discussion" data-event-name="tabs.talk">Talk</a>
+							</li>
+					</ul>
+				<nav class="page-actions-menu">
+	<ul id="p-views" class="page-actions-menu__list minerva-icon-only-menu">
+		<li id="language-selector" class="page-actions-menu__list-item">
+				<a role="button" href="#p-lang" data-mw="interface" data-event-name="menu.languages" title="Language" class="cdx-button cdx-button--size-large cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--icon-only cdx-button--weight-quiet language-selector">
+				    <span class="minerva-icon minerva-icon--language"></span>
+<span>Language</span>
+				</a>
+		</li>
+		<li id="page-actions-watch" class="page-actions-menu__list-item">
+				<a role="button" id="ca-watch" href="/w/index.php?title=Special:UserLogin&amp;returnto=Security.txt" data-event-name="menu.watch" class="cdx-button cdx-button--size-large cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--icon-only cdx-button--weight-quiet menu__item--page-actions-watch">
+				    <span class="minerva-icon minerva-icon--star"></span>
+<span>Watch</span>
+				</a>
+		</li>
+		<li id="page-actions-edit" class="page-actions-menu__list-item">
+				<a role="button" id="ca-edit" href="/w/index.php?title=Security.txt&amp;action=edit" data-event-name="menu.edit" data-mw="interface" class="cdx-button cdx-button--size-large cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--icon-only cdx-button--weight-quiet edit-page menu__item--page-actions-edit">
+				    <span class="minerva-icon minerva-icon--edit"></span>
+<span>Edit</span>
+				</a>
+		</li>
+	</ul>
+</nav>
+<!-- version 1.0.2 (change every time you update a partial) -->
+				<div id="mw-content-subtitle"></div>
+			</div>
+			<div id="bodyContent" class="content">
+				<div id="mw-content-text" class="mw-body-content"><script>function mfTempOpenSection(id){var block=document.getElementById("mf-section-"+id);block.className+=" open-block";block.previousSibling.className+=" open-block";}</script><div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><section class="mf-section-0" id="mf-section-0">
+<style data-mw-deduplicate="TemplateStyles:r1257001546">.mw-parser-output .infobox-subbox{padding:0;border:none;margin:-3px;width:auto;min-width:100%;font-size:100%;clear:none;float:none;background-color:transparent}.mw-parser-output .infobox-3cols-child{margin:auto}.mw-parser-output .infobox .navbar{font-size:100%}@media screen{html.skin-theme-clientpref-night .mw-parser-output .infobox-full-data:not(.notheme)>div:not(.notheme)[style]{background:#1f1f23!important;color:#f8f9fa}}@media screen and (prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .infobox-full-data:not(.notheme) div:not(.notheme){background:#1f1f23!important;color:#f8f9fa}}@media(min-width:640px){body.skin--responsive .mw-parser-output .infobox-table{display:table!important}body.skin--responsive .mw-parser-output .infobox-table>caption{display:table-caption!important}body.skin--responsive .mw-parser-output .infobox-table>tbody{display:table-row-group}body.skin--responsive .mw-parser-output .infobox-table tr{display:table-row!important}body.skin--responsive .mw-parser-output .infobox-table th,body.skin--responsive .mw-parser-output .infobox-table td{padding-left:inherit;padding-right:inherit}}</style><p><b>security.txt</b> is an accepted standard for website security information that allows security researchers to report security vulnerabilities easily.<sup id="cite_ref-rfc9116_1-0" class="reference"><a href="#cite_note-rfc9116-1"><span class="cite-bracket">[</span>1<span class="cite-bracket">]</span></a></sup> The standard prescribes a <a href="/wiki/Text_file" title="Text file">text file</a> named <i>security.txt</i> in the <a href="/wiki/Well-known_URIs" class="mw-redirect" title="Well-known URIs">well known</a> location, similar in syntax to <a href="/wiki/Robots.txt" title="Robots.txt">robots.txt</a> but intended to be machine- and human-readable, for those wishing to contact a website's owner about security issues.<sup id="cite_ref-2" class="reference"><a href="#cite_note-2"><span class="cite-bracket">[</span>2<span class="cite-bracket">]</span></a></sup> security.txt files have been adopted by <a href="/wiki/Google" title="Google">Google</a>, <a href="/wiki/GitHub" title="GitHub">GitHub</a>, <a href="/wiki/LinkedIn" title="LinkedIn">LinkedIn</a>, and <a href="/wiki/Facebook" title="Facebook">Facebook</a>.<sup id="cite_ref-Cimpanu_2019_3-0" class="reference"><a href="#cite_note-Cimpanu_2019-3"><span class="cite-bracket">[</span>3<span class="cite-bracket">]</span></a></sup>
+</p><table class="infobox hproduct"><caption class="infobox-title fn">security.txt</caption><tbody><tr><td colspan="2" class="infobox-image"><span typeof="mw:File"><a href="/wiki/File:Security_txt.png" class="mw-file-description"><img src="//upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Security_txt.png/330px-Security_txt.png" decoding="async" width="300" height="97" class="mw-file-element" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Security_txt.png/500px-Security_txt.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Security_txt.png/960px-Security_txt.png 2x" data-file-width="3104" data-file-height="1008"></a></span><div class="infobox-caption">Example security.txt file</div></td></tr><tr><th scope="row" class="infobox-label">Status</th><td class="infobox-data">Published</td></tr><tr><th scope="row" class="infobox-label">Year started</th><td class="infobox-data">2017</td></tr><tr><th scope="row" class="infobox-label">First published</th><td class="infobox-data">September 2017</td></tr><tr><th scope="row" class="infobox-label">Latest version</th><td class="infobox-data">April 2022</td></tr><tr><th scope="row" class="infobox-label">Authors</th><td class="infobox-data">Edwin Foudil</td></tr><tr><th scope="row" class="infobox-label">Base standards</th><td class="infobox-data"><style data-mw-deduplicate="TemplateStyles:r1238218222">.mw-parser-output cite.citation{font-style:inherit;word-wrap:break-word}.mw-parser-output .citation q{quotes:"\"""\"""'""'"}.mw-parser-output .citation:target{background-color:rgba(0,127,255,0.133)}.mw-parser-output .id-lock-free.id-lock-free a{background:url("//upload.wikimedia.org/wikipedia/commons/6/65/Lock-green.svg")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-limited.id-lock-limited a,.mw-parser-output .id-lock-registration.id-lock-registration a{background:url("//upload.wikimedia.org/wikipedia/commons/d/d6/Lock-gray-alt-2.svg")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-subscription.id-lock-subscription a{background:url("//upload.wikimedia.org/wikipedia/commons/a/aa/Lock-red-alt-2.svg")right 0.1em center/9px no-repeat}.mw-parser-output .cs1-ws-icon a{background:url("//upload.wikimedia.org/wikipedia/commons/4/4c/Wikisource-logo.svg")right 0.1em center/12px no-repeat}body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-free a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-limited a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-registration a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-subscription a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .cs1-ws-icon a{background-size:contain;padding:0 1em 0 0}.mw-parser-output .cs1-code{color:inherit;background:inherit;border:none;padding:inherit}.mw-parser-output .cs1-hidden-error{display:none;color:var(--color-error,#d33)}.mw-parser-output .cs1-visible-error{color:var(--color-error,#d33)}.mw-parser-output .cs1-maint{display:none;color:#085;margin-left:0.3em}.mw-parser-output .cs1-kern-left{padding-left:0.2em}.mw-parser-output .cs1-kern-right{padding-right:0.2em}.mw-parser-output .citation .mw-selflink{font-weight:inherit}@media screen{.mw-parser-output .cs1-format{font-size:95%}html.skin-theme-clientpref-night .mw-parser-output .cs1-maint{color:#18911f}}@media screen and (prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .cs1-maint{color:#18911f}}</style><a href="/wiki/RFC_(identifier)" class="mw-redirect" title="RFC (identifier)">RFC</a> <a rel="nofollow" class="external text" href="https://www.rfc-editor.org/rfc/rfc9116">9116</a></td></tr><tr><th scope="row" class="infobox-label">Website</th><td class="infobox-data"><span class="url"><a rel="nofollow" class="external text" href="https://securitytxt.org/">securitytxt<wbr></wbr>.org</a></span></td></tr></tbody></table>
+
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none"><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#History"><span class="tocnumber">1</span> <span class="toctext">History</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#File_format"><span class="tocnumber">2</span> <span class="toctext">File format</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#See_also"><span class="tocnumber">3</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#References"><span class="tocnumber">4</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#External_links"><span class="tocnumber">5</span> <span class="toctext">External links</span></a></li>
+</ul>
+</div>
+
+</section><div class="mw-heading mw-heading2 section-heading" onclick="mfTempOpenSection(1)"><span class="indicator mf-icon mf-icon-expand mf-icon--small"></span><h2 id="History">History</h2><span class="mw-editsection">
+<a role="button" href="/w/index.php?title=Security.txt&amp;action=edit&amp;section=1" title="Edit section: History" class="cdx-button cdx-button--size-large cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--icon-only cdx-button--weight-quiet ">
+    <span class="minerva-icon minerva-icon--edit"></span>
+<span>edit</span>
+</a>
+
+</span>
+
+</div><section class="mf-section-1 collapsible-block" id="mf-section-1">
+<p>The <a href="/wiki/Internet_Draft" title="Internet Draft">Internet Draft</a> was first submitted by Edwin Foudil in September 2017.<sup id="cite_ref-Register_4-0" class="reference"><a href="#cite_note-Register-4"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup> At that time it covered four directives, "Contact", "Encryption", "Disclosure" and "Acknowledgement". Foudil expected to add further directives based on feedback.<sup id="cite_ref-BleepingComputer_5-0" class="reference"><a href="#cite_note-BleepingComputer-5"><span class="cite-bracket">[</span>5<span class="cite-bracket">]</span></a></sup> In addition, web security expert Scott Helme said he had seen positive feedback from the security community while use among the top 1 million websites was "as low as expected right now".<sup id="cite_ref-Register_4-1" class="reference"><a href="#cite_note-Register-4"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup>
+</p><p>In 2019, the <a href="/wiki/Cybersecurity_and_Infrastructure_Security_Agency" title="Cybersecurity and Infrastructure Security Agency">Cybersecurity and Infrastructure Security Agency</a> (CISA) published a draft binding operational directive that requires all US federal agencies to publish a security.txt file within 180 days.<sup id="cite_ref-Decipher_6-0" class="reference"><a href="#cite_note-Decipher-6"><span class="cite-bracket">[</span>6<span class="cite-bracket">]</span></a></sup><sup id="cite_ref-Kuldell_2019_7-0" class="reference"><a href="#cite_note-Kuldell_2019-7"><span class="cite-bracket">[</span>7<span class="cite-bracket">]</span></a></sup>
+</p><p>The <a href="/wiki/Internet_Engineering_Steering_Group" class="mw-redirect" title="Internet Engineering Steering Group">Internet Engineering Steering Group</a> (IESG) issued a Last Call for security.txt in December 2019 which ended on January 6, 2020.<sup id="cite_ref-The_Daily_Swig_{{pipe}}_Cybersecurity_news_and_views_2019_8-0" class="reference"><a href="#cite_note-The_Daily_Swig_%7B%7Bpipe%7D%7D_Cybersecurity_news_and_views_2019-8"><span class="cite-bracket">[</span>8<span class="cite-bracket">]</span></a></sup>
+</p><p>A study in 2021 found that over ten percent of top-100 websites published a security.txt file, with the percentage of sites publishing the file decreasing as more websites were considered.<sup id="cite_ref-9" class="reference"><a href="#cite_note-9"><span class="cite-bracket">[</span>9<span class="cite-bracket">]</span></a></sup> The study also noted a number of discrepancies between the standard and the content of the file.
+</p><p>In April 2022 the security.txt file has been accepted by <a href="/wiki/Internet_Engineering_Task_Force" title="Internet Engineering Task Force">Internet Engineering Task Force</a> (IETF) as <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><a href="/wiki/RFC_(identifier)" class="mw-redirect" title="RFC (identifier)">RFC</a> <a rel="nofollow" class="external text" href="https://www.rfc-editor.org/rfc/rfc9116">9116</a>.<sup id="cite_ref-rfc9116_1-1" class="reference"><a href="#cite_note-rfc9116-1"><span class="cite-bracket">[</span>1<span class="cite-bracket">]</span></a></sup>
+</p>
+</section><div class="mw-heading mw-heading2 section-heading" onclick="mfTempOpenSection(2)"><span class="indicator mf-icon mf-icon-expand mf-icon--small"></span><h2 id="File_format">File format</h2><span class="mw-editsection">
+<a role="button" href="/w/index.php?title=Security.txt&amp;action=edit&amp;section=2" title="Edit section: File format" class="cdx-button cdx-button--size-large cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--icon-only cdx-button--weight-quiet ">
+    <span class="minerva-icon minerva-icon--edit"></span>
+<span>edit</span>
+</a>
+
+</span>
+
+</div><section class="mf-section-2 collapsible-block" id="mf-section-2">
+<p>security.txt files can be served under the <a href="/wiki/Well-known_URI" title="Well-known URI"><code>/.well-known/</code></a> directory (i.e. <code>/.well-known/security.txt</code>) or the top-level directory (i.e. <code>/security.txt</code>) of a website. The file must be served over <a href="/wiki/HTTPS" title="HTTPS">HTTPS</a> and in <a href="/wiki/Text_file" title="Text file">plaintext</a> format.<sup id="cite_ref-Characterizing_the_Adoption_of_Security.txt_Files_10-0" class="reference"><a href="#cite_note-Characterizing_the_Adoption_of_Security.txt_Files-10"><span class="cite-bracket">[</span>10<span class="cite-bracket">]</span></a></sup>
+</p>
+</section><div class="mw-heading mw-heading2 section-heading" onclick="mfTempOpenSection(3)"><span class="indicator mf-icon mf-icon-expand mf-icon--small"></span><h2 id="See_also">See also</h2><span class="mw-editsection">
+<a role="button" href="/w/index.php?title=Security.txt&amp;action=edit&amp;section=3" title="Edit section: See also" class="cdx-button cdx-button--size-large cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--icon-only cdx-button--weight-quiet ">
+    <span class="minerva-icon minerva-icon--edit"></span>
+<span>edit</span>
+</a>
+
+</span>
+
+</div><section class="mf-section-3 collapsible-block" id="mf-section-3">
+<ul><li><a href="/wiki/Ads.txt" title="Ads.txt">ads.txt</a></li>
+<li><a href="/wiki/Humans.txt" class="mw-redirect" title="Humans.txt">humans.txt</a></li>
+<li><a href="/wiki/Robots.txt" title="Robots.txt">robots.txt</a></li></ul>
+</section><div class="mw-heading mw-heading2 section-heading" onclick="mfTempOpenSection(4)"><span class="indicator mf-icon mf-icon-expand mf-icon--small"></span><h2 id="References">References</h2><span class="mw-editsection">
+<a role="button" href="/w/index.php?title=Security.txt&amp;action=edit&amp;section=4" title="Edit section: References" class="cdx-button cdx-button--size-large cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--icon-only cdx-button--weight-quiet ">
+    <span class="minerva-icon minerva-icon--edit"></span>
+<span>edit</span>
+</a>
+
+</span>
+
+</div><section class="mf-section-4 collapsible-block" id="mf-section-4">
+<style data-mw-deduplicate="TemplateStyles:r1239543626">.mw-parser-output .reflist{margin-bottom:0.5em;list-style-type:decimal}@media screen{.mw-parser-output .reflist{font-size:90%}}.mw-parser-output .reflist .references{font-size:100%;margin-bottom:0;list-style-type:inherit}.mw-parser-output .reflist-columns-2{column-width:30em}.mw-parser-output .reflist-columns-3{column-width:25em}.mw-parser-output .reflist-columns{margin-top:0.3em}.mw-parser-output .reflist-columns ol{margin-top:0}.mw-parser-output .reflist-columns li{page-break-inside:avoid;break-inside:avoid-column}.mw-parser-output .reflist-upper-alpha{list-style-type:upper-alpha}.mw-parser-output .reflist-upper-roman{list-style-type:upper-roman}.mw-parser-output .reflist-lower-alpha{list-style-type:lower-alpha}.mw-parser-output .reflist-lower-greek{list-style-type:lower-greek}.mw-parser-output .reflist-lower-roman{list-style-type:lower-roman}</style><div class="reflist reflist-columns references-column-width" style="column-width: 30em;">
+<ol class="references">
+<li id="cite_note-rfc9116-1"><span class="mw-cite-backlink">^ <a href="#cite_ref-rfc9116_1-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-rfc9116_1-1"><sup><i><b>b</b></i></sup></a></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite id="CITEREFFoudilShafranovich2022" class="citation cs1">Foudil, Edwin; Shafranovich, Yakov (April 2022). <a rel="nofollow" class="external text" href="https://datatracker.ietf.org/doc/html/rfc9116"><i>A File Format to Aid in Security Vulnerability Disclosure</i></a>. <a href="/wiki/Internet_Engineering_Task_Force" title="Internet Engineering Task Force">Internet Engineering Task Force</a>. <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<span class="id-lock-free" title="Freely accessible"><a rel="nofollow" class="external text" href="https://doi.org/10.17487%2FRFC9116">10.17487/RFC9116</a></span>. <a href="/wiki/ISSN_(identifier)" class="mw-redirect" title="ISSN (identifier)">ISSN</a> <a rel="nofollow" class="external text" href="https://search.worldcat.org/issn/2070-1721">2070-1721</a>. <a href="/wiki/Request_for_Comments" title="Request for Comments">RFC</a> <a rel="nofollow" class="external text" href="https://datatracker.ietf.org/doc/html/rfc9116">9116</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=A+File+Format+to+Aid+in+Security+Vulnerability+Disclosure&amp;rft.pub=Internet+Engineering+Task+Force&amp;rft.date=2022-04&amp;rft_id=info%3Adoi%2F10.17487%2FRFC9116&amp;rft.issn=2070-1721&amp;rft.aulast=Foudil&amp;rft.aufirst=Edwin&amp;rft.au=Shafranovich%2C+Yakov&amp;rft_id=https%3A%2F%2Fdatatracker.ietf.org%2Fdoc%2Fhtml%2Frfc9116&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASecurity.txt" class="Z3988"></span> <i>Informational.</i>
+                        </span>
+</li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><b><a href="#cite_ref-2">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite class="citation web cs1"><a rel="nofollow" class="external text" href="https://securityintelligence.com/news/the-telltale-text-file-security-researcher-proposes-standardization-for-reporting-vulnerabilities/">"The Telltale Text File: Security Researcher Proposes Standard for Reporting Vulnerabilities"</a>. <i>Security Intelligence</i><span class="reference-accessdate">. Retrieved <span class="nowrap">2019-04-14</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=Security+Intelligence&amp;rft.atitle=The+Telltale+Text+File%3A+Security+Researcher+Proposes+Standard+for+Reporting+Vulnerabilities&amp;rft_id=https%3A%2F%2Fsecurityintelligence.com%2Fnews%2Fthe-telltale-text-file-security-researcher-proposes-standardization-for-reporting-vulnerabilities%2F&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASecurity.txt" class="Z3988"></span></span>
+</li>
+<li id="cite_note-Cimpanu_2019-3"><span class="mw-cite-backlink"><b><a href="#cite_ref-Cimpanu_2019_3-0">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite id="CITEREFCimpanu2019" class="citation web cs1">Cimpanu, Catalin (2019-11-29). <a rel="nofollow" class="external text" href="https://www.zdnet.com/article/ios-apps-could-really-benefit-from-the-newly-proposed-security-plist-standard/">"iOS apps could really benefit from the newly proposed Security.plist standard"</a>. <i>ZDNet</i><span class="reference-accessdate">. Retrieved <span class="nowrap">2020-06-16</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=ZDNet&amp;rft.atitle=iOS+apps+could+really+benefit+from+the+newly+proposed+Security.plist+standard&amp;rft.date=2019-11-29&amp;rft.aulast=Cimpanu&amp;rft.aufirst=Catalin&amp;rft_id=https%3A%2F%2Fwww.zdnet.com%2Farticle%2Fios-apps-could-really-benefit-from-the-newly-proposed-security-plist-standard%2F&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASecurity.txt" class="Z3988"></span></span>
+</li>
+<li id="cite_note-Register-4"><span class="mw-cite-backlink">^ <a href="#cite_ref-Register_4-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-Register_4-1"><sup><i><b>b</b></i></sup></a></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite id="CITEREFLeyden2018" class="citation web cs1">Leyden, John (3 January 2018). <a rel="nofollow" class="external text" href="https://www.theregister.co.uk/2018/01/03/security_notification_scheme/">"Bug-finders' scheme: Tick-tock, this tech's tested by flaws.. but who the heck do you tell?"</a>. <i>www.theregister.co.uk</i><span class="reference-accessdate">. Retrieved <span class="nowrap">2019-04-14</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=www.theregister.co.uk&amp;rft.atitle=Bug-finders%27+scheme%3A+Tick-tock%2C+this+tech%27s+tested+by+flaws..+but+who+the+heck+do+you+tell%3F&amp;rft.date=2018-01-03&amp;rft.aulast=Leyden&amp;rft.aufirst=John&amp;rft_id=https%3A%2F%2Fwww.theregister.co.uk%2F2018%2F01%2F03%2Fsecurity_notification_scheme%2F&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASecurity.txt" class="Z3988"></span></span>
+</li>
+<li id="cite_note-BleepingComputer-5"><span class="mw-cite-backlink"><b><a href="#cite_ref-BleepingComputer_5-0">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite class="citation web cs1"><a rel="nofollow" class="external text" href="https://www.bleepingcomputer.com/news/security/security-txt-standard-proposed-similar-to-robots-txt/">"Security.txt Standard Proposed, Similar to Robots.txt"</a>. <i>BleepingComputer</i><span class="reference-accessdate">. Retrieved <span class="nowrap">2019-04-14</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=BleepingComputer&amp;rft.atitle=Security.txt+Standard+Proposed%2C+Similar+to+Robots.txt&amp;rft_id=https%3A%2F%2Fwww.bleepingcomputer.com%2Fnews%2Fsecurity%2Fsecurity-txt-standard-proposed-similar-to-robots-txt%2F&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASecurity.txt" class="Z3988"></span></span>
+</li>
+<li id="cite_note-Decipher-6"><span class="mw-cite-backlink"><b><a href="#cite_ref-Decipher_6-0">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite class="citation web cs1"><a rel="nofollow" class="external text" href="https://duo.com/decipher/cisa-seeks-comments-on-how-government-should-handle-vulnerability-reports">"CISA Seeks Comments on How Government Should Handle Vulnerability Reports"</a>. <i>Decipher</i><span class="reference-accessdate">. Retrieved <span class="nowrap">2020-01-29</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=Decipher&amp;rft.atitle=CISA+Seeks+Comments+on+How+Government+Should+Handle+Vulnerability+Reports&amp;rft_id=https%3A%2F%2Fduo.com%2Fdecipher%2Fcisa-seeks-comments-on-how-government-should-handle-vulnerability-reports&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASecurity.txt" class="Z3988"></span></span>
+</li>
+<li id="cite_note-Kuldell_2019-7"><span class="mw-cite-backlink"><b><a href="#cite_ref-Kuldell_2019_7-0">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite id="CITEREFKuldell2019" class="citation web cs1">Kuldell, Heather (2019-12-18). <a rel="nofollow" class="external text" href="https://www.nextgov.com/cybersecurity/2019/12/cisa-still-wants-your-thoughts-its-vulnerability-disclosure-policy/161989/">"CISA Still Wants Your Thoughts on Its Vulnerability Disclosure Policy"</a>. <i>Nextgov.com</i><span class="reference-accessdate">. Retrieved <span class="nowrap">2020-01-29</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=Nextgov.com&amp;rft.atitle=CISA+Still+Wants+Your+Thoughts+on+Its+Vulnerability+Disclosure+Policy&amp;rft.date=2019-12-18&amp;rft.aulast=Kuldell&amp;rft.aufirst=Heather&amp;rft_id=https%3A%2F%2Fwww.nextgov.com%2Fcybersecurity%2F2019%2F12%2Fcisa-still-wants-your-thoughts-its-vulnerability-disclosure-policy%2F161989%2F&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASecurity.txt" class="Z3988"></span></span>
+</li>
+<li id="cite_note-The_Daily_Swig_{{pipe}}_Cybersecurity_news_and_views_2019-8"><span class="mw-cite-backlink"><b><a href="#cite_ref-The_Daily_Swig_%7B%7Bpipe%7D%7D_Cybersecurity_news_and_views_2019_8-0">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite class="citation web cs1"><a rel="nofollow" class="external text" href="https://portswigger.net/daily-swig/security-txt-iesg-issues-final-call-for-comment-on-proposed-vulnerability-reporting-standard">"Security.txt – IESG issues final call for comment on proposed vulnerability reporting standard"</a>. <i>The Daily Swig | Cybersecurity news and views</i>. 2019-12-12<span class="reference-accessdate">. Retrieved <span class="nowrap">2020-03-30</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=The+Daily+Swig+%26%23124%3B+Cybersecurity+news+and+views&amp;rft.atitle=Security.txt+%E2%80%93+IESG+issues+final+call+for+comment+on+proposed+vulnerability+reporting+standard&amp;rft.date=2019-12-12&amp;rft_id=https%3A%2F%2Fportswigger.net%2Fdaily-swig%2Fsecurity-txt-iesg-issues-final-call-for-comment-on-proposed-vulnerability-reporting-standard&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASecurity.txt" class="Z3988"></span></span>
+</li>
+<li id="cite_note-9"><span class="mw-cite-backlink"><b><a href="#cite_ref-9">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite id="CITEREFPoteatLi2021" class="citation conference cs1">Poteat, Tara; Li, Frank (November 2021). <a rel="nofollow" class="external text" href="https://dl.acm.org/doi/abs/10.1145/3487552.3487841">"Who you gonna call?: an empirical evaluation of website security.txt deployment"</a>. <i>IMC '21: Proceedings of the 21st ACM Internet Measurement Conference</i>. Internet Measurement Conference. Online: ACM. pp. <span class="nowrap">526–</span>532. <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<a rel="nofollow" class="external text" href="https://doi.org/10.1145%2F3487552.3487841">10.1145/3487552.3487841</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=conference&amp;rft.atitle=Who+you+gonna+call%3F%3A+an+empirical+evaluation+of+website+security.txt+deployment&amp;rft.btitle=IMC+%2721%3A+Proceedings+of+the+21st+ACM+Internet+Measurement+Conference&amp;rft.place=Online&amp;rft.pages=526-532&amp;rft.pub=ACM&amp;rft.date=2021-11&amp;rft_id=info%3Adoi%2F10.1145%2F3487552.3487841&amp;rft.aulast=Poteat&amp;rft.aufirst=Tara&amp;rft.au=Li%2C+Frank&amp;rft_id=https%3A%2F%2Fdl.acm.org%2Fdoi%2Fabs%2F10.1145%2F3487552.3487841&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASecurity.txt" class="Z3988"></span></span>
+</li>
+<li id="cite_note-Characterizing_the_Adoption_of_Security.txt_Files-10"><span class="mw-cite-backlink"><b><a href="#cite_ref-Characterizing_the_Adoption_of_Security.txt_Files_10-0">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite class="citation web cs1"><a rel="nofollow" class="external text" href="https://people.scs.carleton.ca/~abdou/findlay2022_madweb_authors_copy.pdf">"Characterizing the Adoption of Security.txt Files"</a> <span class="cs1-format">(PDF)</span>. <i>Characterizing the Adoption of Security.txt Files</i>. 2022-02-11<span class="reference-accessdate">. Retrieved <span class="nowrap">2022-03-01</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=Characterizing+the+Adoption+of+Security.txt+Files&amp;rft.atitle=Characterizing+the+Adoption+of+Security.txt+Files&amp;rft.date=2022-02-11&amp;rft_id=https%3A%2F%2Fpeople.scs.carleton.ca%2F~abdou%2Ffindlay2022_madweb_authors_copy.pdf&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASecurity.txt" class="Z3988"></span></span>
+</li>
+</ol></div>
+</section><div class="mw-heading mw-heading2 section-heading" onclick="mfTempOpenSection(5)"><span class="indicator mf-icon mf-icon-expand mf-icon--small"></span><h2 id="External_links">External links</h2><span class="mw-editsection">
+<a role="button" href="/w/index.php?title=Security.txt&amp;action=edit&amp;section=5" title="Edit section: External links" class="cdx-button cdx-button--size-large cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--icon-only cdx-button--weight-quiet ">
+    <span class="minerva-icon minerva-icon--edit"></span>
+<span>edit</span>
+</a>
+
+</span>
+
+</div><section class="mf-section-5 collapsible-block" id="mf-section-5">
+<ul><li><span class="official-website"><span class="url"><a rel="nofollow" class="external text" href="https://securitytxt.org/">Official website</a></span></span></li>
+<li><a class="external text" href="https://en.wikipedia.org/.well-known/security.txt">Example of a security.txt file</a></li></ul>
+<!-- 
+NewPP limit report
+Parsed by mw‐api‐ext.eqiad.main‐64f87d9b4f‐f92ls
+Cached time: 20250426130009
+Cache expiry: 2592000
+Reduced expiry: false
+Complications: [vary‐revision‐sha1, show‐toc]
+CPU time usage: 0.318 seconds
+Real time usage: 0.407 seconds
+Preprocessor visited node count: 3992/1000000
+Post‐expand include size: 53178/2097152 bytes
+Template argument size: 2443/2097152 bytes
+Highest expansion depth: 25/100
+Expensive parser function count: 2/500
+Unstrip recursion depth: 1/20
+Unstrip post‐expand size: 47475/5000000 bytes
+Lua time usage: 0.191/10.000 seconds
+Lua memory usage: 6152671/52428800 bytes
+Number of Wikibase entities loaded: 1/500
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  376.534      1 -total
+ 36.15%  136.100      2 Template:Ref_RFC
+ 31.00%  116.720      4 Template:Cite_IETF
+ 22.35%   84.149      1 Template:Infobox_technology_standard
+ 21.42%   80.639      1 Template:Infobox
+ 18.25%   68.728      1 Template:Short_description
+ 17.18%   64.675      1 Template:Reflist
+ 11.00%   41.421      8 Template:Cite_web
+ 10.59%   39.863      2 Template:IETF_RFC
+  9.71%   36.568      2 Template:Catalog_lookup_link
+-->
+
+<!-- Saved in parser cache with key enwiki:pcache:60496178:|#|:idhash:canonical and timestamp 20250426130056 and revision id 1287465839. Rendering was triggered because: page-edit
+ -->
+</section></div>
+<!-- MobileFormatter took 0.005 seconds --><!--esi <esi:include src="/esitest-fa8a495983347898/content" /> --><noscript><img src="https://en.m.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1&amp;usesul3=1" alt="" width="1" height="1" style="border: none; position: absolute;"></noscript>
+<div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://en.wikipedia.org/w/index.php?title=Security.txt&amp;oldid=1287465839">https://en.wikipedia.org/w/index.php?title=Security.txt&amp;oldid=1287465839</a>"</div></div>
+				
+			</div>
+			<div class="post-content" id="page-secondary-actions">
+			</div>
+		</main>
+		<footer class="mw-footer minerva-footer" role="contentinfo">
+		  <a class="last-modified-bar" href="/w/index.php?title=Security.txt&amp;action=history">
+  	<div class="post-content last-modified-bar__content">
+  		 <span class="minerva-icon minerva-icon-size-medium minerva-icon--modified-history"></span>
+ 
+  		<span class="last-modified-bar__text modified-enhancement"
+  				data-user-name="Susko3"
+  				data-user-gender="unknown"
+  				data-timestamp="1745672408">
+  				<span>Last edited on 26 April 2025, at 13:00</span>
+  		</span>
+  		 <span class="minerva-icon minerva-icon-size-small minerva-icon--expand"></span>
+ 
+  	</div>
+  </a>
+	<div class="post-content footer-content">
+			<div id='mw-data-after-content'>
+	<div class="read-more-container"></div>
+</div>
+
+			<div id="p-lang">
+	    <h4>Languages</h4>
+	    <section>
+	        <ul id="p-variants" class="minerva-languages"></ul>
+	        <ul class="minerva-languages"><li class="interlanguage-link interwiki-cs mw-list-item"><a href="https://cs.wikipedia.org/wiki/Security.txt" title="Security.txt – Czech" lang="cs" hreflang="cs" data-title="Security.txt" data-language-autonym="Čeština" data-language-local-name="Czech" class="interlanguage-link-target"><span>Čeština</span></a></li><li class="interlanguage-link interwiki-de mw-list-item"><a href="https://de.wikipedia.org/wiki/Security.txt" title="Security.txt – German" lang="de" hreflang="de" data-title="Security.txt" data-language-autonym="Deutsch" data-language-local-name="German" class="interlanguage-link-target"><span>Deutsch</span></a></li><li class="interlanguage-link interwiki-es mw-list-item"><a href="https://es.wikipedia.org/wiki/Security.txt" title="Security.txt – Spanish" lang="es" hreflang="es" data-title="Security.txt" data-language-autonym="Español" data-language-local-name="Spanish" class="interlanguage-link-target"><span>Español</span></a></li><li class="interlanguage-link interwiki-fr mw-list-item"><a href="https://fr.wikipedia.org/wiki/Security.txt" title="Security.txt – French" lang="fr" hreflang="fr" data-title="Security.txt" data-language-autonym="Français" data-language-local-name="French" class="interlanguage-link-target"><span>Français</span></a></li><li class="interlanguage-link interwiki-he mw-list-item"><a href="https://he.wikipedia.org/wiki/Security.txt" title="Security.txt – Hebrew" lang="he" hreflang="he" data-title="Security.txt" data-language-autonym="עברית" data-language-local-name="Hebrew" class="interlanguage-link-target"><span>עברית</span></a></li><li class="interlanguage-link interwiki-nl mw-list-item"><a href="https://nl.wikipedia.org/wiki/Security.txt" title="Security.txt – Dutch" lang="nl" hreflang="nl" data-title="Security.txt" data-language-autonym="Nederlands" data-language-local-name="Dutch" class="interlanguage-link-target"><span>Nederlands</span></a></li><li class="interlanguage-link interwiki-pl mw-list-item"><a href="https://pl.wikipedia.org/wiki/Security.txt" title="Security.txt – Polish" lang="pl" hreflang="pl" data-title="Security.txt" data-language-autonym="Polski" data-language-local-name="Polish" class="interlanguage-link-target"><span>Polski</span></a></li><li class="interlanguage-link interwiki-pt mw-list-item"><a href="https://pt.wikipedia.org/wiki/Security.txt" title="Security.txt – Portuguese" lang="pt" hreflang="pt" data-title="Security.txt" data-language-autonym="Português" data-language-local-name="Portuguese" class="interlanguage-link-target"><span>Português</span></a></li><li class="interlanguage-link interwiki-sv mw-list-item"><a href="https://sv.wikipedia.org/wiki/Security.txt" title="Security.txt – Swedish" lang="sv" hreflang="sv" data-title="Security.txt" data-language-autonym="Svenska" data-language-local-name="Swedish" class="interlanguage-link-target"><span>Svenska</span></a></li><li class="interlanguage-link interwiki-uk mw-list-item"><a href="https://uk.wikipedia.org/wiki/Security.txt" title="Security.txt – Ukrainian" lang="uk" hreflang="uk" data-title="Security.txt" data-language-autonym="Українська" data-language-local-name="Ukrainian" class="interlanguage-link-target"><span>Українська</span></a></li></ul>
+	    </section>
+	</div>
+	<div class="minerva-footer-logo">
+				<img src="/static/images/mobile/copyright/wikipedia-wordmark-en.svg" alt="Wikipedia" width="120" height="18"
+	style="width: 7.5em; height: 1.125em;"/>
+
+
+				<ul id="footer-icons" class="footer-icons">
+	<li id="footer-copyrightico"><a href="https://www.wikimedia.org/" class="cdx-button cdx-button--fake-button cdx-button--size-large cdx-button--fake-button--enabled"><picture><source media="(min-width: 500px)" srcset="/static/images/footer/wikimedia-button.svg" width="84" height="29"><img src="/static/images/footer/wikimedia.svg" width="25" height="25" alt="Wikimedia Foundation" lang="en" loading="lazy"></picture></a></li>
+	<li id="footer-poweredbyico"><a href="https://www.mediawiki.org/" class="cdx-button cdx-button--fake-button cdx-button--size-large cdx-button--fake-button--enabled"><picture><source media="(min-width: 500px)" srcset="/w/resources/assets/poweredby_mediawiki.svg" width="88" height="31"><img src="/w/resources/assets/mediawiki_compact.svg" alt="Powered by MediaWiki" lang="en" width="25" height="25" loading="lazy"></picture></a></li>
+</ul>
+			</div>
+			<ul id="footer-info" class="footer-info hlist hlist-separated">
+	<li id="footer-info-lastmod"> This page was last edited on 26 April 2025, at 13:00<span class="anonymous-show">&#160;(UTC)</span>.</li>
+	<li id="footer-info-copyright">Content is available under <a class="external" rel="nofollow" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC BY-SA 4.0</a> unless otherwise noted.</li>
+</ul>
+
+			<ul id="footer-places" class="footer-places hlist hlist-separated">
+	<li id="footer-places-privacy"><a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy">Privacy policy</a></li>
+	<li id="footer-places-about"><a href="/wiki/Wikipedia:About">About Wikipedia</a></li>
+	<li id="footer-places-disclaimers"><a href="/wiki/Wikipedia:General_disclaimer">Disclaimers</a></li>
+	<li id="footer-places-contact"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+	<li id="footer-places-wm-codeofconduct"><a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Universal_Code_of_Conduct">Code of Conduct</a></li>
+	<li id="footer-places-developers"><a href="https://developer.wikimedia.org">Developers</a></li>
+	<li id="footer-places-statslink"><a href="https://stats.wikimedia.org/#/en.wikipedia.org">Statistics</a></li>
+	<li id="footer-places-cookiestatement"><a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Cookie_statement">Cookie statement</a></li>
+	<li id="footer-places-terms-use"><a href="https://foundation.m.wikimedia.org/wiki/Special:MyLanguage/Policy:Terms_of_Use">Terms of Use</a></li>
+	<li id="footer-places-desktop-toggle"><a id="mw-mf-display-toggle" href="//en.wikipedia.org/w/index.php?title=Security.txt&amp;mobileaction=toggle_view_desktop" data-event-name="switch_to_desktop">Desktop</a></li>
+</ul>
+
+			</div>
+		</footer>
+			</div>
+</div>
+<div class="mw-portlet mw-portlet-dock-bottom emptyPortlet" id="p-dock-bottom">
+        <ul>
+                
+        </ul>
+</div>
+<div class="mw-notification-area" data-mw="interface"></div>
+<!-- v:8.3.1 -->
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgHostname":"mw-web.eqiad.main-7b5d98fc98-7mztd","wgBackendResponseTime":162,"wgPageParseReport":{"limitreport":{"cputime":"0.318","walltime":"0.407","ppvisitednodes":{"value":3992,"limit":1000000},"postexpandincludesize":{"value":53178,"limit":2097152},"templateargumentsize":{"value":2443,"limit":2097152},"expansiondepth":{"value":25,"limit":100},"expensivefunctioncount":{"value":2,"limit":500},"unstrip-depth":{"value":1,"limit":20},"unstrip-size":{"value":47475,"limit":5000000},"entityaccesscount":{"value":1,"limit":500},"timingprofile":["100.00%  376.534      1 -total"," 36.15%  136.100      2 Template:Ref_RFC"," 31.00%  116.720      4 Template:Cite_IETF"," 22.35%   84.149      1 Template:Infobox_technology_standard"," 21.42%   80.639      1 Template:Infobox"," 18.25%   68.728      1 Template:Short_description"," 17.18%   64.675      1 Template:Reflist"," 11.00%   41.421      8 Template:Cite_web"," 10.59%   39.863      2 Template:IETF_RFC","  9.71%   36.568      2 Template:Catalog_lookup_link"]},"scribunto":{"limitreport-timeusage":{"value":"0.191","limit":"10.000"},"limitreport-memusage":{"value":6152671,"limit":52428800}},"cachereport":{"origin":"mw-api-ext.eqiad.main-64f87d9b4f-f92ls","timestamp":"20250426130009","ttl":2592000,"transientcontent":false}}});});</script>
+<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"Article","name":"Security.txt","url":"https:\/\/en.wikipedia.org\/wiki\/Security.txt","sameAs":"http:\/\/www.wikidata.org\/entity\/Q65057155","mainEntity":"http:\/\/www.wikidata.org\/entity\/Q65057155","author":{"@type":"Organization","name":"Contributors to Wikimedia projects"},"publisher":{"@type":"Organization","name":"Wikimedia Foundation, Inc.","logo":{"@type":"ImageObject","url":"https:\/\/www.wikimedia.org\/static\/images\/wmf-hor-googpub.png"}},"datePublished":"2019-04-14T21:44:51Z","dateModified":"2025-04-26T13:00:08Z","image":"https:\/\/upload.wikimedia.org\/wikipedia\/commons\/1\/1c\/Security_txt.png","headline":"file format for posting security contact information"}</script><script>(window.NORLQ=window.NORLQ||[]).push(function(){var ns,i,p,img;ns=document.getElementsByTagName('noscript');for(i=0;i<ns.length;i++){p=ns[i].nextSibling;if(p&&p.className&&p.className.indexOf('lazy-image-placeholder')>-1){img=document.createElement('img');img.setAttribute('src',p.getAttribute('data-mw-src'));img.setAttribute('width',p.getAttribute('data-width'));img.setAttribute('height',p.getAttribute('data-height'));img.setAttribute('alt',p.getAttribute('data-alt'));p.parentNode.replaceChild(img,p);}}});</script>
+</body>
+</html>

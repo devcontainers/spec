@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class="client-nojs mf-expand-sections-clientpref-0 mf-font-size-clientpref-small mw-mf-amc-clientpref-0" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<title>Manual:Setup.php - MediaWiki</title>
+<script>(function(){var className="client-js mf-expand-sections-clientpref-0 mf-font-size-clientpref-small mw-mf-amc-clientpref-0";var cookie=document.cookie.match(/(?:^|; )mediawikiwikimwclientpreferences=([^;]+)/);if(cookie){cookie[1].split('%2C').forEach(function(pref){className=className.replace(new RegExp('(^| )'+pref.replace(/-clientpref-\w+$|[^\w-]+/g,'')+'-clientpref-\\w+( |$)'),'$1'+pref+'$2');});}document.documentElement.className=className;}());RLCONF={"wgBreakFrames":false,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"2f29967d-6349-4347-959a-d7a1a3cf4a33","wgCanonicalNamespace":"Manual","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":100,"wgPageName":"Manual:Setup.php","wgTitle":"Setup.php","wgCurRevisionId":6695689,"wgRevisionId":6695689,"wgArticleId":28348,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgPageViewLanguage":"en","wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"Manual:Setup.php","wgRelevantArticleId":28348,"wgIsProbablyEditable":true,"wgRelevantPageIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgNoticeProject":"mediawiki","wgCiteReferencePreviewsActive":false,"wgMediaViewerOnClick":true,"wgMediaViewerEnabledByDefault":true,"wgVisualEditor":{"pageLanguageCode":"en","pageLanguageDir":"ltr","pageVariantFallbacks":"en"},"wgMFMode":"stable","wgMFAmc":false,"wgMFAmcOutreachActive":false,"wgMFAmcOutreachUserEligible":false,"wgMFLazyLoadImages":true,"wgMFEditNoticesFeatureConflict":false,"wgMFDisplayWikibaseDescriptions":{"search":true,"watchlist":true,"tagline":false,"nearby":true},"wgMFIsSupportedEditRequest":true,"wgMFScriptPath":"","wgWMESchemaEditAttemptStepOversample":false,"wgWMEPageLength":2000,"wgInternalRedirectTargetUrl":"/wiki/Manual:Setup.php","wgTranslatePageTranslation":"source","wgEditSubmitButtonLabelPublish":true,"wgWikibaseItemId":"Q22713404","wgCheckUserClientHintsHeadersJsApi":["brands","architecture","bitness","fullVersionList","mobile","model","platform","platformVersion"],"wgMinervaPermissions":{"watchable":true,"watch":false},"wgMinervaFeatures":{"beta":false,"donateBanner":true,"donate":false,"mobileOptionsLink":true,"categories":false,"pageIssues":true,"talkAtTop":false,"historyInPageActions":false,"overflowSubmenu":false,"tabsOnSpecials":true,"personalMenu":false,"mainMenuExpanded":false,"echo":true,"nightMode":false},"wgMinervaDownloadNamespaces":[0],"wgSiteNoticeId":"2.8"};
+RLSTATE={"ext.globalCssJs.user.styles":"ready","site.styles":"ready","user.styles":"ready","ext.globalCssJs.user":"ready","user":"ready","user.options":"loading","ext.translate.tag.languages":"ready","skins.minerva.styles":"ready","skins.minerva.content.styles.images":"ready","mediawiki.hlist":"ready","skins.minerva.codex.styles":"ready","skins.minerva.icons":"ready","ext.translate.edit.documentation.styles":"ready","ext.translate":"ready","ext.wikimediamessages.styles":"ready","mobile.init.styles":"ready","wikibase.client.init":"ready","ext.dismissableSiteNotice.styles":"ready"};RLPAGEMODULES=["mediawiki.action.view.redirect","site","mediawiki.page.ready","skins.minerva.scripts","ext.centralNotice.geoIP","ext.centralNotice.startUp","ext.translate.pagetranslation.uls","ext.urlShortener.toolbar","ext.centralauth.centralautologin","mobile.init","ext.echo.centralauth","ext.eventLogging","ext.wikimediaEvents","ext.navigationTiming","ext.checkUser.clientHints","ext.dismissableSiteNotice"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.impl(function(){return["user.options@12s5i",function($,jQuery,require,module){mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+}];});});</script>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=ext.dismissableSiteNotice.styles%7Cext.translate%7Cext.translate.edit.documentation.styles%7Cext.translate.tag.languages%7Cext.wikimediamessages.styles%7Cmediawiki.hlist%7Cmobile.init.styles%7Cskins.minerva.codex.styles%7Cskins.minerva.content.styles.images%7Cskins.minerva.icons%2Cstyles%7Cwikibase.client.init&amp;only=styles&amp;skin=minerva">
+<script async="" src="/w/load.php?lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=minerva"></script>
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=minerva">
+<meta name="generator" content="MediaWiki 1.44.0-wmf.28">
+<meta name="referrer" content="origin">
+<meta name="referrer" content="origin-when-cross-origin">
+<meta name="robots" content="max-image-preview:standard">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#eaecf0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=0.25, maximum-scale=5.0">
+<meta property="og:site_name" content="MediaWiki">
+<meta property="og:title" content="Manual:Setup.php - MediaWiki">
+<meta property="og:type" content="website">
+<link rel="manifest" href="/w/api.php?action=webapp-manifest">
+<link rel="alternate" type="application/x-wiki" title="Edit" href="/w/index.php?title=Manual:Setup.php&amp;action=edit">
+<link rel="apple-touch-icon" href="/static/apple-touch/mediawiki.png">
+<link rel="icon" href="/static/favicon/mediawiki.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="/w/rest.php/v1/search" title="MediaWiki (en)">
+<link rel="EditURI" type="application/rsd+xml" href="//www.mediawiki.org/w/api.php?action=rsd">
+<link rel="canonical" href="https://www.mediawiki.org/wiki/Manual:Setup.php">
+<link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+<link rel="dns-prefetch" href="auth.wikimedia.org">
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-100 ns-subject mw-editable page-Manual_Setup_php rootpage-Manual_Setup_php stable skin-minerva action-view skin--responsive mw-mf-amc-disabled mw-mf"><div id="mw-mf-viewport">
+	<div id="mw-mf-page-center">
+		<a class="mw-mf-page-center__mask" href="#"></a>
+		<header class="header-container header-chrome">
+			<div class="minerva-header">
+				<nav class="navigation-drawer toggle-list view-border-box">
+					<input type="checkbox" id="main-menu-input"
+						data-event-name="ui.mainmenu"
+						class="toggle-list__checkbox" role="button" aria-haspopup="true" aria-expanded="false" aria-labelledby="mw-mf-main-menu-button">
+					<label for="main-menu-input" id="mw-mf-main-menu-button" aria-hidden="true" class="cdx-button cdx-button--size-large cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--icon-only cdx-button--weight-quiet toggle-list__toggle">
+    <span class="minerva-icon minerva-icon--menu"></span>
+<span></span>
+</label>
+
+					<div id="mw-mf-page-left" class="menu view-border-box">
+	<ul id="p-navigation" class="toggle-list__list">
+			<li class="toggle-list-item ">
+				<a class="toggle-list-item__anchor menu__item--home" href="/wiki/MediaWiki" data-mw="interface">
+					<span class="minerva-icon minerva-icon--home"></span>
+
+					<span class="toggle-list-item__label">Home</span>
+				</a>
+			</li>
+			<li class="toggle-list-item ">
+				<a class="toggle-list-item__anchor menu__item--random" href="/wiki/Special:Random" data-mw="interface">
+					<span class="minerva-icon minerva-icon--die"></span>
+
+					<span class="toggle-list-item__label">Random</span>
+				</a>
+			</li>
+			<li class="toggle-list-item skin-minerva-list-item-jsonly">
+				<a class="toggle-list-item__anchor menu__item--nearby" href="/wiki/Special:Nearby" data-event-name="menu.nearby" data-mw="interface">
+					<span class="minerva-icon minerva-icon--mapPin"></span>
+
+					<span class="toggle-list-item__label">Nearby</span>
+				</a>
+			</li>
+	</ul>
+	<ul id="p-personal" class="toggle-list__list">
+			<li class="toggle-list-item ">
+				<a class="toggle-list-item__anchor mw-list-item menu__item--login" href="/w/index.php?title=Special:UserLogin&amp;returnto=Manual%3ASetup.php" data-event-name="menu.login" data-mw="interface">
+					<span class="minerva-icon minerva-icon--logIn"></span>
+
+					<span class="toggle-list-item__label">Log in</span>
+				</a>
+			</li>
+	</ul>
+	<ul id="pt-preferences" class="toggle-list__list">
+			<li class="toggle-list-item skin-minerva-list-item-jsonly">
+				<a class="toggle-list-item__anchor menu__item--settings" href="/w/index.php?title=Special:MobileOptions&amp;returnto=Manual%3ASetup.php" data-event-name="menu.settings" data-mw="interface">
+					<span class="minerva-icon minerva-icon--settings"></span>
+
+					<span class="toggle-list-item__label">Settings</span>
+				</a>
+			</li>
+	</ul>
+			<div class="donate-banner">
+				<a href="https://donate.wikimedia.org/?wmf_source=donate&amp;wmf_medium=sidebar&amp;wmf_campaign=www.mediawiki.org&amp;uselang=en&amp;wmf_key=minerva" class="donate-banner__link"
+					data-event-name="menu.donateBanner">
+					<div class="donate-banner__text-container">
+						<span class="donate-banner__text">Donate Now</span>
+						<span class="donate-banner__subtitle">If this site has been useful to you, please give today.</span>
+					</div>
+					<picture>
+						<source
+			    			srcset="https://en.wikipedia.org/static/images/donate/donate.png"
+			   				media="(prefers-reduced-motion)" />
+						<img src="https://en.wikipedia.org/static/images/donate/donate.gif" alt="" class="donate-banner__gif" loading="lazy">
+					</picture>
+				</a>
+			</div>
+	<ul class="hlist">
+			<li class="toggle-list-item ">
+				<a class="toggle-list-item__anchor menu__item--about" href="/wiki/Project:About" data-mw="interface">
+					
+					<span class="toggle-list-item__label">About mediawiki.org</span>
+				</a>
+			</li>
+			<li class="toggle-list-item ">
+				<a class="toggle-list-item__anchor menu__item--disclaimers" href="/wiki/Project:General_disclaimer" data-mw="interface">
+					
+					<span class="toggle-list-item__label">Disclaimers</span>
+				</a>
+			</li>
+	</ul>
+</div>
+
+					<label class="main-menu-mask" for="main-menu-input"></label>
+				</nav>
+				<div class="branding-box">
+					<a href="/wiki/MediaWiki">
+						<span><img src="/static/images/mobile/copyright/mediawikiwiki-wordmark.svg" alt="MediaWiki" width="120" height="18"
+	style="width: 7.5em; height: 1.125em;"/>
+
+</span>
+						
+					</a>
+				</div>
+					<form action="/w/index.php" method="get" class="minerva-search-form">
+				<div class="search-box">
+					<input type="hidden" name="title" value="Special:Search"/>
+					<input class="search skin-minerva-search-trigger" id="searchInput"
+						 type="search" name="search" placeholder="Search mediawiki.org" aria-label="Search mediawiki.org" autocapitalize="sentences" spellcheck="false" title="Search MediaWiki [f]" accesskey="f">
+					<span class="search-box-icon-overlay"><span class="minerva-icon minerva-icon--search"></span>
+</span>
+				</div>
+				<button id="searchIcon" class="cdx-button cdx-button--size-large cdx-button--icon-only cdx-button--weight-quiet skin-minerva-search-trigger">
+	    <span class="minerva-icon minerva-icon--search"></span>
+<span>Search</span>
+	</button>
+</form>
+		<nav class="minerva-user-navigation" aria-label="User navigation">
+					
+				</nav>
+			</div>
+		</header>
+		<main id="content" class="mw-body">
+			<div class="banner-container">
+			<div id="siteNotice"></div>
+			</div>
+			
+			<div class="pre-content heading-holder">
+				<div class="page-heading">
+					<h1 id="firstHeading" class="firstHeading mw-first-heading">Manual:Setup.php</h1>
+					<div class="tagline"></div>
+				</div>
+				<nav class="page-actions-menu">
+	<ul id="p-views" class="page-actions-menu__list minerva-icon-only-menu">
+		<li id="page-actions-watch" class="page-actions-menu__list-item">
+				<a role="button" id="ca-watch" href="/w/index.php?title=Special:UserLogin&amp;returnto=Manual%3ASetup.php" data-event-name="menu.watch" class="cdx-button cdx-button--size-large cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--icon-only cdx-button--weight-quiet menu__item--page-actions-watch">
+				    <span class="minerva-icon minerva-icon--star"></span>
+<span>Watch</span>
+				</a>
+		</li>
+		<li id="page-actions-edit" class="page-actions-menu__list-item">
+				<a role="button" id="ca-edit" href="/w/index.php?title=Manual:Setup.php&amp;action=edit" data-event-name="menu.edit" data-mw="interface" class="cdx-button cdx-button--size-large cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--icon-only cdx-button--weight-quiet edit-page menu__item--page-actions-edit">
+				    <span class="minerva-icon minerva-icon--edit"></span>
+<span>Edit</span>
+				</a>
+		</li>
+	</ul>
+</nav>
+<!-- version 1.0.2 (change every time you update a partial) -->
+				<div id="mw-content-subtitle"></div>
+			</div>
+			<div id="bodyContent" class="content">
+				<div id="mw-content-text" class="mw-body-content"><script>function mfTempOpenSection(id){var block=document.getElementById("mf-section-"+id);block.className+=" open-block";block.previousSibling.className+=" open-block";}</script><div class="mw-pt-translate-header noprint nomobile" dir="ltr" lang="en"><a href="/w/index.php?title=Special:Translate&amp;group=page-Manual%3ASetup.php&amp;action=page&amp;filter=&amp;action_source=translate_page" title="Special:Translate">Translate this page</a></div><div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><section class="mf-section-0" id="mf-section-0"><div class="mw-pt-languages noprint navigation-not-searchable" lang="en" dir="ltr"><div class="mw-pt-languages-label">Languages:</div><ul class="mw-pt-languages-list"><li><a href="/w/index.php?title=Special:Translate&amp;group=page-Manual%3ASetup.php&amp;language=&amp;task=view" class="new" title="Start translation for this language" lang="" dir="ltr"></a></li>
+<li><a href="/wiki/Manual:Setup.php/de" class="mw-pt-progress mw-pt-progress--med" title="Handbuch:Setup.php (31% translated)" lang="de" dir="ltr">Deutsch</a></li>
+<li><span class="mw-pt-languages-ui mw-pt-languages-selected mw-pt-progress mw-pt-progress--complete" lang="en" dir="ltr">English</span></li>
+<li><a href="/wiki/Manual:Setup.php/es" class="mw-pt-progress mw-pt-progress--med" title="Manual:Setup.php (54% translated)" lang="es" dir="ltr">español</a></li>
+<li><a href="/wiki/Manual:Setup.php/fr" class="mw-pt-progress mw-pt-progress--complete" title="Manuel:Setup.php (100% translated)" lang="fr" dir="ltr">français</a></li>
+<li><a href="/wiki/Manual:Setup.php/pl" class="mw-pt-progress mw-pt-progress--low" title="Manual:Setup.php/pl (8% translated)" lang="pl" dir="ltr">polski</a></li>
+<li><a href="/wiki/Manual:Setup.php/pt-br" class="mw-pt-progress mw-pt-progress--complete" title="Manual:Setup.php (100% translated)" lang="pt-BR" dir="ltr">português do Brasil</a></li>
+<li><a href="/wiki/Manual:Setup.php/fi" class="mw-pt-progress mw-pt-progress--med" title="Opas:Setup.php (46% translated)" lang="fi" dir="ltr">suomi</a></li>
+<li><a href="/wiki/Manual:Setup.php/cs" class="mw-pt-progress mw-pt-progress--complete" title="Příručka:Setup.php (100% translated)" lang="cs" dir="ltr">čeština</a></li>
+<li><a href="/wiki/Manual:Setup.php/ru" class="mw-pt-progress mw-pt-progress--high" title="Руководство:Setup.php (92% translated)" lang="ru" dir="ltr">русский</a></li>
+<li><a href="/wiki/Manual:Setup.php/uk" class="mw-pt-progress mw-pt-progress--med" title="Посібник:Setup.php (54% translated)" lang="uk" dir="ltr">українська</a></li>
+<li><a href="/wiki/Manual:Setup.php/zh" class="mw-pt-progress mw-pt-progress--med" title="手册:Setup.php (38% translated)" lang="zh" dir="ltr">中文</a></li>
+<li><a href="/wiki/Manual:Setup.php/ja" class="mw-pt-progress mw-pt-progress--complete" title="Manual:Setup.php (100% translated)" lang="ja" dir="ltr">日本語</a></li></ul></div>
+<table class="plainlinks" style="border:1px solid #a2a9b1; border-spacing: 5px; margin: 1em auto;">
+<tbody><tr style="background: var(--background-color-neutral); color: var(--color-base); text-align:center;">
+<th colspan="2"><a href="/wiki/Special:MyLanguage/Manual:Code" title="Special:MyLanguage/Manual:Code">MediaWiki file:</a><span style="display:none"><a href="/wiki/Manual:Code" title="Manual:Code"> </a></span> Setup.php</th>
+</tr><tr>
+<td><b>Location:</b></td>
+<td>includes/</td>
+</tr><tr style="vertical-align: top;">
+<td><b>Source code:</b></td>
+<td><a class="external text" href="https://phabricator.wikimedia.org/diffusion/MW/browse/master/includes/Setup.php">master</a> • <a class="external text" href="https://phabricator.wikimedia.org/diffusion/MW/browse/REL1_43/includes/Setup.php">1.43.1</a> • <a class="external text" href="https://phabricator.wikimedia.org/diffusion/MW/browse/REL1_42/includes/Setup.php">1.42.6</a> • <a class="external text" href="https://phabricator.wikimedia.org/diffusion/MW/browse/REL1_39/includes/Setup.php">1.39.12</a></td>
+</tr><tr style="vertical-align: top;">
+<td><b>Classes:</b></td>
+<td><a class="external text" href="https://phabricator.wikimedia.org/diffusion/MW/browse/master/?find=Setup.php">Find code</a> • <a class="external text" href="https://doc.wikimedia.org/mediawiki-core/master/php/search.php?query=Setup.php">Find documentation</a> </td>
+</tr>
+</tbody></table>
+</section><div class="mw-heading mw-heading2 section-heading" onclick="mfTempOpenSection(1)"><span class="indicator mf-icon mf-icon-expand mf-icon--small"></span><h2 id="Details">Details</h2><span class="mw-editsection">
+<a role="button" href="/w/index.php?title=Manual:Setup.php&amp;action=edit&amp;section=1" title="Edit section: Details" class="cdx-button cdx-button--size-large cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--icon-only cdx-button--weight-quiet ">
+    <span class="minerva-icon minerva-icon--edit"></span>
+<span>edit</span>
+</a>
+
+</span>
+
+</div><section class="mf-section-1 collapsible-block" id="mf-section-1">
+<p><b>Setup.php</b> file is included from <a href="/wiki/Special:MyLanguage/Manual:WebStart.php" title="Special:MyLanguage/Manual:WebStart.php">WebStart.php</a><span style="display:none"><a href="/wiki/Manual:WebStart.php" title="Manual:WebStart.php"> </a></span>, provided the <code>MW_NO_SETUP</code> constant is not defined.
+It must be included after <a href="/wiki/Special:MyLanguage/Manual:LocalSettings.php" title="Special:MyLanguage/Manual:LocalSettings.php">LocalSettings.php</a><span style="display:none"><a href="/wiki/Manual:LocalSettings.php" title="Manual:LocalSettings.php"> </a></span>.
+</p>
+</section><div class="mw-heading mw-heading2 section-heading" onclick="mfTempOpenSection(2)"><span class="indicator mf-icon mf-icon-expand mf-icon--small"></span><h2 id="Actions_taken">Actions taken</h2><span class="mw-editsection">
+<a role="button" href="/w/index.php?title=Manual:Setup.php&amp;action=edit&amp;section=2" title="Edit section: Actions taken" class="cdx-button cdx-button--size-large cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--icon-only cdx-button--weight-quiet ">
+    <span class="minerva-icon minerva-icon--edit"></span>
+<span>edit</span>
+</a>
+
+</span>
+
+</div><section class="mf-section-2 collapsible-block" id="mf-section-2">
+<p>It does the following:
+</p>
+<ol><li>First it changes some <a href="/wiki/Special:MyLanguage/Manual:Configuration_settings" title="Special:MyLanguage/Manual:Configuration settings">configuration settings</a> such as paths variables that aren't customized in <code>LocalSettings.php</code> so that they don't need to be modified if <a href="/wiki/Special:MyLanguage/Manual:%24wgScriptPath" title="Special:MyLanguage/Manual:$wgScriptPath">$wgScriptPath</a><span style="display:none"><a href="/wiki/Manual:%24wgScriptPath" title="Manual:$wgScriptPath"> </a></span> is changed or it updates new configuration settings from the backward compatible ones.</li>
+<li>Next it includes some commonly used files.</li>
+<li>It starts the PHP session if the session cookie or the user token cookie are present.</li>
+<li>It creates stub objects for <a href="/wiki/Special:MyLanguage/Manual:Global_object_variables" title="Special:MyLanguage/Manual:Global object variables">global object variables</a>, those globals will be unstubbed at the first call of one of their method.</li>
+<li>It runs all functions in <a href="/wiki/Special:MyLanguage/Manual:%24wgExtensionFunctions" title="Special:MyLanguage/Manual:$wgExtensionFunctions">$wgExtensionFunctions</a><span style="display:none"><a href="/wiki/Manual:%24wgExtensionFunctions" title="Manual:$wgExtensionFunctions"> </a></span>.</li>
+<li>And calls some deprecated hooks for backward compatibility: <a href="/wiki/Special:MyLanguage/Manual:Hooks/LogPageValidTypes" title="Special:MyLanguage/Manual:Hooks/LogPageValidTypes">LogPageValidTypes</a><span style="display:none"><a href="/wiki/Manual:Hooks/LogPageValidTypes" title="Manual:Hooks/LogPageValidTypes"> </a></span>, <a href="/wiki/Special:MyLanguage/Manual:Hooks/LogPageLogName" title="Special:MyLanguage/Manual:Hooks/LogPageLogName">LogPageLogName</a><span style="display:none"><a href="/wiki/Manual:Hooks/LogPageLogName" title="Manual:Hooks/LogPageLogName"> </a></span>, <a href="/wiki/Special:MyLanguage/Manual:Hooks/LogPageLogHeader" title="Special:MyLanguage/Manual:Hooks/LogPageLogHeader">LogPageLogHeader</a><span style="display:none"><a href="/wiki/Manual:Hooks/LogPageLogHeader" title="Manual:Hooks/LogPageLogHeader"> </a></span> and <a href="/wiki/Special:MyLanguage/Manual:Hooks/LogPageActionText" title="Special:MyLanguage/Manual:Hooks/LogPageActionText">LogPageActionText</a><span style="display:none"><a href="/wiki/Manual:Hooks/LogPageActionText" title="Manual:Hooks/LogPageActionText"> </a></span>.</li></ol>
+</section><div class="mw-heading mw-heading2 section-heading" onclick="mfTempOpenSection(3)"><span class="indicator mf-icon mf-icon-expand mf-icon--small"></span><h2 id="See_also">See also</h2><span class="mw-editsection">
+<a role="button" href="/w/index.php?title=Manual:Setup.php&amp;action=edit&amp;section=3" title="Edit section: See also" class="cdx-button cdx-button--size-large cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--icon-only cdx-button--weight-quiet ">
+    <span class="minerva-icon minerva-icon--edit"></span>
+<span>edit</span>
+</a>
+
+</span>
+
+</div><section class="mf-section-3 collapsible-block" id="mf-section-3">
+<ul><li><a href="/wiki/Special:MyLanguage/Manual:Code" title="Special:MyLanguage/Manual:Code">Manual:Code</a><span style="display:none"><a href="/wiki/Manual:Code" title="Manual:Code"> </a></span></li>
+<li><a href="/wiki/Special:MyLanguage/Manual:WebStart.php" title="Special:MyLanguage/Manual:WebStart.php">Manual:WebStart.php</a><span style="display:none"><a href="/wiki/Manual:WebStart.php" title="Manual:WebStart.php"> </a></span></li></ul>
+<!-- 
+NewPP limit report
+Parsed by mw‐api‐int.eqiad.main‐7d79bcddb‐q2b64
+Cached time: 20250506170138
+Cache expiry: 2592000
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.203 seconds
+Real time usage: 0.291 seconds
+Preprocessor visited node count: 933/1000000
+Post‐expand include size: 7302/2097152 bytes
+Template argument size: 2334/2097152 bytes
+Highest expansion depth: 14/100
+Expensive parser function count: 6/500
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 2398/5000000 bytes
+Lua time usage: 0.024/10.000 seconds
+Lua memory usage: 1311492/52428800 bytes
+Number of Wikibase entities loaded: 0/500
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  132.238      1 -total
+ 64.69%   85.541     11 Template:Ll
+ 63.50%   83.965      1 Template:MW_file
+ 34.58%   45.729     22 Template:Translatable
+ 26.81%   35.455     13 Template:Pagelang
+ 12.14%   16.060      2 Template:TNTN
+ 10.27%   13.581      2 Template:IfNotTranslation
+  5.63%    7.451      2 Template:Str_sub
+  4.34%    5.742      1 Translations:Manual:Code/Page_display_title/en
+  4.20%    5.560      1 Template:MW_stable_release_git
+-->
+
+<!-- Saved in parser cache with key mediawikiwiki:pcache:28348:|#|:idhash:canonical and timestamp 20250506170138 and revision id 6695689. Rendering was triggered because: api-parse
+ -->
+</section></div>
+<!-- MobileFormatter took 0.002 seconds --><!--esi <esi:include src="/esitest-fa8a495983347898/content" /> --><noscript><img src="https://m.mediawiki.org/wiki/Special:CentralAutoLogin/start?type=1x1&amp;usesul3=1" alt="" width="1" height="1" style="border: none; position: absolute;"></noscript>
+<div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://www.mediawiki.org/w/index.php?title=Manual:Setup.php&amp;oldid=6695689">https://www.mediawiki.org/w/index.php?title=Manual:Setup.php&amp;oldid=6695689</a>"</div></div>
+				
+			</div>
+			<div class="post-content" id="page-secondary-actions">
+			</div>
+		</main>
+		<footer class="mw-footer minerva-footer" role="contentinfo">
+		  <a class="last-modified-bar" href="/w/index.php?title=Manual:Setup.php&amp;action=history">
+  	<div class="post-content last-modified-bar__content">
+  		 <span class="minerva-icon minerva-icon-size-medium minerva-icon--modified-history"></span>
+ 
+  		<span class="last-modified-bar__text modified-enhancement"
+  				data-user-name="Shirayuki"
+  				data-user-gender="male"
+  				data-timestamp="1723509241">
+  				<span>Last edited on 13 August 2024, at 00:34</span>
+  		</span>
+  		 <span class="minerva-icon minerva-icon-size-small minerva-icon--expand"></span>
+ 
+  	</div>
+  </a>
+	<div class="post-content footer-content">
+			
+			<div id="p-lang">
+	    <h4>Languages</h4>
+	    <section>
+	        <ul id="p-variants" class="minerva-languages"></ul>
+	        <ul class="minerva-languages"></ul>
+	        <p>This page is not available in other languages.</p>
+	    </section>
+	</div>
+	<div class="minerva-footer-logo">
+				<img src="/static/images/mobile/copyright/mediawikiwiki-wordmark.svg" alt="MediaWiki" width="120" height="18"
+	style="width: 7.5em; height: 1.125em;"/>
+
+
+				<ul id="footer-icons" class="footer-icons">
+	<li id="footer-copyrightico"><a href="https://www.wikimedia.org/" class="cdx-button cdx-button--fake-button cdx-button--size-large cdx-button--fake-button--enabled"><picture><source media="(min-width: 500px)" srcset="/static/images/footer/wikimedia-button.svg" width="84" height="29"><img src="/static/images/footer/wikimedia.svg" width="25" height="25" alt="Wikimedia Foundation" lang="en" loading="lazy"></picture></a></li>
+	<li id="footer-poweredbyico"><a href="https://www.mediawiki.org/" class="cdx-button cdx-button--fake-button cdx-button--size-large cdx-button--fake-button--enabled"><picture><source media="(min-width: 500px)" srcset="/w/resources/assets/poweredby_mediawiki.svg" width="88" height="31"><img src="/w/resources/assets/mediawiki_compact.svg" alt="Powered by MediaWiki" lang="en" width="25" height="25" loading="lazy"></picture></a></li>
+</ul>
+			</div>
+			<ul id="footer-info" class="footer-info hlist hlist-separated">
+	<li id="footer-info-lastmod"> This page was last edited on 13 August 2024, at 00:34.</li>
+	<li id="footer-info-copyright">Text is available under the <a rel="nofollow" class="external text" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike License</a>; additional terms may apply. Text in <a class="external text" href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents">the Help: namespace</a> is available under the <a rel="nofollow" class="external text" href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons CC0 License</a>.
+By using this site, you agree to the <a class="external text" href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Terms_of_Use">Terms of Use</a> and <a class="external text" href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy">Privacy Policy</a>.</li>
+</ul>
+
+			<ul id="footer-places" class="footer-places hlist hlist-separated">
+	<li id="footer-places-privacy"><a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy">Privacy policy</a></li>
+	<li id="footer-places-about"><a href="/wiki/Project:About">About mediawiki.org</a></li>
+	<li id="footer-places-disclaimers"><a href="/wiki/Project:General_disclaimer">Disclaimers</a></li>
+	<li id="footer-places-wm-codeofconduct"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Code_of_Conduct">Code of Conduct</a></li>
+	<li id="footer-places-developers"><a href="https://developer.wikimedia.org">Developers</a></li>
+	<li id="footer-places-statslink"><a href="https://stats.wikimedia.org/#/www.mediawiki.org">Statistics</a></li>
+	<li id="footer-places-cookiestatement"><a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Cookie_statement">Cookie statement</a></li>
+	<li id="footer-places-terms-use"><a href="https://foundation.m.wikimedia.org/wiki/Special:MyLanguage/Policy:Terms_of_Use">Terms of Use</a></li>
+	<li id="footer-places-desktop-toggle"><a id="mw-mf-display-toggle" href="//www.mediawiki.org/w/index.php?title=Manual:Setup.php&amp;mobileaction=toggle_view_desktop" data-event-name="switch_to_desktop">Desktop</a></li>
+</ul>
+
+			</div>
+		</footer>
+			</div>
+</div>
+<div class="mw-portlet mw-portlet-dock-bottom emptyPortlet" id="p-dock-bottom">
+        <ul>
+                
+        </ul>
+</div>
+<div class="mw-notification-area" data-mw="interface"></div>
+<!-- v:8.3.1 -->
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgHostname":"mw-web.eqiad.main-cfc994776-s26rd","wgBackendResponseTime":109,"wgPageParseReport":{"limitreport":{"cputime":"0.203","walltime":"0.291","ppvisitednodes":{"value":933,"limit":1000000},"postexpandincludesize":{"value":7302,"limit":2097152},"templateargumentsize":{"value":2334,"limit":2097152},"expansiondepth":{"value":14,"limit":100},"expensivefunctioncount":{"value":6,"limit":500},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":2398,"limit":5000000},"entityaccesscount":{"value":0,"limit":500},"timingprofile":["100.00%  132.238      1 -total"," 64.69%   85.541     11 Template:Ll"," 63.50%   83.965      1 Template:MW_file"," 34.58%   45.729     22 Template:Translatable"," 26.81%   35.455     13 Template:Pagelang"," 12.14%   16.060      2 Template:TNTN"," 10.27%   13.581      2 Template:IfNotTranslation","  5.63%    7.451      2 Template:Str_sub","  4.34%    5.742      1 Translations:Manual:Code/Page_display_title/en","  4.20%    5.560      1 Template:MW_stable_release_git"]},"scribunto":{"limitreport-timeusage":{"value":"0.024","limit":"10.000"},"limitreport-memusage":{"value":1311492,"limit":52428800}},"cachereport":{"origin":"mw-api-int.eqiad.main-7d79bcddb-q2b64","timestamp":"20250506170138","ttl":2592000,"transientcontent":false}}});});</script>
+<script>(window.NORLQ=window.NORLQ||[]).push(function(){var ns,i,p,img;ns=document.getElementsByTagName('noscript');for(i=0;i<ns.length;i++){p=ns[i].nextSibling;if(p&&p.className&&p.className.indexOf('lazy-image-placeholder')>-1){img=document.createElement('img');img.setAttribute('src',p.getAttribute('data-mw-src'));img.setAttribute('width',p.getAttribute('data-width'));img.setAttribute('height',p.getAttribute('data-height'));img.setAttribute('alt',p.getAttribute('data-alt'));p.parentNode.replaceChild(img,p);}}});</script>
+</body>
+</html>

@@ -37,14 +37,14 @@ A new property `dependsOn` can be optionally added to the `devcontainer-feature.
 
 > This property is similar to the existing `installsAfter` property, with the key distinctions that `installsAfter` (1) is **not** recursive, (2) indicates a soft dependency to influence installation order **if and only if a given Feature is already set to be installed via a user-defined Feature or transitively through a user-defined Feature**, and (3) Features indicated by `installsAfter` can not provide options, nor are they able to be pinned to a specific version tag or digest.
 
-The installation order is subject to the algorithm set forth in this document. Where there is ambiguity, it is up to the orchestrating tool to decide the order of installation. Implementing tools should provide a consistent installation order in instances of ambiguity (i.e sort alphanumerically by identifier).
+The installation order is subject to the algorithm set forth in this document. Where there is ambiguity, it is up to the orchestrating tool to decide the order of installation. Implementing tools should provide a consistent installation order in instances of ambiguity (i.e. sort alphanumerically by identifier).
 
 | Property | Type | Description |
 |----------|------|-------------|
 | `dependsOn` | `object` | The ID and options of the Feature dependency.  Pinning to version tags or digests are honored.  When published, the ID must refer to either a Feature (1) published to an OCI registry, (2) a Feature Tgz URI, or (3) a Feature in the local file tree (**).  Otherwise, IDs follow the same semantics of the `features` object in `devcontainer.json`.  (a.k.a "Hard Dependency") |
 
 
-(**) Deprecated Feature identifiers (i.e GitHub Release) are not supported and the presence of this property may be considered a fatal error or ignored. For [local Features (ie: during development)](https://containers.dev/implementors/features-distribution/#addendum-locally-referenced), you may also depend on other local Features by providing a relative path to the Feature, relative to folder containing the active `devcontainer.json`. This behavior of Features within this property again mirror the `features` object in `devcontainer.json`.
+(**) Deprecated Feature identifiers (i.e. GitHub Release) are not supported and the presence of this property may be considered a fatal error or ignored. For [local Features (i.e. during development)](https://containers.dev/implementors/features-distribution/#addendum-locally-referenced), you may also depend on other local Features by providing a relative path to the Feature, relative to folder containing the active `devcontainer.json`. This behavior of Features within this property again mirror the `features` object in `devcontainer.json`.
 
 An example `devcontainer-feature.json` file with a dependency on four other published Features:
 
@@ -103,7 +103,7 @@ An example manifest with the `dev.containers.metadata` annotation:
 }
 ```
 
-> If no annotation is present on a Feature's manifest, the orchestrating tool MUST fallback to downloading and extracting the Feature's contents to read the metadata properties. Failure to do so may result in a Feature being installed without its dependencies (eg: `installsAfter`).
+> If no annotation is present on a Feature's manifest, the orchestrating tool MUST fallback to downloading and extracting the Feature's contents to read the metadata properties. Failure to do so may result in a Feature being installed without its dependencies (e.g. `installsAfter`).
 
 In summary, supporting tools may choose to identify the dependencies of the declared user-defined Features by fetching the manifest of the Features and reading the `dependsOn` and `installsAfter` properties from the `dev.containers.metadata` annotation.  This will allow the orchestrating tool to recursively resolve all dependencies without having to download and extract each Feature's tarball. 
 
@@ -186,7 +186,7 @@ The `installsAfter` property is a "soft dependency" that influences the installa
 
 From an implementation point of view, `installsAfter` nodes may be added as a seperate set of directed edges, just as `dependsOn` nodes are added as directed edges (see **(B1)**).  Before round-based installation and sorting **(B3)**, an orchestrating tool should remove all `installsAfter` directed edges that do not correspond with a Feature in the `worklist` that is set to be installed.  In each round, a Feature can then be installed if all its requirements (both `dependsOn` and `installsAfter` dependencies) have been fulfilled in previous rounds.
 
-An implemention should fail the dependency resolution step if the evaluation of the `installsAfter` property results in an inconsistent state (eg: a circular dependency).
+An implemention should fail the dependency resolution step if the evaluation of the `installsAfter` property results in an inconsistent state (e.g. a circular dependency).
 
 ### overrideFeatureInstallOrder
 
@@ -220,7 +220,7 @@ This property must not influence the dependency relationship as defined by the d
 
 Similar to `installsAfter`, this property's members may not provide options, nor are they able to be pinned to a specific version tag or digest.  This is unchanged from the current specification.
 
-If a Feature is indicated in `overrideFeatureInstallOrder` but not a member of the dependency graph (it is not queued to be installed), the orchestrating tool may fail the dependency resolution step.
+If a Feature is indicated in `overrideFeatureInstallOrder` but not a member of the dependency graph (i.e. it is not queued to be installed), the orchestrating tool may fail the dependency resolution step.
 
 ## Additional Remarks
 
@@ -230,7 +230,7 @@ Features should be authored with the following considerations:
 
 - Features should be authored with the assumption that they will be installed in any order, so long as the dependencies are met at some point beforehand.
 - Since two Features with different options are considered different, a single Feature may be installed more than once.  Features should be idempotent.
-- Features that require updating shared state in the container (eg: updating the `$PATH`), should be aware that the same Feature may be run multiple times. Consider a method for previous runs of the Feature to communicate with future runs, updating the shared state in the intended way.
+- Features that require updating shared state in the container (e.g. updating the `$PATH`), should be aware that the same Feature may be run multiple times. Consider a method for previous runs of the Feature to communicate with future runs, updating the shared state in the intended way.
 
 
 ### Image Metadata

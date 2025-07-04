@@ -400,7 +400,7 @@ If a Feature is indicated in `overrideFeatureInstallOrder` but not a member of t
 > 
 > - If the [`devcontainer.json` contains an `overrideFeatureInstallOrder`](#the-overridefeatureinstallorder-property).
 > 
-> #### (3) Round-based sorting
+> ### (3) Round-based sorting
 > 
 > Perform a sort on the result of **(1)** in rounds. This sort will rearrange Features, producing a sorted list of Features to install.  The sort will be performed as follows: 
 > 

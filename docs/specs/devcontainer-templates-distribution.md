@@ -11,11 +11,11 @@ Goals include:
 
 ## Source code
 
-A Template's source code is stored in a git repository.
+A Template's source code is stored in a Git repository.
 
-For ease of authorship and maintenance, [1..n] Templates can share a single git repository. This set of Templates is referred to as a "collection," and will share the same [`devcontainer-collection.json`](#devcontainer-collection.json) file and "namespace" (eg. `<owner>/<repo>`).
+For ease of authorship and maintenance, [1..n] Templates can share a single Git repository. This set of Templates is referred to as a "collection," and will share the same [`devcontainer-collection.json`](#devcontainer-collection.json) file and "namespace" (eg. `<owner>/<repo>`).
 
-> **Note:** Templates and [Features](./devcontainer-features.md) should be placed in different git repositories. 
+> **Note:** Templates and [Features](./devcontainer-features.md) should be placed in different Git repositories. 
 
 Source code for a set of Templates follows the example file structure below:
 
@@ -114,7 +114,7 @@ done
 
 ```
 
-The "namespace" is the globally identifiable name for the collection of Templates. (eg: `owner/repo` for the source code's git repository).
+The "namespace" is the globally identifiable name for the collection of Templates. (eg: `owner/repo` for the source code's Git repository).
 
 The auto-generated `devcontainer-collection.json` is pushed to the registry with the same `namespace` as above and no accompanying `template` name. The collection file is always tagged as `latest`.
 

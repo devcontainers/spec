@@ -15,9 +15,9 @@ Goals include:
 
 ## Source code
 
-Features source code is stored in a git repository.
+Features source code is stored in a Git repository.
 
-For ease of authorship and maintenance, [1..n] features can share a single git repository. This set of features is referred to as a "collection," and will share the same [`devcontainer-collection.json`](#devcontainer-collection.json) file and "namespace" (eg. `<owner>/<repo>`).
+For ease of authorship and maintenance, [1..n] features can share a single Git repository. This set of features is referred to as a "collection," and will share the same [`devcontainer-collection.json`](#devcontainer-collection.json) file and "namespace" (eg. `<owner>/<repo>`).
 
 Source code for the set follows the example file structure below:
 
@@ -117,7 +117,7 @@ done
 
 ```
 
-The "namespace" is the globally identifiable name for the collection of Features. (eg: `owner/repo` for the source code's git repository).
+The "namespace" is the globally identifiable name for the collection of Features. (eg: `owner/repo` for the source code's Git repository).
 
 The auto-generated `devcontainer-collection.json` is pushed to the registry with the same `namespace` as above and no accompanying `feature` name. The collection file is always tagged as `latest`.
 

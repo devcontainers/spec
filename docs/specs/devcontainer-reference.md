@@ -283,4 +283,4 @@ Each entry in the `object` will be run in parallel during that lifecycle step.
 
 #### **Project Workspace Folder**
 
-The **project workspace folder** is where an implementing tool should begin to search for `devcontainer.json` files. If the target project on disk is using git, the **project workspace folder** is typically the root of the git repository. 
+The **project workspace folder** is where an implementing tool should begin to search for `devcontainer.json` files. If the target project on disk is using Git, the **project workspace folder** is typically the root of the Git repository. 

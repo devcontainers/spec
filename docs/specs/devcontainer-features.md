@@ -29,13 +29,13 @@ All properties are optional **except for `id`, `version`, and `name`**.
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
-| `id` | string | **Required**: Identifier of the Feature.  Must be unique in the context of the repository where the Feature exists and must match the name of the directory where the `devcontainer-feature.json` resides. ID should be provided lowercase. |
+| `id` | string | **Required**: The identifier of the Feature.  Must be unique in the context of the repository where the Feature exists and must match the name of the directory where the `devcontainer-feature.json` resides. ID should be provided lowercase. |
 | `version` | string | **Required**: The semantic version of the Feature (e.g: `1.0.0`). |
 | `name` | string | **Required**: A "human-friendly" display name for the Feature. |
-| `description` | string | Description of the Feature. |
-| `documentationURL` | string | Url that points to the documentation of the Feature. |
-| `licenseURL` | string | Url that points to the license of the Feature. |
-| `keywords` | array | List of strings relevant to a user that would search for this Feature. |
+| `description` | string | The description of the Feature. |
+| `documentationURL` | string | A URL that points to the documentation of the Feature. |
+| `licenseURL` | string | A URL that points to the license of the Feature. |
+| `keywords` | array | A list of strings relevant to a user that would search for this Feature. |
 | `options` | object | A map of options that will be passed as environment variables to the execution of the script. |
 | `containerEnv` | object | A set of name value pairs that sets or overrides environment variables. |
 | `privileged` | boolean | Sets [privileged mode](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) for the container (required by things like docker-in-docker) when the Feature is used. |
@@ -45,8 +45,8 @@ All properties are optional **except for `id`, `version`, and `name`**.
 | `entrypoint` | string | Set if the Feature requires an "entrypoint" script that should fire at container start up. |
 | `customizations` | object | Product specific properties, each namespace under `customizations` is treated as a separate set of properties. For each of this sets the object is parsed, values are replaced while arrays are set as a union. |
 | `dependsOn` | `object` | An object (\**)  of Feature dependencies that **must** be satisified before this Feature is installed. Elements follow the same semantics of the `features` object in `devcontainer.json`. [See *Installation Order* for further information](#installation-order).  |
-| `installsAfter` | array | Array of ID's of Features (omitting a version tag) that should execute before this one. Allows control for Feature authors on soft dependencies between different Features. [See *Installation Order* for further information](#installation-order). |
-| `legacyIds` | array | Array of old IDs used to publish this Feature. The property is useful for renaming a currently published Feature within a single namespace. |
+| `installsAfter` | array | An array of IDs of Features (omitting a version tag) that should execute before this one. Allows control for Feature authors on soft dependencies between different Features. [See *Installation Order* for further information](#installation-order). |
+| `legacyIds` | array | An array of old IDs used to publish this Feature. The property is useful for renaming a currently published Feature within a single namespace. |
 | `deprecated` | boolean | Indicates that the Feature is deprecated, and will not receive any further updates/support. This property is intended to be used by the supporting tools for highlighting Feature deprecation. |
 | `mounts` | object | Defaults to unset. Cross-orchestrator way to add additional mounts to a container. Each value is an object that accepts the same values as the [Docker CLI `--mount` flag](https://docs.docker.com/engine/reference/commandline/run/#mount). The Pre-defined [devcontainerId](./devcontainerjson-reference.md/#variables-in-devcontainerjson) variable may be referenced in the value. For example:<br />`"mounts": [{ "source": "dind-var-lib-docker", "target": "/var/lib/docker", "type": "volume" }]` |
 
@@ -93,12 +93,12 @@ The options property is contains a map of option IDs and their related configura
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
-| `optionId` | string | ID of the option that is converted into an all-caps environment variable with the selected value in it. |
-| `optionId.type` | string | Type of the option. Valid types are currently: `boolean`, `string` |
+| `optionId` | string | The ID of the option that is converted into an all-caps environment variable with the selected value in it. |
+| `optionId.type` | string | The type of the option. Valid types are currently: `boolean`, `string` |
 | `optionId.proposals` | array | A list of suggested string values. Free-form values **are** allowed. Omit when using `optionId.enum`. |
 | `optionId.enum` | array | A strict list of allowed string values. Free-form values are **not** allowed. Omit when using `optionId.proposals`. |
 | `optionId.default` | string or boolean | Default value for the option. |
-| `optionId.description` | string | Description for the option. |
+| `optionId.description` | string | A description for the option. |
 
 ### User environment variables
 

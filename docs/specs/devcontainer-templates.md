@@ -27,16 +27,16 @@ The properties of the file are as follows:
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
-| `id` | string | ID of the Template. The `id` should be unique in the context of the repository/published package where the Template exists and must match the name of the directory where the `devcontainer-template.json` resides. |
+| `id` | string | The ID of the Template. The `id` should be unique in the context of the repository/published package where the Template exists and must match the name of the directory where the `devcontainer-template.json` resides. |
 | `version` | string | The semantic version of the Template. |
-| `name` | string | Name of the Template. |
-| `description` | string | Description of the Template. |
-| `documentationURL` | string | Url that points to the documentation of the Template. |
-| `licenseURL` | string | Url that points to the license of the Template. |
+| `name` | string | The name of the Template. |
+| `description` | string | The description of the Template. |
+| `documentationURL` | string | A URL that points to the documentation of the Template. |
+| `licenseURL` | string | A URL that points to the license of the Template. |
 | [`options`](#the-options-property) | object | A map of options that the supporting tools should use to populate different configuration options for the Template. |
 | `platforms` | array | Languages and platforms supported by the Template. |
-| `publisher` | string | Name of the publisher/maintainer of the Template. |
-| `keywords` | array | List of strings relevant to a user that would search for this Template. |
+| `publisher` | string | The name of the publisher/maintainer of the Template. |
+| `keywords` | array | A list of strings relevant to a user that would search for this Template. |
 | [`optionalPaths`](#the-optionalpaths-property) | array | An array of files or directories that tooling may consider "optional" when applying a Template. Directories are indicated with a trailing `/*`, (eg: `.github/*`).
 
 ### The `options` property
@@ -58,9 +58,9 @@ The `options` property contains a map of option IDs and their related configurat
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
-| `optionId` | string | ID of the option used by the supporting tools to replace the selected value in the files within the sub-directory of the Template. |
-| `optionId.type` | string | Type of the option. Valid types are currently: `boolean`, `string` |
-| `optionId.description` | string | Description for the option. |
+| `optionId` | string | The ID of the option used by the supporting tools to replace the selected value in the files within the sub-directory of the Template. |
+| `optionId.type` | string | The type of the option. Valid types are currently: `boolean`, `string` |
+| `optionId.description` | string | A description for the option. |
 | `optionId.proposals` | array | A list of suggested string values. Free-form values **are** allowed. Omit when using `optionId.enum`. |
 | `optionId.enum` | array | A strict list of allowed string values. Free-form values are **not** allowed. Omit when using `optionId.proposals`. |
 | `optionId.default` | string | Default value for the option. |

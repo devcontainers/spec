@@ -108,7 +108,7 @@ Feature scripts run as the `root` user and sometimes need to know which user acc
 
 Additionally, the home folders of the two users are passed to the Feature scripts as `_REMOTE_USER_HOME` and `_CONTAINER_USER_HOME` environment variables.
 
-The container user can be set with `containerUser` in the devcontainer.json and image metadata, `user` in the docker-compose.yml, `USER` in the Dockerfile, and can be passed down from the base image.
+The container user can be set with `containerUser` in `devcontainer.json` and image metadata, `user` in the docker-compose.yml, `USER` in the Dockerfile, and can be passed down from the base image.
 
 ### Dev Container ID
 

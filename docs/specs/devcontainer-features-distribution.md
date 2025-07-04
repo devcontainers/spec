@@ -108,11 +108,11 @@ FEATURE=go
 
 ARTIFACT_PATH=devcontainer-feature-go.tgz
 
-for VERSION in 1  1.2  1.2.3  latest
+for VERSION in 1 1.2 1.2.3 latest
 do
     oras push ${REGISTRY}/${NAMESPACE}/${FEATURE}:${VERSION} \
-            --manifest-config /dev/null:application/vnd.devcontainers \
-                             ./${ARTIFACT_PATH}:application/vnd.devcontainers.layer.v1+tar
+        --manifest-config /dev/null:application/vnd.devcontainers \
+        ./${ARTIFACT_PATH}:application/vnd.devcontainers.layer.v1+tar
 done
 
 ```
@@ -127,8 +127,8 @@ REGISTRY=ghcr.io
 NAMESPACE=devcontainers/features
 
 oras push ${REGISTRY}/${NAMESPACE}:latest \
-        --manifest-config /dev/null:application/vnd.devcontainers \
-                            ./devcontainer-collection.json:application/vnd.devcontainers.collection.layer.v1+json
+    --manifest-config /dev/null:application/vnd.devcontainers \
+    ./devcontainer-collection.json:application/vnd.devcontainers.collection.layer.v1+json
 ```
 
 Additionally, an [annotation](https://github.com/opencontainers/image-spec/blob/main/annotations.md) named `dev.containers.metadata` should be populated on the manifest when published by an implementing tool.  This annotation is the escaped JSON object of the entire `devcontainer-feature.json` as it appears during the [packaging stage](https://containers.dev/implementors/features-distribution/#packaging).  

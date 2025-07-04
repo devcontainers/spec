@@ -168,7 +168,7 @@ See [`workspaceMount` and `workspaceFolder`](devcontainerjson-reference.md#image
 Users control the permissions of applications executed in the containers, allowing the developer to control them. The specification takes into account two types of user definitions:
 
 * **Container User**: The user that will be used for all operations that run inside a container. This concept is native to containers. It may be set in the container image, using the `containerUser` property for  **image** and **dockerfile** scenarios, or using an orchestratric specific property like `user` property in Docker Compose files.
-* **Remote User**: Used to run the [lifecycle](#lifecycle) scripts inside the container. This is also the user tools and editors that connect to the container should use to run their processes. This concept is not native to containers. Set using the `remoteEnv` property in all cases and defaults to the container user.
+* **Remote User**: Used to run the [lifecycle](#lifecycle) scripts inside the container. This is also the user tools and editors that connect to the container should use to run their processes. This concept is not native to containers. Set using the `remoteUser` property in all cases and defaults to the container user.
 
 This separation allows the ENTRYPOINT for the image to execute with different permissions than the developer and allows for developers to switch users without recreating their containers.
 

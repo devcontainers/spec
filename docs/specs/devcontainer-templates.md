@@ -65,7 +65,7 @@ The `options` property contains a map of option IDs and their related configurat
 | `optionId.enum` | array | A strict list of allowed string values. Free-form values are **not** allowed. Omit when using `optionId.proposals`. |
 | `optionId.default` | string | Default value for the option. |
 
-> `Note`: The `options` must be unique for every `devcontainer-template.json`
+> **Note:** The `options` must be unique for every `devcontainer-template.json`
 
 ### The `optionalPaths` property
 

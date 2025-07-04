@@ -72,7 +72,7 @@ For each lifecycle hook (in [Feature installation order](https://containers.dev/
 
 If a Feature provides a given command with the [object syntax](/docs/specs/devcontainerjson-reference.md#formatting-string-vs-array-properties), all commands within that group are executed in parallel, but still blocking commands from subsequent Features and/or the `devcontainer.json`.
 
-> NOTE: These properties are stored within [image metadata](https://github.com/devcontainers/spec/blob/joshspicer/lifecycle_hook_feature_spec/docs/specs/devcontainer-reference.md#merge-logic).
+> **Note:** These properties are stored within [image metadata](https://github.com/devcontainers/spec/blob/joshspicer/lifecycle_hook_feature_spec/docs/specs/devcontainer-reference.md#merge-logic).
 
 ### The `options` property
 
@@ -190,7 +190,7 @@ Below is a valid `features` object provided as an example.
 }
 ```
 
-> Note: The `:latest` version annotation is added implicitly if omitted. To pin to a specific package version ([example](https://github.com/devcontainers/features/pkgs/container/features/go/versions)), append it to the end of the Feature.
+> **Note:** The `:latest` version annotation is added implicitly if omitted. To pin to a specific package version ([example](https://github.com/devcontainers/features/pkgs/container/features/go/versions)), append it to the end of the Feature.
 
 An option's value can be provided as either a `string` or `boolean`, and should match what is expected by the Feature in the `devcontainer-feature.json` file.
 

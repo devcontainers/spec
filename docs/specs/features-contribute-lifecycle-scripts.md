@@ -24,7 +24,7 @@ Note that `initializeCommand` is omitted, pending further discussions around a s
 
 As with all lifecycle hooks, commands are executed from the context (cwd) of the [project workspace folder](https://containers.dev/implementors/spec/#project-workspace-folder). 
 
-> NOTE: To use any assets (a script, etc...) embedded within a Feature in a lifecycle hook property, it is the Feature author's reponsibility to copy that assert to somewhere on the container where it will persist (outside of `/tmp`.) Implementations are not required to persist Feature install scripts beyond the initial build.
+> **Note:** To use any assets (a script, etc...) embedded within a Feature in a lifecycle hook property, it is the Feature author's reponsibility to copy that assert to somewhere on the container where it will persist (outside of `/tmp`.) Implementations are not required to persist Feature install scripts beyond the initial build.
 
 All other semantics match the existing [Lifecycle Scripts](https://containers.dev/implementors/json_reference/#lifecycle-scripts) and [lifecycle script parallel execution](https://containers.dev/implementors/spec/#parallel-exec) behavior exactly.
 

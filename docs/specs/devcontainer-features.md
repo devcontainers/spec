@@ -322,7 +322,7 @@ The `overrideFeatureInstallOrder` property of `devcontainer.json` is an array of
 
 > This property may not indicate an installation order that is inconsistent with the resolved dependency graph (see [dependency algorithm](#dependency-installation-order-algorithm)).  If the `overrideFeatureInstallOrder` property is inconsistent with the dependency graph, the implementing tool should fail the dependency resolution step.
 
-This evaluation is performed by assigning a [`roundPriority`](#2-assigning-round-priority) to all nodes that match match the Feature identifier (version omitted) present in the property. 
+This evaluation is performed by assigning a [`roundPriority`](#2-assigning-round-priority) to all nodes that match the Feature identifier (version omitted) present in the property. 
 
 For example, given `n` Features in the `overrideFeatureInstallOrder` array, the orchestrating tool should assign a `roundPriority` of `n - idx` to each Feature, where `idx` is the zero-based index of the Feature in the array.
 

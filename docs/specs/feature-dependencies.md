@@ -192,7 +192,7 @@ An implemention should fail the dependency resolution step if the evaluation of 
 
 The `overrideFeatureInstallOrder` property of `devcontainer.json` is an array of Feature IDs that are to be installed in descending priority order as soon as its dependencies outlined above are installed.  
 
-This evaluation is performed by assigning a [`roundPriority`](#b2-assigning-roundpriority) to all nodes that match match the Feature identifier present in the property. 
+This evaluation is performed by assigning a [`roundPriority`](#b2-assigning-roundpriority) to all nodes that match the Feature identifier present in the property. 
 
 For example, given `n` Features in the `overrideFeatureInstallOrder` array, the orchestrating tool should assign a `roundPriority` of `n - idx` to each Feature, where `idx` is the zero-based index of the Feature in the array.
 

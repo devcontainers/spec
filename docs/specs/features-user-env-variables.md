@@ -10,7 +10,7 @@ Below is the original proposal.
 
 Feature scripts run as the `root` user and sometimes need to know which user account the dev container will be used with.
 
-(The dev container user can be configured through the `remoteUser` property in the devcontainer.json. If that is not set, the container user will be used.)
+(The dev container user can be configured through the `remoteUser` property in `devcontainer.json`. If that is not set, the container user will be used.)
 
 ## Proposal
 
@@ -20,4 +20,4 @@ Additionally the home folders of the two users are passed to the feature scripts
 
 ## Notes
 
-- The container user can be set with `containerUser` in the devcontainer.json and image metadata, `user` in the docker-compose.yml, `USER` in the Dockerfile and can be passed down from the base image.
+- The container user can be set with `containerUser` in `devcontainer.json` and image metadata, `user` in the docker-compose.yml, `USER` in the Dockerfile and can be passed down from the base image.

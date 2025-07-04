@@ -8,7 +8,7 @@ Below is the original proposal.
 
 ## Goal
 
-Record dev container config and feature metadata in prebuilt images, such that, the image and the built-in features can be used with a devcontainer.json (image-, Dockerfile- or Docker Compose-based) that does not repeat the dev container config or feature metadata. Other tools should be able to record the same metadata without necessarily using features themselves.
+Record dev container config and feature metadata in prebuilt images, such that, the image and the built-in features can be used with a `devcontainer.json` file (image-, Dockerfile- or Docker Compose-based) that does not repeat the dev container config or feature metadata. Other tools should be able to record the same metadata without necessarily using features themselves.
 
 Current dev container config that can be recorded in the image: `mounts`, `onCreateCommand`, `updateContentCommand`, `postCreateCommand`, `postStartCommand`, `postAttachCommand`, `customizations`, `remoteUser`, `userEnvProbe`, `remoteEnv`, `containerEnv`, `overrideCommand`, `portsAttributes`, `otherPortsAttributes`, `forwardPorts`, `shutdownAction`, `updateRemoteUserUID` and `hostRequirements`.
 
@@ -18,7 +18,7 @@ We can add to these lists as we add more properties to the dev container configu
 
 ## Proposal
 
-We propose to add metadata to the image with the following structure using one entry per feature and devcontainer.json (see table below for the full list):
+We propose to add metadata to the image with the following structure using one entry per feature and `devcontainer.json` (see table below for the full list):
 
 ```
 [
@@ -45,7 +45,7 @@ The metadata is added to the image as a `devcontainer.metadata` label with a JSO
 
 ## Merge Logic
 
-To apply the metadata together with a user's devcontainer.json at runtime the following merge logic by property is used. The table also notes which properties are currently supported coming from the devcontainer.json and which from the feature metadata, this will change over time as we add more properties.
+To apply the metadata together with user's `devcontainer.json` at runtime the following merge logic by property is used. The table also notes which properties are currently supported coming from `devcontainer.json` and which from the feature metadata, this will change over time as we add more properties.
 
 | Property | Type/Format | Merge Logic | devcontainer.json | Feature Metadata |
 | -------- | ----------- | ----------- | :---------------: | :--------------: |
@@ -80,7 +80,7 @@ Variables in string values will be substituted at the time the value is applied.
 
 ## Additional devcontainer.json Properties
 
-We are adding support for `mounts`, `containerEnv`, `containerUser`, `init`, `privileged`, `capAdd`, and `securityOpt` to the devcontainer.json (also with Docker Compose) the same way these properties are already supported in the feature metadata.
+We are adding support for `mounts`, `containerEnv`, `containerUser`, `init`, `privileged`, `capAdd`, and `securityOpt` to `devcontainer.json` (also with Docker Compose) the same way these properties are already supported in the feature metadata.
 
 ## Notes
 

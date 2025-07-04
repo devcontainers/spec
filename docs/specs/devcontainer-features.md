@@ -355,11 +355,11 @@ If a Feature is indicated in `overrideFeatureInstallOrder` but not a member of t
 > ## Definitions
 > ### Definition: Feature Equality
 >
-> This specification defines two Features as equal if both Features point to the same exact contents and are executed with > the same options.
+> This specification defines two Features as equal if both Features point to the same exact contents and are executed with the same options.
 > 
-> **For Features published to an OCI registry**, two Feature are identical if their manifest digests are equal, and the > options executed against the Feature are equal (compared value by value).  Identical manifest digests implies that the tgz  contents of the Feature and its entire `devcontainer-feature.json` are identical.  If any of these conditions are not met,  the Features are considered not equal.
+> **For Features published to an OCI registry**, two Feature are identical if their manifest digests are equal, and the options executed against the Feature are equal (compared value by value).  Identical manifest digests implies that the tgz  contents of the Feature and its entire `devcontainer-feature.json` are identical.  If any of these conditions are not met,  the Features are considered not equal.
 > 
-> **For Features fetched by HTTPS URI**, two Features are identical if the contents of the tgz are identical (hash to the > same value), and the options executed against the Feature are equal (compared value by value).  If any of these conditions  are not met, the Features are considered not equal.
+> **For Features fetched by HTTPS URI**, two Features are identical if the contents of the tgz are identical (hash to the same value), and the options executed against the Feature are equal (compared value by value).  If any of these conditions  are not met, the Features are considered not equal.
 > 
 > **For local Features**, each Feature is considered unique and not equal to any other local Feature.
 > 
@@ -394,7 +394,7 @@ If a Feature is indicated in `overrideFeatureInstallOrder` but not a member of t
 > 
 > Each node in the graph has an implicit, default `roundPriority` of 0.
 > 
-> To influence installation order globally while still honoring the dependency graph of built in **(1)**, `roundPriority` values may be tweaks for each Feature.  When each round is calculated in **(3)**, only the Features equal to the max `roundPriority` of that set will be committed (the remaining will be > uncommitted and reevaulated in subsequent rounds).
+> To influence installation order globally while still honoring the dependency graph of built in **(1)**, `roundPriority` values may be tweaks for each Feature.  When each round is calculated in **(3)**, only the Features equal to the max `roundPriority` of that set will be committed (the remaining will be uncommitted and reevaulated in subsequent rounds).
 > 
 > The `roundPriority` is set to a non-zero value in the following instances:
 > 

@@ -184,7 +184,7 @@ Additional constraints exists when including local Features in a project:
 
 * The local Feature's sub-folder **must** contain at least a `devcontainer-feature.json` file and `install.sh` entrypoint script, mirroring the [previously outlined file structure](#Source-code).
 
-The relative path is provided using unix-style path syntax (eg `./myFeature`) regardless of the host operating system.
+The relative path is provided using Unix-style path syntax (eg `./myFeature`) regardless of the host operating system.
 
 An example project is illustrated below:
 

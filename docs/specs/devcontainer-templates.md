@@ -163,7 +163,7 @@ Suppose the `java` Template has the following `options` parameters declared in t
 }
 ```
 
-and it has the following `.devcontainer/devcontainer.json` file:
+...and it has the following `.devcontainer/devcontainer.json` file:
 
 ```json
 {

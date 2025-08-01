@@ -114,7 +114,7 @@ done
 
 ```
 
-The "namespace" is the globally identifiable name for the collection of Templates. (eg: `owner/repo` for the source code's git repository).
+The "namespace" is the globally identifiable name for the collection of Templates (e.g. `owner/repo` for the source code's git repository).
 
 The auto-generated `devcontainer-collection.json` is pushed to the registry with the same `namespace` as above and no accompanying `template` name. The collection file is always tagged as `latest`.
 

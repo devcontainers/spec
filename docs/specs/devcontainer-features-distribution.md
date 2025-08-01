@@ -117,7 +117,7 @@ done
 
 ```
 
-The "namespace" is the globally identifiable name for the collection of Features. (eg: `owner/repo` for the source code's git repository).
+The "namespace" is the globally identifiable name for the collection of Features (e.g. `owner/repo` for the source code's git repository).
 
 The auto-generated `devcontainer-collection.json` is pushed to the registry with the same `namespace` as above and no accompanying `feature` name. The collection file is always tagged as `latest`.
 
@@ -184,7 +184,7 @@ Additional constraints exists when including local Features in a project:
 
 * The local Feature's sub-folder **must** contain at least a `devcontainer-feature.json` file and `install.sh` entrypoint script, mirroring the [previously outlined file structure](#Source-code).
 
-The relative path is provided using unix-style path syntax (eg `./myFeature`) regardless of the host operating system.
+The relative path is provided using unix-style path syntax (e.g. `./myFeature`) regardless of the host operating system.
 
 An example project is illustrated below:
 

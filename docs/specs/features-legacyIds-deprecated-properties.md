@@ -60,7 +60,7 @@ We'd want to rename this Feature to `docker-outside-of-docker`. The source code 
 
 #### Changes to the Features distribution specification
 
-- [Tools implementing the Dev Container Features Distribution Specification](../docs/specs/features-distribution/#distribution) (eg: [Dev Container CLI](https://github.com/devcontainers/cli) and [Dev Container Publish GitHub Action](https://github.com/marketplace/actions/dev-container-publish)) will dual publish the old `id`s (defined by the `legacyIds` property), and the new `id`.
+- [Tools implementing the Dev Container Features Distribution Specification](../docs/specs/features-distribution/#distribution) (e.g. [Dev Container CLI](https://github.com/devcontainers/cli) and [Dev Container Publish GitHub Action](https://github.com/marketplace/actions/dev-container-publish)) will dual publish the old `id`s (defined by the `legacyIds` property), and the new `id`.
   - The [putManifestWithTags](https://github.com/devcontainers/cli/blob/main/src/spec-configuration/containerCollectionsOCIPush.ts#L172) will be modified. The same `tgz` file for the `id` will be pushed to the `id`s  mentioned by the `legacyIds` property for all the [tags](https://github.com/devcontainers/cli/blob/main/src/spec-configuration/containerCollectionsOCIPush.ts#L175).
 
 #### Supporting backwards compatibility for [`installsAfter`](../docs/specs/devcontainer-features.md#2-the-installsafter-feature-property) property

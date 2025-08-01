@@ -92,7 +92,7 @@ An OCI registry that implements the [OCI Artifact Distribution Specification](ht
 
 Each packaged feature is pushed to the registry following the naming convention `<registry>/<namespace>/<id>[:version]`, where version is the major, minor, and patch version of the Feature, according to the semver specification.
 
-> **Note:** The `namespace` is a unique identifier for the collection of Features.  There are no strict rules for the `namespace`; however, one pattern is to set `namespace` equal to source repository's `<owner>/<repo>`.  The `namespace` should be lowercase, following [the regex provided in the OCI specification](https://github.com/opencontainers/distribution-spec/blob/main/spec.md#pulling-manifests).
+> **Note:** `namespace` is a unique identifier for the collection of Features.  There are no strict rules for `namespace`; however, one pattern is to set `namespace` equal to source repository's `<owner>/<repo>`.  The `namespace` should be lowercase, following [the regex provided in the OCI specification](https://github.com/opencontainers/distribution-spec/blob/main/spec.md#pulling-manifests).
 
 A custom media type `application/vnd.devcontainers` and `application/vnd.devcontainers.layer.v1+tar` are used as demonstrated below.
 

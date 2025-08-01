@@ -314,7 +314,7 @@ The `installsAfter` property indicates a "soft dependency" that influences the i
 }
 ```
 
-In the snippet above, `myfeature` must be installed after `foo` and `bar` **if** the Feature is already queued to be installed. If `second` and `third` are not already queued to be installed, this dependency relationship should be ignored.
+In the snippet above, `myfeature` must be installed after `foo` and `bar` **if** the Feature is already queued to be installed. If `foo` and `bar` are not already queued to be installed, this dependency relationship should be ignored.
 
 #### The 'overrideFeatureInstallOrder' property
 

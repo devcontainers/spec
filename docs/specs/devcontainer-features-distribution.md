@@ -49,7 +49,7 @@ Source code for the set follows the example file structure below:
 
 ...where `src` is a directory containing a sub-folder with the name of the Feature (e.g. `src/dotnet` or `src/go`) with at least a file named `devcontainer-feature.json` that contains the Feature metadata, and an `install.sh` script that implementing tools will use as the entrypoint to install the Feature.
 
-Each sub-directory should be named such that it matches the `id` field of the `devcontainer-feature.json`.  Other files can also be included in the Feature's sub-directory, and will be included during the [packaging step](#packaging) alongside the two required files.  Any files that are not part of the Feature's sub-directory (e.g. outside of `src/dotnet`) will not included in the [packaging step](#packaging).
+Each sub-directory should be named such that it matches the `id` field of the `devcontainer-feature.json`.  Other files can also be included in the Feature's sub-directory, and will be included during the [packaging step](#packaging) alongside the two required files.  Any files that are not part of the Feature's sub-directory (e.g. outside of `src/dotnet`) will not be included in the [packaging step](#packaging).
 
 Optionally, a mirrored `test` directory can be included with an accompanying `test.sh` script. Implementing tools may use this to run tests against the given Feature.
 
@@ -117,7 +117,7 @@ done
 
 ```
 
-The "namespace" is the globally identifiable name for the collection of Features. (eg: `owner/repo` for the source code's git repository).
+The "namespace" is the globally identifiable name for the collection of Features (e.g. `owner/repo` for the source code's git repository).
 
 The auto-generated `devcontainer-collection.json` is pushed to the registry with the same `namespace` as above and no accompanying `feature` name. The collection file is always tagged as `latest`.
 
@@ -184,7 +184,7 @@ Additional constraints exists when including local Features in a project:
 
 * The local Feature's sub-folder **must** contain at least a `devcontainer-feature.json` file and `install.sh` entrypoint script, mirroring the [previously outlined file structure](#Source-code).
 
-The relative path is provided using unix-style path syntax (eg `./myFeature`) regardless of the host operating system.
+The relative path is provided using unix-style path syntax (e.g. `./myFeature`) regardless of the host operating system.
 
 An example project is illustrated below:
 

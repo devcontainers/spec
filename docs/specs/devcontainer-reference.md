@@ -94,7 +94,7 @@ Variables in string values will be substituted at the time the value is applied.
 - Passing the label as a command line argument:
 	- There is no size limit documented for labels, but the daemon returns an error when the request header is >500kb.
 	- The 500kb limit is shared, so we cannot use a second label in the same build to avoid it.
-	- If/when this becomes an issue we could embed the metadata as a file in the image (e.g., with a label indicating it).
+	- If/when this becomes an issue we could embed the metadata as a file in the image (e.g. with a label indicating it).
 
 # Orchestration options
 
@@ -139,9 +139,9 @@ A complete list of available metadata properties and their purposes can be found
 Environment variables can be set at different points in the dev container lifecycle. With this in mind, **development containers** support two classes of environment variables:
 
 * **Container**: These variables are part of the container when it is created and are available at all points in its lifecycle. This concept is native to containers and can be set in the container image itself, using `containerEnv` for **image** and **Dockerfile** scenarios or using orchestrator specific properties like `env` in **Docker Compose** files.
-* **Remote**: These variables should be set by a **development container** supporting tool as part of configuring its runtime environment. Users can set these using the `remoteEnv` property and implementing tools or services may add their own for specific scenarios (e.g., secrets). These variables can change during the lifetime of the container, and are added after the container's `ENTRYPOINT` has fired.
+* **Remote**: These variables should be set by a **development container** supporting tool as part of configuring its runtime environment. Users can set these using the `remoteEnv` property and implementing tools or services may add their own for specific scenarios (e.g. secrets). These variables can change during the lifetime of the container, and are added after the container's `ENTRYPOINT` has fired.
 
-The reason for this separation is it allows for the use of information not available at image build time and simplifies updating the environment for project/repository specific needs without modifying an image. With this in in mind, it's important to note that implementing tools should also support the [dynamic variable syntax](devcontainerjson-reference.md#variables-in-devcontainerjson) described in the metadata reference document.
+The reason for this separation is it allows for the use of information not available at image build time and simplifies updating the environment for project/repository specific needs without modifying an image. With this in mind, it's important to note that implementing tools should also support the [dynamic variable syntax](devcontainerjson-reference.md#variables-in-devcontainerjson) described in the metadata reference document.
 
 Another notable and important environment variable related property is **`userEnvProbe`**. Implementing tools should use this property to "probe" for expected environment variables using the specified type of shell. However, it does not specify that this type of shell needs to be used for all sub-processes (given the performance impact). Instead, "probed" environment variables should be merged with Remote environment variables for any processes the implementer injects after the container is created. This allows implementors to emulate developer expected behaviors around values added to their profile and rc files. 
 
@@ -159,7 +159,7 @@ Inside the container this mount defaults to `/workspace`.
 
 The default mount point for the source code can be set with the `workspaceMount` property for **image** and **dockerfile** scenarios or using the built in `mounts` property in **Docker Compose** files. This folder should point to the root of a repository (where the `.git` folder is found) so that source control operations work correctly inside the container.
 
-The `workspaceFolder` can then be set to the default folder inside the container that should used in the container. Typically this is either the mount point in the container, or a sub-folder under it. Allowing a sub-folder to be used is particularly important for monorepos given you need the `.git` folder to interact with source control but developers are typically are interacting with a specific sub-project within the overall repository. 
+The `workspaceFolder` can then be set to the default folder inside the container that should used in the container. Typically this is either the mount point in the container, or a sub-folder under it. Allowing a sub-folder to be used is particularly important for monorepos given you need the `.git` folder to interact with source control but developers are typically interacting with a specific sub-project within the overall repository. 
 
 See [`workspaceMount` and `workspaceFolder`](devcontainerjson-reference.md#image-or-dockerfile-specific-properties) for reference.
 
@@ -240,7 +240,7 @@ Any user facing processes should have remote [environment variables](#environmen
 
 For example, in the [CLI reference implementation](https://github.com/devcontainers/cli), this is the point in which anything executed with `devcontainer exec` would run.
 
-Typically, this is also the step where implementors would apply config or settings from the `customizations` section of the dev container metadata (e.g., VS Code installs extensions based on the `customizations.vscode.extensions` property). Examples of these can be found in the [supporting tools section](supporting-tools.md) reference. However, applying these at this point is not strictly required or mandated by this specification.
+Typically, this is also the step where implementors would apply config or settings from the `customizations` section of the dev container metadata (e.g. VS Code installs extensions based on the `customizations.vscode.extensions` property). Examples of these can be found in the [supporting tools section](supporting-tools.md) reference. However, applying these at this point is not strictly required or mandated by this specification.
 
 Once these final steps have occurred, implementing tools or services may connect to the environment as they see fit.
 

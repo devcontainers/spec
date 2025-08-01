@@ -30,7 +30,7 @@ All properties are optional **except for `id`, `version`, and `name`**.
 | Property | Type | Description |
 | :--- | :--- | :--- |
 | `id` | string | **Required**: Identifier of the Feature.  Must be unique in the context of the repository where the Feature exists and must match the name of the directory where the `devcontainer-feature.json` resides. ID should be provided lowercase. |
-| `version` | string | **Required**: The semantic version of the Feature (e.g: `1.0.0`). |
+| `version` | string | **Required**: The semantic version of the Feature (e.g. `1.0.0`). |
 | `name` | string | **Required**: A "human-friendly" display name for the Feature. |
 | `description` | string | Description of the Feature. |
 | `documentationURL` | string | Url that points to the documentation of the Feature. |
@@ -50,7 +50,7 @@ All properties are optional **except for `id`, `version`, and `name`**.
 | `deprecated` | boolean | Indicates that the Feature is deprecated, and will not receive any further updates/support. This property is intended to be used by the supporting tools for highlighting Feature deprecation. |
 | `mounts` | object | Defaults to unset. Cross-orchestrator way to add additional mounts to a container. Each value is an object that accepts the same values as the [Docker CLI `--mount` flag](https://docs.docker.com/engine/reference/commandline/run/#mount). The Pre-defined [devcontainerId](./devcontainerjson-reference.md/#variables-in-devcontainerjson) variable may be referenced in the value. For example:<br />`"mounts": [{ "source": "dind-var-lib-docker", "target": "/var/lib/docker", "type": "volume" }]` |
 
-(**) The ID must refer to either a Feature (1) published to an OCI registry, (2) a Feature Tgz URI, or (3) a Feature in the local file tree. Deprecated Feature identifiers (i.e GitHub Release) are not supported and the presence of this property may be considered a fatal error or ignored. For [local Features (ie: during development)](https://containers.dev/implementors/features-distribution/#addendum-locally-referenced), you may also depend on other local Features by providing a relative path to the Feature, relative to folder containing the active `devcontainer.json`. This behavior of Features within this property again mirror the `features` object in `devcontainer.json`.
+(**) The ID must refer to either a Feature (1) published to an OCI registry, (2) a Feature Tgz URI, or (3) a Feature in the local file tree. Deprecated Feature identifiers (i.e. GitHub Release) are not supported and the presence of this property may be considered a fatal error or ignored. For [local Features (i.e. during development)](https://containers.dev/implementors/features-distribution/#addendum-locally-referenced), you may also depend on other local Features by providing a relative path to the Feature, relative to folder containing the active `devcontainer.json`. This behavior of Features within this property again mirror the `features` object in `devcontainer.json`.
 
 ### Lifecycle Hooks
 
@@ -68,11 +68,11 @@ The following lifecycle hooks may be declared as properties of `devcontainer-fea
 
 Each property mirrors the behavior of the matching property in [`devcontainer.json`](/docs/specs/devcontainerjson-reference.md#Lifecycle-scripts), including the behavior that commands are executed from the context of the [project workspace folder](https://containers.dev/implementors/spec/#project-workspace-folder).
 
-For each lifecycle hook (in [Feature installation order](https://containers.dev/implementors/features/#installation-order)), each command contributed by a Feature is executed in sequence (blocking the next command from executing).   Commands provided by Features are always executed _before_ any user-provided lifecycle commands (i.e: in the `devcontainer.json`).
+For each lifecycle hook (in [Feature installation order](https://containers.dev/implementors/features/#installation-order)), each command contributed by a Feature is executed in sequence (blocking the next command from executing).   Commands provided by Features are always executed _before_ any user-provided lifecycle commands (i.e. in the `devcontainer.json`).
 
 If a Feature provides a given command with the [object syntax](/docs/specs/devcontainerjson-reference.md#formatting-string-vs-array-properties), all commands within that group are executed in parallel, but still blocking commands from subsequent Features and/or the `devcontainer.json`.
 
-> NOTE: These properties are stored within [image metadata](https://github.com/devcontainers/spec/blob/joshspicer/lifecycle_hook_feature_spec/docs/specs/devcontainer-reference.md#merge-logic).
+> **Note:** These properties are stored within [image metadata](https://github.com/devcontainers/spec/blob/joshspicer/lifecycle_hook_feature_spec/docs/specs/devcontainer-reference.md#merge-logic).
 
 ### The `options` property
 
@@ -120,9 +120,9 @@ Implementations can choose how to compute this identifier. They must ensure that
 
 The following assumes that a dev container can be identified among other dev containers on the same Docker host by a set of labels on the container. Implementations may choose to follow this approach.
 
-The identifier is derived from the set of container labels uniquely identifying the dev container. It is up to the implementation to choose these labels. E.g., if the dev container is based on a local folder the label could be named `devcontainer.local_folder` and have the local folder's path as its value.
+The identifier is derived from the set of container labels uniquely identifying the dev container. It is up to the implementation to choose these labels. For example, if the dev container is based on a local folder, the label could be named `devcontainer.local_folder` and have the local folder's path as its value.
 
-E.g., the [`ghcr.io/devcontainers/features/docker-in-docker` Feature](https://github.com/devcontainers/features/blob/main/src/docker-in-docker/devcontainer-feature.json) could use the dev container id with:
+For example, the [`ghcr.io/devcontainers/features/docker-in-docker` Feature](https://github.com/devcontainers/features/blob/main/src/docker-in-docker/devcontainer-feature.json) could use the dev container id with:
 
 ```jsonc
 {
@@ -190,7 +190,7 @@ Below is a valid `features` object provided as an example.
 }
 ```
 
-> Note: The `:latest` version annotation is added implicitly if omitted. To pin to a specific package version ([example](https://github.com/devcontainers/features/pkgs/container/features/go/versions)), append it to the end of the Feature.
+> **Note:** The `:latest` version annotation is added implicitly if omitted. To pin to a specific package version ([example](https://github.com/devcontainers/features/pkgs/container/features/go/versions)), append it to the end of the Feature.
 
 An option's value can be provided as either a `string` or `boolean`, and should match what is expected by the Feature in the `devcontainer-feature.json` file.
 
@@ -249,13 +249,13 @@ _For information on distributing Features, see [devcontainer-features-distributi
 
 ### Invoking `install.sh`
 
-The `install.sh` script for each Feature should be executed as `root` during a container image build. This allows the script to add needed OS dependencies or settings that could not otherwise be modified. This also allows the script to switch into another user's context using the `su` command (e.g., `su ${USERNAME} -c "command-goes-here"`). In combination, this allows both root and non-root image modifications to occur even if `sudo` is not present in the base image for security reasons.
+The `install.sh` script for each Feature should be executed as `root` during a container image build. This allows the script to add needed OS dependencies or settings that could not otherwise be modified. This also allows the script to switch into another user's context using the `su` command (e.g. `su ${USERNAME} -c "command-goes-here"`). In combination, this allows both root and non-root image modifications to occur even if `sudo` is not present in the base image for security reasons.
 
 To ensure that the appropriate shell is used, the execute bit should be set on `install.sh` and the file invoked directly (e.g. `chmod +x install.sh && ./install.sh`). 
 
-> **Note:** It is recommended that Feature authors write `install.sh` using a shell available by default in their supported distributions (e.g., `bash` in Debian/Ubuntu or Fedora, `sh` in Alpine). In the event a different shell is required (e.g., `fish`), `install.sh` can be used to boostrap by checking for the presence of the desired shell, installing it if needed, and then invoking a secondary script using the shell.
+> **Note:** It is recommended that Feature authors write `install.sh` using a shell available by default in their supported distributions (e.g. `bash` in Debian/Ubuntu or Fedora, `sh` in Alpine). In the event a different shell is required (e.g. `fish`), `install.sh` can be used to boostrap by checking for the presence of the desired shell, installing it if needed, and then invoking a secondary script using the shell.
 >
-> The `install.sh` file can similarly be used to bootstrap something written in a compiled language like Go. Given the increasing likelihood that a Feature needs to work on both x86_64 and arm64-based devices (e.g., Apple Silicon Macs), `install.sh` can detect the current architecture (e.g., using something like `uname -m` or `dpkg --print-architecture`), and then invoke the right executable for that architecture.
+> The `install.sh` file can similarly be used to bootstrap something written in a compiled language like Go. Given the increasing likelihood that a Feature needs to work on both x86_64 and arm64-based devices (e.g. Apple Silicon Macs), `install.sh` can detect the current architecture (e.g. using something like `uname -m` or `dpkg --print-architecture`), and then invoke the right executable for that architecture.
 
 ### Installation order
 
@@ -271,9 +271,9 @@ If any of the following properties are provided in the Feature's `devcontainer-f
 
 The optional `dependsOn` property indicates a set of required, "hard" dependencies for a given Feature.  
 
-The `dependsOn` property is declared in a Feature's `devcontainer-feature.json` metadata file. Elements of this property mirror the semantics of the `features` object in `devcontainer.json`.  Therefore, all dependencies may provide the relevant options, or an empty object (eg: `"bar:123": {}`) if the Feature's default options are sufficient.  Identical Features that provide different options are treated as _different_ Features (see [Feature equality](#definition-feature-equality) for more info).
+The `dependsOn` property is declared in a Feature's `devcontainer-feature.json` metadata file. Elements of this property mirror the semantics of the `features` object in `devcontainer.json`.  Therefore, all dependencies may provide the relevant options, or an empty object (e.g. `"bar:123": {}`) if the Feature's default options are sufficient.  Identical Features that provide different options are treated as _different_ Features (see [Feature equality](#definition-feature-equality) for more info).
 
-All Features indicated in the `dependsOn` property **must** be satisfied (a Feature [equal](#definition-feature-equality) to each dependency is present in the installation order) _before_ the given Feature is set to be installed.  If any of the Features indicated in the `dependsOn` property cannot be installed (e.g due to circular dependency, failure to resolve the Feature, etc) the entire dev container creation should fail.
+All Features indicated in the `dependsOn` property **must** be satisfied (a Feature [equal](#definition-feature-equality) to each dependency is present in the installation order) _before_ the given Feature is set to be installed.  If any of the Features indicated in the `dependsOn` property cannot be installed (e.g. due to circular dependency, failure to resolve the Feature, etc) the entire dev container creation should fail.
 
 The `dependsOn` property must be evaluated recursively.  Therefore, if a Feature dependency has its own `dependsOn` property, that Feature's dependencies must also be satisfied before the given Feature is installed.
 
@@ -300,7 +300,7 @@ The `installsAfter` property indicates a "soft dependency" that influences the i
 
 - `installsAfter` is **not** evaluated recursively.
 - `installsAfter` only influences the installation order of Features that are **already set to be installed**.  Any Feature not set to be installed after (1) resolving the `dependsOn` dependency tree or (2) indicated by the user's `devcontainer.json` should not be added to the installation list.
-- The Feature indicated by `installsAfter` can **not** provide options, nor are they able to be pinned to a specific version tag or digest.  Resolution to the canonical name should still be performed (eg: If the Feature has been [renamed](#steps-to-rename-a-feature)).
+- The Feature indicated by `installsAfter` can **not** provide options, nor are they able to be pinned to a specific version tag or digest.  Resolution to the canonical name should still be performed (e.g. if the Feature has been [renamed](#steps-to-rename-a-feature)).
 
 ```
 {
@@ -322,7 +322,7 @@ The `overrideFeatureInstallOrder` property of `devcontainer.json` is an array of
 
 > This property may not indicate an installation order that is inconsistent with the resolved dependency graph (see [dependency algorithm](#dependency-installation-order-algorithm)).  If the `overrideFeatureInstallOrder` property is inconsistent with the dependency graph, the implementing tool should fail the dependency resolution step.
 
-This evaluation is performed by assigning a [`roundPriority`](#2-assigning-round-priority) to all nodes that match match the Feature identifier (version omitted) present in the property. 
+This evaluation is performed by assigning a [`roundPriority`](#2-assigning-round-priority) to all nodes that match the Feature identifier (version omitted) present in the property. 
 
 For example, given `n` Features in the `overrideFeatureInstallOrder` array, the orchestrating tool should assign a `roundPriority` of `n - idx` to each Feature, where `idx` is the zero-based index of the Feature in the array.
 
@@ -350,16 +350,16 @@ This property must not influence the dependency relationship as defined by the d
 
 Similar to `installsAfter`, this property's members may not provide options, nor are they able to be pinned to a specific version tag or digest.
 
-If a Feature is indicated in `overrideFeatureInstallOrder` but not a member of the dependency graph (it is not queued to be installed), the orchestrating tool may fail the dependency resolution step.
+If a Feature is indicated in `overrideFeatureInstallOrder` but not a member of the dependency graph (i.e. it is not queued to be installed), the orchestrating tool may fail the dependency resolution step.
 
 > ## Definitions
 > ### Definition: Feature Equality
 >
-> This specification defines two Features as equal if both Features point to the same exact contents and are executed with > the same options.
+> This specification defines two Features as equal if both Features point to the same exact contents and are executed with the same options.
 > 
-> **For Features published to an OCI registry**, two Feature are identical if their manifest digests are equal, and the > options executed against the Feature are equal (compared value by value).  Identical manifest digests implies that the tgz  contents of the Feature and its entire `devcontainer-feature.json` are identical.  If any of these conditions are not met,  the Features are considered not equal.
+> **For Features published to an OCI registry**, two Feature are identical if their manifest digests are equal, and the options executed against the Feature are equal (compared value by value).  Identical manifest digests implies that the tgz  contents of the Feature and its entire `devcontainer-feature.json` are identical.  If any of these conditions are not met,  the Features are considered not equal.
 > 
-> **For Features fetched by HTTPS URI**, two Features are identical if the contents of the tgz are identical (hash to the > same value), and the options executed against the Feature are equal (compared value by value).  If any of these conditions  are not met, the Features are considered not equal.
+> **For Features fetched by HTTPS URI**, two Features are identical if the contents of the tgz are identical (hash to the same value), and the options executed against the Feature are equal (compared value by value).  If any of these conditions  are not met, the Features are considered not equal.
 > 
 > **For local Features**, each Feature is considered unique and not equal to any other local Feature.
 > 
@@ -394,13 +394,13 @@ If a Feature is indicated in `overrideFeatureInstallOrder` but not a member of t
 > 
 > Each node in the graph has an implicit, default `roundPriority` of 0.
 > 
-> To influence installation order globally while still honoring the dependency graph of built in **(1)**, `roundPriority` values may be tweaks for each Feature.  When each round is calculated in **(3)**, only the Features equal to the max `roundPriority` of that set will be committed (the remaining will be > uncommitted and reevaulated in subsequent rounds).
+> To influence installation order globally while still honoring the dependency graph of built in **(1)**, `roundPriority` values may be tweaks for each Feature.  When each round is calculated in **(3)**, only the Features equal to the max `roundPriority` of that set will be committed (the remaining will be uncommitted and reevaulated in subsequent rounds).
 > 
 > The `roundPriority` is set to a non-zero value in the following instances:
 > 
 > - If the [`devcontainer.json` contains an `overrideFeatureInstallOrder`](#the-overridefeatureinstallorder-property).
 > 
-> #### (3) Round-based sorting
+> ### (3) Round-based sorting
 > 
 > Perform a sort on the result of **(1)** in rounds. This sort will rearrange Features, producing a sorted list of Features to install.  The sort will be performed as follows: 
 > 
@@ -414,7 +414,7 @@ If a Feature is indicated in `overrideFeatureInstallOrder` but not a member of t
 >
 > From an implementation point of view, `installsAfter` nodes may be added as a separate set of directed edges, just as `dependsOn` nodes are added as directed edges (see **(1)**).  Before round-based installation and sorting **(3)**, an orchestrating tool should remove all `installsAfter` directed edges that do not correspond with a Feature in the `worklist` that is set to be installed.  In each round, a Feature can then be installed if all its requirements (both `dependsOn` and `installsAfter` dependencies) have been fulfilled in previous rounds.
 > 
-> An implemention should fail the dependency resolution step if the evaluation of the `installsAfter` property results in an inconsistent state (eg: a circular dependency).
+> An implemention should fail the dependency resolution step if the evaluation of the `installsAfter` property results in an inconsistent state (e.g. a circular dependency).
 >
 
 

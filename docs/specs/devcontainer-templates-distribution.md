@@ -50,7 +50,7 @@ Source code for a set of Templates follows the example file structure below:
 
 ...where `src` is a directory containing a sub-folder with the name of the Template (e.g. `src/dotnet` or `src/docker-from-docker`) with at least a file named `devcontainer-template.json` that contains the Template metadata, and a `.devcontainer/devcontainer.json` that the supporting tools will drop into an existing project or folder.
 
-Each sub-directory should be named such that it matches the `id` field of the `devcontainer-template.json`.  Other files can also be included in the Templates's sub-directory, and will be included during the [packaging step](#packaging) alongside the two required files.  Any files that are not part of the Templates's sub-directory (e.g. outside of `src/dotnet`) will not included in the [packaging step](#packaging).
+Each sub-directory should be named such that it matches the `id` field of the `devcontainer-template.json`.  Other files can also be included in the Templates's sub-directory, and will be included during the [packaging step](#packaging) alongside the two required files.  Any files that are not part of the Templates's sub-directory (e.g. outside of `src/dotnet`) will not be included in the [packaging step](#packaging).
 
 ## Versioning
 
@@ -114,7 +114,7 @@ done
 
 ```
 
-The "namespace" is the globally identifiable name for the collection of Templates. (eg: `owner/repo` for the source code's git repository).
+The "namespace" is the globally identifiable name for the collection of Templates (e.g. `owner/repo` for the source code's git repository).
 
 The auto-generated `devcontainer-collection.json` is pushed to the registry with the same `namespace` as above and no accompanying `template` name. The collection file is always tagged as `latest`.
 

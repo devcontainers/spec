@@ -2,7 +2,7 @@
 
 **Development Container Templates** are source files packaged together that encode configuration for a complete development environment. A Template can be used in a new or existing project, and a [supporting tool](https://containers.dev/supporting) will use the configuration from the Template to build a development container.
 
-The configuration is placed in [`.devcontainer/devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) which can also reference other files within the Template. A Template can also provide additional source files (eg: boilerplate code or a [lifecycle script](https://containers.dev/implementors/json_reference/#lifecycle-scripts).
+The configuration is placed in [`.devcontainer/devcontainer.json`](/docs/specs/devcontainer-reference.md#devcontainerjson) which can also reference other files within the Template. A Template can also provide additional source files (e.g. boilerplate code or a [lifecycle script](https://containers.dev/implementors/json_reference/#lifecycle-scripts).
 
 Template metadata is captured by a `devcontainer-template.json` file in the root folder of the Template.
 
@@ -37,7 +37,7 @@ The properties of the file are as follows:
 | `platforms` | array | Languages and platforms supported by the Template. |
 | `publisher` | string | Name of the publisher/maintainer of the Template. |
 | `keywords` | array | List of strings relevant to a user that would search for this Template. |
-| [`optionalPaths`](#the-optionalpaths-property) | array | An array of files or directories that tooling may consider "optional" when applying a Template. Directories are indicated with a trailing `/*`, (eg: `.github/*`).
+| [`optionalPaths`](#the-optionalpaths-property) | array | An array of files or directories that tooling may consider "optional" when applying a Template. Directories are indicated with a trailing `/*` (e.g. `.github/*`).
 
 ### The `options` property
 
@@ -65,7 +65,7 @@ The `options` property contains a map of option IDs and their related configurat
 | `optionId.enum` | array | A strict list of allowed string values. Free-form values are **not** allowed. Omit when using `optionId.proposals`. |
 | `optionId.default` | string | Default value for the option. |
 
-> `Note`: The `options` must be unique for every `devcontainer-template.json`
+> **Note:** The `options` must be unique for every `devcontainer-template.json`
 
 ### The `optionalPaths` property
 
@@ -163,7 +163,7 @@ Suppose the `java` Template has the following `options` parameters declared in t
 }
 ```
 
-and it has the following `.devcontainer/devcontainer.json` file:
+...and it has the following `.devcontainer/devcontainer.json` file:
 
 ```json
 {

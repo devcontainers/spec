@@ -14,7 +14,7 @@ Various projects exist in the wild that require various secrets for them to run 
 - https://github.com/openai/openai-quickstart-python
 - https://github.com/openai/openai-quickstart-node
 
-Today these projects have to include specific instructions e.g. in their README telling users where to procure what they need to run and then how to set it up as a secret or add it as an environment variable. This currently acts as an impediment to adoption and promotion of dev containers for these projects.
+Today these projects have to include specific instructions (e.g. in their README) telling users where to procure what they need to run and then how to set it up as a secret or add it as an environment variable. This currently acts as an impediment to adoption and promotion of dev containers for these projects.
 
 ## Goal
 

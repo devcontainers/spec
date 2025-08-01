@@ -22,7 +22,7 @@ Today many consumers pass secret variables as `remoteEnv`, since there are no ot
 
 ## Proposal
 
-A [supporting tool](https://containers.dev/supporting#tools) (ie, for example the [dev container CLI reference implementation](https://github.com/devcontainers/cli)) should behave according to the following properties:
+A [supporting tool](https://containers.dev/supporting#tools) (e.g. the [dev container CLI reference implementation](https://github.com/devcontainers/cli)) should behave according to the following properties:
 
   1. Ability to pass secrets to commands
   2. Apply/use secrets similar to `remoteEnv`

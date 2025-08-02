@@ -1,3 +1,4 @@
+[CONTRIBUTING (3).md](https://github.com/devcontainers/spec/files/13948640/CONTRIBUTING.3.md)
 # Development Containers
 
 This repository is for the Development Container Specification. You can check out the spec on our website https://containers.dev/ too.

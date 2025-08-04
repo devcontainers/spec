@@ -105,11 +105,11 @@ TEMPLATE=go
 
 ARTIFACT_PATH=devcontainer-template-go.tgz
 
-for VERSION in 1  1.2  1.2.3  latest
+for VERSION in 1 1.2 1.2.3 latest
 do
-        oras push ${REGISTRY}/${NAMESPACE}/${TEMPLATE}:${VERSION} \
-                --config /dev/null:application/vnd.devcontainers \
-                        ./${ARTIFACT_PATH}:application/vnd.devcontainers.layer.v1+tar
+    oras push ${REGISTRY}/${NAMESPACE}/${TEMPLATE}:${VERSION} \
+        --config /dev/null:application/vnd.devcontainers \
+        ./${ARTIFACT_PATH}:application/vnd.devcontainers.layer.v1+tar
 done
 
 ```
@@ -124,6 +124,6 @@ REGISTRY=ghcr.io
 NAMESPACE=devcontainers/templates
 
 oras push ${REGISTRY}/${NAMESPACE}:latest \
-        --config /dev/null:application/vnd.devcontainers \
-                            ./devcontainer-collection.json:application/vnd.devcontainers.collection.layer.v1+json
+    --config /dev/null:application/vnd.devcontainers \
+    ./devcontainer-collection.json:application/vnd.devcontainers.collection.layer.v1+json
 ```

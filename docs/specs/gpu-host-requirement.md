@@ -14,7 +14,7 @@ This proposal adds GPU support to the existing host requirements properties.
 
 ## Proposal
 
-We propose to add a new `gpu` property to the `hostRequirements` object in the devcontainer.json schema. The property can be a boolean value, the string `optional` or an object:
+We propose to add a new `gpu` property to the `hostRequirements` object in the `devcontainer.json` schema. The property can be a boolean value, the string `optional` or an object:
 
 (Additional row for the existing table in the spec.)
 | Property | Type | Description |

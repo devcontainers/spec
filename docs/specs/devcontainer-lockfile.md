@@ -8,7 +8,7 @@ Below is the original proposal.
 
 ## Goal
 
-Introduce a lockfile that records the exact version, download information and checksums for each feature listed in the devcontainer.json.
+Introduce a lockfile that records the exact version, download information and checksums for each feature listed in `devcontainer.json`.
 
 This will allow for:
 - Improved reproducibility of image builds (installing "latest" of a tool will still have different outcomes as the tool publishes new releases).
@@ -19,7 +19,7 @@ This will allow for:
 
 (The following is inspired by NPM's `package-lock.json` and Yarn's `yarn.lock`.)
 
-Each feature is recorded with the identifier and version it is referred to in the devcontainer.json as its key and the following properties as its values:
+Each feature is recorded with the identifier and version it is referred to in `devcontainer.json` as its key and the following properties as its values:
 - `resolved`:
     - OCI feature: A qualified feature id with the sha256 hash (not the version number).
     - tarball feature: The `https:` URL used to download the feature.

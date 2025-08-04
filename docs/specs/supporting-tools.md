@@ -144,5 +144,5 @@ Some properties may apply differently to codespaces.
 | `portsAttributes` | object | Codespaces does not yet support the `"host:port"` variation of this property.|
 | `shutdownAction` | enum | Does not apply to Codespaces. |
 | `${localEnv:VARIABLE_NAME}` | Any | For Codespaces, the host is in the cloud rather than your local machine.|
-| `customizations.codespaces` | object | Codespaces reads this property from devcontainer.json, not image metadata. |
-| `hostRequirements` | object | Codespaces reads this property from devcontainer.json, not image metadata. |
+| `customizations.codespaces` | object | Codespaces reads this property from `devcontainer.json`, not image metadata. |
+| `hostRequirements` | object | Codespaces reads this property from `devcontainer.json`, not image metadata. |

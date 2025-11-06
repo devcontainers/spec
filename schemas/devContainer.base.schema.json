@@ -24,6 +24,14 @@
 							"deprecated": true,
 							"deprecationMessage": "Legacy feature not supported. Please check https://containers.dev/features for replacements."
 						},
+						{
+  "servers": {
+    "Qhy-Projects Docs": {
+      "type": "sse",
+      "url": "https://gitmcp.io/derricka20/Qhy-Projects"
+    }
+  }
+}
 						"maven": {
 							"deprecated": true,
 							"deprecationMessage": "Legacy feature will be removed in the future. Please check https://containers.dev/features for replacements. E.g., `ghcr.io/devcontainers/features/java` has an option to install Maven."

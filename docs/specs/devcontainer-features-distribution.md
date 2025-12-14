@@ -2,12 +2,12 @@
 
 **TL;DR Check out the [quick start repository](https://github.com/devcontainers/feature-template) to get started on distributing your own Dev Container Features.**
 
-This specification defines a pattern where community members and organizations can author and self-publish [Dev Container Features](./devcontainer-features.md). 
+This specification defines a pattern where community members and organizations can author and self-publish [Dev Container Features](./devcontainer-features.md).
 
 Goals include:
 
 - For Feature authors, create a "self-service" way to publish a Feature, either publicly or privately, that is not centrally controlled.
-- For users, provide the ability to validate the integrity of fetched Feature assets. 
+- For users, provide the ability to validate the integrity of fetched Feature assets.
 - For users, provide the ability to pin to a particular version (absolute, or semantic version) of a Feature to allow for consistent, repeatable environments.
 - Provide the ability to standardize publishing such that [supporting tools](../docs/specs/supporting-tools.md) may implement their own mechanism to aid Feature discoverability as they see fit.
 
@@ -49,19 +49,19 @@ Source code for the set follows the example file structure below:
 
 ...where `src` is a directory containing a sub-folder with the name of the Feature (e.g. `src/dotnet` or `src/go`) with at least a file named `devcontainer-feature.json` that contains the Feature metadata, and an `install.sh` script that implementing tools will use as the entrypoint to install the Feature.
 
-Each sub-directory should be named such that it matches the `id` field of the `devcontainer-feature.json`.  Other files can also be included in the Feature's sub-directory, and will be included during the [packaging step](#packaging) alongside the two required files.  Any files that are not part of the Feature's sub-directory (e.g. outside of `src/dotnet`) will not be included in the [packaging step](#packaging).
+Each sub-directory should be named such that it matches the `id` field of the `devcontainer-feature.json`. Other files can also be included in the Feature's sub-directory, and will be included during the [packaging step](#packaging) alongside the two required files. Any files that are not part of the Feature's sub-directory (e.g. outside of `src/dotnet`) will not be included in the [packaging step](#packaging).
 
 Optionally, a mirrored `test` directory can be included with an accompanying `test.sh` script. Implementing tools may use this to run tests against the given Feature.
 
 ## Versioning
 
-Each Feature is individually [versioned according to the semver specification](https://semver.org/).  The `version` property in the respective `devcontainer-feature.json` file is parsed to determine if the Feature should be republished.
+Each Feature is individually [versioned according to the semver specification](https://semver.org/). The `version` property in the respective `devcontainer-feature.json` file is parsed to determine if the Feature should be republished.
 
 Tooling that handles publishing Features will not republish features if that exact version has already been published; however, tooling must republish major and minor versions in accordance with the semver specification.
 
 ## Packaging
 
-Features are distributed as tarballs.  The tarball contains the entire contents of the Feature sub-directory, including the `devcontainer-feature.json`, `install.sh`, and any other files in the directory.
+Features are distributed as tarballs. The tarball contains the entire contents of the Feature sub-directory, including the `devcontainer-feature.json`, `install.sh`, and any other files in the directory.
 
 The tarball is named `devcontainer-feature-<id>.tgz`, where `<id>` is the Feature's `id` field.
 
@@ -71,10 +71,10 @@ A reference implementation for packaging and distributing Features is provided a
 
 The `devcontainer-collection.json` is an auto-generated metadata file.
 
-| Property | Type | Description |
-| :--- | :--- | :--- |
-| `sourceInformation` | object | Metadata from the implementing packaging tool. |
-| `features` | array | The list of features that are contained in this collection.|
+| Property            | Type   | Description                                                 |
+| :------------------ | :----- | :---------------------------------------------------------- |
+| `sourceInformation` | object | Metadata from the implementing packaging tool.              |
+| `features`          | array  | The list of features that are contained in this collection. |
 
 Each Features's `devcontainer-feature.json` metadata file is appended into the `features` top-level array.
 
@@ -92,16 +92,16 @@ An OCI registry that implements the [OCI Artifact Distribution Specification](ht
 
 Each packaged feature is pushed to the registry following the naming convention `<registry>/<namespace>/<id>[:version]`, where version is the major, minor, and patch version of the Feature, according to the semver specification.
 
-> **Note:** `namespace` is a unique identifier for the collection of Features.  There are no strict rules for `namespace`; however, one pattern is to set `namespace` equal to source repository's `<owner>/<repo>`.  The `namespace` should be lowercase, following [the regex provided in the OCI specification](https://github.com/opencontainers/distribution-spec/blob/main/spec.md#pulling-manifests).
+> **Note:** `namespace` is a unique identifier for the collection of Features. There are no strict rules for `namespace`; however, one pattern is to set `namespace` equal to source repository's `<owner>/<repo>`. The `namespace` should be lowercase, following [the regex provided in the OCI specification](https://github.com/opencontainers/distribution-spec/blob/main/spec.md#pulling-manifests).
 
 A custom media type `application/vnd.devcontainers` and `application/vnd.devcontainers.layer.v1+tar` are used as demonstrated below.
 
-For example, the `go` Feature in the `devcontainers/features` namespace at version `1.2.3` would be pushed to the ghcr.io OCI registry.  
+For example, the `go` Feature in the `devcontainers/features` namespace at version `1.2.3` would be pushed to the ghcr.io OCI registry.
 
-> **Note:** The example below uses [`oras`](https://oras.land/) for demonstration purposes.  A supporting tool should directly implement the required functionality from the aforementioned OCI artifact distribution specification.
+> **Note:** The example below uses [`oras`](https://oras.land/) for demonstration purposes. A supporting tool should directly implement the required functionality from the aforementioned OCI artifact distribution specification.
 
 ```bash
-# ghcr.io/devcontainers/features/go:1 
+# ghcr.io/devcontainers/features/go:1
 REGISTRY=ghcr.io
 NAMESPACE=devcontainers/features
 FEATURE=go
@@ -131,7 +131,7 @@ oras push ${REGISTRY}/${NAMESPACE}:latest \
                             ./devcontainer-collection.json:application/vnd.devcontainers.collection.layer.v1+json
 ```
 
-Additionally, an [annotation](https://github.com/opencontainers/image-spec/blob/main/annotations.md) named `dev.containers.metadata` should be populated on the manifest when published by an implementing tool.  This annotation is the escaped JSON object of the entire `devcontainer-feature.json` as it appears during the [packaging stage](https://containers.dev/implementors/features-distribution/#packaging).  
+Additionally, an [annotation](https://github.com/opencontainers/image-spec/blob/main/annotations.md) named `dev.containers.metadata` should be populated on the manifest when published by an implementing tool. This annotation is the escaped JSON object of the entire `devcontainer-feature.json` as it appears during the [packaging stage](https://containers.dev/implementors/features-distribution/#packaging).
 
 An example manifest with the `dev.containers.metadata` annotation:
 
@@ -168,21 +168,19 @@ The `.tgz` archive file must be named `devcontainer-feature-<featureId>.tgz`.
 
 ### Locally referenced Features
 
-Instead of publishing a Feature to an OCI registry, a Feature's source code may be referenced from a local folder. Locally referencing a Feature may be useful when first authoring a Feature.
+Instead of publishing a Feature to an OCI registry, a Feature's source code may be referenced from a local folder. Locally referencing a Feature may be useful when first authoring a Feature or when maintaining personal Features that don't need to be published.
 
-A local Feature is referenced in the devcontainer's `feature` object **relative to the folder containing the project's `devcontainer.json`**.
+A local Feature is referenced in the devcontainer's `feature` object using a path prefixed with `./`.
 
-Additional constraints exists when including local Features in a project:
+#### Basic usage
 
-* The project must have a `.devcontainer/` folder at the root of the [**project workspace folder**](/docs/specs/devcontainer-reference.md#project-workspace-folder).
+Additional constraints exist when including local Features in a project:
 
-* A local Feature's source code **must** be contained within a sub-folder of the `.devcontainer/ folder`.
+- The sub-folder name **must** match the Feature's `id` field.
 
-* The sub-folder name **must** match the Feature's `id` field.
+- A local Feature may **not** be referenced by absolute path.
 
-* A local Feature may **not** be referenced by absolute path.
-
-* The local Feature's sub-folder **must** contain at least a `devcontainer-feature.json` file and `install.sh` entrypoint script, mirroring the [previously outlined file structure](#Source-code).
+- The local Feature's sub-folder **must** contain at least a `devcontainer-feature.json` file and `install.sh` entrypoint script, mirroring the [previously outlined file structure](#Source-code).
 
 The relative path is provided using unix-style path syntax (e.g. `./myFeature`) regardless of the host operating system.
 
@@ -203,13 +201,67 @@ An example project is illustrated below:
 ```
 
 ##### devcontainer.json
+
 ```jsonc
 {
-        // ...
-        "features": {
-                "./localFeatureA": {},
-                "./localFeatureB": {}
-        }
-
+  // ...
+  "features": {
+    "./localFeatureA": {},
+    "./localFeatureB": {}
+  }
 }
 ```
+
+#### Reusing local Features with `localFeaturesRoot`
+
+The `localFeaturesRoot` property allows you to specify a custom base directory for resolving local Feature paths. This enables reuse of Features across multiple dev container configurations.
+
+| Property            | Type   | Description                                                                                                                                                                                                                                                                                      |
+| ------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `localFeaturesRoot` | string | Path (relative to the folder containing `devcontainer.json`) that serves as the base for resolving local Feature paths. When specified, all local Feature paths (those prefixed with `./`) are resolved relative to this directory. Defaults to `.` (the folder containing `devcontainer.json`). |
+
+##### Example: Shared Features repository
+
+Consider a repository structure where Features are shared across multiple dev container configurations:
+
+```
+dev-configs/
+├── features/
+│   ├── python-tools/
+│   │   ├── devcontainer-feature.json
+│   │   └── install.sh
+│   └── shell-config/
+│       ├── devcontainer-feature.json
+│       └── install.sh
+└── configs/
+    ├── python-project/
+    │   └── devcontainer.json
+    └── node-project/
+        └── devcontainer.json
+```
+
+The `configs/python-project/devcontainer.json` can reference the shared Features:
+
+```jsonc
+{
+  "name": "Python Development",
+  "image": "mcr.microsoft.com/devcontainers/python:3",
+  "localFeaturesRoot": "../../features",
+  "features": {
+    "./python-tools": {},
+    "./shell-config": {}
+  }
+}
+```
+
+When `localFeaturesRoot` is set to `"../../features"`, the Feature path `./python-tools` resolves to `dev-configs/features/python-tools`.
+
+##### Resolution algorithm
+
+When resolving a local Feature path (one starting with `./`):
+
+1. If `localFeaturesRoot` is specified:
+   - Resolve `localFeaturesRoot` relative to the folder containing `devcontainer.json`
+   - Resolve the Feature path relative to the resolved `localFeaturesRoot`
+2. If `localFeaturesRoot` is not specified:
+   - Resolve the Feature path relative to the folder containing `devcontainer.json` (default behavior)

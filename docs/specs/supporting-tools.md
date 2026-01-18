@@ -38,6 +38,17 @@ Visual Studio added dev container support in Visual Studio 2022 17.4 for C++ pro
 
 You may learn more in the [announcement blog post](https://devblogs.microsoft.com/cppblog/dev-containers-for-c-in-visual-studio/).
 
+### Zed
+
+[Zed v0.218](https://zed.dev/releases/stable) and onward supports Dev Containers, but it is currently still in development with the following limitations:
+
+* Extensions: Zed does not yet manage extensions separately for container environments. The host's extensions are used as-is.
+* Port forwarding: Only the appPort field is supported. forwardPorts and other advanced port-forwarding features are not implemented.
+* Configuration changes: Updates to devcontainer.json do not trigger automatic rebuilds or reloads; containers must be manually restarted.
+
+For more information please see Zed's up-to-date [Dev Containers documentation](https://zed.dev/docs/dev-containers) and their [announcement blog post](https://zed.dev/blog/dev-containers).
+
+
 ## Tools
 
 ### Dev Container CLI

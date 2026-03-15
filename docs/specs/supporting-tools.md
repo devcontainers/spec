@@ -38,6 +38,10 @@ Visual Studio added dev container support in Visual Studio 2022 17.4 for C++ pro
 
 You may learn more in the [announcement blog post](https://devblogs.microsoft.com/cppblog/dev-containers-for-c-in-visual-studio/).
 
+### Emacs
+
+[GNU Emacs](https://www.gnu.org/software/emacs/) can make use of dev containers using the community extension [devcontainer.el](https://johannes-mueller.github.io/devcontainer.el/).  The extension is available by the popular package registry [MELPA](https://melpa.org).  It can also be installed directly from the source code that is available on [GitHub](https://github.com/johannes-mueller/devcontainer.el).
+
 ## Tools
 
 ### Dev Container CLI

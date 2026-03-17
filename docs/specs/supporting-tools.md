@@ -38,6 +38,12 @@ Visual Studio added dev container support in Visual Studio 2022 17.4 for C++ pro
 
 You may learn more in the [announcement blog post](https://devblogs.microsoft.com/cppblog/dev-containers-for-c-in-visual-studio/).
 
+### IntelliJ IDEA
+
+IntelliJ IDEA supports dev containers that can be run remotely via an SSH connection or locally using Docker.
+
+You may learn more in the [IntelliJ IDEA documentation](https://www.jetbrains.com/help/idea/connect-to-devcontainer.html).
+
 ### Emacs
 
 [GNU Emacs](https://www.gnu.org/software/emacs/) can make use of dev containers using the community extension [devcontainer.el](https://johannes-mueller.github.io/devcontainer.el/).  The extension is available by the popular package registry [MELPA](https://melpa.org).  It can also be installed directly from the source code that is available on [GitHub](https://github.com/johannes-mueller/devcontainer.el).
@@ -56,9 +62,9 @@ VS Code has a [CLI](https://code.visualstudio.com/docs/remote/devcontainer-cli) 
 
 Cachix's [devenv](https://devenv.sh/) supports automatically generating a `.devcontainer.json` file so you can use it with any Dev Container Spec supporting tool. See [devenv documentation](https://devenv.sh/integrations/codespaces-devcontainer/) for detais. 
 
-### Jetpack.io Devbox
+### Jetify Devbox
 
-[Jetpack.io's VS Code extension](https://marketplace.visualstudio.com/items?itemName=jetpack-io.devbox) supports a **Generate Dev Container files** command so you can use Jetpack.io from Dev Container Spec supporting tools.
+[Jetify](https://jetify.com) (formerly jetpack.io) is a [Nix](https://nixos.org/)-based service for deploying applications. [DevBox](https://www.jetify.com/devbox/) provides a way to use Nix to generate a development environment. [Jetify's VS Code extension](https://marketplace.visualstudio.com/items?itemName=jetpack-io.devbox) allows you to quickly take advantage of DevBox in any Dev Container Spec supporting tool or service.
 
 ### Visual Studio Code Dev Containers
 
@@ -150,3 +156,21 @@ Some properties may apply differently to codespaces.
 | `${localEnv:VARIABLE_NAME}` | Any | For Codespaces, the host is in the cloud rather than your local machine.|
 | `customizations.codespaces` | object | Codespaces reads this property from devcontainer.json, not image metadata. |
 | `hostRequirements` | object | Codespaces reads this property from devcontainer.json, not image metadata. |
+
+### CodeSandbox
+
+[CodeSandbox](https://codesandbox.io/) provides cloud development environments running on a microVM architecture.
+
+When you import a GitHub repository into CodeSandbox, it will automatically provision a dedicated environment for every branch. Thanks to memory snapshotting, CodeSandbox then resumes and branches an environment in under two seconds.
+
+CodeSandbox offers support for multiple editors, so you can code using the CodeSandbox web editor, VS Code, or the CodeSandbox iOS app.
+
+### DevPod
+
+[DevPod](https://github.com/loft-sh/devpod) is a client-only tool to create reproducible developer environments based on a `devcontainer.json` on any backend. Each developer environment runs in a container and is specified through a `devcontainer.json`. Through DevPod providers these environments can be created on any backend, such as the local computer, a Kubernetes cluster, any reachable remote machine or in a VM in the cloud.
+
+### Ona (formerly Gitpod)
+
+[Ona](https://ona.com/) (formerly Gitpod) is the mission control for software projects and software engineering agents. It provides secure, ephemeral development environments that run in our cloud or your VPC, enabling humans and agents to collaborate seamlessly.
+
+For details on constraints, customization, and automation options, see the [Ona Dev Container docs](https://ona.com/docs/ona/configuration/devcontainer/overview).

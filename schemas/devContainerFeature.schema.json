@@ -237,7 +237,7 @@
               "type": "string"
             },
             "type": {
-              "description": "The type of the option. Can be 'boolean' or 'string'.  Options of type 'string' should use the 'enum' or 'proposals' property to provide a list of allowed values.",
+              "description": "The type of the option. Can be 'boolean', 'string', 'array', or 'object'. Options of type 'string' should use the 'enum' or 'proposals' property to provide a list of allowed values.",
               "const": "boolean",
               "type": "string"
             }
@@ -267,7 +267,7 @@
               "type": "array"
             },
             "type": {
-              "description": "The type of the option. Can be 'boolean' or 'string'.  Options of type 'string' should use the 'enum' or 'proposals' property to provide a list of allowed values.",
+              "description": "The type of the option. Can be 'boolean', 'string', 'array', or 'object'. Options of type 'string' should use the 'enum' or 'proposals' property to provide a list of allowed values.",
               "const": "string",
               "type": "string"
             }
@@ -298,8 +298,56 @@
               "type": "array"
             },
             "type": {
-              "description": "The type of the option. Can be 'boolean' or 'string'.  Options of type 'string' should use the 'enum' or 'proposals' property to provide a list of allowed values.",
+              "description": "The type of the option. Can be 'boolean', 'string', 'array', or 'object'..  Options of type 'string' should use the 'enum' or 'proposals' property to provide a list of allowed values.",
               "const": "string",
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "default"
+          ],
+          "type": "object"
+        },
+        {
+          "description": "Option value is represented with an array.",
+          "additionalProperties": false,
+          "properties": {
+            "default": {
+              "description": "Default value if the user omits this option from their configuration.",
+              "type": "array"
+            },
+            "description": { 
+              "description": "A description of the option displayed to the user by a supporting tool.",
+              "type": "string"
+           },
+            "type": {
+              "description": "The type of the option. Can be 'boolean', 'string', 'array', or 'object'. Options of type 'string' should use the 'enum' or 'proposals' property to provide a list of allowed values.",
+              "const": "array",
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "default"
+          ],
+          "type": "object"
+        },
+        {
+          "description": "Option value is represented with an object.",
+          "additionalProperties": false,
+          "properties": {
+            "default": {
+              "description": "Default value if the user omits this option from their configuration.",
+              "type": "object"
+            },
+            "description": {
+              "description": "A description of the option displayed to the user by a supporting tool.",
+              "type": "string"
+            },
+            "type": { 
+              "description": "The type of the option. Can be 'boolean', 'string', 'array', or 'object'. Options of type 'string' should use the 'enum' or 'proposals' property to provide a list of allowed values.",
+              "const": "object",
               "type": "string"
             }
           },

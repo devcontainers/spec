@@ -1,0 +1,64 @@
+{
+  // Name shown in VS Code
+  "name": "Spec Dev",
+
+  // Use the official devcontainers image (Ubuntu + common tooling)
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+
+  // Add turnkey features (see https://containers.dev/features)
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20",          // or 22 LTS if needed
+      "nvmInstall": true
+    },
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true
+    }
+    // Add more if needed:
+    // "ghcr.io/devcontainers/features/python:1": { "version": "3.12" },
+    // "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+
+  // Forward common app/dev ports (edit as your project needs)
+  "forwardPorts": [3000, 5173, 8787],
+
+  // Mount your git config (helpful for commit signing, etc.)
+  "mounts": [
+    "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached"
+  ],
+
+  // VS Code settings inside the container
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "github.vscode-github-actions",
+        "streetsidesoftware.code-spell-checker",
+        "eamodio.gitlens"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "files.eol": "\n",
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      }
+    }
+  },
+
+  // Commands run after the container is created (deps, toolchains, etc.)
+  "postCreateCommand": "bash .devcontainer/postCreate.sh",
+
+  // Optional: Change default user (base image uses 'vscode')
+  "remoteUser": "vscode",
+
+  // Speeds up installs by reusing node_modules across rebuilds (optional)
+  "updateContentCommand": "npm ci --prefer-offline || true",
+
+  // Set environment variables available inside the container
+  "containerEnv": {
+    "NODE_ENV": "development"
+  }
+}

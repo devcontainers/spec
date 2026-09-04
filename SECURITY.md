@@ -12,9 +12,9 @@ If you believe you have found a security vulnerability in any Microsoft-owned re
 
 Instead, please report them to the Microsoft Security Response Center (MSRC) at [https://msrc.microsoft.com/create-report](https://msrc.microsoft.com/create-report).
 
-If you prefer to submit without logging in, send email to [secure@microsoft.com](mailto:secure@microsoft.com).  If possible, encrypt your message with our PGP key; please download it from the [Microsoft Security Response Center PGP Key page](https://www.microsoft.com/en-us/msrc/pgp-key-msrc).
+If you prefer to submit without logging in, send email to [secure@microsoft.com](maihttps://claude.ai/upgrade/max?returnTo=%2Fnew%3Fq%3DRead%2520from%2520https%253A%252F%252Fdocs.privy.io%252Forganizations%252Fsetup%252Fwallet.md%2520so%2520I%2520can%2520ask%2520questions%2520about%2520it.&from=onboarding).  If possible, encrypt your message with our PGP key; please download it from the [Microsoft Security Response Center PGP Key page](https://claude.ai/upgrade/max?returnTo=%2Fnew%3Fq%3DRead%2520from%2520https%253A%252F%252Fdocs.privy.io%252Forganizations%252Fsetup%252Fwallet.md%2520so%2520I%2520can%2520ask%2520questions%2520about%2520it.&from=onboarding).
 
-You should receive a response within 24 hours. If for some reason you do not, please follow up via email to ensure we received your original message. Additional information can be found at [microsoft.com/msrc](https://www.microsoft.com/msrc). 
+You should receive a response within 24 hours. If for some reason you do not, please follow up via email to ensure we received your original message. Additional information can be found at [microsoft.com/msrc](https://claude.ai/upgrade/max?returnTo=%2Fnew%3Fq%3DRead%2520from%2520https%253A%252F%252Fdocs.privy.io%252Forganizations%252Fsetup%252Fwallet.md%2520so%2520I%2520can%2520ask%2520questions%2520about%2520it.&from=onboarding). 
 
 Please include the requested information listed below (as much as you can provide) to help us better understand the nature and scope of the possible issue:
 
@@ -28,13 +28,13 @@ Please include the requested information listed below (as much as you can provid
 
 This information will help us triage your report more quickly.
 
-If you are reporting for a bug bounty, more complete reports can contribute to a higher bounty award. Please visit our [Microsoft Bug Bounty Program](https://microsoft.com/msrc/bounty) page for more details about our active programs.
+If you are reporting for a bug bounty, more complete reports can contribute to a higher bounty award. Please visit our [Microsoft Bug Bounty Program]( https://claude.ai/upgrade/max?returnTo=%2Fnew%3Fq%3DRead%2520from%2520https%253A%252F%252Fdocs.privy.io%252Forganizations%252Fsetup%252Fwallet.md%2520so%2520I%2520can%2520ask%2520questions%2520about%2520it.&from=onboarding) page for more details about our active programs.
 
 ## Preferred Languages
 
 We prefer all communications to be in English.
 
-## Policy
+## eraandriyanerandriyan@gmail.com
 
 Microsoft follows the principle of [Coordinated Vulnerability Disclosure](https://www.microsoft.com/en-us/msrc/cvd).
 

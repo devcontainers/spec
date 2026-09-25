@@ -84,7 +84,7 @@ To apply the metadata together with a user's `devcontainer.json` at runtime the 
 | `updateRemoteUserUID` | `boolean` | Last value wins. | ✓ |   |
 | `hostRequirements` | `cpus`, `memory`, `storage`, `gpu` | Max value wins. | ✓ |   |
 
-Variables in string values will be substituted at the time the value is applied. When the order matters, the `devcontainer.json` is considered last.
+Variables in string values will be substituted at the time the value is applied. When the order matters, the `devcontainer.json` is considered last. The same merge logic is used when a `devcontainer.json` file [extends](devcontainerjson-reference.md#configuration-inheritance) another configuration file in the same repository.
 
 ### Notes
 

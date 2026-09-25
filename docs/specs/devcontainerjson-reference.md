@@ -9,6 +9,8 @@ Metadata properties marked with a 🏷️ can be stored in the `devcontainer.met
 | Property | Type | Description |
 |----------|------|-------------|
 | `name` | string | A name for the dev container displayed in the UI |
+| `extends` | string | Relative path to a JSON or JSONC base configuration in the same repository. See [Configuration inheritance](#configuration-inheritance). |
+| `extendsMergeMode` | string | Optional. `combine` (default) or `override`. See [Configuration inheritance](#configuration-inheritance). |
 | `forwardPorts` 🏷️ | array | An array of port numbers or `"host:port"` values  (e.g. `[3000, "db:5432"]`) that should always be forwarded from inside the primary container to the local machine (including on the web). The property is most useful for forwarding ports that cannot be auto-forwarded because the related process that starts before the `devcontainer.json` supporting service / tool connects or for forwarding a service not in the primary container in Docker Compose scenarios (e.g. `"db:5432"`). Defaults to `[]`. |
 | `portsAttributes` 🏷️ | object | Object that maps a port number, `"host:port"` value, range, or regular expression to a set of default options. See [port attributes](#port-attributes) for available options. For example: <br />`"portsAttributes": {"3000": {"label": "Application port"}}` |
 | `otherPortsAttributes` 🏷️ | object | Default options for ports, port ranges, and hosts that aren't configured using `portsAttributes`. See [port attributes](#port-attributes) for available options. For example: <br /> `"otherPortsAttributes": {"onAutoForward": "silent"}` |
@@ -28,6 +30,55 @@ Metadata properties marked with a 🏷️ can be stored in the `devcontainer.met
 | `features` | object | An object of [Dev Container Feature IDs](https://containers.dev/features) and related options to be added into your primary container. The specific options that are available varies by feature, so see its documentation for additional details. For example: <br />`"features": { "ghcr.io/devcontainers/features/github-cli": {} }` |
 | `overrideFeatureInstallOrder` | array | By default, Features will attempt to automatically set the order they are installed based on a `installsAfter` property within each of them. This property allows you to override the Feature install order when needed. For example: <br />`"overrideFeatureInstallОrder": [ "ghcr.io/devcontainers/features/common-utils", "ghcr.io/devcontainers/features/github-cli" ]` |
 | `customizations` 🏷️| object | Product specific properties, defined in [supporting tools](supporting-tools.md) |
+
+## Configuration inheritance
+
+Use `extends` to inherit settings from another JSON or JSONC file in the same repository:
+
+```jsonc
+// .devcontainer/defaults.json
+{
+	"name": "example/project",
+	"forwardPorts": [80, 5432],
+	"hostRequirements": {
+		"storage": "64gb",
+		"memory": "16gb"
+	}
+}
+
+// .devcontainer/devcontainer.json
+{
+	"extends": "./defaults.json",
+	"forwardPorts": [2222],
+	"hostRequirements": {
+		"memory": "32gb"
+	},
+	"onCreateCommand": ".devcontainer/on-create-command.sh"
+}
+```
+
+`extends` is relative to the file that declares it, for example `"./defaults.json"`, `"../defaults.json"`, or `"./dev/defaults.json"`. Referenced files may also use `extends`. Absolute paths and URLs are not supported.
+
+The referenced configuration is merged first, then the current file is applied. Use `extendsMergeMode` on the file that declares `extends` to choose the merge behavior.
+
+Both `extends` and `extendsMergeMode` properties are removed from the merged result.
+
+### `extendsMergeMode`: `combine` (default)
+
+Uses the same [merge logic](devcontainer-reference.md#merge-logic) as image metadata:
+
+- Array properties such as `forwardPorts`, `capAdd`, and `securityOpt` are the union of values without duplicates.
+- `hostRequirements` takes the maximum of each field.
+- Object maps such as `remoteEnv`, `containerEnv`, `features`, and `customizations` merge per key, with the current file winning on conflicts.
+- Boolean `init` and `privileged` are `true` if at least one value is `true`.
+- Single-value properties such as `name`, `image`, and `remoteUser` override the value from the referenced file if set in the current file.
+
+### `extendsMergeMode`: `override`
+
+Uses top-level merging with key-based overrides (`{ ...base, ...current }`):
+
+- Properties set in the current file replace the inherited value.
+- Properties omitted from the current file keep the inherited value.
 
 ## Scenario specific properties
 

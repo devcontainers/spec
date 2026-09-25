@@ -16,6 +16,18 @@
 					"type": "string",
 					"description": "A name for the dev container which can be displayed to the user."
 				},
+				"extends": {
+					"type": "string",
+					"description": "Relative path to a JSON or JSONC configuration to be inherited from present in the same repository."
+				},
+				"extendsMergeMode": {
+					"type": "string",
+					"enum": [
+						"combine",
+						"override"
+					],
+					"description": "Specifies how to merge this file with the referenced extends file when extends is set. combine (default) uses image metadata merge logic. override inherits then replaces top-level properties when a key is set in this file."
+				},
 				"features": {
 					"type": "object",
 					"description": "Features to add to the dev container.",
